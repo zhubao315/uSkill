@@ -39,7 +39,18 @@ uskills export-skill skills/atomic/text_summarize.yaml
 
 # 查看元数据与内容哈希
 uskills inspect path/to/my-skill/
+
+# 批量迁移 legacy 技能为双层结构（幂等、不覆盖、列出丢失能力）
+uskills migrate skills/ --output skills/migrated --dry-run
+uskills migrate skills/ --output skills/migrated
 ```
+
+## 格式检测与 Schema 版本
+
+`uskills.standards_compat.detect_format()` 识别三种格式：`skill-v1`（legacy
+YAML）、`manifest-v2`（`apiVersion: uskills/v2`）、`agent-skill`（SKILL.md 目录）。
+导出文件的规范位置与版本目录说明见 `standards/manifest/` 与
+`standards/compatibility/`。
 
 ## 转换语义
 

@@ -16,13 +16,13 @@ import json
 import re
 from enum import StrEnum
 from pathlib import Path
-from typing import Any
+from typing import Any, Literal
 
 import yaml  # type: ignore
-from pydantic import BaseModel, ConfigDict, Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field
 
-API_VERSION = "uskill/v2"
-KIND = "Skill"
+API_VERSION: Literal["uskills/v2"] = "uskills/v2"
+KIND: Literal["Skill"] = "Skill"
 
 _NAME_OK = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 
@@ -122,8 +122,8 @@ class USkillManifest(BaseModel):
 
     model_config = ConfigDict(extra="forbid")
 
-    apiVersion: str = Field(default=API_VERSION)
-    kind: str = Field(default=KIND)
+    apiVersion: Literal["uskills/v2"] = Field(default=API_VERSION)
+    kind: Literal["Skill"] = Field(default=KIND)
     metadata: ManifestMetadata
     compatibility: dict[str, Any] = Field(default_factory=dict)
     execution: ManifestExecution = Field(default_factory=ManifestExecution)
@@ -134,19 +134,8 @@ class USkillManifest(BaseModel):
     provenance: ManifestProvenance = Field(default_factory=ManifestProvenance)
     evaluation: ManifestEvaluation = Field(default_factory=ManifestEvaluation)
 
-    @field_validator("apiVersion")
-    @classmethod
-    def _check_api_version(cls, v: str) -> str:
-        if v != API_VERSION:
-            raise ValueError(f"apiVersion must be {API_VERSION!r}, got {v!r}")
-        return v
-
-    @field_validator("kind")
-    @classmethod
-    def _check_kind(cls, v: str) -> str:
-        if v != KIND:
-            raise ValueError(f"kind must be {KIND!r}, got {v!r}")
-        return v
+    # apiVersion/kind are constrained by Literal (emits const in JSON Schema);
+    # wrong values are rejected by Pydantic before any custom logic.
 
 
 def load_manifest(path: str | Path) -> USkillManifest:

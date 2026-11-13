@@ -58,6 +58,13 @@ from .schema import (
     exported_json_schema,
     get_schema_version,
 )
+from .standards_compat import (
+    MigrationReport,
+    detect_format,
+    manifest_json_schema,
+    migrate_directory,
+    migrate_skill,
+)
 from .validator import (
     ValidationError,
     extract_template_variables,
@@ -117,6 +124,12 @@ __all__ = [
     "EvalResult",
     "EvalSuite",
     "run_eval_suite",
+    # Standards compatibility & migration
+    "MigrationReport",
+    "detect_format",
+    "manifest_json_schema",
+    "migrate_skill",
+    "migrate_directory",
     # Validator
     "ValidationError",
     "extract_template_variables",

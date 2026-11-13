@@ -34,3 +34,14 @@
   见 [Agent Skills 标准](agent-skills.md)。
 - `uskills export-skill` 可把 legacy 技能转为双层目录；`manifest_from_legacy_skill`
   自动推导 Manifest。
+
+## Schema 导出（2.0）
+
+```bash
+uskills schema --target skill     # V1 → standards/uskill.schema.json
+uskills schema --target manifest  # V2 → standards/uskill-manifest.schema.json
+uskills schema --target both
+```
+
+CI 校验两个导出与代码一致。版本目录说明：`standards/manifest/v1|v2/README.md`，
+兼容矩阵：`standards/compatibility/README.md`。

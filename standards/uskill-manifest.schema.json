@@ -1,0 +1,284 @@
+{
+  "$defs": {
+    "ExecutionMode": {
+      "description": "How a skill is executed.\n\nNot every skill is a single LLM call; the mode makes execution\nsemantics explicit.",
+      "enum": [
+        "instruction",
+        "llm",
+        "tool",
+        "script",
+        "workflow"
+      ],
+      "title": "ExecutionMode",
+      "type": "string"
+    },
+    "ManifestEvaluation": {
+      "additionalProperties": false,
+      "properties": {
+        "dataset": {
+          "default": "",
+          "description": "Relative dataset path",
+          "maxLength": 500,
+          "title": "Dataset",
+          "type": "string"
+        },
+        "min_trigger_precision": {
+          "default": 0.9,
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Min Trigger Precision",
+          "type": "number"
+        },
+        "min_output_validity": {
+          "default": 0.99,
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Min Output Validity",
+          "type": "number"
+        }
+      },
+      "title": "ManifestEvaluation",
+      "type": "object"
+    },
+    "ManifestExecution": {
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "$ref": "#/$defs/ExecutionMode",
+          "default": "instruction"
+        },
+        "entry": {
+          "default": "SKILL.md",
+          "description": "Entry document or script path, relative to the skill directory",
+          "maxLength": 500,
+          "title": "Entry",
+          "type": "string"
+        },
+        "timeout": {
+          "default": 30,
+          "maximum": 3600,
+          "minimum": 1,
+          "title": "Timeout",
+          "type": "integer"
+        },
+        "retry": {
+          "default": 0,
+          "maximum": 10,
+          "minimum": 0,
+          "title": "Retry",
+          "type": "integer"
+        },
+        "requires_approval": {
+          "default": false,
+          "title": "Requires Approval",
+          "type": "boolean"
+        }
+      },
+      "title": "ManifestExecution",
+      "type": "object"
+    },
+    "ManifestMetadata": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "maxLength": 64,
+          "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+          "title": "Name",
+          "type": "string"
+        },
+        "description": {
+          "maxLength": 1024,
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "version": {
+          "default": "0.1.0",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$",
+          "title": "Version",
+          "type": "string"
+        },
+        "license": {
+          "default": "MIT",
+          "maxLength": 200,
+          "title": "License",
+          "type": "string"
+        },
+        "tags": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 20,
+          "title": "Tags",
+          "type": "array"
+        },
+        "owner": {
+          "default": "community",
+          "maxLength": 100,
+          "title": "Owner",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "description"
+      ],
+      "title": "ManifestMetadata",
+      "type": "object"
+    },
+    "ManifestProvenance": {
+      "additionalProperties": false,
+      "properties": {
+        "source": {
+          "default": "authored",
+          "pattern": "^(authored|imported|converted|generated)$",
+          "title": "Source",
+          "type": "string"
+        },
+        "imported_from": {
+          "default": "",
+          "maxLength": 500,
+          "title": "Imported From",
+          "type": "string"
+        },
+        "content_sha256": {
+          "default": "",
+          "description": "sha256 of SKILL.md",
+          "maxLength": 64,
+          "title": "Content Sha256",
+          "type": "string"
+        },
+        "notes": {
+          "default": "",
+          "maxLength": 2000,
+          "title": "Notes",
+          "type": "string"
+        }
+      },
+      "title": "ManifestProvenance",
+      "type": "object"
+    },
+    "ManifestSecurity": {
+      "additionalProperties": false,
+      "properties": {
+        "untrusted_source": {
+          "default": false,
+          "description": "True when skill content was imported from an external source",
+          "title": "Untrusted Source",
+          "type": "boolean"
+        },
+        "allowed_permissions": {
+          "description": "Runtime-enforced permission allowlist (default least-privilege)",
+          "items": {
+            "$ref": "#/$defs/ToolPermission"
+          },
+          "title": "Allowed Permissions",
+          "type": "array"
+        }
+      },
+      "title": "ManifestSecurity",
+      "type": "object"
+    },
+    "ManifestTool": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "permission": {
+          "$ref": "#/$defs/ToolPermission",
+          "default": "read"
+        },
+        "description": {
+          "default": "",
+          "maxLength": 500,
+          "title": "Description",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "title": "ManifestTool",
+      "type": "object"
+    },
+    "ToolPermission": {
+      "description": "Coarse permission classes enforced by the runtime.",
+      "enum": [
+        "read",
+        "write",
+        "network",
+        "shell",
+        "sensitive_data"
+      ],
+      "title": "ToolPermission",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "description": "uSkill Manifest V2 document (``uskill.yaml``).",
+  "properties": {
+    "apiVersion": {
+      "const": "uskills/v2",
+      "default": "uskills/v2",
+      "title": "Apiversion",
+      "type": "string"
+    },
+    "kind": {
+      "const": "Skill",
+      "default": "Skill",
+      "title": "Kind",
+      "type": "string"
+    },
+    "metadata": {
+      "$ref": "#/$defs/ManifestMetadata"
+    },
+    "compatibility": {
+      "additionalProperties": true,
+      "title": "Compatibility",
+      "type": "object"
+    },
+    "execution": {
+      "$ref": "#/$defs/ManifestExecution"
+    },
+    "inputs": {
+      "additionalProperties": true,
+      "description": "JSON Schema for inputs",
+      "title": "Inputs",
+      "type": "object"
+    },
+    "outputs": {
+      "additionalProperties": true,
+      "description": "JSON Schema for outputs",
+      "title": "Outputs",
+      "type": "object"
+    },
+    "tools": {
+      "items": {
+        "$ref": "#/$defs/ManifestTool"
+      },
+      "maxItems": 50,
+      "title": "Tools",
+      "type": "array"
+    },
+    "security": {
+      "$ref": "#/$defs/ManifestSecurity"
+    },
+    "provenance": {
+      "$ref": "#/$defs/ManifestProvenance"
+    },
+    "evaluation": {
+      "$ref": "#/$defs/ManifestEvaluation"
+    }
+  },
+  "required": [
+    "metadata"
+  ],
+  "title": "USkillManifest",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zhubao315.github.io/uSkill/schema/manifest-v2.json"
+}

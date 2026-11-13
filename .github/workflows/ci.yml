@@ -44,8 +44,10 @@ jobs:
           pip install -e ".[dev]"
       - name: Schema is up to date
         run: |
-          python cli/uskills_cli.py schema --output /tmp/schema.json
-          diff /tmp/schema.json standards/uskill.schema.json
+          python cli/uskills_cli.py schema --target both \
+            --output /tmp/skill.json --manifest-output /tmp/manifest.json
+          diff /tmp/skill.json standards/uskill.schema.json
+          diff /tmp/manifest.json standards/uskill-manifest.schema.json
       - name: Skills assets valid
         run: |
           python cli/uskills_cli.py validate skills/

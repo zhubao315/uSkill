@@ -1,4 +1,4 @@
-apiVersion: uskill/v2
+apiVersion: uskills/v2
 kind: Skill
 metadata:
   name: code-review

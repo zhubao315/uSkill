@@ -77,15 +77,53 @@ def cmd_convert(args: argparse.Namespace) -> int:
 
 
 def cmd_schema(args: argparse.Namespace) -> int:
-    """Export JSON Schema for uSkill."""
-    target = Path(args.output)
-    target.parent.mkdir(parents=True, exist_ok=True)
+    """Export JSON Schema for uSkill (skill V1 and/or Manifest V2)."""
+    from core.uskills.standards_compat import manifest_json_schema
 
-    schema = exported_json_schema()
-    target.write_text(json.dumps(schema, ensure_ascii=False, indent=2), encoding="utf-8")
-
-    print(f"Schema v{get_schema_version()} exported to: {target}")
+    if args.target in ("skill", "both"):
+        target = Path(args.output)
+        target.parent.mkdir(parents=True, exist_ok=True)
+        schema = exported_json_schema()
+        target.write_text(json.dumps(schema, ensure_ascii=False, indent=2), encoding="utf-8")
+        print(f"Skill schema v{get_schema_version()} exported to: {target}")
+    if args.target in ("manifest", "both"):
+        mtarget = Path(args.manifest_output)
+        mtarget.parent.mkdir(parents=True, exist_ok=True)
+        mtarget.write_text(
+            json.dumps(manifest_json_schema(), ensure_ascii=False, indent=2), encoding="utf-8"
+        )
+        print(f"Manifest schema (uskills/v2) exported to: {mtarget}")
     return 0
+
+
+def cmd_migrate(args: argparse.Namespace) -> int:
+    """Migrate legacy skill files into two-layer Agent Skill directories."""
+    from core.uskills.standards_compat import migrate_directory, migrate_skill
+
+    path = Path(args.path)
+    try:
+        if path.is_dir():
+            reports = migrate_directory(path, args.output, force=args.force, dry_run=args.dry_run)
+        else:
+            reports = [migrate_skill(path, args.output, force=args.force, dry_run=args.dry_run)]
+        failed = 0
+        for r in reports:
+            mark = "✓" if r.ok else "✗"
+            print(f"{mark} {r.source} → {r.target or '-'}")
+            for action in r.actions:
+                print(f"    {action}")
+            for warning in r.warnings:
+                print(f"    ⚠ {warning}")
+            for loss in r.lossy:
+                print(f"    ⚠ not representable in pure Agent Skills: {loss}")
+            if not r.ok:
+                failed += 1
+        print(f"\n{len(reports) - failed}/{len(reports)} migrated"
+              + (" (dry-run)" if args.dry_run else ""))
+        return 0 if failed == 0 else 1
+    except Exception as e:
+        print(f"Migrate failed: {e}", file=sys.stderr)
+        return 1
 
 
 def cmd_index(args: argparse.Namespace) -> int:
@@ -363,7 +401,19 @@ def build_parser() -> argparse.ArgumentParser:
 
     p = sub.add_parser("schema", help="Export the uSkill JSON Schema.")
     p.add_argument("--output", default="standards/uskill.schema.json")
+    p.add_argument(
+        "--target", choices=["skill", "manifest", "both"], default="skill",
+        help="skill (legacy V1), manifest (uskills/v2) or both.",
+    )
+    p.add_argument("--manifest-output", default="standards/uskill-manifest.schema.json")
     p.set_defaults(func=cmd_schema)
+
+    p = sub.add_parser("migrate", help="Migrate legacy skills into two-layer Agent Skill dirs.")
+    p.add_argument("path", help="Legacy skill file or directory.")
+    p.add_argument("--output", default="skills/migrated")
+    p.add_argument("--force", action="store_true")
+    p.add_argument("--dry-run", action="store_true")
+    p.set_defaults(func=cmd_migrate)
 
     p = sub.add_parser("index", help="Build the markdown skills index.")
     p.add_argument("path")
