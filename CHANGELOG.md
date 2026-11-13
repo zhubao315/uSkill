@@ -90,10 +90,18 @@ The package version is defined in `core/uskills/_version.py`.
   mkdocs reported "no such anchor").
 - Docs site configures `toc.slugify = slugify_unicode` so generated
   skill-catalog anchors preserve CJK headings (matches `indexer._anchor`).
-- GitHub Pages landing page rebuilt for 2.0: hero + run-preview terminal,
-  stats band, six-stage engineering loop, capability cards, offline
-  tabbed quickstart, version timeline; custom `home` template and
-  responsive landing CSS (light/dark).
+- GitHub Pages landing page (2.0): full marketing/landing site built on a
+  dedicated `us-*` design system (`landing.css`) — dark hero with run-preview
+  terminal, stats band, pain/solution cards, capability bento, lifecycle
+  gate stepper, annotated skill example, six-step quickstart with real
+  commands, positioning table, quality-evidence band, version timeline,
+  FAQ, CTA; custom `home` template; responsive down to 390px; light and
+  dark palettes verified by screenshots.
+- Docs theme dark mode: the custom slate palette overrides in `extra.css`
+  were nested inside `:root`, which CSS nests as a descendant selector that
+  never matches `<html>`/`<body>`, so the site silently stayed light when
+  the palette toggle switched schemes. Overrides moved to top-level
+  attribute selectors matching both.
 
 ## [1.2.0] - 2026-11-13
 

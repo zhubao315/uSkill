@@ -65,6 +65,7 @@ extra:
 
 extra_css:
   - assets/stylesheets/extra.css
+  - assets/stylesheets/landing.css
 
 markdown_extensions:
   # Standard extensions
