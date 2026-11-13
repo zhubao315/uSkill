@@ -83,13 +83,17 @@ The package version is defined in `core/uskills/_version.py`.
   `const`); canonical version string unified to `uskills/v2`.
 - `import_source` raises `FileNotFoundError` for missing path-like inputs
   while still accepting free-form inline prompt text.
-- Docs site configures `toc.slugify = slugify_unicode` so generated
-  skill-catalog anchors preserve CJK headings (matches `indexer._anchor`).
 
 ### Fixed
 - Generated skill index (indexer) now emits anchors compatible with the
   site slugify; navigation links for CJK SOP names resolve (previously
   mkdocs reported "no such anchor").
+- Docs site configures `toc.slugify = slugify_unicode` so generated
+  skill-catalog anchors preserve CJK headings (matches `indexer._anchor`).
+- GitHub Pages landing page rebuilt for 2.0: hero + run-preview terminal,
+  stats band, six-stage engineering loop, capability cards, offline
+  tabbed quickstart, version timeline; custom `home` template and
+  responsive landing CSS (light/dark).
 
 ## [1.2.0] - 2026-11-13
 

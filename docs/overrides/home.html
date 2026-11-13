@@ -1,0 +1,18 @@
+{#
+  Home/landing template for uSkill 2.0.
+  Extends the stock page layout but widens the content grid so the landing
+  sections (hero, stats, pipeline, timeline) get full breathing room, and
+  drops the footer navigation between docs pages on the landing page.
+  Activated via `template: home.html` in docs/index.md frontmatter.
+#}
+{% extends "main.html" %}
+
+{% block container %}
+  <div class="md-content md-content--home" data-md-component="content">
+    <article class="md-content__inner md-typeset">
+      {% block content %}
+        {% include "partials/content.html" %}
+      {% endblock %}
+    </article>
+  </div>
+{% endblock %}
