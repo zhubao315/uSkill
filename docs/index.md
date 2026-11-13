@@ -3,7 +3,7 @@ hide:
   - navigation
 ---
 
-# uSkills
+# uSkill
 
 <div class="hero" markdown>
 
@@ -11,7 +11,7 @@ hide:
 
 以驾驭工程为方法论，将历史 SOP Prompt 批量转换为可驾驭、可复用、可调用、可迭代的标准化 Skills。
 
-[:octicons-mark-github-16: GitHub](https://github.com/zhubao315/uSkills){ .md-button .md-button--primary }
+[:octicons-mark-github-16: GitHub](https://github.com/zhubao315/uSkill){ .md-button .md-button--primary }
 [:octicons-rocket-16: 快速开始](quickstart.md){ .md-button .md-button--accent }
 
 </div>
@@ -124,9 +124,52 @@ uskills index skills/ --output docs/index.md
 
 </div>
 
+## V1.2 新能力
+
+<div class="grid" markdown>
+
+<div class="card" markdown>
+
+### 双层标准
+
+标准 `SKILL.md`（Agent Skills 开放规范）+ `uskill.yaml`（uSkill 增强契约）。校验、导入、导出开箱即用。
+
+```bash
+uskills init my-skill
+uskills import-skill ./skill-dir/
+```
+
+</div>
+
+<div class="card" markdown>
+
+### 受治理运行时
+
+timeout / retry 真实强制执行，组合技能真实调度子技能，输出结构校验、权限白名单、人工审批与恢复。
+
+```bash
+uskills run content_pipeline --library skills
+```
+
+</div>
+
+<div class="card" markdown>
+
+### 证据化评测
+
+No-Skill 基线 vs Skill 辅助对照、确定性断言评分器、回归报告。
+
+```bash
+uskills eval --skill s.yaml --suite suite.json
+```
+
+</div>
+
+</div>
+
 ## 核心方法论
 
-uSkills 基于"驾驭工程"推进 Agent 技能资产化：
+uSkill 基于"驾驭工程"推进 Agent 技能资产化：
 
 <div class="skill-graph hexagon-pattern" markdown>
 
@@ -143,8 +186,8 @@ uSkills 基于"驾驭工程"推进 Agent 技能资产化：
 
     ```bash
     # 克隆仓库
-    git clone https://github.com/zhubao315/uSkills.git
-    cd uSkills
+    git clone https://github.com/zhubao315/uSkill.git
+    cd uSkill
 
     # 创建虚拟环境
     python -m venv .venv
@@ -240,7 +283,7 @@ control:
 
 访问我们的 GitHub 仓库，参与贡献和讨论。
 
-[:octicons-arrow-right-16: 访问仓库](https://github.com/zhubao315/uSkills)
+[:octicons-arrow-right-16: 访问仓库](https://github.com/zhubao315/uSkill)
 
 </div>
 
@@ -252,7 +295,7 @@ control:
 
 遇到问题？请在 GitHub Issues 中反馈。
 
-[:octicons-arrow-right-16: 提交 Issue](https://github.com/zhubao315/uSkills/issues)
+[:octicons-arrow-right-16: 提交 Issue](https://github.com/zhubao315/uSkill/issues)
 
 </div>
 

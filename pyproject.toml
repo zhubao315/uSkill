@@ -4,38 +4,43 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uskills"
-version = "1.1.0"
-description = "uSkills - The controllable, reusable, callable skill foundation for Agents"
+dynamic = ["version"]
+description = "uSkill - Agent Skill Engineering Platform: open standards, governed runtime, evidence-based evolution"
 readme = "README.md"
-license = {text = "MIT"}
-requires-python = ">=3.10"
+license = { file = "LICENSE" }
+requires-python = ">=3.11"
 authors = [
     {name = "zhubao315", email = "zhubao315@example.com"}
 ]
-keywords = ["agent", "skills", "prompt", "sop", "ai", "llmops"]
+keywords = ["agent", "skills", "agent-skills", "prompt", "sop", "ai", "llmops", "mcp"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 dependencies = [
     "pydantic>=2.8,<3.0",
     "PyYAML>=6.0,<7.0",
-    "openai>=1.0.0",
     "python-dotenv>=1.0.0",
 ]
 
 [project.optional-dependencies]
+llm = [
+    "openai>=1.40.0",
+]
 dev = [
     "pytest>=8.3,<9.0",
+    "pytest-cov>=5.0",
     "ruff>=0.11,<0.12",
     "mypy>=1.10,<2.0",
+    "build>=1.2",
+    "uskills[llm]",
 ]
 docs = [
     "mkdocs>=1.6,<2.0",
@@ -43,21 +48,25 @@ docs = [
     "pymdown-extensions>=10.14,<11.0",
 ]
 all = [
-    "uskills[dev,docs]",
+    "uskills[llm,dev,docs]",
 ]
 
 [project.urls]
-Homepage = "https://zhubao315.github.io/uSkills/"
-Repository = "https://github.com/zhubao315/uSkills"
-Documentation = "https://zhubao315.github.io/uSkills/"
-Issues = "https://github.com/zhubao315/uSkills/issues"
+Homepage = "https://zhubao315.github.io/uSkill/"
+Repository = "https://github.com/zhubao315/uSkill"
+Documentation = "https://zhubao315.github.io/uSkill/"
+Issues = "https://github.com/zhubao315/uSkill/issues"
 
 [project.scripts]
 uskills = "cli.uskills_cli:main"
+uskill = "cli.uskills_cli:main"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["core*", "cli*"]
+include = ["core*", "cli*", "adapters*"]
+
+[tool.setuptools.dynamic]
+version = {attr = "core.uskills._version.__version__"}
 
 [tool.pytest.ini_options]
 pythonpath = [".", "core"]
@@ -66,17 +75,18 @@ addopts = "-v --tb=short"
 
 [tool.ruff]
 line-length = 100
-target-version = "py310"
+target-version = "py311"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "W", "UP", "SIM"]
 ignore = ["E501"]
 
 [tool.ruff.lint.isort]
-known-first-party = ["core", "cli"]
+known-first-party = ["core", "cli", "adapters"]
 
 [tool.mypy]
-python_version = "3.10"
+python_version = "3.11"
 warn_return_any = true
 warn_unused_configs = true
 disallow_untyped_defs = true
+mypy_path = "."

@@ -1,12 +1,30 @@
-.pytest_cache/
-.ruff_cache/
-.mypy_cache/
-.venv/
+# Python
 __pycache__/
-*.pyc
-site/
-dist/
+*.py[cod]
+*.egg-info/
 build/
+dist/
+.eggs/
+.venv/
+venv/
+
+# Test / tool caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Docs / temp
+site/
 temp/
+
+# uSkill runtime state
+.uskills/
+skills/generated/
+
+# Editors / OS
+.idea/
+.vscode/
 .DS_Store
-.env

@@ -1,85 +1,75 @@
-"""uSkills Execution Engine.
+"""Backward-compatible executor shim over the new runtime.
 
-This module provides the core executor for running uSkills directly
-with LLM providers, including parameter injection and output formatting.
+``SkillExecutor`` keeps its historic API (``execute(skill, inputs)``
+returning a legacy-shaped dict) but now delegates to the governed
+:class:`~core.uskills.runtime.engine.SkillRuntime`, so ``control.timeout``
+and ``control.retry`` are genuinely enforced. New code should use
+``SkillRuntime`` directly.
 """
 
 from __future__ import annotations
 
-import json
 import os
-import time
 from typing import Any
 
-from openai import OpenAI
-
+from .errors import ExecutionFailedError
+from .runtime import (
+    MockProvider,
+    OpenAIChatProvider,
+    Provider,
+    SkillRuntime,
+    StepState,
+)
 from .schema import USkill
 
 
 class SkillExecutor:
-    """Core execution engine for uSkills."""
+    """Legacy facade over the governed runtime."""
 
-    def __init__(self, api_key: str | None = None, default_model: str = "gpt-4o-mini"):
-        """Initialize executor with API configuration."""
-        self.api_key = api_key or os.getenv("OPENAI_API_KEY")
-        self.client = OpenAI(api_key=self.api_key) if self.api_key else None
+    def __init__(
+        self,
+        api_key: str | None = None,
+        default_model: str = "gpt-4o-mini",
+        base_url: str | None = None,
+        provider: Provider | None = None,
+    ) -> None:
         self.default_model = default_model
+        if provider is not None:
+            self._runtime = SkillRuntime(provider)
+        elif api_key is not None or os.getenv("OPENAI_API_KEY"):
+            self._runtime = SkillRuntime(OpenAIChatProvider(api_key=api_key, base_url=base_url))
+        else:
+            self._runtime = SkillRuntime(MockProvider())
+        self.provider = self._runtime.provider
 
     def execute(self, skill: USkill, inputs: dict[str, Any]) -> dict[str, Any]:
-        """Execute a uSkill with provided inputs.
+        """Execute a skill and return the legacy result envelope.
 
-        Args:
-            skill: The USkill instance to execute.
-            inputs: Dictionary of input parameters.
-
-        Returns:
-            Structured execution results.
+        Raises ExecutionFailedError when the governed run fails (the old
+        shim used to print a warning and return unparsed text instead).
         """
-        if not self.client:
-            raise ValueError("OpenAI API key is required for execution.")
-
-        # 1. Parameter Injection (basic jinja-like substitution)
-        prompt = skill.execute.prompt_template
-        for key, value in inputs.items():
-            placeholder = f"{{{{{key}}}}}"
-            prompt = prompt.replace(placeholder, str(value))
-
-        # 2. LLM Call
-        start_time = time.time()
-
-        # Prepare response format based on skill output config
-        # Use explicit type for mypy compatibility
-        response_format: Any = (
-            {"type": "json_object"} if skill.output.format == "json" else {"type": "text"}
-        )
-
-        response = self.client.chat.completions.create(
-            model=skill.execute.model or self.default_model,
-            messages=[
-                {"role": "system", "content": "Execute according to the skill instructions."},
-                {"role": "user", "content": prompt},
-            ],
-            temperature=skill.execute.temperature,
-            response_format=response_format,
-        )
-
-        content = response.choices[0].message.content or ""
-        execution_time = time.time() - start_time
-
-        # 3. Output Processing
-        result: Any = content
-        if skill.output.format == "json":
-            try:
-                result = json.loads(content)
-            except json.JSONDecodeError:
-                print("Warning: LLM output was not valid JSON.")
-
+        if isinstance(self.provider, MockProvider) and not skill.control.mockable:
+            raise ExecutionFailedError(
+                f"skill {skill.skill_id} is not mockable and no real provider is configured"
+            )
+        record = self._runtime.run(skill, inputs)
+        if record.status is not StepState.COMPLETED:
+            raise ExecutionFailedError(
+                f"run {record.run_id} ended in {record.status.value}: {record.error}"
+            )
         return {
             "skill_id": skill.skill_id,
-            "result": result,
+            "result": record.result,
+            "run_id": record.run_id,
+            "status": record.status.value,
+            "steps": [s.step_id for s in record.steps],
+            "events": record.events,
             "meta": {
-                "execution_time": execution_time,
+                "execution_time": record.execution_time,
                 "model": skill.execute.model,
-                "usage": response.usage.model_dump() if response.usage else None,
+                "usage": record.usage,
             },
         }
+
+
+__all__ = ["SkillExecutor"]

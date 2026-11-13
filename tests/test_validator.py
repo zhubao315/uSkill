@@ -64,7 +64,9 @@ class TestValidateSkillData:
                 "domain": "test",
                 "description": "A test skill",
             },
-            "input": {"params": []},
+            "input": {
+                "params": [{"name": "task", "type": "string", "required": True}]
+            },
             "execute": {
                 "prompt_template": "Execute {{task}}",
                 "steps": ["step 1"],

@@ -1,8 +1,8 @@
-site_name: uSkills
-site_url: https://zhubao315.github.io/uSkills/
-site_description: The controllable, reusable, callable skill foundation for Agents
-repo_url: https://github.com/zhubao315/uSkills
-repo_name: zhubao315/uSkills
+site_name: uSkill
+site_url: https://zhubao315.github.io/uSkill/
+site_description: uSkill - Agent Skill Engineering Platform (open standards, governed runtime, evidence-based evolution)
+repo_url: https://github.com/zhubao315/uSkill
+repo_name: zhubao315/uSkill
 site_author: zhubao315
 
 theme:
@@ -112,7 +112,11 @@ nav:
   - 快速开始: quickstart.md
   - 架构: architecture.md
   - Schema: schema.md
+  - Agent Skills 标准: agent-skills.md
+  - 运行时: runtime.md
+  - 评测与治理: evaluation.md
   - 技能分类: skills.md
   - 驾驭示例: skill-creator-case.md
   - 技能库: generated/skills-index.md
+  - 审计报告: audit/REPOSITORY_AUDIT.md
   - Roadmap: roadmap.md

@@ -95,6 +95,12 @@
           "maxItems": 10,
           "title": "Fallback",
           "type": "array"
+        },
+        "requires_approval": {
+          "default": false,
+          "description": "If true, the runtime pauses the run for human approval before executing this skill",
+          "title": "Requires Approval",
+          "type": "boolean"
         }
       },
       "required": [
@@ -135,6 +141,19 @@
       },
       "title": "OutputConfig",
       "type": "object"
+    },
+    "ParamType": {
+      "description": "Allowed JSON types for skill parameters.\n\nStrict enumeration replaces the previous free-form string so typos\nsuch as ``strin`` are rejected at validation time.",
+      "enum": [
+        "string",
+        "number",
+        "integer",
+        "boolean",
+        "object",
+        "array"
+      ],
+      "title": "ParamType",
+      "type": "string"
     },
     "SkillCategory": {
       "description": "Skill category enumeration.",
@@ -239,11 +258,8 @@
           "type": "string"
         },
         "type": {
-          "description": "Parameter type (string, number, boolean, object, array)",
-          "maxLength": 50,
-          "minLength": 1,
-          "title": "Type",
-          "type": "string"
+          "$ref": "#/$defs/ParamType",
+          "description": "Parameter JSON type"
         },
         "required": {
           "default": true,
@@ -268,6 +284,32 @@
           "default": null,
           "description": "Default value if not required",
           "title": "Default"
+        },
+        "items_type": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ParamType"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Element type when type=array, used to build nested JSON Schema"
+        },
+        "schema": {
+          "anyOf": [
+            {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Optional full JSON Schema override for this parameter",
+          "title": "Schema"
         }
       },
       "required": [
@@ -306,6 +348,13 @@
           "maxLength": 2000,
           "minLength": 1,
           "title": "Raw Step",
+          "type": "string"
+        },
+        "context": {
+          "default": "",
+          "description": "Surrounding SOP context (headings, constraints, conditions) preserved from the source document so nothing is silently lost",
+          "maxLength": 8000,
+          "title": "Context",
           "type": "string"
         }
       },
@@ -349,8 +398,16 @@
       "description": "Control configuration"
     },
     "source": {
-      "$ref": "#/$defs/SourceTrace",
-      "description": "Source traceability"
+      "anyOf": [
+        {
+          "$ref": "#/$defs/SourceTrace"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Source traceability. Optional so standalone, hand-authored skills do not need to fake an SOP origin."
     }
   },
   "required": [
@@ -359,11 +416,10 @@
     "input",
     "execute",
     "output",
-    "control",
-    "source"
+    "control"
   ],
   "title": "USkill",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://zhubao315.github.io/uSkills/schema/v1.1.0.json"
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zhubao315.github.io/uSkill/schema/v1.1.0.json"
 }

@@ -1,0 +1,52 @@
+apiVersion: uskill/v2
+kind: Skill
+metadata:
+  name: code-review
+  description: Reviews code diffs and pull requests for correctness, security, and style
+    issues.
+  version: 1.0.0
+  license: MIT
+  tags:
+  - review
+  - quality
+  owner: uSkill
+compatibility:
+  agents:
+  - agent-skills
+execution:
+  mode: instruction
+  entry: SKILL.md
+  timeout: 60
+  retry: 0
+  requires_approval: false
+inputs:
+  type: object
+  properties:
+    diff:
+      type: string
+      description: unified diff text
+  required:
+  - diff
+outputs:
+  type: object
+  properties:
+    findings:
+      type: array
+    verdict:
+      type: string
+    summary:
+      type: string
+tools: []
+security:
+  untrusted_source: false
+  allowed_permissions:
+  - read
+provenance:
+  source: authored
+  imported_from: ''
+  content_sha256: ''
+  notes: reference two-layer skill shipped with uSkill
+evaluation:
+  dataset: evals/dataset.json
+  min_trigger_precision: 0.9
+  min_output_validity: 0.99

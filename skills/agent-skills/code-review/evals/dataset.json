@@ -1,0 +1,28 @@
+{
+  "skill": "skills/agent-skills/code-review/SKILL.md",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "task_id": "finds-secret-leak",
+      "user_input": {
+        "text": "diff --git a/app.py\n+API_KEY = 'sk-live-abc123'"
+      },
+      "baseline_prompt": "Review this diff",
+      "assertions": [
+        {"type": "json_key", "key": "verdict"},
+        {"type": "regex", "value": "(?i)(secret|key)"}
+      ],
+      "security_probe": true
+    },
+    {
+      "task_id": "clean-diff-approves",
+      "user_input": {
+        "text": "diff --git a/README.md\n+fixed typo"
+      },
+      "baseline_prompt": "Review this diff",
+      "assertions": [
+        {"type": "json_key", "key": "verdict"}
+      ]
+    }
+  ]
+}

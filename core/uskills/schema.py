@@ -1,13 +1,20 @@
-"""uSkills Schema Definitions.
+"""uSkill Schema Definitions.
 
-This module defines the core Pydantic models for uSkills, providing
+This module defines the core Pydantic models for uSkill, providing
 type-safe validation and JSON Schema export capabilities.
+
+Versioning policy
+-----------------
+* ``SCHEMA_VERSION`` tracks the skill-file format (1.1.0 since the V1.1
+  release). New *optional* fields are backward compatible and do not bump
+  it; breaking changes would.
+* The Python package version lives in ``core/uskills/_version.py``.
 """
 
 from __future__ import annotations
 
 import re
-from enum import Enum
+from enum import StrEnum
 from typing import Any
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
@@ -15,19 +22,42 @@ from pydantic import BaseModel, ConfigDict, Field, field_validator
 # Schema version for compatibility tracking
 SCHEMA_VERSION = "1.1.0"
 
+# Default template version used when converting SOPs into new skills.
+DEFAULT_TEMPLATE_VERSION = "1.1.0"
+
+# Canonical JSON Schema dialect emitted by Pydantic V2 for this model.
+# The exported document declares this dialect explicitly instead of a
+# hand-written draft-07 marker that would not match the generated syntax.
+JSON_SCHEMA_DIALECT = "https://json-schema.org/draft/2020-12/schema"
+
 # Skill ID pattern: uskill-{category}-{name}-{version}
 SKILL_ID_PATTERN = re.compile(
     r"^uskill-(atomic|composite|domain|governance)-[\w\u4e00-\u9fff-]+-v\d+-\d+-\d+$"
 )
 
 
-class SkillCategory(str, Enum):
+class SkillCategory(StrEnum):
     """Skill category enumeration."""
 
     atomic = "atomic"
     composite = "composite"
     domain = "domain"
     governance = "governance"
+
+
+class ParamType(StrEnum):
+    """Allowed JSON types for skill parameters.
+
+    Strict enumeration replaces the previous free-form string so typos
+    such as ``strin`` are rejected at validation time.
+    """
+
+    string = "string"
+    number = "number"
+    integer = "integer"
+    boolean = "boolean"
+    object = "object"
+    array = "array"
 
 
 class SkillMeta(BaseModel):
@@ -37,7 +67,7 @@ class SkillMeta(BaseModel):
 
     name: str = Field(..., min_length=1, max_length=200, description="Skill display name")
     version: str = Field(
-        default="1.1.0",
+        default=DEFAULT_TEMPLATE_VERSION,
         pattern=r"^\d+\.\d+\.\d+$",
         description="Semantic version (e.g., 1.1.0)",
     )
@@ -62,15 +92,20 @@ class SkillParam(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     name: str = Field(..., min_length=1, max_length=100, description="Parameter name")
-    type: str = Field(
-        ...,
-        min_length=1,
-        max_length=50,
-        description="Parameter type (string, number, boolean, object, array)",
-    )
+    type: ParamType = Field(..., description="Parameter JSON type")
     required: bool = Field(default=True, description="Whether parameter is required")
     description: str = Field(default="", max_length=500, description="Parameter description")
     default: Any | None = Field(default=None, description="Default value if not required")
+    items_type: ParamType | None = Field(
+        default=None,
+        description="Element type when type=array, used to build nested JSON Schema",
+    )
+    schema_: dict[str, Any] | None = Field(
+        default=None,
+        alias="schema",
+        serialization_alias="schema",
+        description="Optional full JSON Schema override for this parameter",
+    )
 
 
 class SkillInputConfig(BaseModel):
@@ -99,6 +134,11 @@ class ExecuteConfig(BaseModel):
     tools: list[str] = Field(default_factory=list, max_length=20, description="Required tools")
     fallback: list[str] = Field(
         default_factory=list, max_length=10, description="Fallback strategies"
+    )
+    requires_approval: bool = Field(
+        default=False,
+        description="If true, the runtime pauses the run for human approval "
+        "before executing this skill",
     )
 
     @field_validator("prompt_template")
@@ -152,6 +192,12 @@ class SourceTrace(BaseModel):
     sop_path: str = Field(default="", max_length=500, description="Source SOP file path")
     step_index: int = Field(..., ge=0, description="Step index in source SOP")
     raw_step: str = Field(..., min_length=1, max_length=2000, description="Raw step content")
+    context: str = Field(
+        default="",
+        max_length=8000,
+        description="Surrounding SOP context (headings, constraints, conditions) "
+        "preserved from the source document so nothing is silently lost",
+    )
 
 
 class USkill(BaseModel):
@@ -170,7 +216,11 @@ class USkill(BaseModel):
     execute: ExecuteConfig = Field(..., description="Execution configuration")
     output: OutputConfig = Field(..., description="Output configuration")
     control: ControlConfig = Field(..., description="Control configuration")
-    source: SourceTrace = Field(..., description="Source traceability")
+    source: SourceTrace | None = Field(
+        default=None,
+        description="Source traceability. Optional so standalone, hand-authored "
+        "skills do not need to fake an SOP origin.",
+    )
 
     @field_validator("skill_id")
     @classmethod
@@ -187,12 +237,15 @@ class USkill(BaseModel):
 def exported_json_schema() -> dict[str, Any]:
     """Export USkill JSON Schema.
 
+    The document declares the same JSON Schema dialect that Pydantic V2
+    actually emits (2020-12), keeping the ``$schema`` marker honest.
+
     Returns:
         JSON Schema dictionary for USkill model.
     """
-    schema = USkill.model_json_schema()
-    schema["$schema"] = "http://json-schema.org/draft-07/schema#"
-    schema["$id"] = f"https://zhubao315.github.io/uSkills/schema/v{SCHEMA_VERSION}.json"
+    schema = USkill.model_json_schema(ref_template="#/$defs/{model}")
+    schema["$schema"] = JSON_SCHEMA_DIALECT
+    schema["$id"] = f"https://zhubao315.github.io/uSkill/schema/v{SCHEMA_VERSION}.json"
     return schema
 
 

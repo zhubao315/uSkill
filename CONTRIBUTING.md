@@ -1,24 +1,21 @@
 # 贡献指南
 
-感谢你对 uSkills 项目的关注！我们欢迎各种形式的贡献。
+感谢你对 uSkill 项目的关注！我们欢迎各种形式的贡献。
 
 ## 开发环境设置
 
 ```bash
 # 克隆仓库
-git clone https://github.com/zhubao315/uSkills.git
-cd uSkills
+git clone https://github.com/zhubao315/uSkill.git
+cd uSkill
 
 # 创建虚拟环境
 python -m venv .venv
 source .venv/bin/activate  # Linux/macOS
 # .venv\Scripts\activate   # Windows
 
-# 安装依赖
-pip install -r requirements.txt
-
-# 安装开发依赖
-pip install mypy
+# 开发安装（含测试与工具链，Python >= 3.11）
+pip install -e ".[dev]"
 ```
 
 ## 开发工作流
@@ -165,10 +162,15 @@ docs(readme): update installation guide
 
 ### 技能贡献规则
 
-1. **必须保留 `source` 溯源字段**：便于追溯技能来源
+1. **推荐保留 `source` 溯源字段**（含 `context` 原文上下文）；独立创作技能可省略，
+   双层结构中由 `uskill.yaml` 的 provenance 记录内容哈希
 2. **遵循命名规范**：确保 skill_id 格式正确
-3. **验证通过**：提交前确保技能文件通过验证
-4. **更新文档**：添加技能后更新相关文档和索引
+3. **验证通过**：`uskills validate skills/` 与 `uskills doctor` 全部通过
+4. **附带评测**：为新技能添加 `evals/dataset.json`（至少 2 个正向用例；
+   有安全敏感行为时增加 `security_probe` 用例）
+5. **更新文档**：添加技能后更新相关文档和索引
+
+新技能优先采用双层标准：`uskills init <name>`，详见文档「Agent Skills 标准」。
 
 ## 报告问题
 

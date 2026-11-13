@@ -1,6 +1,6 @@
 # skill-creator 驾驭示例
 
-本页以当前本地最新版 `skill-creator` 为样例，展示 uSkills 如何把一个可调用技能纳入“可控、可测、可复现、可干预、可进化”的治理框架。
+本页以当前本地最新版 `skill-creator` 为样例，展示 uSkill 如何把一个可调用技能纳入“可控、可测、可复现、可干预、可进化”的治理框架。
 
 ## 样例对象
 
@@ -45,7 +45,7 @@
 
 ## 四、迭代驾驭
 
-`skill-creator` 特别强调验证独立性。uSkills 将这一点落成迭代规则：
+`skill-creator` 特别强调验证独立性。uSkill 将这一点落成迭代规则：
 
 - 验证时只提供最小任务上下文
 - 不向验证环节泄露预期答案、怀疑点和预设修复方案
@@ -61,4 +61,4 @@ python cli/uskills_cli.py index skills --output docs/generated/skills-index.md
 
 ## 六、发布结果
 
-本次示例已作为 `uSkills` 仓库中的公开案例提交，并通过 GitHub Actions 自动发布到 Pages。
+本次示例已作为 `uSkill` 仓库中的公开案例提交，并通过 GitHub Actions 自动发布到 Pages。
