@@ -1,35 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://zhubao315.github.io/uSkills/</loc>
-         <lastmod>2026-03-26</lastmod>
+         <loc>https://zhubao315.github.io/uSkill/</loc>
+         <lastmod>2026-11-13</lastmod>
     </url>
     <url>
-         <loc>https://zhubao315.github.io/uSkills/architecture/</loc>
-         <lastmod>2026-03-26</lastmod>
+         <loc>https://zhubao315.github.io/uSkill/ROADMAP_2.0/</loc>
+         <lastmod>2026-11-13</lastmod>
     </url>
     <url>
-         <loc>https://zhubao315.github.io/uSkills/quickstart/</loc>
-         <lastmod>2026-03-26</lastmod>
+         <loc>https://zhubao315.github.io/uSkill/agent-skills/</loc>
+         <lastmod>2026-11-13</lastmod>
     </url>
     <url>
-         <loc>https://zhubao315.github.io/uSkills/roadmap/</loc>
-         <lastmod>2026-03-26</lastmod>
+         <loc>https://zhubao315.github.io/uSkill/architecture/</loc>
+         <lastmod>2026-11-13</lastmod>
     </url>
     <url>
-         <loc>https://zhubao315.github.io/uSkills/schema/</loc>
-         <lastmod>2026-03-26</lastmod>
+         <loc>https://zhubao315.github.io/uSkill/builder/</loc>
+         <lastmod>2026-11-13</lastmod>
     </url>
     <url>
-         <loc>https://zhubao315.github.io/uSkills/skill-creator-case/</loc>
-         <lastmod>2026-03-26</lastmod>
+         <loc>https://zhubao315.github.io/uSkill/cli/</loc>
+         <lastmod>2026-11-13</lastmod>
     </url>
     <url>
-         <loc>https://zhubao315.github.io/uSkills/skills/</loc>
-         <lastmod>2026-03-26</lastmod>
+         <loc>https://zhubao315.github.io/uSkill/distribution/</loc>
+         <lastmod>2026-11-13</lastmod>
     </url>
     <url>
-         <loc>https://zhubao315.github.io/uSkills/generated/skills-index/</loc>
-         <lastmod>2026-03-26</lastmod>
+         <loc>https://zhubao315.github.io/uSkill/evaluation/</loc>
+         <lastmod>2026-11-13</lastmod>
+    </url>
+    <url>
+         <loc>https://zhubao315.github.io/uSkill/migration/</loc>
+         <lastmod>2026-11-13</lastmod>
+    </url>
+    <url>
+         <loc>https://zhubao315.github.io/uSkill/quickstart/</loc>
+         <lastmod>2026-11-13</lastmod>
+    </url>
+    <url>
+         <loc>https://zhubao315.github.io/uSkill/roadmap/</loc>
+         <lastmod>2026-11-13</lastmod>
+    </url>
+    <url>
+         <loc>https://zhubao315.github.io/uSkill/runtime/</loc>
+         <lastmod>2026-11-13</lastmod>
+    </url>
+    <url>
+         <loc>https://zhubao315.github.io/uSkill/schema/</loc>
+         <lastmod>2026-11-13</lastmod>
+    </url>
+    <url>
+         <loc>https://zhubao315.github.io/uSkill/skill-creator-case/</loc>
+         <lastmod>2026-11-13</lastmod>
+    </url>
+    <url>
+         <loc>https://zhubao315.github.io/uSkill/skills/</loc>
+         <lastmod>2026-11-13</lastmod>
+    </url>
+    <url>
+         <loc>https://zhubao315.github.io/uSkill/audit/ARCHITECTURE_AUDIT/</loc>
+         <lastmod>2026-11-13</lastmod>
+    </url>
+    <url>
+         <loc>https://zhubao315.github.io/uSkill/audit/ECOSYSTEM_COMPARISON/</loc>
+         <lastmod>2026-11-13</lastmod>
+    </url>
+    <url>
+         <loc>https://zhubao315.github.io/uSkill/audit/PROJECT_AUDIT/</loc>
+         <lastmod>2026-11-13</lastmod>
+    </url>
+    <url>
+         <loc>https://zhubao315.github.io/uSkill/audit/REPOSITORY_AUDIT/</loc>
+         <lastmod>2026-11-13</lastmod>
+    </url>
+    <url>
+         <loc>https://zhubao315.github.io/uSkill/audit/SECURITY_AUDIT/</loc>
+         <lastmod>2026-11-13</lastmod>
+    </url>
+    <url>
+         <loc>https://zhubao315.github.io/uSkill/audit/TEST_COVERAGE_AUDIT/</loc>
+         <lastmod>2026-11-13</lastmod>
+    </url>
+    <url>
+         <loc>https://zhubao315.github.io/uSkill/generated/skills-index/</loc>
+         <lastmod>2026-11-13</lastmod>
     </url>
 </urlset>

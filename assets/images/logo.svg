@@ -1,24 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#005FB8;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#00C2CB;stop-opacity:1" />
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#A5D6FF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:1" />
     </linearGradient>
   </defs>
-  
-  <!-- Hexagon icon -->
-  <g transform="translate(5, 5)">
-    <!-- Outer hexagon -->
-    <polygon points="25,2 47,14 47,38 25,50 3,38 3,14" fill="url(#logoGrad)"/>
-    <!-- Inner U shape -->
-    <path d="M14,16 L14,34 Q14,42 25,42 Q36,42 36,34 L36,16" 
-          stroke="#ffffff" stroke-width="4" stroke-linecap="round" fill="none"/>
-    <!-- Skill dot -->
-    <circle cx="25" cy="36" r="3" fill="#FF8C00"/>
+
+  <!-- Squircle Background -->
+  <rect x="0" y="0" width="128" height="128" rx="28" fill="#121212" />
+
+  <!-- Minimalist S Symbol -->
+  <g transform="translate(32, 32)">
+    <!-- Top Part -->
+    <path d="M48 6 C28 6 16 18 16 32 C16 46 28 50 40 54 C52 58 60 62 60 76 C60 90 48 102 28 102" fill="none" stroke="url(#shieldGrad)" stroke-width="14" stroke-linecap="round" transform="scale(0.5) translate(16, 16)"/>
+    <!-- Bottom Part -->
+    <path d="M16 98 C36 98 48 86 48 72 C48 58 36 54 24 50 C12 46 4 42 4 28 C4 14 16 2 36 2" fill="none" stroke="url(#shieldGrad)" stroke-width="14" stroke-linecap="round" transform="scale(0.5) translate(16, 16)"/>
   </g>
   
-  <!-- Text: uSkills -->
-  <text x="65" y="42" font-family="Inter, sans-serif" font-size="32" font-weight="700">
-    <tspan fill="#005FB8">u</tspan><tspan fill="#333333">Skills</tspan>
-  </text>
+  <!-- Glossy Reflection (Subtle) -->
+  <path d="M28 15 Q64 5 100 15" fill="none" stroke="white" stroke-width="1" stroke-opacity="0.1" stroke-linecap="round" />
 </svg>
