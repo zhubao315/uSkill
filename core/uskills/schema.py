@@ -114,11 +114,17 @@ class SkillParam(BaseModel):
     enum: list[Any] | None = Field(
         default=None, max_length=100, description="Allowed values (JSON Schema enum)"
     )
-    minimum: int | float | None = Field(default=None, description="Inclusive lower bound (number/integer)")
-    maximum: int | float | None = Field(default=None, description="Inclusive upper bound (number/integer)")
+    minimum: int | float | None = Field(
+        default=None, description="Inclusive lower bound (number/integer)"
+    )
+    maximum: int | float | None = Field(
+        default=None, description="Inclusive upper bound (number/integer)"
+    )
     min_length: int | None = Field(default=None, ge=0, description="Min length (string/array)")
     max_length: int | None = Field(default=None, ge=0, description="Max length (string/array)")
-    pattern: str | None = Field(default=None, max_length=500, description="Regex constraint (string)")
+    pattern: str | None = Field(
+        default=None, max_length=500, description="Regex constraint (string)"
+    )
     nullable: bool = Field(default=False, description="Whether an explicit null value is allowed")
 
     @field_validator("pattern")
@@ -133,11 +139,13 @@ class SkillParam(BaseModel):
 
     def has_constraints(self) -> bool:
         """True when this param declares JSON-Schema constraint keywords."""
-        return any(
-            getattr(self, attr) is not None
-            for attr in ("enum", "minimum", "maximum", "min_length", "max_length", "pattern")
-        ) or self.schema_ is not None or (
-            self.type is ParamType.array and self.items_type is not None
+        return (
+            any(
+                getattr(self, attr) is not None
+                for attr in ("enum", "minimum", "maximum", "min_length", "max_length", "pattern")
+            )
+            or self.schema_ is not None
+            or (self.type is ParamType.array and self.items_type is not None)
         )
 
     def json_schema_fragment(self) -> dict[str, Any]:

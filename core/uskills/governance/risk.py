@@ -88,9 +88,7 @@ def skill_directory_flags(skill_dir: str | Path) -> dict[str, Any]:
     root = Path(skill_dir)
     scripts_dir = root / "scripts"
     scripts = (
-        sorted(p.name for p in scripts_dir.iterdir() if p.is_file())
-        if scripts_dir.is_dir()
-        else []
+        sorted(p.name for p in scripts_dir.iterdir() if p.is_file()) if scripts_dir.is_dir() else []
     )
     return {"has_scripts": bool(scripts), "scripts": scripts}
 
@@ -103,7 +101,9 @@ def tool_permissions_for(skill: USkill, registry: Any = None) -> list[str]:
     for name in skill.execute.tools:
         tool = registry.get(name)
         if tool is not None:
-            perms.append(str(tool.permission.value if hasattr(tool.permission, "value") else tool.permission))
+            perms.append(
+                str(tool.permission.value if hasattr(tool.permission, "value") else tool.permission)
+            )
     return perms
 
 

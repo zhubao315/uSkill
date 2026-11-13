@@ -109,7 +109,7 @@ class AIConverter:
             "Analyze this SOP and break it down into atomic, reusable skills.\n\n"
             f"SOP Name: {sop_name}\n"
             f"<sop>\n{text}\n</sop>\n\n"
-            "Return JSON: {\"skills\": [ ...skill objects matching the schema... ]}."
+            'Return JSON: {"skills": [ ...skill objects matching the schema... ]}.'
         )
 
         messages = [Message("system", system_prompt), Message("user", user_prompt)]
@@ -125,7 +125,9 @@ class AIConverter:
             raw_data = json.loads(content)
         except json.JSONDecodeError as exc:
             report.errors.append(
-                SkillGenError(index=-1, message=f"model output is not JSON: {exc}", raw=content[:500])
+                SkillGenError(
+                    index=-1, message=f"model output is not JSON: {exc}", raw=content[:500]
+                )
             )
             self.last_report = report
             return report
@@ -138,9 +140,7 @@ class AIConverter:
             try:
                 report.skills.append(USkill(**data))
             except ValidationError as exc:
-                report.errors.append(
-                    SkillGenError(index=i, message=str(exc), raw=data)
-                )
+                report.errors.append(SkillGenError(index=i, message=str(exc), raw=data))
 
         self.last_report = report
         return report

@@ -266,9 +266,14 @@ class TestRealDatasets:
         library = SkillLibrary()
         library.load_directory(REPO / "skills")
         payload = {
-            "summary": "s", "key_points": ["k"],
-            "translated_text": "t", "detected_source_lang": "zh", "confidence": 0.9,
-            "keywords": ["w"], "translation": "tr", "processing_time": "1s",
+            "summary": "s",
+            "key_points": ["k"],
+            "translated_text": "t",
+            "detected_source_lang": "zh",
+            "confidence": 0.9,
+            "keywords": ["w"],
+            "translation": "tr",
+            "processing_time": "1s",
             "result": "r",
         }
         for suite_obj, path in self._suites():

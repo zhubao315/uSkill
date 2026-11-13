@@ -164,9 +164,7 @@ def parse_sop(text: str) -> SopDocument:
 
     def flush_paragraph() -> None:
         if paragraph_buf:
-            doc.blocks.append(
-                SopBlock(kind="paragraph", text=" ".join(paragraph_buf).strip())
-            )
+            doc.blocks.append(SopBlock(kind="paragraph", text=" ".join(paragraph_buf).strip()))
             paragraph_buf.clear()
 
     for raw_line in text.splitlines():
@@ -192,9 +190,7 @@ def parse_sop(text: str) -> SopDocument:
         if item:
             flush_paragraph()
             depth = len(item.group(1)) // 2
-            doc.blocks.append(
-                SopBlock(kind="list_item", text=item.group(2).strip(), depth=depth)
-            )
+            doc.blocks.append(SopBlock(kind="list_item", text=item.group(2).strip(), depth=depth))
             continue
 
         if stripped.startswith("|") and not _TABLE_SEP.match(stripped):
@@ -235,7 +231,9 @@ def _build_sop_context(doc: SopDocument) -> str:
     return "\n".join(parts)
 
 
-def _generate_skill_id(sop_slug: str, index: int, step_slug: str, version: str = DEFAULT_TEMPLATE_VERSION) -> str:
+def _generate_skill_id(
+    sop_slug: str, index: int, step_slug: str, version: str = DEFAULT_TEMPLATE_VERSION
+) -> str:
     """Generate a standardized skill ID.
 
     Format: uskill-atomic-{sop_slug}-{index:02d}-{step_slug}-v{version}
@@ -244,9 +242,7 @@ def _generate_skill_id(sop_slug: str, index: int, step_slug: str, version: str =
     return f"uskill-atomic-{sop_slug}-{index:02d}-{step_slug}-v{version_tag}"
 
 
-def _build_prompt_template(
-    sop_name: str, step: str, details: str = "", context: str = ""
-) -> str:
+def _build_prompt_template(sop_name: str, step: str, details: str = "", context: str = "") -> str:
     """Build prompt template for a skill, preserving source context."""
     parts = [
         "You are executing an atomic SOP skill.",

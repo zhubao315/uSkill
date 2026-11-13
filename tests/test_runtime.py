@@ -139,9 +139,7 @@ class TestSingleSkillExecution:
         assert "timed out" in (record.error or "")
 
     def test_transient_errors_exhaust_retries(self) -> None:
-        provider = MockProvider(
-            errors={i: ProviderError("boom", retryable=True) for i in range(5)}
-        )
+        provider = MockProvider(errors={i: ProviderError("boom", retryable=True) for i in range(5)})
         runtime = SkillRuntime(provider)
         record = runtime.run(make_llm_skill(retry=2), {"text": "x"})
         assert record.status is StepState.FAILED

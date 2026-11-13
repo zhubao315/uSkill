@@ -69,8 +69,13 @@ class ToolRegistry:
         **kwargs: Any,
     ) -> ToolDef:
         tool = ToolDef(
-            id=id, description=description, func=func, permission=permission,
-            timeout=timeout, idempotent=idempotent, metadata=kwargs,
+            id=id,
+            description=description,
+            func=func,
+            permission=permission,
+            timeout=timeout,
+            idempotent=idempotent,
+            metadata=kwargs,
         )
         self.register(tool)
         return tool

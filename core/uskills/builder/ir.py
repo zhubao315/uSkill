@@ -106,9 +106,7 @@ def build_ir(text: str, source_name: str = "source") -> TaskIR:
         f"{b.kind}: {b.text}" for b in doc.blocks if b.kind in ("heading", "paragraph", "table_row")
     )
 
-    top_positions = [
-        i for i, b in enumerate(doc.blocks) if b.kind == "list_item" and b.depth == 0
-    ]
+    top_positions = [i for i, b in enumerate(doc.blocks) if b.kind == "list_item" and b.depth == 0]
     for pos in top_positions:
         block = doc.blocks[pos]
         kind, evidence = classify_step(block.text)

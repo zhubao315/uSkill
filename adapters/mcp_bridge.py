@@ -77,8 +77,11 @@ def register_mcp_tools(
     """Register a whole MCP ``tools/list`` result."""
     return [
         register_mcp_tool(
-            registry, spec, dispatch=dispatch,
-            permission=permission, idempotent=idempotent,
+            registry,
+            spec,
+            dispatch=dispatch,
+            permission=permission,
+            idempotent=idempotent,
         )
         for spec in tools
     ]

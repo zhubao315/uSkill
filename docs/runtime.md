@@ -82,7 +82,7 @@ control:
 ```python
 token = CancelToken()
 record = runtime.run(skill, inputs, cancel_token=token)
-token.cancel("用户停止")   # 在步骤/尝试边界生效；进行中的请求由 control.timeout 封顶
+token.cancel("用户停止")  # 在步骤/尝试边界生效；进行中的请求由 control.timeout 封顶
 ```
 
 - `control.backoff_base`：瞬时错误重试按 `base × 2^attempt` 指数退避（30s 封顶），
@@ -108,8 +108,8 @@ Kahn 分层：同层步骤在 `control.max_workers`（默认 2）内并行，层
 
 ```python
 runtime = SkillRuntime(provider, library=library, store=RunStore(".uskills/runs"))
-record = runtime.run(gated_skill, inputs)      # → WAITING_APPROVAL
-record = runtime.resume(record.run_id, approve=True)   # 继续
+record = runtime.run(gated_skill, inputs)  # → WAITING_APPROVAL
+record = runtime.resume(record.run_id, approve=True)  # 继续
 # resume(..., approve=False) → INTERRUPTED
 ```
 

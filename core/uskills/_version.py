@@ -7,4 +7,4 @@ Note: the *schema* version (``core.uskills.schema.SCHEMA_VERSION``) tracks
 the skill-file format and is intentionally independent from this number.
 """
 
-__version__ = "1.2.0"
+__version__ = "2.0.0"

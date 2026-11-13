@@ -377,10 +377,7 @@ class AnthropicProvider:
                 schema_hint = " It MUST validate against this JSON Schema: " + json.dumps(
                     schema_hint_dict(json_schema), ensure_ascii=False
                 )
-            system += (
-                "\n\nRespond with a single JSON object and nothing else."
-                + schema_hint
-            )
+            system += "\n\nRespond with a single JSON object and nothing else." + schema_hint
         kwargs: dict[str, Any] = {
             "model": model,
             "max_tokens": self.max_tokens,
@@ -421,7 +418,9 @@ def schema_hint_dict(json_schema: dict[str, Any]) -> dict[str, Any]:
         return {"type": json_schema.get("type", "object")}
     return {
         "required": json_schema.get("required", list(props)),
-        "keys": {k: v.get("type", "any") if isinstance(v, dict) else "any" for k, v in props.items()},
+        "keys": {
+            k: v.get("type", "any") if isinstance(v, dict) else "any" for k, v in props.items()
+        },
     }
 
 

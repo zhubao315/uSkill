@@ -119,7 +119,9 @@ class TestMigrate:
 
     def test_refuses_non_v1(self, tmp_path: Path) -> None:
         p = tmp_path / "other.yaml"
-        p.write_text("apiVersion: uskills/v2\nkind: Skill\nmetadata:\n  name: a\n  description: d\n")
+        p.write_text(
+            "apiVersion: uskills/v2\nkind: Skill\nmetadata:\n  name: a\n  description: d\n"
+        )
         report = migrate_skill(p, tmp_path / "out")
         assert not report.ok
 
@@ -135,8 +137,12 @@ class TestMigrate:
 class TestBackwardCompatibility:
     def test_all_repo_v1_still_load_and_execute(self) -> None:
         """Hard gate for 2.0: every historical asset loads with the current model."""
-        roots = [Path("skills/atomic"), Path("skills/composite"), Path("skills/domain"),
-                 Path("skills/governance")]
+        roots = [
+            Path("skills/atomic"),
+            Path("skills/composite"),
+            Path("skills/domain"),
+            Path("skills/governance"),
+        ]
         total = 0
         for root in roots:
             for f in sorted(root.glob("*.yaml")):

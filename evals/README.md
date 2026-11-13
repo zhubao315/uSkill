@@ -12,3 +12,6 @@
 **状态说明**：套件内 `baseline_prompt` 面向真实模型运行；本仓库 CI 只做
 MockProvider 离线结构校验（断言加载、字段契约、runner 逻辑），真实模型
 分数需在部署环境运行后存入 `reports/`（部署方职责，不在此伪造）。
+
+`reports/*.mock-baseline.json` 是 CI 回归门禁的确定性基线（见
+`reports/README.md`），不代表模型效果。

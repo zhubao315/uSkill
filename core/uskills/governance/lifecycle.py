@@ -21,8 +21,16 @@ class SkillLifecycle(StrEnum):
 
 ALLOWED_TRANSITIONS: dict[SkillLifecycle, set[SkillLifecycle]] = {
     SkillLifecycle.DRAFT: {SkillLifecycle.VALIDATED, SkillLifecycle.DEPRECATED},
-    SkillLifecycle.VALIDATED: {SkillLifecycle.REVIEWED, SkillLifecycle.DRAFT, SkillLifecycle.DEPRECATED},
-    SkillLifecycle.REVIEWED: {SkillLifecycle.PUBLISHED, SkillLifecycle.DRAFT, SkillLifecycle.DEPRECATED},
+    SkillLifecycle.VALIDATED: {
+        SkillLifecycle.REVIEWED,
+        SkillLifecycle.DRAFT,
+        SkillLifecycle.DEPRECATED,
+    },
+    SkillLifecycle.REVIEWED: {
+        SkillLifecycle.PUBLISHED,
+        SkillLifecycle.DRAFT,
+        SkillLifecycle.DEPRECATED,
+    },
     SkillLifecycle.PUBLISHED: {SkillLifecycle.DEPRECATED},
     SkillLifecycle.DEPRECATED: set(),
 }

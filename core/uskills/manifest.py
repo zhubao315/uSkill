@@ -35,10 +35,10 @@ class ExecutionMode(StrEnum):
     """
 
     instruction = "instruction"  # plain instructions loaded by an agent
-    llm = "llm"                  # model invocation driven by a prompt/contract
-    tool = "tool"                # thin wrapper over a registered tool
-    script = "script"            # deterministic script entry point
-    workflow = "workflow"        # orchestrates multiple skills/tools
+    llm = "llm"  # model invocation driven by a prompt/contract
+    tool = "tool"  # thin wrapper over a registered tool
+    script = "script"  # deterministic script entry point
+    workflow = "workflow"  # orchestrates multiple skills/tools
 
 
 class ToolPermission(StrEnum):
@@ -98,8 +98,7 @@ class ManifestSecurity(BaseModel):
     risk_level: str = Field(
         default="",
         pattern=r"^$|^L[0-4]$",
-        description="Derived risk level (L0-L4) from actual capabilities; "
-        "empty = not yet assessed",
+        description="Derived risk level (L0-L4) from actual capabilities; empty = not yet assessed",
     )
 
 
@@ -208,11 +207,7 @@ def manifest_from_legacy_skill(skill: Any, *, content_sha256: str = "") -> USkil
         "type": "object",
         "properties": {name: {} for name in skill.output.params},
     }
-    mode = (
-        ExecutionMode.workflow
-        if skill.meta.category.value == "composite"
-        else ExecutionMode.llm
-    )
+    mode = ExecutionMode.workflow if skill.meta.category.value == "composite" else ExecutionMode.llm
     name = skill.skill_id.split("-", 2)[-1].rsplit("-v", 1)[0]
     if not _NAME_OK.match(name):
         slug = re.sub(r"[^a-z0-9-]+", "-", skill.skill_id.lower()).strip("-")

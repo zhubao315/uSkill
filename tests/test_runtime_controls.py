@@ -51,7 +51,9 @@ def make_llm_skill(
     )
 
 
-def make_composite(name: str, tools: list[str], depends: dict[str, list[str]] | None = None) -> USkill:
+def make_composite(
+    name: str, tools: list[str], depends: dict[str, list[str]] | None = None
+) -> USkill:
     execute: dict[str, Any] = {
         "prompt_template": "pipeline over {{text}}",
         "model": "mock-model",
@@ -74,7 +76,11 @@ def make_composite(name: str, tools: list[str], depends: dict[str, list[str]] | 
 class TestParamConstraints:
     def test_enum_enforced(self) -> None:
         skill = make_llm_skill(
-            "constrained", params=[{"name": "text", "type": "string"}, {"name": "mode", "type": "string", "enum": ["fast", "deep"]}]
+            "constrained",
+            params=[
+                {"name": "text", "type": "string"},
+                {"name": "mode", "type": "string", "enum": ["fast", "deep"]},
+            ],
         )
         merged = validate_inputs(skill, {"text": "a", "mode": "fast"})
         assert merged["mode"] == "fast"
@@ -105,7 +111,9 @@ class TestParamConstraints:
             make_llm_skill("bad", params=[{"name": "x", "type": "string", "pattern": "([unclosed"}])
 
     def test_nullable(self) -> None:
-        strict = make_llm_skill("strict", params=[{"name": "v", "type": "string", "required": False}])
+        strict = make_llm_skill(
+            "strict", params=[{"name": "v", "type": "string", "required": False}]
+        )
         with pytest.raises(ExecutionFailedError, match="must not be null"):
             validate_inputs(strict, {"v": None})
         ok = make_llm_skill(
@@ -115,7 +123,9 @@ class TestParamConstraints:
         assert validate_inputs(ok, {"v": None}) == {"v": None}
 
     def test_array_item_type_enforced(self) -> None:
-        skill = make_llm_skill("arr", params=[{"name": "xs", "type": "array", "items_type": "integer"}])
+        skill = make_llm_skill(
+            "arr", params=[{"name": "xs", "type": "array", "items_type": "integer"}]
+        )
         assert validate_inputs(skill, {"xs": [1, 2]}) == {"xs": [1, 2]}
         with pytest.raises(ExecutionFailedError, match="constraints"):
             validate_inputs(skill, {"xs": [1, "two"]})
@@ -142,7 +152,9 @@ class TestParamConstraints:
     def test_constraints_enforced_before_model_call(self) -> None:
         provider = MockProvider('{"result": "x"}')
         runtime = SkillRuntime(provider)
-        skill = make_llm_skill("gated", params=[{"name": "text", "type": "string", "min_length": 5}])
+        skill = make_llm_skill(
+            "gated", params=[{"name": "text", "type": "string", "min_length": 5}]
+        )
         with pytest.raises(ExecutionFailedError, match="too short"):
             runtime.run(skill, {"text": "tiny"})
         assert provider.calls == []  # never reached the model
@@ -237,9 +249,7 @@ class TestBackoff:
         import core.uskills.runtime.engine as engine_mod
 
         monkeypatch.setattr(engine_mod.time, "sleep", lambda s: sleeps.append(s))
-        provider = MockProvider(
-            errors={i: ProviderError("blip", retryable=True) for i in range(5)}
-        )
+        provider = MockProvider(errors={i: ProviderError("blip", retryable=True) for i in range(5)})
         data = make_llm_skill("backoff", retry=2).model_dump(mode="json", by_alias=True)
         data["control"]["backoff_base"] = 0.5
         record = SkillRuntime(provider).run(USkill(**data), {"text": "x"})
@@ -254,9 +264,7 @@ class TestBackoff:
         import core.uskills.runtime.engine as engine_mod
 
         monkeypatch.setattr(engine_mod.time, "sleep", boom)
-        provider = MockProvider(
-            errors={i: ProviderError("blip", retryable=True) for i in range(5)}
-        )
+        provider = MockProvider(errors={i: ProviderError("blip", retryable=True) for i in range(5)})
         record = SkillRuntime(provider).run(make_llm_skill("nosleep", retry=2), {"text": "x"})
         assert record.status is StepState.FAILED
 
@@ -376,9 +384,7 @@ class TestDAGScheduling:
 
 class TestProvidersV3:
     def test_factory_kinds(self) -> None:
-        assert create_provider(
-            "openai-compatible", api_key="test", base_url="http://gw.local/v1"
-        )
+        assert create_provider("openai-compatible", api_key="test", base_url="http://gw.local/v1")
         assert isinstance(create_provider("local"), LocalProvider)
         with pytest.raises(ValueError, match="Unknown provider"):
             create_provider("telepathy")

@@ -39,8 +39,9 @@ def skill(with_approval: bool = False) -> USkill:
 
 def registry_with(permission: Permission) -> ToolRegistry:
     reg = ToolRegistry()
-    reg.register(ToolDef(id="read-tool", description="", func=lambda p: None,
-                         permission=permission))
+    reg.register(
+        ToolDef(id="read-tool", description="", func=lambda p: None, permission=permission)
+    )
     return reg
 
 
@@ -111,7 +112,9 @@ class TestStaticScan:
     def test_comments_are_not_capability(self, tmp_path: Path) -> None:
         scripts = tmp_path / "scripts"
         scripts.mkdir()
-        (scripts / "doc.py").write_text("# subprocess is documented here\nx = 1\n", encoding="utf-8")
+        (scripts / "doc.py").write_text(
+            "# subprocess is documented here\nx = 1\n", encoding="utf-8"
+        )
         assert scan_scripts(scripts) == []
 
     def test_missing_dir_is_empty(self, tmp_path: Path) -> None:

@@ -25,7 +25,7 @@
 
 | 命令 | 说明 |
 |---|---|
-| `run <skill> [--input k=v …] [--provider …]` | 运行技能（timeout/retry/审批/检查点真实生效） |
+| `run <skill> [--input k=v …] [--provider …] [--audit 文件]` | 运行技能（timeout/retry/审批/检查点真实生效；可选脱敏审计落盘） |
 | `resume <run_id> [--deny]` | 审批恢复/拒绝 WAITING_APPROVAL 运行 |
 
 Provider：`mock`、`openai-chat`、`openai-responses`、`openai-compatible`
@@ -40,14 +40,17 @@ Provider：`mock`、`openai-chat`、`openai-responses`、`openai-compatible`
 | `… --models a,b,c` | 多模型对比矩阵 |
 | `… --compare R.json --gate [--max-drop-pp 10]` | 回归门禁（回归→退出码 1，可阻断 CI） |
 | `… --judge [--judge-model M]` | LLM-as-Judge（固定 rubric，隔离记录，仅参考） |
+| `test --skill S --suite X [--provider …]` | 把套件当测试跑（纯断言，PASS/FAIL 退出码） |
 
 ## 检索 / 治理 / 分发
 
 | 命令 | 说明 |
 |---|---|
 | `search <query> [--mode auto\|name\|tag\|domain\|keyword\|dependency --json]` | 元数据检索 |
+| `list [path] [--filter Q --json]` | 列出注册表中的技能（健康异常 → 退出码 1） |
 | `risk <path> [--json]` | 由真实能力推导 L0–L4 风险级别 |
 | `package <path> [--output dist --force]` | 打包 zip + package.json（逐文件 sha256） |
+| `audit <path> [--action A --limit N --json]` | 查看脱敏审计轨迹（`run --audit` 生成） |
 
 ## 工程
 

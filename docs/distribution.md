@@ -20,7 +20,7 @@ from core.uskills import SkillRegistry
 
 registry = SkillRegistry("skills")
 hits = registry.search("translate", mode="auto")
-registry.health()   # 加载数、坏文件、重复 id —— CI 可用
+registry.health()  # 加载数、坏文件、重复 id —— CI 可用
 ```
 
 indexer（`uskills index`）继续负责生成 Markdown 目录；检索真相只在
@@ -39,6 +39,7 @@ zip 内置 `package.json`：格式、逐文件 sha256、兼容层说明、策略
 
 ```python
 from core.uskills import package_skill
+
 result = package_skill("skills/agent-skills/code-review", "dist")
 ```
 
@@ -52,8 +53,8 @@ from adapters.mcp_bridge import register_mcp_tools
 
 register_mcp_tools(
     registry,
-    mcp_session.list_tools(),            # 你的 MCP 客户端会话
-    dispatch=mcp_session.call_tool,      # name, args -> result
+    mcp_session.list_tools(),  # 你的 MCP 客户端会话
+    dispatch=mcp_session.call_tool,  # name, args -> result
 )
 ```
 

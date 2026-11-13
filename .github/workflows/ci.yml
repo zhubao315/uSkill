@@ -23,6 +23,8 @@ jobs:
           pip install -e ".[dev]"
       - name: Ruff
         run: ruff check .
+      - name: Ruff format check
+        run: ruff format --check .
       - name: Mypy
         run: mypy core/
 
@@ -55,8 +57,21 @@ jobs:
       - name: Generate index and skills pass
         run: |
           python cli/uskills_cli.py index skills --output /tmp/skills-index.md
+      - name: Eval regression gate (deterministic mock, no API key)
+        run: |
+          MOCK='{"summary":"s","key_points":["k"],"translated_text":"t","detected_source_lang":"zh","confidence":0.9,"keywords":["w"],"translation":"tr","processing_time":"1s","result":"r"}'
+          python cli/uskills_cli.py eval \
+            --skill skills/atomic/text_summarize.yaml \
+            --suite evals/datasets/uskill-atomic-text-summarize-v1-1-0.suite.json \
+            --mock-response "$MOCK" \
+            --compare evals/reports/text_summarize.mock-baseline.json --gate
+          python cli/uskills_cli.py eval \
+            --skill skills/atomic/text_translate.yaml \
+            --suite evals/datasets/uskill-atomic-text-translate-v1-1-0.suite.json \
+            --mock-response "$MOCK" \
+            --compare evals/reports/text_translate.mock-baseline.json --gate
       - name: Pytest with coverage
-        run: pytest --cov=core --cov=cli --cov-report=term --cov-report=xml
+        run: pytest --cov=core --cov=cli --cov-report=term --cov-report=xml --cov-fail-under=80
       - name: Upload coverage
         if: matrix.python-version == '3.12'
         uses: actions/upload-artifact@v4

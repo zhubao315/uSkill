@@ -14,6 +14,7 @@ Improvements over the first version:
 
 from __future__ import annotations
 
+import re
 from collections import defaultdict
 from pathlib import Path
 from typing import Any
@@ -27,13 +28,7 @@ def _skill_files(root: Path) -> list[Path]:
     files: list[Path] = []
     for pattern in ("*.yaml", "*.yml", "*.json"):
         files.extend(root.rglob(pattern))
-    return sorted(
-        set(
-            f
-            for f in files
-            if f.stem != "uskill" and "evals" not in f.parts
-        )
-    )
+    return sorted(set(f for f in files if f.stem != "uskill" and "evals" not in f.parts))
 
 
 def _collect(skills_dir: str | Path) -> dict[str, Any]:
@@ -74,15 +69,15 @@ def _collect(skills_dir: str | Path) -> dict[str, Any]:
 
 
 def _anchor(value: str) -> str:
-    """Convert string to markdown anchor."""
-    lowered = value.strip().lower()
-    chars: list[str] = []
-    for char in lowered:
-        if char.isalnum() or "\u4e00" <= char <= "\u9fff":
-            chars.append(char)
-        elif char in {"-", " ", "_"}:
-            chars.append("-")
-    return "".join(chars).strip("-") or "section"
+    """Convert string to markdown anchor.
+
+    Mirrors ``markdown.extensions.toc.slugify_unicode`` (configured as the
+    site slugify in mkdocs.yml) so nav links in the generated index always
+    resolve, including CJK headings.
+    """
+    value = re.sub(r"[^\w\s-]", "", value).strip().lower()
+    value = re.sub(r"[-\s]+", "-", value)
+    return value or "section"
 
 
 def _format_skill_entry(skill_data: dict[str, Any]) -> str:

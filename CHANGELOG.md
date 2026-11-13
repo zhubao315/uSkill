@@ -5,9 +5,24 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 The package version is defined in `core/uskills/_version.py`.
 
-## [Unreleased] — 2.0 演进（Sprint 0–5）
+## [2.0.0] - 2026-11-13
+
+> Agent Skill Engineering Platform — 六个 Sprint（审计 → 标准 → Builder →
+> Runtime → Evaluation → 治理分发 → 发布工程）全部完成。向后兼容是契约：
+> 全部 1.x 技能文件无需修改即可加载/校验/执行。`git tag` 与推送由维护者
+> 手动触发（本仓库不自动发布）。
 
 ### Added
+- **Sprint 6 release engineering**: `uskills list` (registry listing with
+  health exit codes), `uskills test` (suite-as-tests), `uskills audit`
+  (redacted JSONL viewer), `run --audit <path>` (audit trail from the
+  CLI), `eval/test --mock-response` (deterministic offline regression
+  runs); CI adds `ruff format --check`, `--cov-fail-under=80` (measured
+  91%; CLI module 84% vs 70% gate) and an eval regression gate against
+  committed mock baselines (`evals/reports/`); migration guide
+  (`docs/migration.md`) and a re-grouped docs nav (入门/概念/指南/参考);
+  full CLI reference (`docs/cli.md`); Python 3.11–3.13 test matrix
+  (3.10 EOL).
 - **Sprint 5 governance & distribution**: capability-derived risk levels
   L0–L4 (`governance/risk.py`, `uskills risk`; unregistered tool
   declarations do NOT elevate — the runtime cannot invoke them); static
@@ -68,6 +83,13 @@ The package version is defined in `core/uskills/_version.py`.
   `const`); canonical version string unified to `uskills/v2`.
 - `import_source` raises `FileNotFoundError` for missing path-like inputs
   while still accepting free-form inline prompt text.
+- Docs site configures `toc.slugify = slugify_unicode` so generated
+  skill-catalog anchors preserve CJK headings (matches `indexer._anchor`).
+
+### Fixed
+- Generated skill index (indexer) now emits anchors compatible with the
+  site slugify; navigation links for CJK SOP names resolve (previously
+  mkdocs reported "no such anchor").
 
 ## [1.2.0] - 2026-11-13
 

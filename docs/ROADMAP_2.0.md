@@ -51,7 +51,7 @@ docs/audit/{REPOSITORY,PROJECT,ARCHITECTURE,SECURITY,TEST_COVERAGE,ECOSYSTEM_COM
 - 打包：`uskills package`（zip + checksum + 兼容清单）
 - MCP 桥接：MCP 工具 → ToolRegistry 注册的适配器（可选依赖，不触网测试）
 
-## Sprint 6 · 发布 2.0.0
+## Sprint 6 · 发布 2.0.0 ✅（tag 待维护者触发）
 
 - CI：Python 3.11–3.13 矩阵（3.10 已 EOL，仅文档声明兼容策略）、ruff format
   检查、覆盖率门槛 80%、评测门禁步骤

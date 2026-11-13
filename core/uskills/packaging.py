@@ -64,8 +64,7 @@ def package_skill(
         raise ValueError(f"{archive} exists (use force)")
 
     file_entries = [
-        {"path": p.relative_to(src.parent).as_posix(), "sha256": _sha256(p)}
-        for p in files
+        {"path": p.relative_to(src.parent).as_posix(), "sha256": _sha256(p)} for p in files
     ]
     package_manifest = {
         "name": name,

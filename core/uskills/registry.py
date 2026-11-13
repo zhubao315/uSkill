@@ -85,11 +85,7 @@ class SkillRegistry:
         q = query.strip().lower()
         if not q:
             return []
-        modes = (
-            ["name", "tag", "domain", "keyword", "dependency"]
-            if mode == "auto"
-            else [mode]
-        )
+        modes = ["name", "tag", "domain", "keyword", "dependency"] if mode == "auto" else [mode]
         hits: dict[str, SearchHit] = {}
         for m in modes:
             for path, skill in self._entries:

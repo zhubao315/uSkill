@@ -37,9 +37,7 @@ _PATTERNS: list[tuple[str, re.Pattern[str], str, RiskLevel]] = [
     ),
     (
         "network",
-        re.compile(
-            r"\brequests\b|urllib|httpx|socket\.|fetch\(|axios|http\.client", re.I
-        ),
+        re.compile(r"\brequests\b|urllib|httpx|socket\.|fetch\(|axios|http\.client", re.I),
         "network access",
         RiskLevel.L4,
     ),

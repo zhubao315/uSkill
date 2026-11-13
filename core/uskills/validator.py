@@ -81,9 +81,7 @@ def validate_skill_semantics(skill: USkill) -> tuple[list[str], list[str]]:
         p.name for p in skill.input.params if not p.required and p.default is None
     ]
     if optional_no_default:
-        warnings.append(
-            f"optional params without default value: {sorted(optional_no_default)}"
-        )
+        warnings.append(f"optional params without default value: {sorted(optional_no_default)}")
 
     if skill.meta.category.value == "composite" and not skill.execute.tools:
         errors.append("composite skill declares no tools to orchestrate")
@@ -117,9 +115,7 @@ def validate_skill_file(path: str | Path, check_semantics: bool = True) -> tuple
     return True, f"valid: {skill.skill_id}"
 
 
-def validate_skill_data(
-    data: dict[str, Any], check_semantics: bool = True
-) -> tuple[bool, str]:
+def validate_skill_data(data: dict[str, Any], check_semantics: bool = True) -> tuple[bool, str]:
     """Validate raw skill dictionary.
 
     Args:
@@ -176,9 +172,7 @@ def extract_template_variables(template: str) -> list[str]:
     return sorted(list(set(pattern.findall(template))))
 
 
-def validate_template_variables(
-    template: str, params: list[str]
-) -> tuple[bool, list[str]]:
+def validate_template_variables(template: str, params: list[str]) -> tuple[bool, list[str]]:
     """Check if all template variables are defined in input params.
 
     Args:

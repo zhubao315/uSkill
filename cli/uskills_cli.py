@@ -58,7 +58,10 @@ def cmd_convert(args: argparse.Namespace) -> int:
     """Convert SOP file to uSkill files."""
     try:
         written = convert_sop_file(
-            args.path, args.output, domain=args.domain, owner=args.owner,
+            args.path,
+            args.output,
+            domain=args.domain,
+            owner=args.owner,
             version=args.version,
         )
         print(f"Generated {len(written)} skills:")
@@ -118,8 +121,10 @@ def cmd_migrate(args: argparse.Namespace) -> int:
                 print(f"    ⚠ not representable in pure Agent Skills: {loss}")
             if not r.ok:
                 failed += 1
-        print(f"\n{len(reports) - failed}/{len(reports)} migrated"
-              + (" (dry-run)" if args.dry_run else ""))
+        print(
+            f"\n{len(reports) - failed}/{len(reports)} migrated"
+            + (" (dry-run)" if args.dry_run else "")
+        )
         return 0 if failed == 0 else 1
     except Exception as e:
         print(f"Migrate failed: {e}", file=sys.stderr)
@@ -268,6 +273,7 @@ def cmd_inspect(args: argparse.Namespace) -> int:
 
 def cmd_run(args: argparse.Namespace) -> int:
     """Execute a skill via the governed runtime."""
+    from core.uskills.governance.audit import AuditLogger
     from core.uskills.runtime import SkillLibrary, SkillRuntime, create_provider
     from core.uskills.runtime.state import RunStore
     from core.uskills.validator import load_skill
@@ -275,7 +281,8 @@ def cmd_run(args: argparse.Namespace) -> int:
     try:
         provider_kind = args.provider
         provider = create_provider(provider_kind)
-        runtime = SkillRuntime(provider, store=RunStore(args.runs_dir))
+        auditor = AuditLogger(args.audit) if args.audit else None
+        runtime = SkillRuntime(provider, store=RunStore(args.runs_dir), auditor=auditor)
         if args.library:
             runtime.library = SkillLibrary()
             runtime.library.load_directory(args.library)
@@ -325,10 +332,15 @@ def cmd_eval(args: argparse.Namespace) -> int:
         skill = load_skill(args.skill)
         suite = EvalSuite.load(args.suite)
 
+        def make_runtime() -> SkillRuntime:
+            if args.provider == "mock" and args.mock_response:
+                return SkillRuntime(create_provider("mock", script=args.mock_response))
+            return SkillRuntime(create_provider(args.provider))
+
         if args.models:
             models = [m.strip() for m in args.models.split(",") if m.strip()]
             reports = run_eval_matrix(
-                lambda: SkillRuntime(create_provider(args.provider)),
+                make_runtime,
                 skill,
                 suite,
                 models,
@@ -340,23 +352,22 @@ def cmd_eval(args: argparse.Namespace) -> int:
             else:
                 print(f"# Model matrix: {suite.skill} ({len(suite.cases)} cases)")
                 for model, row in summary.items():
-                    print(f"- `{model}`: success={row['success_rate']} "
-                          f"consistency={row['consistency']} cost=${row['cost_usd']} "
-                          f"latency={row['latency_mean_ms']}ms")
+                    print(
+                        f"- `{model}`: success={row['success_rate']} "
+                        f"consistency={row['consistency']} cost=${row['cost_usd']} "
+                        f"latency={row['latency_mean_ms']}ms"
+                    )
             if args.output:
                 out = Path(args.output)
                 out.parent.mkdir(parents=True, exist_ok=True)
-                out.write_text(json.dumps(summary, indent=2, ensure_ascii=False),
-                               encoding="utf-8")
+                out.write_text(json.dumps(summary, indent=2, ensure_ascii=False), encoding="utf-8")
             return 0
 
-        runtime = SkillRuntime(create_provider(args.provider))
+        runtime = make_runtime()
         report = run_eval_suite(runtime, skill, suite, repeats=args.repeats)
 
         if args.judge:
-            judge_eval_suite(
-                runtime, report, model=args.judge_model or skill.execute.model
-            )
+            judge_eval_suite(runtime, report, model=args.judge_model or skill.execute.model)
 
         gate_problems: list[str] = []
         if args.compare:
@@ -364,18 +375,17 @@ def cmd_eval(args: argparse.Namespace) -> int:
             from core.uskills.evaluation import compare_reports
 
             diff = compare_reports(report, previous)
-            print(f"vs previous: {diff['delta_pp']:+.1f} pp, "
-                  f"regressed={diff['regressed_cases'] or 'none'} "
-                  f"improved={diff['improved_cases'] or 'none'}")
+            print(
+                f"vs previous: {diff['delta_pp']:+.1f} pp, "
+                f"regressed={diff['regressed_cases'] or 'none'} "
+                f"improved={diff['improved_cases'] or 'none'}"
+            )
             if args.gate:
-                gate_problems = check_release_gate(
-                    report, previous, max_drop_pp=args.max_drop_pp
-                )
+                gate_problems = check_release_gate(report, previous, max_drop_pp=args.max_drop_pp)
                 for problem in gate_problems:
                     print(f"  ✗ GATE: {problem}", file=sys.stderr)
         elif args.gate:
-            print("GATE: --gate requires --compare <previous report.json>",
-                  file=sys.stderr)
+            print("GATE: --gate requires --compare <previous report.json>", file=sys.stderr)
             return 2
 
         if args.format == "json":
@@ -407,19 +417,25 @@ def cmd_build(args: argparse.Namespace) -> int:
     try:
         report = build_skills(args.path, args.output, domain=args.domain)
         print(f"source: {report.source}")
-        print(f"IR: goal={report.ir['goal'][:60]!r} steps={len(report.ir['steps'])} "
-              f"kinds={report.ir['step_kind_summary']}")
+        print(
+            f"IR: goal={report.ir['goal'][:60]!r} steps={len(report.ir['steps'])} "
+            f"kinds={report.ir['step_kind_summary']}"
+        )
         for note in report.notes:
             print(f"  ℹ {note}")
         for c in report.candidates:
             flag = "⚠ review" if c.score.review_required else "ok"
-            print(f"  [{flag}] {c.skill.skill_id}  quality={c.score.total}/100 "
-                  f"lifecycle={c.lifecycle.value}")
+            print(
+                f"  [{flag}] {c.skill.skill_id}  quality={c.score.total}/100 "
+                f"lifecycle={c.lifecycle.value}"
+            )
             if c.score.total < 100:
                 for dim in c.score.dimensions:
                     if dim.score < dim.max:
-                        print(f"      - {dim.name}: {dim.score}/{dim.max} :: "
-                              + "; ".join(dim.evidence))
+                        print(
+                            f"      - {dim.name}: {dim.score}/{dim.max} :: "
+                            + "; ".join(dim.evidence)
+                        )
         print(f"\n{len(report.candidates)} draft candidate(s) → {args.output}/drafts/")
         print("policy: drafts require human review before publish (Draft→Validated→…)")
         return 0 if report.candidates else 1
@@ -478,26 +494,39 @@ def cmd_risk(args: argparse.Namespace) -> int:
             (int(scan_risk_level(findings)) if findings else 0),
             3 if flags["has_scripts"] else 0,
         )
-        rows.append({
-            "path": str(path),
-            "level": f"L{level}",
-            "scripts": flags["scripts"],
-            "findings": [f.to_dict() for f in findings][:10],
-        })
+        rows.append(
+            {
+                "path": str(path),
+                "level": f"L{level}",
+                "scripts": flags["scripts"],
+                "findings": [f.to_dict() for f in findings][:10],
+            }
+        )
     else:
-        files = sorted(
-            p for p in path.rglob("*")
-            if p.is_file() and p.suffix.lower() in (".yaml", ".yml", ".json")
-            and p.stem != "uskill"
-        ) if path.is_dir() else [path]
+        files = (
+            sorted(
+                p
+                for p in path.rglob("*")
+                if p.is_file()
+                and p.suffix.lower() in (".yaml", ".yml", ".json")
+                and p.stem != "uskill"
+            )
+            if path.is_dir()
+            else [path]
+        )
         for f in files:
             try:
                 skill = load_skill(f)
             except Exception:
                 continue
             assessment = assess_skill_risk(skill)
-            rows.append({"path": str(f), "level": f"L{int(assessment.level)}",
-                         "factors": assessment.factors})
+            rows.append(
+                {
+                    "path": str(f),
+                    "level": f"L{int(assessment.level)}",
+                    "factors": assessment.factors,
+                }
+            )
     if args.json:
         print(json.dumps(rows, indent=2, ensure_ascii=False))
     else:
@@ -506,9 +535,108 @@ def cmd_risk(args: argparse.Namespace) -> int:
             for note in r.get("factors", []):
                 print(f"       - {note}")
             for finding in r.get("findings", []):
-                print(f"       ! scripts/{finding['file']}:{finding['line']} "
-                      f"{finding['pattern']} ({finding['description']})")
+                print(
+                    f"       ! scripts/{finding['file']}:{finding['line']} "
+                    f"{finding['pattern']} ({finding['description']})"
+                )
     return 0
+
+
+def cmd_list(args: argparse.Namespace) -> int:
+    """List skills in the local registry."""
+    from core.uskills.registry import SkillRegistry
+
+    registry = SkillRegistry(args.path)
+    skills = registry.all()
+    if args.filter:
+        hits = registry.search(args.filter, mode="auto")
+        ids = {h.skill_id for h in hits}
+        skills = [s for s in skills if s.skill_id in ids]
+    if args.json:
+        print(
+            json.dumps(
+                [
+                    {
+                        "skill_id": s.skill_id,
+                        "name": s.meta.name,
+                        "category": s.meta.category.value,
+                        "domain": s.meta.domain,
+                        "version": s.meta.version,
+                        "tags": s.meta.tags,
+                    }
+                    for s in skills
+                ],
+                indent=2,
+                ensure_ascii=False,
+            )
+        )
+    else:
+        for s in skills:
+            print(
+                f"  {s.skill_id}  {s.meta.name}  "
+                f"[{s.meta.category.value}/{s.meta.domain}] v{s.meta.version}"
+            )
+    health = registry.health()
+    if not health["ok"]:
+        print(
+            f"⚠ registry health: broken={len(health['broken'])} "
+            f"duplicates={health['duplicate_ids']}",
+            file=sys.stderr,
+        )
+        return 1
+    return 0
+
+
+def cmd_audit(args: argparse.Namespace) -> int:
+    """Show a redacted audit trail (JSONL written by AuditLogger)."""
+    from core.uskills.governance.audit import AuditLogger
+
+    path = Path(args.path)
+    if not path.exists():
+        print(f"audit file not found: {path}", file=sys.stderr)
+        return 1
+    entries = AuditLogger(path).read()
+    if args.action:
+        entries = [e for e in entries if e.get("action") == args.action]
+    for entry in entries[-args.limit :]:
+        if args.json:
+            print(json.dumps(entry, ensure_ascii=False))
+        else:
+            detail = {
+                k: v for k, v in entry.items() if k not in ("time", "action", "run_id", "skill_id")
+            }
+            print(
+                f"  {entry['time']}  {entry['action']:<22} "
+                f"run={entry.get('run_id') or '-'}  {detail or ''}"
+            )
+    return 0
+
+
+def cmd_test(args: argparse.Namespace) -> int:
+    """Run a skill suite as pass/fail tests (assertions only, no baseline)."""
+    from core.uskills.evaluation import EvalSuite, run_case
+    from core.uskills.runtime import SkillRuntime, create_provider
+    from core.uskills.validator import load_skill
+
+    try:
+        skill = load_skill(args.skill)
+        suite = EvalSuite.load(args.suite)
+        if args.provider == "mock" and args.mock_response:
+            runtime = SkillRuntime(create_provider("mock", script=args.mock_response))
+        else:
+            runtime = SkillRuntime(create_provider(args.provider))
+        failures = 0
+        for case in suite.cases:
+            result = run_case(runtime, skill, case)
+            mark = "PASS" if result.passed else "FAIL"
+            print(f"  [{mark}] {case.task_id}: {result.detail[:100]}")
+            failures += 0 if result.passed else 1
+        total = len(suite.cases)
+        print(f"{total - failures}/{total} test cases passed")
+        return 1 if failures else 0
+    except Exception as e:
+        print(f"Test failed: {e}", file=sys.stderr)
+        return 1
 
 
 def cmd_doctor(args: argparse.Namespace) -> int:  # noqa: ARG001
@@ -575,7 +703,9 @@ def build_parser() -> argparse.ArgumentParser:
     p = sub.add_parser("schema", help="Export the uSkill JSON Schema.")
     p.add_argument("--output", default="standards/uskill.schema.json")
     p.add_argument(
-        "--target", choices=["skill", "manifest", "both"], default="skill",
+        "--target",
+        choices=["skill", "manifest", "both"],
+        default="skill",
         help="skill (legacy V1), manifest (uskills/v2) or both.",
     )
     p.add_argument("--manifest-output", default="standards/uskill-manifest.schema.json")
@@ -633,32 +763,64 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument(
         "--provider",
         default="mock",
-        choices=["mock", "openai-chat", "openai-responses"],
+        choices=[
+            "mock",
+            "openai-chat",
+            "openai-responses",
+            "openai-compatible",
+            "anthropic",
+            "local",
+        ],
         help="Model provider (mock requires no API key).",
     )
     p.add_argument("--library", default="skills", help="Skill library directory.")
     p.add_argument("--runs-dir", default=".uskills/runs", help="Checkpoint directory.")
+    p.add_argument(
+        "--audit", default=None, help="Write a redacted audit trail (JSONL) to this path."
+    )
     p.set_defaults(func=cmd_run)
 
     p = sub.add_parser("eval", help="Run an evaluation suite against a skill.")
     p.add_argument("--skill", required=True, help="Path to skill YAML/JSON.")
     p.add_argument("--suite", required=True, help="Path to eval suite JSON.")
     p.add_argument(
-        "--provider", default="mock",
-        choices=["mock", "openai-chat", "openai-responses", "openai-compatible",
-                 "anthropic", "local"],
+        "--provider",
+        default="mock",
+        choices=[
+            "mock",
+            "openai-chat",
+            "openai-responses",
+            "openai-compatible",
+            "anthropic",
+            "local",
+        ],
     )
     p.add_argument("--repeats", type=int, default=1)
-    p.add_argument("--models", default=None,
-                   help="Comma-separated models for a multi-model benchmark matrix.")
-    p.add_argument("--compare", default=None,
-                   help="Previous report JSON to diff for regression tracking.")
-    p.add_argument("--gate", action="store_true",
-                   help="Fail (exit 1) on unexplained regressions vs --compare.")
-    p.add_argument("--max-drop-pp", type=float, default=10.0,
-                   help="Largest tolerated success-rate drop (percentage points).")
-    p.add_argument("--judge", action="store_true",
-                   help="Attach separate LLM-as-Judge verdicts (advisory only).")
+    p.add_argument(
+        "--mock-response",
+        default=None,
+        help="Deterministic mock provider response (offline regression runs in CI; no API key).",
+    )
+    p.add_argument(
+        "--models", default=None, help="Comma-separated models for a multi-model benchmark matrix."
+    )
+    p.add_argument(
+        "--compare", default=None, help="Previous report JSON to diff for regression tracking."
+    )
+    p.add_argument(
+        "--gate", action="store_true", help="Fail (exit 1) on unexplained regressions vs --compare."
+    )
+    p.add_argument(
+        "--max-drop-pp",
+        type=float,
+        default=10.0,
+        help="Largest tolerated success-rate drop (percentage points).",
+    )
+    p.add_argument(
+        "--judge",
+        action="store_true",
+        help="Attach separate LLM-as-Judge verdicts (advisory only).",
+    )
     p.add_argument("--judge-model", default=None, help="Judge model name.")
     p.add_argument("--format", default="markdown", choices=["markdown", "json"])
     p.add_argument("--output", default=None, help="Write report to file.")
@@ -668,7 +830,8 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("query")
     p.add_argument("path", default="skills", nargs="?")
     p.add_argument(
-        "--mode", default="auto",
+        "--mode",
+        default="auto",
         choices=["auto", "name", "tag", "domain", "keyword", "dependency"],
     )
     p.add_argument("--limit", type=int, default=50)
@@ -685,6 +848,41 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("path")
     p.add_argument("--json", action="store_true")
     p.set_defaults(func=cmd_risk)
+
+    p = sub.add_parser("list", help="List skills in the local registry.")
+    p.add_argument("path", default="skills", nargs="?")
+    p.add_argument("--filter", default=None, help="Query (same modes as search).")
+    p.add_argument("--json", action="store_true")
+    p.set_defaults(func=cmd_list)
+
+    p = sub.add_parser("audit", help="Show a redacted JSONL audit trail.")
+    p.add_argument("path")
+    p.add_argument("--action", default=None, help="Filter by action.")
+    p.add_argument("--limit", type=int, default=50)
+    p.add_argument("--json", action="store_true")
+    p.set_defaults(func=cmd_audit)
+
+    p = sub.add_parser("test", help="Run a skill suite as pass/fail tests.")
+    p.add_argument("--skill", required=True)
+    p.add_argument("--suite", required=True)
+    p.add_argument(
+        "--provider",
+        default="mock",
+        choices=[
+            "mock",
+            "openai-chat",
+            "openai-responses",
+            "openai-compatible",
+            "anthropic",
+            "local",
+        ],
+    )
+    p.add_argument(
+        "--mock-response",
+        default=None,
+        help="Deterministic mock provider response (offline CI runs).",
+    )
+    p.set_defaults(func=cmd_test)
 
     p = sub.add_parser("doctor", help="Check environment and asset health.")
     p.set_defaults(func=cmd_doctor)

@@ -87,18 +87,14 @@ class TestValidateAgentSkill:
     def test_unsupported_frontmatter_key(self, tmp_path: Path) -> None:
         root = make_skill_dir(
             tmp_path,
-            frontmatter=(
-                "---\nname: code-review\ndescription: d\nuskill_extra: true\n---\n"
-            ),
+            frontmatter=("---\nname: code-review\ndescription: d\nuskill_extra: true\n---\n"),
         )
         ok, issues = validate_agent_skill(root)
         assert not ok
         assert any("uskill_extra" in i for i in issues)
 
     def test_missing_referenced_file(self, tmp_path: Path) -> None:
-        root = make_skill_dir(
-            tmp_path, body="See references/guidelines.md for the rules."
-        )
+        root = make_skill_dir(tmp_path, body="See references/guidelines.md for the rules.")
         ok, issues = validate_agent_skill(root)
         assert not ok
         assert any("references/guidelines.md" in i for i in issues)
@@ -155,9 +151,7 @@ class TestImportExport:
         assert (out / "uskill.yaml").exists()
 
     def test_export_does_not_overwrite_without_force(self, tmp_path: Path) -> None:
-        manifest = USkillManifest(
-            metadata={"name": "dup", "description": "d"}
-        )
+        manifest = USkillManifest(metadata={"name": "dup", "description": "d"})
         export_agent_skill(manifest, "body", tmp_path)
         with pytest.raises(FileExistsError):
             export_agent_skill(manifest, "body", tmp_path)
@@ -187,8 +181,7 @@ class TestManifest:
     def test_rejects_bad_api_version(self, tmp_path: Path) -> None:
         path = tmp_path / "uskill.yaml"
         path.write_text(
-            "apiVersion: uskill/v1\nkind: Skill\n"
-            "metadata:\n  name: a\n  description: d\n",
+            "apiVersion: uskill/v1\nkind: Skill\nmetadata:\n  name: a\n  description: d\n",
             encoding="utf-8",
         )
         ok, _ = validate_manifest_file(path)

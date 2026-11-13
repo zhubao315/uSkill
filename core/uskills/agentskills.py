@@ -84,9 +84,7 @@ def inspect_agent_skill(path: str | Path) -> AgentSkillPackage:
         pkg.frontmatter = fm
         pkg.body = body
         pkg.name = fm.get("name") if isinstance(fm.get("name"), str) else None
-        pkg.description = (
-            fm.get("description") if isinstance(fm.get("description"), str) else None
-        )
+        pkg.description = fm.get("description") if isinstance(fm.get("description"), str) else None
     for item in sorted(root.rglob("*")):
         if item.is_file():
             pkg.files.append(str(item.relative_to(root)))
@@ -141,7 +139,9 @@ def validate_agent_skill(path: str | Path) -> tuple[bool, list[str]]:
             "allowed-tools",
             "metadata",
         }:
-            issues.append(f"unsupported frontmatter key {key!r} (do not extend the official schema)")
+            issues.append(
+                f"unsupported frontmatter key {key!r} (do not extend the official schema)"
+            )
     if "license" in fm and not isinstance(fm["license"], str):
         issues.append("license must be a string")
     if "allowed-tools" in fm and not isinstance(fm["allowed-tools"], list):
@@ -149,7 +149,9 @@ def validate_agent_skill(path: str | Path) -> tuple[bool, list[str]]:
 
     body_lines = len(pkg.body.splitlines())
     if body_lines > 500:
-        issues.append(f"{SKILL_FILE} body is {body_lines} lines; keep under 500 (progressive disclosure)")
+        issues.append(
+            f"{SKILL_FILE} body is {body_lines} lines; keep under 500 (progressive disclosure)"
+        )
 
     if issues:
         return False, issues
@@ -225,7 +227,6 @@ def import_agent_skill(
         ManifestSecurity,
         dump_manifest,
     )
-
 
     manifest = USkillManifest(
         metadata=ManifestMetadata(

@@ -65,9 +65,8 @@ def _eval_draft(skill: USkill) -> EvalSuite:
             task_id="normal-001",
             user_input=inputs,
             baseline_prompt=f"Perform: {skill.meta.description[:120]}",
-            assertions=[
-                EvalAssertion(type="json_key", key=p) for p in skill.output.params
-            ] or [EvalAssertion(type="contains", value="result")],
+            assertions=[EvalAssertion(type="json_key", key=p) for p in skill.output.params]
+            or [EvalAssertion(type="contains", value="result")],
         ),
         EvalCase(
             task_id="empty-input-001",
@@ -108,8 +107,7 @@ def build_skills(
         )
     if kinds.get("loop"):
         notes.append(
-            f"{kinds['loop']} loop step(s) detected: enforce iteration budgets in "
-            "workflow config"
+            f"{kinds['loop']} loop step(s) detected: enforce iteration budgets in workflow config"
         )
 
     skills = convert_sop_text(src.text, src.name, src.origin, domain=domain, owner=owner)
@@ -130,7 +128,9 @@ def build_skills(
 
         drafts_dir.mkdir(parents=True, exist_ok=True)
         (drafts_dir / f"{skill.skill_id}.json").write_text(
-            json.dumps(json.loads(skill.model_dump_json(by_alias=True)), ensure_ascii=False, indent=2),
+            json.dumps(
+                json.loads(skill.model_dump_json(by_alias=True)), ensure_ascii=False, indent=2
+            ),
             encoding="utf-8",
         )
         suite = _eval_draft(skill)

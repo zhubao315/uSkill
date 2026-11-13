@@ -125,7 +125,11 @@ class TestEvalSuite:
 
                 # Baseline call carries the baseline prompt: answer wrongly.
                 user_text = messages[-1].content
-                answer = "{}" if "extract keywords" in user_text else '{"keywords": ["k"], "summary": "s"}'
+                answer = (
+                    "{}"
+                    if "extract keywords" in user_text
+                    else '{"keywords": ["k"], "summary": "s"}'
+                )
                 return ProviderResponse(text=answer, model="stub", usage={})
 
         from core.uskills.runtime import SkillRuntime

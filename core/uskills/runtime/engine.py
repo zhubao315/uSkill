@@ -48,6 +48,7 @@ try:  # standard JSON Schema validator (core dependency)
         ]
 
 except ImportError:  # pragma: no cover - dependency is declared in pyproject
+
     def _schema_errors(schema: dict[str, Any], value: Any) -> list[str]:  # noqa: ARG001
         return []
 
@@ -106,9 +107,7 @@ def validate_inputs(skill: USkill, inputs: dict[str, Any]) -> dict[str, Any]:
 
         if value is None:
             if not param.nullable:
-                raise ExecutionFailedError(
-                    f"input {name!r} must not be null (nullable=false)"
-                )
+                raise ExecutionFailedError(f"input {name!r} must not be null (nullable=false)")
             merged[name] = None
             continue
 
@@ -169,9 +168,7 @@ def topo_levels(names: list[str], depends_on: dict[str, list[str]]) -> list[list
     while remaining:
         level = sorted(n for n, d in remaining.items() if d <= done)
         if not level:
-            raise ExecutionFailedError(
-                f"dependency cycle detected among: {sorted(remaining)}"
-            )
+            raise ExecutionFailedError(f"dependency cycle detected among: {sorted(remaining)}")
         levels.append(level)
         done.update(level)
         for n in level:
@@ -237,7 +234,9 @@ class SkillRuntime:
         start = time.monotonic()
 
         try:
-            self._execute(skill, record, dict(inputs), timeout, retries, depth=0, token=cancel_token)
+            self._execute(
+                skill, record, dict(inputs), timeout, retries, depth=0, token=cancel_token
+            )
         except _RunCancelled as exc:
             self._mark_cancelled(record, str(exc) or "cancelled")
         except USkillError as exc:
@@ -362,9 +361,7 @@ class SkillRuntime:
         if not record.steps:
             record.steps = plan
 
-        use_dag = bool(skill.execute.depends_on) and any(
-            s.kind == "subskill" for s in record.steps
-        )
+        use_dag = bool(skill.execute.depends_on) and any(s.kind == "subskill" for s in record.steps)
         if use_dag and not skip_done:
             self._execute_dag(skill, record, merged, timeout, retries, depth, token)
             self._finalize(record)
@@ -452,7 +449,9 @@ class SkillRuntime:
                 record.add_event("step_started", step_id=step.step_id)
 
             if len(runnable) == 1:
-                self._run_level_step(skill, runnable[0], merged, timeout, retries, depth, record, token)
+                self._run_level_step(
+                    skill, runnable[0], merged, timeout, retries, depth, record, token
+                )
             else:
                 workers = max(1, min(skill.control.max_workers, len(runnable)))
                 with ThreadPoolExecutor(
@@ -494,9 +493,7 @@ class SkillRuntime:
 
             failed = [s for s in runnable if s.status is StepState.FAILED]
             if failed and "partial-execution" not in skill.execute.fallback:
-                raise ExecutionFailedError(
-                    f"step {failed[0].step_id!r} failed: {failed[0].error}"
-                )
+                raise ExecutionFailedError(f"step {failed[0].step_id!r} failed: {failed[0].error}")
             if self.store:
                 self.store.save(record)
 
@@ -640,9 +637,7 @@ class SkillRuntime:
         elif step.kind == "tool":
             tool_id = step.step_id.split(":", 1)[-1]
             tool = self.registry.get(tool_id)
-            self.auditor.log(
-                "tool_invoked", run_id="", skill_id=skill.skill_id, tool=tool_id
-            )
+            self.auditor.log("tool_invoked", run_id="", skill_id=skill.skill_id, tool=tool_id)
             if tool is not None and not tool.idempotent:
                 # Side-effecting tools run exactly once: a transient failure
                 # is converted to a hard error so the retry loop won't repeat it.
@@ -771,9 +766,7 @@ class SkillRuntime:
             )
 
         # Map parent context into the sub-skill's declared inputs.
-        sub_inputs = {
-            p.name: merged[p.name] for p in sub.input.params if p.name in merged
-        }
+        sub_inputs = {p.name: merged[p.name] for p in sub.input.params if p.name in merged}
         step.input = sub_inputs
         record = self.run(sub, sub_inputs, timeout=timeout, retries=0)
         if record.status is not StepState.COMPLETED:
@@ -784,9 +777,7 @@ class SkillRuntime:
             )
         step.usage = record.usage
         step.output = record.result
-        self.auditor.log(
-            "subskill_completed", skill_id=parent.skill_id, subskill=sub.skill_id
-        )
+        self.auditor.log("subskill_completed", skill_id=parent.skill_id, subskill=sub.skill_id)
 
     def _merge_step_output(self, step: StepRun, merged: dict[str, Any]) -> None:
         key = step.step_id.split(":", 1)[-1]
