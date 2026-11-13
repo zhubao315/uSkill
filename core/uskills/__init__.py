@@ -20,6 +20,18 @@ from .agentskills import (
     validate_agent_skill,
 )
 from .ai_converter import AIConverter, ConversionReport
+from .builder import (
+    BuildCandidate,
+    BuildReport,
+    QualityScore,
+    SourceDoc,
+    StepKind,
+    TaskIR,
+    build_ir,
+    build_skills,
+    import_source,
+    score_skill,
+)
 from .converter import (
     ConversionError,
     convert_sop_file,
@@ -102,6 +114,17 @@ __all__ = [
     # AI
     "AIConverter",
     "ConversionReport",
+    # Builder (Sprint 2)
+    "SourceDoc",
+    "import_source",
+    "StepKind",
+    "TaskIR",
+    "build_ir",
+    "QualityScore",
+    "score_skill",
+    "BuildCandidate",
+    "BuildReport",
+    "build_skills",
     # Executor / Runtime
     "SkillExecutor",
     "SkillRuntime",

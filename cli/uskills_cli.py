@@ -338,6 +338,34 @@ def cmd_eval(args: argparse.Namespace) -> int:
         return 1
 
 
+def cmd_build(args: argparse.Namespace) -> int:
+    """Build skill drafts from a source document (never auto-publishes)."""
+    from core.uskills.builder import build_skills
+
+    try:
+        report = build_skills(args.path, args.output, domain=args.domain)
+        print(f"source: {report.source}")
+        print(f"IR: goal={report.ir['goal'][:60]!r} steps={len(report.ir['steps'])} "
+              f"kinds={report.ir['step_kind_summary']}")
+        for note in report.notes:
+            print(f"  ℹ {note}")
+        for c in report.candidates:
+            flag = "⚠ review" if c.score.review_required else "ok"
+            print(f"  [{flag}] {c.skill.skill_id}  quality={c.score.total}/100 "
+                  f"lifecycle={c.lifecycle.value}")
+            if c.score.total < 100:
+                for dim in c.score.dimensions:
+                    if dim.score < dim.max:
+                        print(f"      - {dim.name}: {dim.score}/{dim.max} :: "
+                              + "; ".join(dim.evidence))
+        print(f"\n{len(report.candidates)} draft candidate(s) → {args.output}/drafts/")
+        print("policy: drafts require human review before publish (Draft→Validated→…)")
+        return 0 if report.candidates else 1
+    except Exception as e:
+        print(f"Build failed: {e}", file=sys.stderr)
+        return 1
+
+
 def cmd_doctor(args: argparse.Namespace) -> int:  # noqa: ARG001
     """Report environment and asset health."""
     import sys as _sys
@@ -414,6 +442,12 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--force", action="store_true")
     p.add_argument("--dry-run", action="store_true")
     p.set_defaults(func=cmd_migrate)
+
+    p = sub.add_parser("build", help="Build Draft skill candidates from a source document.")
+    p.add_argument("path", help="SOP/prompt/Markdown file or raw text.")
+    p.add_argument("--output", default="skills/generated-builder")
+    p.add_argument("--domain", default="general")
+    p.set_defaults(func=cmd_build)
 
     p = sub.add_parser("index", help="Build the markdown skills index.")
     p.add_argument("path")

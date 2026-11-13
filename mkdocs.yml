@@ -113,6 +113,7 @@ nav:
   - 架构: architecture.md
   - Schema: schema.md
   - Agent Skills 标准: agent-skills.md
+  - Skill Builder: builder.md
   - 运行时: runtime.md
   - 评测与治理: evaluation.md
   - 技能分类: skills.md

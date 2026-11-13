@@ -9,7 +9,7 @@
 docs/audit/{REPOSITORY,PROJECT,ARCHITECTURE,SECURITY,TEST_COVERAGE,ECOSYSTEM_COMPARISON}.md
 → 全部落地，零代码改动。
 
-## Sprint 1 · 标准体系
+## Sprint 1 · 标准体系 ✅
 
 - `standards/manifest/v1|v2/` JSON Schema 导出（`uskills schema --target manifest`）
 - `core/uskills/standards_compat.py`：格式识别（legacy yaml / manifest / SKILL.md）、
@@ -17,7 +17,7 @@ docs/audit/{REPOSITORY,PROJECT,ARCHITECTURE,SECURITY,TEST_COVERAGE,ECOSYSTEM_COM
 - `uskills migrate <path>`：旧资产 → V2 Manifest 目录（幂等、不覆盖）
 - 兼容测试：1.1 技能可加载/校验/执行
 
-## Sprint 2 · Skill Builder
+## Sprint 2 · Skill Builder ✅
 
 - `core/uskills/builder/`：统一 Importer（md/txt/yaml/json/SKILL.md/技能目录）
 - 中间表示 IR：任务目标/原子步/条件/审批/异常/工具需求识别（规则式，确定性）

@@ -5,6 +5,32 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 The package version is defined in `core/uskills/_version.py`.
 
+## [Unreleased] — 2.0 演进（Sprint 0–2）
+
+### Added
+- **Sprint 0 audits** (`docs/audit/`, `docs/ROADMAP_2.0.md`): evidence-linked
+  project/architecture/security/test-coverage/ecosystem gap analysis; no code
+  changes.
+- **Standards compatibility** (`standards_compat.py`): `detect_format()`
+  (skill-v1 / manifest-v2 / agent-skill), `MigrationReport` (lossy fields are
+  never silently dropped), idempotent `migrate_skill` / `migrate_directory`
+  with dry-run; deprecated-field warnings. `uskills migrate` command;
+  `uskills schema --target skill|manifest|both`; `standards/manifest/v1,v2`
+  and `standards/compatibility` documentation.
+- **Skill Builder** (`core/uskills/builder/`, `uskills build`): unified
+  importer (Markdown/text/prompt/legacy YAML/SKILL.md dir), deterministic
+  task IR with step-kind classification (atomic/decision/approval/loop,
+  evidence-bearing), evidence-backed quality score (0–100, review_required
+  below 70, secret literals zero out safety), Draft-only output pipeline
+  (`drafts/`, `evals-draft/` suites, `build-report.json`) with
+  `requires_approval` propagation — generated skills can never auto-publish.
+
+### Changed
+- Manifest `apiVersion`/`kind` are `Literal`-constrained (JSON Schema
+  `const`); canonical version string unified to `uskills/v2`.
+- `import_source` raises `FileNotFoundError` for missing path-like inputs
+  while still accepting free-form inline prompt text.
+
 ## [1.2.0] - 2026-11-13
 
 ### Added
