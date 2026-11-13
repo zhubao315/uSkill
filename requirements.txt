@@ -2,6 +2,7 @@
 pydantic>=2.8,<3.0
 PyYAML>=6.0,<7.0
 python-dotenv>=1.0.0
+jsonschema>=4.22,<5.0
 
 # Optional: model providers (pip install 'uskills[llm]')
 openai>=1.40.0

@@ -5,9 +5,23 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 The package version is defined in `core/uskills/_version.py`.
 
-## [Unreleased] — 2.0 演进（Sprint 0–2）
+## [Unreleased] — 2.0 演进（Sprint 0–3）
 
 ### Added
+- **Sprint 3 runtime controls**: JSON-Schema input constraints (`enum`,
+  `minimum`/`maximum`, `min_length`/`max_length`, `pattern`, `nullable`,
+  array `items_type`, full `schema` override) enforced before any model
+  call; full output JSON Schema validation with a bounded repair loop
+  (`control.repair`, default 2, 0 disables — never unbounded retries);
+  cooperative `CancelToken` (+ `CANCELLED` state); exponential backoff
+  (`control.backoff_base`, capped at 30s); `idempotent=False` tools are
+  never auto-retried; composite DAG scheduling via `execute.depends_on`
+  with Kahn levels, level-parallelism (`control.max_workers`), and
+  cycle/unknown-dependency rejection.
+- Providers: `anthropic` (Messages API, lazy import), `openai-compatible`
+  (env-configurable `USKILLS_OPENAI_BASE_URL`), `local` (Ollama/llama.cpp/
+  vLLM via the OpenAI wire protocol); conservative capability declarations
+  with the engine's schema re-validation as the real gate.
 - **Sprint 0 audits** (`docs/audit/`, `docs/ROADMAP_2.0.md`): evidence-linked
   project/architecture/security/test-coverage/ecosystem gap analysis; no code
   changes.

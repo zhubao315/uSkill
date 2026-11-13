@@ -54,7 +54,7 @@ from .executor import SkillExecutor
 from .governance import Permission, PermissionPolicy
 from .indexer import build_skills_index, get_skill_stats
 from .manifest import USkillManifest, validate_manifest_file
-from .runtime import SkillRuntime
+from .runtime import CancelToken, SkillRuntime
 from .schema import (
     SCHEMA_VERSION,
     ControlConfig,
@@ -128,6 +128,7 @@ __all__ = [
     # Executor / Runtime
     "SkillExecutor",
     "SkillRuntime",
+    "CancelToken",
     # Indexer
     "build_skills_index",
     "get_skill_stats",

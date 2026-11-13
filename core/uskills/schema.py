@@ -87,7 +87,12 @@ class SkillMeta(BaseModel):
 
 
 class SkillParam(BaseModel):
-    """Skill input parameter definition."""
+    """Skill input parameter definition.
+
+    Constraints (``enum`` / ``minimum`` … / ``pattern`` / ``nullable``) mirror
+    JSON Schema keywords and are enforced by the runtime before any model
+    call; they also feed the parameter's JSON Schema fragment.
+    """
 
     model_config = ConfigDict(extra="forbid")
 
@@ -106,6 +111,63 @@ class SkillParam(BaseModel):
         serialization_alias="schema",
         description="Optional full JSON Schema override for this parameter",
     )
+    enum: list[Any] | None = Field(
+        default=None, max_length=100, description="Allowed values (JSON Schema enum)"
+    )
+    minimum: int | float | None = Field(default=None, description="Inclusive lower bound (number/integer)")
+    maximum: int | float | None = Field(default=None, description="Inclusive upper bound (number/integer)")
+    min_length: int | None = Field(default=None, ge=0, description="Min length (string/array)")
+    max_length: int | None = Field(default=None, ge=0, description="Max length (string/array)")
+    pattern: str | None = Field(default=None, max_length=500, description="Regex constraint (string)")
+    nullable: bool = Field(default=False, description="Whether an explicit null value is allowed")
+
+    @field_validator("pattern")
+    @classmethod
+    def _compile_pattern(cls, v: str | None) -> str | None:
+        if v is not None:
+            try:
+                re.compile(v)  # reject invalid regex at definition time
+            except re.error as exc:
+                raise ValueError(f"invalid regex in pattern constraint: {exc}") from exc
+        return v
+
+    def has_constraints(self) -> bool:
+        """True when this param declares JSON-Schema constraint keywords."""
+        return any(
+            getattr(self, attr) is not None
+            for attr in ("enum", "minimum", "maximum", "min_length", "max_length", "pattern")
+        ) or self.schema_ is not None or (
+            self.type is ParamType.array and self.items_type is not None
+        )
+
+    def json_schema_fragment(self) -> dict[str, Any]:
+        """JSON Schema for this parameter (schema override wins)."""
+        if self.schema_ is not None:
+            return self.schema_
+        frag: dict[str, Any] = {"type": self.type.value}
+        if self.type is ParamType.array and self.items_type is not None:
+            frag["items"] = {"type": self.items_type.value}
+        if self.enum is not None:
+            frag["enum"] = self.enum
+        if self.minimum is not None:
+            frag["minimum"] = self.minimum
+        if self.maximum is not None:
+            frag["maximum"] = self.maximum
+        if self.type is ParamType.string:
+            if self.min_length is not None:
+                frag["minLength"] = self.min_length
+            if self.max_length is not None:
+                frag["maxLength"] = self.max_length
+            if self.pattern is not None:
+                frag["pattern"] = self.pattern
+        elif self.type is ParamType.array:
+            if self.min_length is not None:
+                frag["minItems"] = self.min_length
+            if self.max_length is not None:
+                frag["maxItems"] = self.max_length
+        if self.nullable:
+            frag["type"] = [frag["type"], "null"]
+        return frag
 
 
 class SkillInputConfig(BaseModel):
@@ -140,6 +202,12 @@ class ExecuteConfig(BaseModel):
         description="If true, the runtime pauses the run for human approval "
         "before executing this skill",
     )
+    depends_on: dict[str, list[str]] = Field(
+        default_factory=dict,
+        max_length=20,
+        description="DAG edges for composite sub-skills: tool name -> names of "
+        "sub-skills that must complete before it starts. Empty = declared order.",
+    )
 
     @field_validator("prompt_template")
     @classmethod
@@ -169,6 +237,27 @@ class OutputConfig(BaseModel):
     validation_rules: list[str] = Field(
         default_factory=list, max_length=20, description="Output validation rules"
     )
+    schema_: dict[str, Any] | None = Field(
+        default=None,
+        alias="schema",
+        serialization_alias="schema",
+        description="Optional full JSON Schema for the output document; when "
+        "absent a permissive object schema is derived from params",
+    )
+
+    def json_schema(self) -> dict[str, Any] | None:
+        """Validation schema for JSON output (None for free-form formats)."""
+        if self.schema_ is not None:
+            return self.schema_
+        if self.format != "json":
+            return None
+        if not self.params:
+            return None
+        return {
+            "type": "object",
+            "properties": {name: {} for name in self.params},
+            "required": list(self.params),
+        }
 
 
 class ControlConfig(BaseModel):
@@ -181,6 +270,23 @@ class ControlConfig(BaseModel):
     interrupt: bool = Field(default=True, description="Allow execution interruption")
     breakpoint_allowed: bool = Field(default=True, description="Allow breakpoints")
     mockable: bool = Field(default=True, description="Allow mock execution")
+    repair: int = Field(
+        default=2,
+        ge=0,
+        le=5,
+        description="Bounded repair budget: re-asks the model with the validation "
+        "error attached when JSON output fails the output schema (0 disables)",
+    )
+    backoff_base: float = Field(
+        default=0.0,
+        ge=0.0,
+        le=60.0,
+        description="Exponential backoff base in seconds for transient retries "
+        "(delay = base * 2**attempt, capped at 30s; 0 = no wait)",
+    )
+    max_workers: int = Field(
+        default=2, ge=1, le=8, description="Max parallel steps within one DAG level"
+    )
 
 
 class SourceTrace(BaseModel):

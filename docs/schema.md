@@ -45,3 +45,14 @@ uskills schema --target both
 
 CI 校验两个导出与代码一致。版本目录说明：`standards/manifest/v1|v2/README.md`，
 兼容矩阵：`standards/compatibility/README.md`。
+
+## 2.0 新增可选字段（V1.1 格式向后兼容）
+
+- `input.params[].enum / minimum / maximum / min_length / max_length /
+  pattern / nullable`：JSON Schema 语义的输入约束，运行时在调用模型前强制。
+- `output.schema`：输出文档的完整 JSON Schema（全量校验 + 修复环目标）。
+- `execute.depends_on`：组合技能子步骤 DAG（`{工具: [前置工具]}`）。
+- `control.repair / backoff_base / max_workers`：修复预算、指数退避底数、
+  DAG 层内并行度。
+
+全部为可选字段：旧技能文件无需修改即可继续加载、校验、执行。

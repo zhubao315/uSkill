@@ -42,6 +42,7 @@ class ToolDef:
     input_schema: dict[str, Any] | None = None
     output_schema: dict[str, Any] | None = None
     timeout: float | None = None
+    idempotent: bool = True  # False for side-effecting tools: never auto-retried
     metadata: dict[str, Any] = field(default_factory=dict)
 
 
@@ -64,11 +65,12 @@ class ToolRegistry:
         description: str = "",
         permission: Permission = Permission.read,
         timeout: float | None = None,
+        idempotent: bool = True,
         **kwargs: Any,
     ) -> ToolDef:
         tool = ToolDef(
             id=id, description=description, func=func, permission=permission,
-            timeout=timeout, metadata=kwargs,
+            timeout=timeout, idempotent=idempotent, metadata=kwargs,
         )
         self.register(tool)
         return tool

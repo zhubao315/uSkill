@@ -28,6 +28,7 @@ class StepState(StrEnum):
     SKIPPED = "SKIPPED"
     RETRYING = "RETRYING"
     INTERRUPTED = "INTERRUPTED"
+    CANCELLED = "CANCELLED"
     WAITING_APPROVAL = "WAITING_APPROVAL"
 
 
@@ -36,6 +37,7 @@ TERMINAL_STATES = {
     StepState.FAILED,
     StepState.SKIPPED,
     StepState.INTERRUPTED,
+    StepState.CANCELLED,
 }
 
 
@@ -179,11 +181,37 @@ class RunStore:
         return sorted(p.stem for p in self.root.glob("run-*.json"))
 
 
+class CancelToken:
+    """Cooperative cancellation signal for in-flight runs.
+
+    The runtime checks the token between steps and between attempts, and
+    while waiting on a provider call. A long-blocking vendor request cannot
+    be killed from this process; it is still bounded by ``control.timeout``.
+    """
+
+    def __init__(self) -> None:
+        self._cancelled = False
+        self._reason = ""
+
+    def cancel(self, reason: str = "cancelled by caller") -> None:
+        self._cancelled = True
+        self._reason = reason
+
+    @property
+    def cancelled(self) -> bool:
+        return self._cancelled
+
+    @property
+    def reason(self) -> str:
+        return self._reason
+
+
 __all__ = [
     "StepState",
     "TERMINAL_STATES",
     "StepRun",
     "RunRecord",
     "RunStore",
+    "CancelToken",
     "new_run_id",
 ]

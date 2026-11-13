@@ -25,7 +25,7 @@ docs/audit/{REPOSITORY,PROJECT,ARCHITECTURE,SECURITY,TEST_COVERAGE,ECOSYSTEM_COM
   安全、可发现性）+ `uskills build` 产出候选+评分+报告（**不自动发布**）
 - 测试用例生成：从 IR 生成 evals/dataset.json 草稿
 
-## Sprint 3 · Runtime 补全
+## Sprint 3 · Runtime 补全 ✅
 
 - Provider：Anthropic + OpenAI-compatible + local（ollama），统一能力声明
 - 参数引擎：enum/min/max/pattern/nullable/默认值（Schema 即 JSON Schema）

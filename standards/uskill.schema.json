@@ -37,6 +37,30 @@
           "description": "Allow mock execution",
           "title": "Mockable",
           "type": "boolean"
+        },
+        "repair": {
+          "default": 2,
+          "description": "Bounded repair budget: re-asks the model with the validation error attached when JSON output fails the output schema (0 disables)",
+          "maximum": 5,
+          "minimum": 0,
+          "title": "Repair",
+          "type": "integer"
+        },
+        "backoff_base": {
+          "default": 0.0,
+          "description": "Exponential backoff base in seconds for transient retries (delay = base * 2**attempt, capped at 30s; 0 = no wait)",
+          "maximum": 60.0,
+          "minimum": 0.0,
+          "title": "Backoff Base",
+          "type": "number"
+        },
+        "max_workers": {
+          "default": 2,
+          "description": "Max parallel steps within one DAG level",
+          "maximum": 8,
+          "minimum": 1,
+          "title": "Max Workers",
+          "type": "integer"
         }
       },
       "title": "ControlConfig",
@@ -101,6 +125,18 @@
           "description": "If true, the runtime pauses the run for human approval before executing this skill",
           "title": "Requires Approval",
           "type": "boolean"
+        },
+        "depends_on": {
+          "additionalProperties": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "description": "DAG edges for composite sub-skills: tool name -> names of sub-skills that must complete before it starts. Empty = declared order.",
+          "maxProperties": 20,
+          "title": "Depends On",
+          "type": "object"
         }
       },
       "required": [
@@ -137,6 +173,20 @@
           "maxItems": 20,
           "title": "Validation Rules",
           "type": "array"
+        },
+        "schema": {
+          "anyOf": [
+            {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Optional full JSON Schema for the output document; when absent a permissive object schema is derived from params",
+          "title": "Schema"
         }
       },
       "title": "OutputConfig",
@@ -248,7 +298,7 @@
     },
     "SkillParam": {
       "additionalProperties": false,
-      "description": "Skill input parameter definition.",
+      "description": "Skill input parameter definition.\n\nConstraints (``enum`` / ``minimum`` … / ``pattern`` / ``nullable``) mirror\nJSON Schema keywords and are enforced by the runtime before any model\ncall; they also feed the parameter's JSON Schema fragment.",
       "properties": {
         "name": {
           "description": "Parameter name",
@@ -310,6 +360,101 @@
           "default": null,
           "description": "Optional full JSON Schema override for this parameter",
           "title": "Schema"
+        },
+        "enum": {
+          "anyOf": [
+            {
+              "items": {},
+              "maxItems": 100,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Allowed values (JSON Schema enum)",
+          "title": "Enum"
+        },
+        "minimum": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Inclusive lower bound (number/integer)",
+          "title": "Minimum"
+        },
+        "maximum": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Inclusive upper bound (number/integer)",
+          "title": "Maximum"
+        },
+        "min_length": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Min length (string/array)",
+          "title": "Min Length"
+        },
+        "max_length": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Max length (string/array)",
+          "title": "Max Length"
+        },
+        "pattern": {
+          "anyOf": [
+            {
+              "maxLength": 500,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Regex constraint (string)",
+          "title": "Pattern"
+        },
+        "nullable": {
+          "default": false,
+          "description": "Whether an explicit null value is allowed",
+          "title": "Nullable",
+          "type": "boolean"
         }
       },
       "required": [
