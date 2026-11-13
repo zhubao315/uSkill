@@ -63,9 +63,11 @@ from .evaluation import (
     run_eval_suite,
 )
 from .executor import SkillExecutor
-from .governance import Permission, PermissionPolicy
+from .governance import Permission, PermissionPolicy, RiskLevel, assess_skill_risk
 from .indexer import build_skills_index, get_skill_stats
 from .manifest import USkillManifest, validate_manifest_file
+from .packaging import PackageResult, package_skill
+from .registry import SearchHit, SkillRegistry
 from .runtime import CancelToken, SkillRuntime
 from .schema import (
     SCHEMA_VERSION,
@@ -155,6 +157,13 @@ __all__ = [
     "validate_manifest_file",
     "Permission",
     "PermissionPolicy",
+    "RiskLevel",
+    "assess_skill_risk",
+    # Registry / packaging (Sprint 5)
+    "SkillRegistry",
+    "SearchHit",
+    "PackageResult",
+    "package_skill",
     # Evaluation
     "EvalCase",
     "EvalResult",

@@ -95,6 +95,12 @@ class ManifestSecurity(BaseModel):
         default_factory=lambda: [ToolPermission.read],
         description="Runtime-enforced permission allowlist (default least-privilege)",
     )
+    risk_level: str = Field(
+        default="",
+        pattern=r"^$|^L[0-4]$",
+        description="Derived risk level (L0-L4) from actual capabilities; "
+        "empty = not yet assessed",
+    )
 
 
 class ManifestProvenance(BaseModel):

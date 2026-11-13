@@ -428,6 +428,89 @@ def cmd_build(args: argparse.Namespace) -> int:
         return 1
 
 
+def cmd_search(args: argparse.Namespace) -> int:
+    """Search the local skill registry by metadata (five modes)."""
+    from core.uskills.registry import SkillRegistry
+
+    registry = SkillRegistry(args.path)
+    hits = registry.search(args.query, mode=args.mode, limit=args.limit)
+    if args.json:
+        print(json.dumps([h.to_dict() for h in hits], indent=2, ensure_ascii=False))
+    else:
+        if not hits:
+            print(f"no skills matched {args.query!r} (mode={args.mode}, root={args.path})")
+        for h in hits:
+            print(f"  {h.skill_id}  [{h.matched_by}]  {h.name}")
+            print(f"      {h.path}  domain={h.domain} tags={','.join(h.tags) or '-'}")
+    return 0 if hits else 1
+
+
+def cmd_package(args: argparse.Namespace) -> int:
+    """Package a skill into a verifiable zip with checksums."""
+    from core.uskills.packaging import package_skill
+
+    try:
+        result = package_skill(args.path, args.output, force=args.force)
+        print(f"package: {result.path}")
+        print(f"sha256:  {result.sha256}")
+        print(f"files:   {len(result.files)} (incl. package.json manifest)")
+        return 0
+    except Exception as e:
+        print(f"Package failed: {e}", file=sys.stderr)
+        return 1
+
+
+def cmd_risk(args: argparse.Namespace) -> int:
+    """Show derived risk level (L0-L4) for skills from real capabilities."""
+    from typing import Any
+
+    from core.uskills.builder.scan import scan_risk_level, scan_scripts
+    from core.uskills.governance.risk import assess_skill_risk, skill_directory_flags
+    from core.uskills.standards_compat import FORMAT_AGENT_SKILL, detect_format
+    from core.uskills.validator import load_skill
+
+    path = Path(args.path)
+    rows: list[dict[str, Any]] = []
+    if detect_format(path) == FORMAT_AGENT_SKILL:
+        flags = skill_directory_flags(path)
+        findings = scan_scripts(path / "scripts") if flags["has_scripts"] else []
+        level = max(
+            (int(scan_risk_level(findings)) if findings else 0),
+            3 if flags["has_scripts"] else 0,
+        )
+        rows.append({
+            "path": str(path),
+            "level": f"L{level}",
+            "scripts": flags["scripts"],
+            "findings": [f.to_dict() for f in findings][:10],
+        })
+    else:
+        files = sorted(
+            p for p in path.rglob("*")
+            if p.is_file() and p.suffix.lower() in (".yaml", ".yml", ".json")
+            and p.stem != "uskill"
+        ) if path.is_dir() else [path]
+        for f in files:
+            try:
+                skill = load_skill(f)
+            except Exception:
+                continue
+            assessment = assess_skill_risk(skill)
+            rows.append({"path": str(f), "level": f"L{int(assessment.level)}",
+                         "factors": assessment.factors})
+    if args.json:
+        print(json.dumps(rows, indent=2, ensure_ascii=False))
+    else:
+        for r in rows:
+            print(f"  {r['level']}  {r['path']}")
+            for note in r.get("factors", []):
+                print(f"       - {note}")
+            for finding in r.get("findings", []):
+                print(f"       ! scripts/{finding['file']}:{finding['line']} "
+                      f"{finding['pattern']} ({finding['description']})")
+    return 0
+
+
 def cmd_doctor(args: argparse.Namespace) -> int:  # noqa: ARG001
     """Report environment and asset health."""
     import sys as _sys
@@ -580,6 +663,28 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--format", default="markdown", choices=["markdown", "json"])
     p.add_argument("--output", default=None, help="Write report to file.")
     p.set_defaults(func=cmd_eval)
+
+    p = sub.add_parser("search", help="Search skills by name/tag/domain/keyword/dependency.")
+    p.add_argument("query")
+    p.add_argument("path", default="skills", nargs="?")
+    p.add_argument(
+        "--mode", default="auto",
+        choices=["auto", "name", "tag", "domain", "keyword", "dependency"],
+    )
+    p.add_argument("--limit", type=int, default=50)
+    p.add_argument("--json", action="store_true")
+    p.set_defaults(func=cmd_search)
+
+    p = sub.add_parser("package", help="Package a skill dir/file into a checksummed zip.")
+    p.add_argument("path")
+    p.add_argument("--output", default="dist")
+    p.add_argument("--force", action="store_true")
+    p.set_defaults(func=cmd_package)
+
+    p = sub.add_parser("risk", help="Derive risk level (L0-L4) from real capabilities.")
+    p.add_argument("path")
+    p.add_argument("--json", action="store_true")
+    p.set_defaults(func=cmd_risk)
 
     p = sub.add_parser("doctor", help="Check environment and asset health.")
     p.set_defaults(func=cmd_doctor)

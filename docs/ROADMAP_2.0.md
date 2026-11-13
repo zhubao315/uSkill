@@ -42,7 +42,7 @@ docs/audit/{REPOSITORY,PROJECT,ARCHITECTURE,SECURITY,TEST_COVERAGE,ECOSYSTEM_COM
 - LLM-as-Judge：固定 rubric、记录 judge 模型、与确定性结果分开存储
 - `tests/evaluation/` 目录 + 3 个真实技能评测集（标记待真实模型运行）
 
-## Sprint 5 · 治理与分发
+## Sprint 5 · 治理与分发 ✅
 
 - 风险分级 L0–L4（由能力推导：scripts/network/write/approval）
 - 导入静态扫描（subprocess/network/eval 等模式 → 报告，不阻断但降级状态）

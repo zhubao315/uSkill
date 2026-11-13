@@ -195,7 +195,37 @@ def import_agent_skill(
         "generated uskill.yaml manifest (uSkill augmentation layer)",
     ]
 
-    from .manifest import ManifestMetadata, ManifestProvenance, dump_manifest  # noqa: F401
+    from .builder.scan import scan_risk_level, scan_scripts
+    from .governance.risk import RiskLevel
+
+    scripts_dir = src / "scripts"
+    scripts_present = scripts_dir.is_dir() and any(p.is_file() for p in scripts_dir.rglob("*"))
+    findings = scan_scripts(scripts_dir)
+    risk: RiskLevel = max(
+        scan_risk_level(findings) if findings else RiskLevel.L0,
+        RiskLevel.L3 if scripts_present else RiskLevel.L0,
+    )
+    if findings:
+        notes.append(
+            f"SECURITY SCAN: {len(findings)} high-risk pattern(s) in scripts/ "
+            f"(min derived risk L{int(scan_risk_level(findings))}); "
+            "scripts are NEVER executed by uSkill"
+        )
+        for f in findings[:5]:
+            notes.append(f"  - scripts/{f.file}:{f.line_no} {f.pattern_id}: {f.description}")
+    elif scripts_present:
+        notes.append(
+            "scripts/ present: executable surface raises floor risk to L3 "
+            "(static scan found no high-risk patterns; scripts are NEVER executed)"
+        )
+
+    from .manifest import (
+        ManifestMetadata,
+        ManifestProvenance,
+        ManifestSecurity,
+        dump_manifest,
+    )
+
 
     manifest = USkillManifest(
         metadata=ManifestMetadata(
@@ -206,6 +236,10 @@ def import_agent_skill(
             owner=str(pkg.frontmatter.get("metadata", {}).get("owner", "imported")),
         ),
         compatibility={"agents": ["agent-skills"]},
+        security=ManifestSecurity(
+            untrusted_source=True,
+            risk_level=f"L{int(risk)}",
+        ),
         provenance=ManifestProvenance(
             source="imported",
             imported_from=str(src),

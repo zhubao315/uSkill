@@ -5,9 +5,23 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 The package version is defined in `core/uskills/_version.py`.
 
-## [Unreleased] — 2.0 演进（Sprint 0–4）
+## [Unreleased] — 2.0 演进（Sprint 0–5）
 
 ### Added
+- **Sprint 5 governance & distribution**: capability-derived risk levels
+  L0–L4 (`governance/risk.py`, `uskills risk`; unregistered tool
+  declarations do NOT elevate — the runtime cannot invoke them); static
+  script scan on import (`builder/scan.py`: process exec, dynamic code,
+  file write/delete, network, env-secrets → import report notes +
+  `manifest.security.risk_level` + `untrusted_source=true`; scripts are
+  never executed); audit-log redaction (sensitive-key masking, bulk
+  values stored as sha256 digests); `SkillRegistry` with five search
+  modes + `health()` and `uskills search`; `package_skill` + `uskills
+  package` (zip with embedded per-file-sha256 `package.json`, offline
+  verifiable); MCP bridge (`adapters/mcp_bridge.py`) registering MCP
+  tool declarations into the governed ToolRegistry with `network`
+  permission and non-idempotent defaults; Manifest gains
+  `security.risk_level`.
 - **Sprint 4 evaluation**: honest metrics (output validity, consistency —
   `null` for single repeats, latency mean/p95, token usage, cost via a
   pricing table — `null` for unknown models, tool success rate, security

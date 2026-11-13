@@ -101,6 +101,30 @@ pass/fail；judge 调用失败记录为 error，不伪造分数。
 流水线，含注入探针用例）。CI 用 MockProvider 验证套件加载与 runner 逻辑；
 真实模型分数须在部署环境产生（见 `evals/README.md`，不造假）。
 
+## 风险分级 L0–L4（由能力推导，不信作者声明）
+
+| 级别 | 含义 | 推导信号 |
+|---|---|---|
+| L0 | 纯文本指令 | 无可达工具、无脚本 |
+| L1 | 只读数据处理 | （只读工具场景由 L2 工具面覆盖） |
+| L2 | 调用受限工具 | 存在**可解析**工具的声明 |
+| L3 | 脚本 / 写文件 / shell | 目录含 `scripts/`；write/shell 权限工具 |
+| L4 | 外部系统 / 敏感数据 | network / sensitive_data 权限工具 |
+
+关键规则：**未注册的工具声明不升级风险**——运行时根本执行不了它；
+`uskills risk <path>` 输出推导结果；`--json` 机器可读。
+
+导入静态扫描：导入含 `scripts/` 的技能时，`builder/scan.py` 静态标记
+进程执行 / 动态代码 / 文件写删 / 网络 / 环境变量读取等模式，写入导入
+报告与 `manifest.security.risk_level`，并置 `untrusted_source=true`。
+扫描是信号不是沙箱；**导入的脚本 uSkill 永不执行**。
+
+## 审计脱敏
+
+`governance/audit.py` 默认策略：键名含 `token/secret/key/password/credential`
+的值掩码为 `***REDACTED***`；`input/prompt/output/text/body` 等大块值只存
+`{sha256, length}` 摘要。完整输入只存在于运维自己控制路径下的 RunRecord。
+
 ## 当前边界（如实说明）
 
 - 触发精度（trigger precision）的自动测量依赖目标 Agent 的技能选择行为，

@@ -116,6 +116,8 @@ nav:
   - Skill Builder: builder.md
   - 运行时: runtime.md
   - 评测与治理: evaluation.md
+  - Registry 与分发: distribution.md
+  - CLI 参考: cli.md
   - 技能分类: skills.md
   - 驾驭示例: skill-creator-case.md
   - 技能库: generated/skills-index.md
