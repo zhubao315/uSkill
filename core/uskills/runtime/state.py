@@ -55,6 +55,7 @@ class StepRun:
 
     step_id: str
     kind: str  # "llm" | "subskill" | "tool"
+    via: str = ""  # "tool" when a subskill-declared step resolved to a registered tool
     status: StepState = StepState.PENDING
     input: Any = None
     output: Any = None
@@ -70,6 +71,7 @@ class StepRun:
         return {
             "step_id": self.step_id,
             "kind": self.kind,
+            "via": self.via,
             "status": self.status.value,
             "input": self.input,
             "output": self.output,
@@ -85,6 +87,7 @@ class StepRun:
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> StepRun:
         run = cls(step_id=data["step_id"], kind=data["kind"])
+        run.via = data.get("via", "")
         run.status = StepState(data["status"])
         run.input = data.get("input")
         run.output = data.get("output")

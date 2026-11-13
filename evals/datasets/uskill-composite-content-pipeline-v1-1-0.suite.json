@@ -1,0 +1,40 @@
+{
+  "skill": "uskill-composite-content-pipeline-v1-1-0",
+  "version": "1.1.0",
+  "cases": [
+    {
+      "task_id": "normal-full-001",
+      "user_input": {
+        "text": "内容运营的核心是把重复工作变成可复用能力：提取关键词、生成摘要、按需翻译。",
+        "target_lang": "English"
+      },
+      "baseline_prompt": "对文本执行：提取关键词、生成摘要、翻译成 English。输出 JSON：{\"keywords\": [], \"summary\": \"\", \"translation\": \"\", \"processing_time\": \"\"}",
+      "assertions": [
+        {"type": "json_key", "key": "keywords"},
+        {"type": "json_key", "key": "summary"},
+        {"type": "json_key", "key": "translation"}
+      ]
+    },
+    {
+      "task_id": "no-translation-001",
+      "user_input": {"text": "只处理中文内容，不需要翻译。", "target_lang": ""},
+      "baseline_prompt": "提取关键词并生成摘要（不翻译），输出 JSON（keywords/summary/translation/processing_time）",
+      "assertions": [
+        {"type": "json_key", "key": "keywords"},
+        {"type": "json_key", "key": "summary"}
+      ]
+    },
+    {
+      "task_id": "long-input-001",
+      "user_input": {
+        "text": "段落一：技能工程的目标是稳定复用。段落二：评测提供证据。段落三：治理保证安全。段落四：版本支持回滚。段落五：分发实现跨 Agent 复用。",
+        "target_lang": "English"
+      },
+      "baseline_prompt": "处理长文本流水线并输出 JSON（keywords/summary/translation/processing_time）",
+      "assertions": [
+        {"type": "json_key", "key": "summary"},
+        {"type": "json_key", "key": "translation"}
+      ]
+    }
+  ]
+}

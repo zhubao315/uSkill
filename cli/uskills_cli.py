@@ -310,17 +310,74 @@ def cmd_run(args: argparse.Namespace) -> int:
 
 def cmd_eval(args: argparse.Namespace) -> int:
     """Run an evaluation suite against a skill."""
-    from core.uskills.evaluation import EvalSuite, run_eval_suite
+    from core.uskills.evaluation import (
+        EvalSuite,
+        check_release_gate,
+        judge_eval_suite,
+        matrix_summary,
+        run_eval_matrix,
+        run_eval_suite,
+    )
     from core.uskills.runtime import SkillRuntime, create_provider
     from core.uskills.validator import load_skill
 
     try:
         skill = load_skill(args.skill)
         suite = EvalSuite.load(args.suite)
-        provider = create_provider(args.provider)
-        runtime = SkillRuntime(provider)
-        repeats = getattr(args, "repeats", 1)
-        report = run_eval_suite(runtime, skill, suite, repeats=repeats)
+
+        if args.models:
+            models = [m.strip() for m in args.models.split(",") if m.strip()]
+            reports = run_eval_matrix(
+                lambda: SkillRuntime(create_provider(args.provider)),
+                skill,
+                suite,
+                models,
+                repeats=args.repeats,
+            )
+            summary = matrix_summary(reports)
+            if args.format == "json":
+                print(json.dumps(summary, indent=2, ensure_ascii=False))
+            else:
+                print(f"# Model matrix: {suite.skill} ({len(suite.cases)} cases)")
+                for model, row in summary.items():
+                    print(f"- `{model}`: success={row['success_rate']} "
+                          f"consistency={row['consistency']} cost=${row['cost_usd']} "
+                          f"latency={row['latency_mean_ms']}ms")
+            if args.output:
+                out = Path(args.output)
+                out.parent.mkdir(parents=True, exist_ok=True)
+                out.write_text(json.dumps(summary, indent=2, ensure_ascii=False),
+                               encoding="utf-8")
+            return 0
+
+        runtime = SkillRuntime(create_provider(args.provider))
+        report = run_eval_suite(runtime, skill, suite, repeats=args.repeats)
+
+        if args.judge:
+            judge_eval_suite(
+                runtime, report, model=args.judge_model or skill.execute.model
+            )
+
+        gate_problems: list[str] = []
+        if args.compare:
+            previous = json.loads(Path(args.compare).read_text(encoding="utf-8"))
+            from core.uskills.evaluation import compare_reports
+
+            diff = compare_reports(report, previous)
+            print(f"vs previous: {diff['delta_pp']:+.1f} pp, "
+                  f"regressed={diff['regressed_cases'] or 'none'} "
+                  f"improved={diff['improved_cases'] or 'none'}")
+            if args.gate:
+                gate_problems = check_release_gate(
+                    report, previous, max_drop_pp=args.max_drop_pp
+                )
+                for problem in gate_problems:
+                    print(f"  ✗ GATE: {problem}", file=sys.stderr)
+        elif args.gate:
+            print("GATE: --gate requires --compare <previous report.json>",
+                  file=sys.stderr)
+            return 2
+
         if args.format == "json":
             print(json.dumps(report.to_dict(), indent=2, ensure_ascii=False))
         else:
@@ -329,9 +386,14 @@ def cmd_eval(args: argparse.Namespace) -> int:
             out = Path(args.output)
             out.parent.mkdir(parents=True, exist_ok=True)
             if args.format == "json":
-                out.write_text(json.dumps(report.to_dict(), indent=2, ensure_ascii=False))
+                out.write_text(
+                    json.dumps(report.to_dict(), indent=2, ensure_ascii=False),
+                    encoding="utf-8",
+                )
             else:
                 out.write_text(report.to_markdown(), encoding="utf-8")
+        if gate_problems:
+            return 1
         return 0
     except Exception as e:
         print(f"Eval failed: {e}", file=sys.stderr)
@@ -499,9 +561,22 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--skill", required=True, help="Path to skill YAML/JSON.")
     p.add_argument("--suite", required=True, help="Path to eval suite JSON.")
     p.add_argument(
-        "--provider", default="mock", choices=["mock", "openai-chat", "openai-responses"]
+        "--provider", default="mock",
+        choices=["mock", "openai-chat", "openai-responses", "openai-compatible",
+                 "anthropic", "local"],
     )
     p.add_argument("--repeats", type=int, default=1)
+    p.add_argument("--models", default=None,
+                   help="Comma-separated models for a multi-model benchmark matrix.")
+    p.add_argument("--compare", default=None,
+                   help="Previous report JSON to diff for regression tracking.")
+    p.add_argument("--gate", action="store_true",
+                   help="Fail (exit 1) on unexplained regressions vs --compare.")
+    p.add_argument("--max-drop-pp", type=float, default=10.0,
+                   help="Largest tolerated success-rate drop (percentage points).")
+    p.add_argument("--judge", action="store_true",
+                   help="Attach separate LLM-as-Judge verdicts (advisory only).")
+    p.add_argument("--judge-model", default=None, help="Judge model name.")
     p.add_argument("--format", default="markdown", choices=["markdown", "json"])
     p.add_argument("--output", default=None, help="Write report to file.")
     p.set_defaults(func=cmd_eval)

@@ -49,7 +49,19 @@ from .errors import (
     USkillError,
     USkillValidationError,
 )
-from .evaluation import EvalCase, EvalResult, EvalSuite, run_eval_suite
+from .evaluation import (
+    EvalCase,
+    EvalResult,
+    EvalSuite,
+    JudgeRecord,
+    check_release_gate,
+    compare_reports,
+    estimate_cost,
+    judge_eval_suite,
+    matrix_summary,
+    run_eval_matrix,
+    run_eval_suite,
+)
 from .executor import SkillExecutor
 from .governance import Permission, PermissionPolicy
 from .indexer import build_skills_index, get_skill_stats
@@ -148,6 +160,13 @@ __all__ = [
     "EvalResult",
     "EvalSuite",
     "run_eval_suite",
+    "JudgeRecord",
+    "estimate_cost",
+    "run_eval_matrix",
+    "matrix_summary",
+    "compare_reports",
+    "check_release_gate",
+    "judge_eval_suite",
     # Standards compatibility & migration
     "MigrationReport",
     "detect_format",

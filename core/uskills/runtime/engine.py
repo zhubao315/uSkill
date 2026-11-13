@@ -751,6 +751,7 @@ class SkillRuntime:
         if sub is None:
             tool = self.registry.get(name)
             if tool is not None:
+                step.via = "tool"  # counted as a tool call by evaluation metrics
                 if not tool.idempotent:
                     # Side-effecting tools run exactly once: a transient
                     # failure becomes a hard error the retry loop won't repeat.

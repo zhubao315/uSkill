@@ -34,7 +34,7 @@ docs/audit/{REPOSITORY,PROJECT,ARCHITECTURE,SECURITY,TEST_COVERAGE,ECOSYSTEM_COM
 - Workflow：DAG 依赖（`depends_on`）+ 层内并行（max_workers）+ 循环预算上限
 - 测试：cancel/backoff/并行/修复环/幂等全部有用例
 
-## Sprint 4 · Evaluation 扩展
+## Sprint 4 · Evaluation 扩展 ✅
 
 - 指标扩展：一致性（重复运行）、成本（token×单价表）、工具成功率、延迟
 - 模式：多模型矩阵对比、版本对比（--compare）、**发布回归门禁**（--gate：

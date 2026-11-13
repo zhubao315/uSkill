@@ -5,9 +5,19 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 The package version is defined in `core/uskills/_version.py`.
 
-## [Unreleased] — 2.0 演进（Sprint 0–3）
+## [Unreleased] — 2.0 演进（Sprint 0–4）
 
 ### Added
+- **Sprint 4 evaluation**: honest metrics (output validity, consistency —
+  `null` for single repeats, latency mean/p95, token usage, cost via a
+  pricing table — `null` for unknown models, tool success rate, security
+  probe rate); multi-model benchmark matrix (`eval --models a,b,c` +
+  `run_eval_matrix`/`matrix_summary`); version comparison (`--compare`)
+  and the release regression gate (`--gate --max-drop-pp`, non-zero exit
+  on unexplained regressions, CI-blockable); LLM-as-a-Judge with a fixed
+  rubric and recorded judge model, stored separately and never flipping
+  deterministic pass/fail (`--judge`); three versioned eval datasets under
+  `evals/datasets/` for shipped skills (incl. injection probes).
 - **Sprint 3 runtime controls**: JSON-Schema input constraints (`enum`,
   `minimum`/`maximum`, `min_length`/`max_length`, `pattern`, `nullable`,
   array `items_type`, full `schema` override) enforced before any model
