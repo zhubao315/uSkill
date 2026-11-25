@@ -68,7 +68,8 @@ def redact_run(data: dict[str, Any], policy: RunRetentionPolicy) -> dict[str, An
             return [walk(v) for v in value]
         return value
 
-    return walk(data)
+    result: dict[str, Any] = walk(data)
+    return result
 
 
 class StepState(StrEnum):
