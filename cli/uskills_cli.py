@@ -789,6 +789,115 @@ def cmd_lifecycle_transition(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_agents_detect(args: argparse.Namespace) -> int:
+    """Detect installed Agents and their skill directories (3.0)."""
+    from core.uskills.agents_hub import all_adapters
+
+    out = []
+    for adapter in all_adapters(project_root=Path(args.project), home=Path.home()):
+        out.append(
+            {
+                "agent": adapter.name,
+                "detected": adapter.detect(),
+                "official_docs": adapter.official_docs,
+                "locations": [
+                    {"scope": loc.scope.value, "path": str(loc.path), "priority": loc.priority}
+                    for loc in adapter.list_skill_locations()
+                ],
+                "installed": [s.to_dict() for s in adapter.get_installed_skills()],
+            }
+        )
+    print(json.dumps(out, ensure_ascii=False, indent=2))
+    return 0
+
+
+def cmd_agents_list(args: argparse.Namespace) -> int:
+    """List installed skills per Agent (3.0)."""
+    from core.uskills.agents_hub import all_adapters
+
+    out = []
+    for adapter in all_adapters(project_root=Path(args.project), home=Path.home()):
+        out.append(
+            {
+                "agent": adapter.name,
+                "detected": adapter.detect(),
+                "skills": [s.to_dict() for s in adapter.get_installed_skills()],
+            }
+        )
+    if args.json:
+        print(json.dumps(out, ensure_ascii=False, indent=2))
+    else:
+        for item in out:
+            print(f"{item['agent']}: {len(item['skills'])} skill(s) (detected={item['detected']})")
+            for s in item["skills"]:
+                print(f"  - {s['name']}  {s['path']}")
+    return 0
+
+
+def _find_adapter(name: str, project: str):
+    from core.uskills.agents_hub import all_adapters
+
+    for adapter in all_adapters(project_root=Path(project), home=Path.home()):
+        if adapter.name == name:
+            return adapter
+    raise SystemExit(f"Unknown agent: {name}")
+
+
+def cmd_install_preview(args: argparse.Namespace) -> int:
+    """Preview an install plan without writing (3.0)."""
+    from core.uskills.agents_hub import InstallScope
+
+    adapter = _find_adapter(args.agent, args.project)
+    plan = adapter.preview_install(Path(args.skill), InstallScope(args.scope))
+    print(json.dumps(plan.to_dict(), ensure_ascii=False, indent=2))
+    return 0
+
+
+def cmd_install_apply(args: argparse.Namespace) -> int:
+    """Execute an approved install plan (3.0)."""
+    from core.uskills.agents_hub import InstallScope
+
+    adapter = _find_adapter(args.agent, args.project)
+    plan = adapter.preview_install(Path(args.skill), InstallScope(args.scope))
+    if plan.conflicts and not args.force:
+        print("Conflicts must be resolved before install: " + "; ".join(plan.conflicts))
+        return 1
+    plan.approved = True
+    record = adapter.install(plan)
+    print(json.dumps(record.to_dict(), ensure_ascii=False, indent=2))
+    return 0
+
+
+def cmd_install_status(args: argparse.Namespace) -> int:
+    """Show installed/unmanaged skill status per Agent (3.0)."""
+    from core.uskills.agents_hub import all_adapters
+
+    print(
+        json.dumps(
+            [
+                {
+                    "agent": a.name,
+                    "skills": [s.to_dict() for s in a.get_installed_skills()],
+                }
+                for a in all_adapters(project_root=Path(args.project), home=Path.home())
+            ],
+            ensure_ascii=False,
+            indent=2,
+        )
+    )
+    return 0
+
+
+def cmd_uninstall(args: argparse.Namespace) -> int:
+    """Uninstall a skill from one Agent (3.0)."""
+    from core.uskills.agents_hub import InstallScope
+
+    adapter = _find_adapter(args.agent, args.project)
+    ok = adapter.uninstall(args.name, InstallScope(args.scope))
+    print(f"{'Removed' if ok else 'Not found'}: {args.agent}/{args.name}")
+    return 0 if ok else 1
+
+
 def build_parser() -> argparse.ArgumentParser:
     """Build argument parser."""
     parser = argparse.ArgumentParser(
@@ -1040,6 +1149,48 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--reviewer", default="")
     p.add_argument("--reason", default="")
     p.set_defaults(func=cmd_lifecycle_transition)
+
+    # 3.0 Phase 2: Agent Install Hub
+    agents = sub.add_parser("agents", help="Detect Agents and their skill directories (3.0).")
+    agents_sub = agents.add_subparsers(dest="agents_command")
+    for name, fn, help_text in [
+        ("detect", cmd_agents_detect, "Detect installed Agents and paths."),
+        ("list", cmd_agents_list, "List installed skills per Agent."),
+    ]:
+        p = agents_sub.add_parser(name, help=help_text)
+        p.add_argument("--project", default=".")
+        p.add_argument("--json", action="store_true")
+        p.set_defaults(func=fn)
+
+    install = sub.add_parser("install", help="Install a Skill into an Agent (3.0).")
+    install_sub = install.add_subparsers(dest="install_command")
+    p = install_sub.add_parser("preview", help="Show an install plan without writing.")
+    p.add_argument("skill", help="Path to a SKILL.md skill directory.")
+    p.add_argument("--agent", required=True, choices=["codex", "claude-code", "opencode"])
+    p.add_argument("--scope", choices=["user", "project"], default="user")
+    p.add_argument("--project", default=".")
+    p.set_defaults(func=cmd_install_preview)
+    p = install_sub.add_parser("apply", help="Execute a confirmed install plan.")
+    p.add_argument("skill")
+    p.add_argument("--agent", required=True, choices=["codex", "claude-code", "opencode"])
+    p.add_argument("--scope", choices=["user", "project"], default="user")
+    p.add_argument("--project", default=".")
+    p.add_argument(
+        "--force",
+        action="store_true",
+        help="Override non-content conflicts (still no silent overwrite).",
+    )
+    p.set_defaults(func=cmd_install_apply)
+    p = install_sub.add_parser("status", help="Show install status per Agent.")
+    p.add_argument("--project", default=".")
+    p.set_defaults(func=cmd_install_status)
+
+    p = sub.add_parser("uninstall", help="Uninstall a Skill from an Agent (3.0).")
+    p.add_argument("name")
+    p.add_argument("--agent", required=True, choices=["codex", "claude-code", "opencode"])
+    p.add_argument("--scope", choices=["user", "project"], default="user")
+    p.add_argument("--project", default=".")
+    p.set_defaults(func=cmd_uninstall)
 
     return parser
 
