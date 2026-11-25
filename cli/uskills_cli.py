@@ -898,6 +898,164 @@ def cmd_uninstall(args: argparse.Namespace) -> int:
     return 0 if ok else 1
 
 
+def cmd_runs_resume(args: argparse.Namespace) -> int:
+    """Resume a run paused on WAITING_APPROVAL (3.0)."""
+    from core.uskills.governance.audit import AuditLogger
+    from core.uskills.runtime import SkillRuntime, create_provider
+    from core.uskills.runtime.state import RunStore
+
+    auditor = AuditLogger(args.audit) if args.audit else None
+    runtime = SkillRuntime(
+        create_provider(args.provider), store=RunStore(args.runs_dir), auditor=auditor
+    )
+    try:
+        record = runtime.resume(args.run_id, approve=not args.reject)
+    except Exception as e:  # noqa: BLE001
+        print(f"Resume failed: {e}", file=sys.stderr)
+        return 1
+    print(
+        json.dumps(
+            {"run_id": record.run_id, "status": record.status.value, "error": record.error},
+            ensure_ascii=False,
+            indent=2,
+        )
+    )
+    return 0
+
+
+def cmd_runs_cancel(args: argparse.Namespace) -> int:
+    """Persist a cancellation marker for a run (3.0).
+
+    Runtime cancellation is cooperative: a token is checked between steps.
+    This command records the operator decision on the run record so a
+    subsequent resume/inspect cannot silently treat it as still running.
+    """
+    store = RunStore(args.runs_dir)
+    try:
+        record = store.load(args.run_id)
+    except FileNotFoundError:
+        print(f"Not found: {args.run_id}", file=sys.stderr)
+        return 1
+    from core.uskills.runtime.state import StepState
+
+    record.status = StepState.CANCELLED
+    record.error = args.reason or "cancelled by operator"
+    record.add_event("cancel_requested", reason=record.error)
+    store.save(record)
+    print(json.dumps({"run_id": record.run_id, "status": record.status.value}, ensure_ascii=False))
+    return 0
+
+
+def cmd_runs_export(args: argparse.Namespace) -> int:
+    """Export persisted runs to a single JSON file (3.0)."""
+    store = RunStore(args.runs_dir)
+    data = [store.load(run_id).to_dict() for run_id in store.list_runs()]
+    text = json.dumps(data, ensure_ascii=False, indent=2)
+    if args.output:
+        Path(args.output).write_text(text + "\n", encoding="utf-8")
+        print(f"Wrote {args.output} ({len(data)} runs)")
+    else:
+        print(text)
+    return 0
+
+
+def cmd_runs_cleanup(args: argparse.Namespace) -> int:
+    """Delete runs older than N days (3.0)."""
+    from datetime import UTC, datetime, timedelta
+
+    store = RunStore(args.runs_dir)
+    cutoff = datetime.now(UTC) - timedelta(days=args.days)
+    removed = 0
+    for run_id in store.list_runs():
+        record = store.load(run_id)
+        finished = record.finished_at or record.started_at
+        if not finished:
+            continue
+        try:
+            when = datetime.fromisoformat(finished.replace("Z", "+00:00"))
+        except ValueError:
+            continue
+        if when < cutoff:
+            Path(args.runs_dir).joinpath(f"{run_id}.json").unlink()
+            removed += 1
+    print(f"Removed {removed} run(s) older than {args.days} days")
+    return 0
+
+
+def cmd_lifecycle_review(args: argparse.Namespace) -> int:
+    """Move a validated skill to REVIEWED with a named reviewer (3.0)."""
+    from core.uskills.governance.lifecycle import SkillLifecycle, assert_transition
+    from core.uskills.manifest import dump_manifest, load_manifest
+
+    manifest = load_manifest(args.path)
+    gov = manifest.governance
+    assert_transition(gov.status, SkillLifecycle.REVIEWED)
+    gov.reviewer = args.reviewer
+    gov.history.append({"from": gov.status.value, "to": "reviewed", "reviewer": args.reviewer})
+    gov.status = SkillLifecycle.REVIEWED
+    dump_manifest(manifest, args.path)
+    print("reviewed")
+    return 0
+
+
+def cmd_publish(args: argparse.Namespace) -> int:
+    """Publish gate: verify + lifecycle + evaluation, then mark PUBLISHED (3.0)."""
+    from core.uskills.governance.lifecycle import SkillLifecycle, assert_transition
+    from core.uskills.governance.release import check_publish_gate
+    from core.uskills.manifest import dump_manifest, load_manifest
+
+    manifest = load_manifest(args.path)
+    gov = manifest.governance
+    assert_transition(gov.status, SkillLifecycle.PUBLISHED)
+    report = None
+    if args.eval_report:
+        report = json.loads(Path(args.eval_report).read_text(encoding="utf-8"))
+    problems = check_publish_gate(
+        args.path,
+        manifest_data=json.loads(manifest.model_dump_json()),
+        evaluation_report=report,
+        allow_unreviewed=args.force,
+    )
+    if problems:
+        print("Publish blocked:", file=sys.stderr)
+        for p in problems:
+            print(f"  - {p}", file=sys.stderr)
+        return 1
+    gov.history.append({"from": gov.status.value, "to": "published", "reviewer": gov.reviewer})
+    gov.status = SkillLifecycle.PUBLISHED
+    dump_manifest(manifest, args.path)
+    print("published")
+    return 0
+
+
+def cmd_deprecate(args: argparse.Namespace) -> int:
+    """Deprecate a skill (3.0)."""
+    from core.uskills.governance.lifecycle import SkillLifecycle, assert_transition
+    from core.uskills.manifest import dump_manifest, load_manifest
+
+    manifest = load_manifest(args.path)
+    gov = manifest.governance
+    assert_transition(gov.status, SkillLifecycle.DEPRECATED)
+    gov.history.append({"from": gov.status.value, "to": "deprecated", "reason": args.reason or ""})
+    gov.status = SkillLifecycle.DEPRECATED
+    dump_manifest(manifest, args.path)
+    print("deprecated")
+    return 0
+
+
+def cmd_verify_package(args: argparse.Namespace) -> int:
+    """Verify a distributable zip package (3.0)."""
+    from core.uskills.governance.release import verify_package
+
+    problems = verify_package(args.archive, expected_sha256=args.sha256 or "")
+    if problems:
+        for p in problems:
+            print(f"FAIL: {p}", file=sys.stderr)
+        return 1
+    print("package OK")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     """Build argument parser."""
     parser = argparse.ArgumentParser(
@@ -1137,6 +1295,26 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("run_id")
     p.add_argument("--runs-dir", default=".uskills/runs")
     p.set_defaults(func=cmd_runs_delete)
+    p = runs_sub.add_parser("resume", help="Resume a run awaiting approval.")
+    p.add_argument("run_id")
+    p.add_argument("--runs-dir", default=".uskills/runs")
+    p.add_argument("--provider", default="mock")
+    p.add_argument("--audit")
+    p.add_argument("--reject", action="store_true")
+    p.set_defaults(func=cmd_runs_resume)
+    p = runs_sub.add_parser("cancel", help="Record an operator cancellation.")
+    p.add_argument("run_id")
+    p.add_argument("--runs-dir", default=".uskills/runs")
+    p.add_argument("--reason", default="")
+    p.set_defaults(func=cmd_runs_cancel)
+    p = runs_sub.add_parser("export", help="Export runs as JSON.")
+    p.add_argument("--runs-dir", default=".uskills/runs")
+    p.add_argument("--output")
+    p.set_defaults(func=cmd_runs_export)
+    p = runs_sub.add_parser("cleanup", help="Delete old runs.")
+    p.add_argument("--runs-dir", default=".uskills/runs")
+    p.add_argument("--days", type=int, default=30)
+    p.set_defaults(func=cmd_runs_cleanup)
 
     lifecycle = sub.add_parser("lifecycle", help="Skill lifecycle governance (3.0).")
     lifecycle_sub = lifecycle.add_subparsers(dest="lifecycle_command")
@@ -1149,6 +1327,14 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--reviewer", default="")
     p.add_argument("--reason", default="")
     p.set_defaults(func=cmd_lifecycle_transition)
+    p = lifecycle_sub.add_parser("review", help="Move a validated skill to reviewed.")
+    p.add_argument("path")
+    p.add_argument("--reviewer", required=True)
+    p.set_defaults(func=cmd_lifecycle_review)
+    p = lifecycle_sub.add_parser("deprecate", help="Deprecate a skill.")
+    p.add_argument("path")
+    p.add_argument("--reason", default="")
+    p.set_defaults(func=cmd_deprecate)
 
     # 3.0 Phase 2: Agent Install Hub
     agents = sub.add_parser("agents", help="Detect Agents and their skill directories (3.0).")
@@ -1191,6 +1377,17 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--scope", choices=["user", "project"], default="user")
     p.add_argument("--project", default=".")
     p.set_defaults(func=cmd_uninstall)
+
+    p = sub.add_parser("publish", help="Publish gate: verify + eval + human review (3.0).")
+    p.add_argument("path")
+    p.add_argument("--eval-report")
+    p.add_argument("--force", action="store_true")
+    p.set_defaults(func=cmd_publish)
+
+    p = sub.add_parser("verify-package", help="Verify a distributed zip package (3.0).")
+    p.add_argument("archive")
+    p.add_argument("--sha256", default="")
+    p.set_defaults(func=cmd_verify_package)
 
     return parser
 
