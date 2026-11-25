@@ -8,7 +8,9 @@ import zipfile
 from core.uskills.governance.release import check_publish_gate, content_hash, verify_package
 
 
-def _skill(tmp_path, *, reviewed: bool = True, license_declared: bool = True, scripts: bool = False):
+def _skill(
+    tmp_path, *, reviewed: bool = True, license_declared: bool = True, scripts: bool = False
+):
     d = tmp_path / "skill"
     d.mkdir(exist_ok=True)
     license_line = "license: MIT\n" if license_declared else ""
@@ -16,7 +18,11 @@ def _skill(tmp_path, *, reviewed: bool = True, license_declared: bool = True, sc
         f"---\nname: demo\ndescription: Demo skill\n{license_line}---\n\n# Body\n",
         encoding="utf-8",
     )
-    gov = 'governance:\n  status: reviewed\n  reviewer: alice\n' if reviewed else 'governance:\n  status: draft\n'
+    gov = (
+        "governance:\n  status: reviewed\n  reviewer: alice\n"
+        if reviewed
+        else "governance:\n  status: draft\n"
+    )
     (d / "uskill.yaml").write_text(
         f"apiVersion: uskills/v2\nkind: Skill\nmetadata:\n  name: demo\n{gov}", encoding="utf-8"
     )
