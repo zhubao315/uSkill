@@ -10,10 +10,10 @@ openai>=1.40.0
 # Documentation (pip install 'uskills[docs]')
 mkdocs>=1.6,<2.0
 mkdocs-material>=9.5,<10.0
-pymdown-extensions>=10.14,<11.0
+pymdown-extensions>=11.0.1,<12.0
 
 # Development (pip install 'uskills[dev]')
-pytest>=8.3,<9.0
+pytest>=9.0.3,<10.0
 pytest-cov>=5.0
 ruff>=0.11,<0.12
 mypy>=1.10,<2.0
