@@ -55,7 +55,7 @@ def redact_run(data: dict[str, Any], policy: RunRetentionPolicy) -> dict[str, An
 
     def walk(value: Any) -> Any:
         if isinstance(value, dict):
-            out = {}
+            out: dict[str, Any] = {}
             for k, v in value.items():
                 if _SENSITIVE_KEY.search(k):
                     out[k] = "[REDACTED]"

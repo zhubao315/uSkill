@@ -77,6 +77,57 @@
       "title": "ManifestExecution",
       "type": "object"
     },
+    "ManifestGovernance": {
+      "additionalProperties": false,
+      "description": "Persistent lifecycle state for a skill (3.0).",
+      "properties": {
+        "status": {
+          "$ref": "#/$defs/SkillLifecycle",
+          "default": "draft"
+        },
+        "reviewer": {
+          "default": "",
+          "title": "Reviewer",
+          "type": "string"
+        },
+        "reviewed_at": {
+          "default": "",
+          "title": "Reviewed At",
+          "type": "string"
+        },
+        "reason": {
+          "default": "",
+          "maxLength": 1000,
+          "title": "Reason",
+          "type": "string"
+        },
+        "validation_report": {
+          "default": "",
+          "title": "Validation Report",
+          "type": "string"
+        },
+        "evaluation_report": {
+          "default": "",
+          "title": "Evaluation Report",
+          "type": "string"
+        },
+        "content_hash": {
+          "default": "",
+          "title": "Content Hash",
+          "type": "string"
+        },
+        "history": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "title": "History",
+          "type": "array"
+        }
+      },
+      "title": "ManifestGovernance",
+      "type": "object"
+    },
     "ManifestMetadata": {
       "additionalProperties": false,
       "properties": {
@@ -212,6 +263,17 @@
       "title": "ManifestTool",
       "type": "object"
     },
+    "SkillLifecycle": {
+      "enum": [
+        "draft",
+        "validated",
+        "reviewed",
+        "published",
+        "deprecated"
+      ],
+      "title": "SkillLifecycle",
+      "type": "string"
+    },
     "ToolPermission": {
       "description": "Coarse permission classes enforced by the runtime.",
       "enum": [
@@ -279,6 +341,9 @@
     },
     "evaluation": {
       "$ref": "#/$defs/ManifestEvaluation"
+    },
+    "governance": {
+      "$ref": "#/$defs/ManifestGovernance"
     }
   },
   "required": [
