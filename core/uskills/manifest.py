@@ -21,6 +21,8 @@ from typing import Any, Literal
 import yaml  # type: ignore
 from pydantic import BaseModel, ConfigDict, Field
 
+from .governance.lifecycle import SkillLifecycle
+
 API_VERSION: Literal["uskills/v2"] = "uskills/v2"
 KIND: Literal["Skill"] = "Skill"
 
@@ -122,6 +124,21 @@ class ManifestEvaluation(BaseModel):
     min_output_validity: float = Field(default=0.99, ge=0.0, le=1.0)
 
 
+class ManifestGovernance(BaseModel):
+    """Persistent lifecycle state for a skill (3.0)."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    status: SkillLifecycle = Field(default=SkillLifecycle.DRAFT)
+    reviewer: str = Field(default="")
+    reviewed_at: str = Field(default="")
+    reason: str = Field(default="", max_length=1000)
+    validation_report: str = Field(default="")
+    evaluation_report: str = Field(default="")
+    content_hash: str = Field(default="")
+    history: list[dict[str, Any]] = Field(default_factory=list)
+
+
 class USkillManifest(BaseModel):
     """uSkill Manifest V2 document (``uskill.yaml``)."""
 
@@ -138,6 +155,7 @@ class USkillManifest(BaseModel):
     security: ManifestSecurity = Field(default_factory=ManifestSecurity)
     provenance: ManifestProvenance = Field(default_factory=ManifestProvenance)
     evaluation: ManifestEvaluation = Field(default_factory=ManifestEvaluation)
+    governance: ManifestGovernance = Field(default_factory=ManifestGovernance)
 
     # apiVersion/kind are constrained by Literal (emits const in JSON Schema);
     # wrong values are rejected by Pydantic before any custom logic.

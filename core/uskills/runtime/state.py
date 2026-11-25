@@ -8,13 +8,67 @@ disk rather than kept only in memory.
 
 from __future__ import annotations
 
+import contextlib
+import hashlib
 import json
+import os
+import re
 import uuid
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
 from enum import StrEnum
 from pathlib import Path
 from typing import Any
+
+
+class RunRetentionPolicy(StrEnum):
+    METADATA_ONLY = "metadata_only"
+    REDACTED = "redacted"
+    FULL = "full"
+    DISABLED = "disabled"
+
+
+_SENSITIVE_KEY = re.compile(
+    r"token|secret|password|credential|api[_-]?key|authorization|cookie", re.I
+)
+_BULK_KEY = re.compile(r"input|output|prompt|text|body|result|content", re.I)
+
+
+def _digest(value: Any) -> dict[str, Any]:
+    text = (
+        value if isinstance(value, str) else json.dumps(value, ensure_ascii=False, sort_keys=True)
+    )
+    return {"sha256": hashlib.sha256(text.encode("utf-8")).hexdigest(), "length": len(text)}
+
+
+def redact_run(data: dict[str, Any], policy: RunRetentionPolicy) -> dict[str, Any]:
+    """Return a copy of a run record according to a retention policy."""
+    if policy == RunRetentionPolicy.FULL:
+        return data
+    if policy == RunRetentionPolicy.DISABLED:
+        return {
+            "run_id": data.get("run_id", ""),
+            "status": data.get("status", ""),
+            "started_at": data.get("started_at"),
+            "finished_at": data.get("finished_at"),
+        }
+
+    def walk(value: Any) -> Any:
+        if isinstance(value, dict):
+            out = {}
+            for k, v in value.items():
+                if _SENSITIVE_KEY.search(k):
+                    out[k] = "[REDACTED]"
+                elif policy == RunRetentionPolicy.METADATA_ONLY and _BULK_KEY.search(k):
+                    out[k] = _digest(v)
+                else:
+                    out[k] = walk(v)
+            return out
+        if isinstance(value, list):
+            return [walk(v) for v in value]
+        return value
+
+    return walk(data)
 
 
 class StepState(StrEnum):
@@ -163,15 +217,21 @@ class RunRecord:
 class RunStore:
     """Filesystem-backed checkpoint store for run records."""
 
-    def __init__(self, root: str | Path):
+    def __init__(
+        self, root: str | Path, *, retention: RunRetentionPolicy = RunRetentionPolicy.FULL
+    ):
         self.root = Path(root)
         self.root.mkdir(parents=True, exist_ok=True)
+        self.retention = retention
 
-    def save(self, record: RunRecord) -> Path:
+    def save(self, record: RunRecord) -> Path | None:
+        if self.retention == RunRetentionPolicy.DISABLED:
+            return None
+        data = redact_run(record.to_dict(), self.retention)
         path = self.root / f"{record.run_id}.json"
-        path.write_text(
-            json.dumps(record.to_dict(), ensure_ascii=False, indent=2), encoding="utf-8"
-        )
+        path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+        with contextlib.suppress(OSError):
+            os.chmod(path, 0o600)
         return path
 
     def load(self, run_id: str) -> RunRecord:

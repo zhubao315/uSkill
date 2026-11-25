@@ -12,7 +12,9 @@ import json
 import sys
 from pathlib import Path
 
+from core.uskills.governance.lifecycle import SkillLifecycle
 from core.uskills.registry import SkillRegistryV3
+from core.uskills.runtime.state import RunStore
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
@@ -708,6 +710,85 @@ def cmd_registry_duplicates(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_runs_list(args: argparse.Namespace) -> int:
+    """List persisted runs (3.0)."""
+    store = RunStore(args.runs_dir)
+    runs = store.list_runs()
+    if args.json:
+        print(json.dumps(runs, ensure_ascii=False))
+    else:
+        for run_id in runs:
+            print(run_id)
+    return 0
+
+
+def cmd_runs_show(args: argparse.Namespace) -> int:
+    """Show a persisted run (3.0)."""
+    store = RunStore(args.runs_dir)
+    data = store.load(args.run_id).to_dict()
+    print(json.dumps(data, ensure_ascii=False, indent=2))
+    return 0
+
+
+def cmd_runs_delete(args: argparse.Namespace) -> int:
+    """Delete a persisted run (3.0)."""
+    from pathlib import Path
+
+    path = Path(args.runs_dir) / f"{args.run_id}.json"
+    if not path.exists():
+        print(f"Not found: {args.run_id}")
+        return 1
+    path.unlink()
+    print(f"Deleted {args.run_id}")
+    return 0
+
+
+def cmd_lifecycle_status(args: argparse.Namespace) -> int:
+    """Read the persistent lifecycle status of a skill (3.0)."""
+    from core.uskills.manifest import load_manifest
+
+    manifest = load_manifest(args.path)
+    gov = getattr(manifest, "governance", None)
+    print(
+        json.dumps(
+            {
+                "status": gov.status.value if gov else "draft",
+                "reviewer": gov.reviewer if gov else "",
+                "history": gov.history if gov else [],
+            },
+            ensure_ascii=False,
+            indent=2,
+        )
+    )
+    return 0
+
+
+def cmd_lifecycle_transition(args: argparse.Namespace) -> int:
+    """Transition a skill lifecycle with an explicit gate check (3.0)."""
+    from core.uskills.governance.lifecycle import assert_transition
+    from core.uskills.manifest import dump_manifest, load_manifest
+
+    manifest = load_manifest(args.path)
+    gov = manifest.governance
+    target = SkillLifecycle(args.target)
+    assert_transition(gov.status, target)
+    if args.reviewer:
+        gov.reviewer = args.reviewer
+    gov.reason = args.reason or ""
+    gov.history.append(
+        {
+            "from": gov.status.value,
+            "to": target.value,
+            "reviewer": gov.reviewer,
+            "reason": gov.reason,
+        }
+    )
+    gov.status = target
+    dump_manifest(manifest, args.path)
+    print(f"{gov.status.value}")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     """Build argument parser."""
     parser = argparse.ArgumentParser(
@@ -931,6 +1012,34 @@ def build_parser() -> argparse.ArgumentParser:
         p.add_argument("path", nargs="*", default=["skills"], help="Skill roots to scan.")
         p.add_argument("--output", help="Write report JSON to a file.")
         p.set_defaults(func=fn)
+
+    # 3.0: run management and lifecycle
+    runs = sub.add_parser("runs", help="Manage persisted runs (3.0).")
+    runs_sub = runs.add_subparsers(dest="runs_command")
+    p = runs_sub.add_parser("list", help="List runs.")
+    p.add_argument("--runs-dir", default=".uskills/runs")
+    p.add_argument("--json", action="store_true")
+    p.set_defaults(func=cmd_runs_list)
+    p = runs_sub.add_parser("show", help="Show one run.")
+    p.add_argument("run_id")
+    p.add_argument("--runs-dir", default=".uskills/runs")
+    p.set_defaults(func=cmd_runs_show)
+    p = runs_sub.add_parser("delete", help="Delete one run.")
+    p.add_argument("run_id")
+    p.add_argument("--runs-dir", default=".uskills/runs")
+    p.set_defaults(func=cmd_runs_delete)
+
+    lifecycle = sub.add_parser("lifecycle", help="Skill lifecycle governance (3.0).")
+    lifecycle_sub = lifecycle.add_subparsers(dest="lifecycle_command")
+    p = lifecycle_sub.add_parser("status", help="Show lifecycle status.")
+    p.add_argument("path")
+    p.set_defaults(func=cmd_lifecycle_status)
+    p = lifecycle_sub.add_parser("transition", help="Transition lifecycle stage.")
+    p.add_argument("path")
+    p.add_argument("target", choices=[s.value for s in SkillLifecycle])
+    p.add_argument("--reviewer", default="")
+    p.add_argument("--reason", default="")
+    p.set_defaults(func=cmd_lifecycle_transition)
 
     return parser
 
