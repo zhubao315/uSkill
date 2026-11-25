@@ -5,12 +5,12 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-import pytest
-
 from core.uskills.registry import SkillRecord, SkillRegistryV3
 
 
-def _make_skill_dir(root: Path, name: str, description: str, *, frontmatter_extra: str = "") -> Path:
+def _make_skill_dir(
+    root: Path, name: str, description: str, *, frontmatter_extra: str = ""
+) -> Path:
     d = root / name
     d.mkdir(parents=True, exist_ok=True)
     (d / "SKILL.md").write_text(
@@ -32,7 +32,9 @@ def test_discovers_pure_agent_skill_dir(tmp_path: Path) -> None:
 
 def test_discovers_two_layer_skill(tmp_path: Path) -> None:
     d = _make_skill_dir(tmp_path, "two-layer", "Layered skill")
-    (d / "uskill.yaml").write_text("apiVersion: uskills/v2\nkind: Skill\nmetadata:\n  name: two-layer\n", encoding="utf-8")
+    (d / "uskill.yaml").write_text(
+        "apiVersion: uskills/v2\nkind: Skill\nmetadata:\n  name: two-layer\n", encoding="utf-8"
+    )
     registry = SkillRegistryV3(tmp_path)
     assert any(r.format == "agent-skill+manifest" for r in registry.all_records())
 
@@ -95,7 +97,11 @@ def test_extra_roots(tmp_path: Path) -> None:
 
 def test_skill_record_to_dict_shape(tmp_path: Path) -> None:
     record = SkillRecord(
-        skill_id="x", name="X", description="D", format="agent-skill", path="x/SKILL.md",
+        skill_id="x",
+        name="X",
+        description="D",
+        format="agent-skill",
+        path="x/SKILL.md",
     )
     d = record.to_dict()
     for key in ("skill_id", "name", "format", "content_hash", "risk_level", "lifecycle_status"):

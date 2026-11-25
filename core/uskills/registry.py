@@ -15,12 +15,13 @@ per the 2.0 charter):
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from datetime import UTC
 from pathlib import Path
 from typing import Any
 
+from .agentskills import SKILL_FILE, inspect_agent_skill, validate_agent_skill
 from .schema import USkill
 from .validator import load_skill
-from .agentskills import SKILL_FILE, inspect_agent_skill, validate_agent_skill
 
 
 @dataclass
@@ -203,6 +204,7 @@ class SkillRecord:
 
 # ---------- Registry 3.0 additions ---------------------------------------
 
+
 class SkillRegistryV3:
     """Extends SkillRegistry with multi-format discovery and unified records."""
 
@@ -215,8 +217,9 @@ class SkillRegistryV3:
 
     @staticmethod
     def _now() -> str:
-        from datetime import datetime, timezone
-        return datetime.now(timezone.utc).isoformat(timespec="seconds")
+        from datetime import datetime
+
+        return datetime.now(UTC).isoformat(timespec="seconds")
 
     def _safe_rel(self, p: Path, base: Path) -> str:
         try:
@@ -246,17 +249,19 @@ class SkillRegistryV3:
                 try:
                     # from .validator import load_skill  (real module)
                     skill = load_skill(path)  # noqa: F821 - provided by real module
-                    self.records.append(SkillRecord(
-                        skill_id=skill.skill_id,
-                        name=skill.meta.name,
-                        description=skill.meta.description,
-                        format="legacy-yaml",
-                        path=self._safe_rel(path, base),
-                        category=skill.meta.category.value,
-                        domain=skill.meta.domain,
-                        tags=list(skill.meta.tags),
-                        discovered_at=self._now(),
-                    ))
+                    self.records.append(
+                        SkillRecord(
+                            skill_id=skill.skill_id,
+                            name=skill.meta.name,
+                            description=skill.meta.description,
+                            format="legacy-yaml",
+                            path=self._safe_rel(path, base),
+                            category=skill.meta.category.value,
+                            domain=skill.meta.domain,
+                            tags=list(skill.meta.tags),
+                            discovered_at=self._now(),
+                        )
+                    )
                 except Exception as exc:  # noqa: BLE001
                     self.broken.append({"path": str(path), "error": str(exc)})
 
@@ -312,10 +317,14 @@ class SkillRegistryV3:
         # same name + different content = conflict, surface as broken
         by_name: dict[str, set[str]] = {}
         for record in self.records:
-            by_name.setdefault(record.name.lower(), set()).add(record.content_hash or record.skill_id)
+            by_name.setdefault(record.name.lower(), set()).add(
+                record.content_hash or record.skill_id
+            )
         for name, hashes in by_name.items():
             if len(hashes) > 1:
-                self.broken.append({"path": f"name:{name}", "error": "same name, different content hashes"})
+                self.broken.append(
+                    {"path": f"name:{name}", "error": "same name, different content hashes"}
+                )
 
     # -- query surface --------------------------------------------------------
 
@@ -326,8 +335,18 @@ class SkillRegistryV3:
         return next((r for r in self.records if r.skill_id == skill_id), None)
 
     SEARCH_FIELDS = (
-        "name", "description", "keyword", "tag", "domain", "dependency",
-        "source", "agent", "risk", "lifecycle", "evaluation", "format",
+        "name",
+        "description",
+        "keyword",
+        "tag",
+        "domain",
+        "dependency",
+        "source",
+        "agent",
+        "risk",
+        "lifecycle",
+        "evaluation",
+        "format",
     )
 
     def search_records(
@@ -377,8 +396,10 @@ class SkillRegistryV3:
     def health(self) -> dict[str, Any]:
         return {
             "skills": len(self.records),
-            "by_format": {f: sum(1 for r in self.records if r.format == f)
-                          for f in sorted({r.format for r in self.records})},
+            "by_format": {
+                f: sum(1 for r in self.records if r.format == f)
+                for f in sorted({r.format for r in self.records})
+            },
             "broken": self.broken,
             "duplicates": self.duplicates,
             "ok": not self.broken and not self.duplicates,

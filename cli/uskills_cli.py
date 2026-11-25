@@ -12,6 +12,8 @@ import json
 import sys
 from pathlib import Path
 
+from core.uskills.registry import SkillRegistryV3
+
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
@@ -446,7 +448,7 @@ def cmd_build(args: argparse.Namespace) -> int:
 
 def cmd_search(args: argparse.Namespace) -> int:
     """Search the local skill registry by metadata (five modes)."""
-    from core.uskills.registry import SkillRegistry, SkillRegistryV3
+    from core.uskills.registry import SkillRegistry
 
     registry = SkillRegistry(args.path)
     hits = registry.search(args.query, mode=args.mode, limit=args.limit)
@@ -544,7 +546,7 @@ def cmd_risk(args: argparse.Namespace) -> int:
 
 def cmd_list(args: argparse.Namespace) -> int:
     """List skills in the local registry."""
-    from core.uskills.registry import SkillRegistry, SkillRegistryV3
+    from core.uskills.registry import SkillRegistry
 
     registry = SkillRegistry(args.path)
     skills = registry.all()
@@ -678,7 +680,6 @@ def cmd_doctor(args: argparse.Namespace) -> int:  # noqa: ARG001
 
 def cmd_registry_scan(args: argparse.Namespace) -> int:
     """Scan all roots and emit a unified machine-readable asset report."""
-    from pathlib import Path
     roots = list(args.path) if isinstance(args.path, list) else [args.path]
     registry = SkillRegistryV3(roots[0], extra_roots=roots[1:])
     report = registry.report()
@@ -693,7 +694,6 @@ def cmd_registry_scan(args: argparse.Namespace) -> int:
 
 def cmd_registry_report(args: argparse.Namespace) -> int:
     """Print registry health summary."""
-    from pathlib import Path
     roots = list(args.path) if isinstance(args.path, list) else [args.path]
     registry = SkillRegistryV3(roots[0], extra_roots=roots[1:])
     print(json.dumps(registry.health(), ensure_ascii=False, indent=2))
@@ -702,7 +702,6 @@ def cmd_registry_report(args: argparse.Namespace) -> int:
 
 def cmd_registry_duplicates(args: argparse.Namespace) -> int:
     """Print duplicate asset groups (identical content hashes)."""
-    from pathlib import Path
     roots = list(args.path) if isinstance(args.path, list) else [args.path]
     registry = SkillRegistryV3(roots[0], extra_roots=roots[1:])
     print(json.dumps(registry.duplicates, ensure_ascii=False, indent=2))
