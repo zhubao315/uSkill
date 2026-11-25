@@ -446,7 +446,7 @@ def cmd_build(args: argparse.Namespace) -> int:
 
 def cmd_search(args: argparse.Namespace) -> int:
     """Search the local skill registry by metadata (five modes)."""
-    from core.uskills.registry import SkillRegistry
+    from core.uskills.registry import SkillRegistry, SkillRegistryV3
 
     registry = SkillRegistry(args.path)
     hits = registry.search(args.query, mode=args.mode, limit=args.limit)
@@ -544,7 +544,7 @@ def cmd_risk(args: argparse.Namespace) -> int:
 
 def cmd_list(args: argparse.Namespace) -> int:
     """List skills in the local registry."""
-    from core.uskills.registry import SkillRegistry
+    from core.uskills.registry import SkillRegistry, SkillRegistryV3
 
     registry = SkillRegistry(args.path)
     skills = registry.all()
@@ -674,6 +674,39 @@ def cmd_doctor(args: argparse.Namespace) -> int:  # noqa: ARG001
         if not ok:
             problems += 1
     return 1 if problems else 0
+
+
+def cmd_registry_scan(args: argparse.Namespace) -> int:
+    """Scan all roots and emit a unified machine-readable asset report."""
+    from pathlib import Path
+    roots = list(args.path) if isinstance(args.path, list) else [args.path]
+    registry = SkillRegistryV3(roots[0], extra_roots=roots[1:])
+    report = registry.report()
+    text = json.dumps(report, ensure_ascii=False, indent=2)
+    if args.output:
+        Path(args.output).write_text(text + "\n", encoding="utf-8")
+        print(f"Wrote {args.output}")
+    else:
+        print(text)
+    return 0
+
+
+def cmd_registry_report(args: argparse.Namespace) -> int:
+    """Print registry health summary."""
+    from pathlib import Path
+    roots = list(args.path) if isinstance(args.path, list) else [args.path]
+    registry = SkillRegistryV3(roots[0], extra_roots=roots[1:])
+    print(json.dumps(registry.health(), ensure_ascii=False, indent=2))
+    return 0
+
+
+def cmd_registry_duplicates(args: argparse.Namespace) -> int:
+    """Print duplicate asset groups (identical content hashes)."""
+    from pathlib import Path
+    roots = list(args.path) if isinstance(args.path, list) else [args.path]
+    registry = SkillRegistryV3(roots[0], extra_roots=roots[1:])
+    print(json.dumps(registry.duplicates, ensure_ascii=False, indent=2))
+    return 0
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -886,6 +919,19 @@ def build_parser() -> argparse.ArgumentParser:
 
     p = sub.add_parser("doctor", help="Check environment and asset health.")
     p.set_defaults(func=cmd_doctor)
+
+    # Workbench 3.0: unified registry commands
+    registry = sub.add_parser("registry", help="Unified multi-format skill registry (3.0).")
+    registry_sub = registry.add_subparsers(dest="registry_command")
+    for name, fn, help_text in [
+        ("scan", cmd_registry_scan, "Scan roots and emit a unified asset report (JSON)."),
+        ("report", cmd_registry_report, "Show registry health summary."),
+        ("duplicates", cmd_registry_duplicates, "Show duplicate asset groups."),
+    ]:
+        p = registry_sub.add_parser(name, help=help_text)
+        p.add_argument("path", nargs="*", default=["skills"], help="Skill roots to scan.")
+        p.add_argument("--output", help="Write report JSON to a file.")
+        p.set_defaults(func=fn)
 
     return parser
 
