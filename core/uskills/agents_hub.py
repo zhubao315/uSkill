@@ -262,6 +262,14 @@ class CodexAdapter(AgentTargetAdapter):
     name = "codex"
     official_docs = "https://developers.openai.com/codex/skills/"
 
+    def preview_install(self, source_skill: Path, scope: InstallScope) -> InstallPlan:
+        plan = super().preview_install(source_skill, scope)
+        plan.risks.append(
+            "Codex does not merge duplicate skill names and applies no precedence; "
+            "ensure the name is unique across all scopes."
+        )
+        return plan
+
     def detect(self) -> bool:
         home_base = Path(os.environ.get("CODEX_HOME", self.home / ".codex"))
         return (home_base / "skills").is_dir() or shutil.which("codex") is not None
@@ -269,9 +277,11 @@ class CodexAdapter(AgentTargetAdapter):
     def list_skill_locations(self) -> list[SkillLocation]:
         codex_home = Path(os.environ.get("CODEX_HOME", self.home / ".codex"))
         return [
-            SkillLocation(InstallScope.PROJECT, self.project_root / ".agents" / "skills", 10),
-            SkillLocation(InstallScope.USER, codex_home / "skills", 20),
-            SkillLocation(InstallScope.USER, self.home / ".agents" / "skills", 30),
+            # Canonical per current Codex docs (2026): ~/.agents/skills
+            SkillLocation(InstallScope.USER, self.home / ".agents" / "skills", 10),
+            SkillLocation(InstallScope.PROJECT, self.project_root / ".agents" / "skills", 20),
+            # Legacy path still loaded in practice; keep as a fallback only.
+            SkillLocation(InstallScope.USER, codex_home / "skills", 90),
         ]
 
 
@@ -299,10 +309,14 @@ class OpenCodeAdapter(AgentTargetAdapter):
 
     def list_skill_locations(self) -> list[SkillLocation]:
         config = Path(os.environ.get("XDG_CONFIG_HOME", self.home / ".config")) / "opencode"
+        # Documented precedence (lowest to highest): builtins, .claude,
+        # .agents, ~/.config/opencode/skills, project .opencode/skills.
+        # Higher number = wins on duplicate ID.
         return [
-            SkillLocation(InstallScope.PROJECT, self.project_root / ".opencode" / "skills", 10),
-            SkillLocation(InstallScope.USER, config / "skills", 20),
-            SkillLocation(InstallScope.USER, self.home / ".agents" / "skills", 30),
+            SkillLocation(InstallScope.USER, self.home / ".claude" / "skills", 10),
+            SkillLocation(InstallScope.USER, self.home / ".agents" / "skills", 20),
+            SkillLocation(InstallScope.USER, config / "skills", 30),
+            SkillLocation(InstallScope.PROJECT, self.project_root / ".opencode" / "skills", 40),
         ]
 
 
