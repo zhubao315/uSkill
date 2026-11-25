@@ -1,4 +1,6 @@
-# 生态对标审计（Agent Skills 时代）
+# 生态对标审计（历史快照 · 2026-11-13 · v1.2 vs 2.0 计划）
+
+> 表中"2.0 计划"的多模型对比、回归门禁、MCP 桥接、package 均已交付。
 
 对象：Agent Skills 开放规范、OpenAI Codex Skills、Anthropic Agent Skills、
 MCP、评测实践。对比基于公开文档，不代表产品功能完全同构。

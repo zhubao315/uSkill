@@ -130,8 +130,18 @@ nav:
       - 技能库: generated/skills-index.md
   - 参考:
       - CLI 参考: cli.md
-      - Roadmap: roadmap.md
-      - 2.0 演进计划: ROADMAP_2.0.md
+      - 路线图（3.0）: workbench/ROADMAP_3.0.md
+      - 验收标准: workbench/ACCEPTANCE_CRITERIA.md
+  - 产品工作台（Phase 0）:
+      - PRD: workbench/PRD.md
+      - 产品章程: workbench/PRODUCT_CHARTER.md
+      - 架构: workbench/ARCHITECTURE.md
+      - 信息架构: workbench/INFORMATION_ARCHITECTURE.md
+      - 数据模型: workbench/DATA_MODEL.md
+      - 安全模型: workbench/SECURITY_MODEL.md
+  - 历史档案（只读快照）:
+      - Roadmap（2.0 前）: roadmap.md
+      - ROADMAP 2.0（已完成任务书）: ROADMAP_2.0.md
       - 审计报告 · 仓库: audit/REPOSITORY_AUDIT.md
       - 审计报告 · 项目: audit/PROJECT_AUDIT.md
       - 审计报告 · 架构: audit/ARCHITECTURE_AUDIT.md

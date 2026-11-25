@@ -22,7 +22,7 @@
 
 ---
 
-# V1.2 模块视图
+# V2.0 模块视图
 
 ```
 输入 SOP ──► converter/parse_sop（结构化解析·全量溯源）──► USkill YAML
@@ -32,7 +32,7 @@
                                     │
               runtime/engine ──► 输入治理 → 计划(approval/subskill/llm)
                     │                → 超时/重试 → 输出校验 → 检查点
-                    ├── providers（mock / openai-chat / openai-responses）
+                    ├── providers（mock / openai-chat / openai-responses / openai-compatible / anthropic / local）
                     ├── tools（ToolRegistry + PermissionPolicy 白名单）
                     └── state（RunRecord/RunStore 事件流与恢复）
                                     │

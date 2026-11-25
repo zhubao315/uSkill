@@ -91,7 +91,7 @@ record = runtime.run(skill, {"text": "..."})
 print(record.status, record.result, record.usage, record.execution_time)
 ```
 
-## V1.2 新能力
+## V2.0 新能力（含自 1.2 起延续并强化的能力）
 
 - **Runtime 2.0**：`control.timeout/retry` 不再只是声明，而是被真实强制执行；`content_pipeline` 这类组合技能现在通过工作流引擎**真实调度**子技能，而不是在 Prompt 里"告诉模型应该调用"。
 - **Agent Skills 开放标准兼容**：原生校验/导入/导出 `SKILL.md` 技能包；uSkill 扩展只放 `uskill.yaml`，不碰官方 Frontmatter。

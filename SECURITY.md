@@ -9,7 +9,7 @@ Do not disclose the issue in a public issue until it is triaged.
 
 Maintainers aim to acknowledge reports within 5 business days.
 
-## Security Model (v1.2)
+## Security Model (2.0)
 
 uSkill treats **all skill content as untrusted data, never as policy**:
 
@@ -27,7 +27,7 @@ uSkill treats **all skill content as untrusted data, never as policy**:
 
 ## Scope Notes
 
-The v1.2 runtime enforces timeout/retry/permission gates for registered
+The 2.0 runtime enforces timeout/retry/permission gates for registered
 tools. There is **no built-in OS-level sandbox** for `scripts/` in skill
 directories: do not auto-execute scripts from imported skills. When you
 wire scripts into a ToolRegistry, run them in a container or other
@@ -37,5 +37,6 @@ isolation appropriate to your threat model.
 
 | Version  | Supported |
 | -------- | --------- |
-| 1.2.x    | ✅        |
+| 2.0.x    | ✅        |
+| 1.2.x    | ⚠ (critical fixes only) |
 | < 1.2    | ❌ (upgrade) |
