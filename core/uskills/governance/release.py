@@ -59,7 +59,7 @@ def check_publish_gate(
     manifest_path = path / "uskill.yaml" if path.is_dir() else None
     if manifest_data is None and manifest_path and manifest_path.exists():
         try:
-            import yaml
+            import yaml  # type: ignore[import-untyped]
 
             manifest_data = yaml.safe_load(manifest_path.read_text(encoding="utf-8"))
         except Exception as exc:  # noqa: BLE001
