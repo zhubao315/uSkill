@@ -169,7 +169,7 @@ class _OpenAIProviderBase:
             )
 
             retryable = isinstance(
-                exc, (APITimeoutError, APIConnectionError, RateLimitError, InternalServerError)
+                exc, APITimeoutError | APIConnectionError | RateLimitError | InternalServerError
             )
         except ImportError:  # pragma: no cover
             retryable = False
@@ -335,7 +335,7 @@ class AnthropicProvider:
         if client is not None:
             self.client = client
         else:
-            from anthropic import Anthropic  # type: ignore[import-not-found]  # lazy import: keeps core vendor-optional
+            from anthropic import Anthropic  # noqa: I001  # type: ignore[import-not-found]  # lazy import: keeps core vendor-optional
 
             self.client = Anthropic(api_key=api_key)
         self.max_tokens = max_tokens
@@ -353,7 +353,7 @@ class AnthropicProvider:
             )
 
             retryable = isinstance(
-                exc, (APITimeoutError, APIConnectionError, RateLimitError, InternalServerError)
+                exc, APITimeoutError | APIConnectionError | RateLimitError | InternalServerError
             )
         except ImportError:  # pragma: no cover
             retryable = False

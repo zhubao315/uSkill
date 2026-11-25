@@ -25,7 +25,7 @@ def redact(value: Any, *, key: str = "") -> Any:
     """Recursively mask sensitive values for audit storage."""
     if key and _SENSITIVE_KEY.search(key):
         return _MASK
-    if key and _BULK_KEYS.match(key) and isinstance(value, (str, dict, list)):
+    if key and _BULK_KEYS.match(key) and isinstance(value, str | dict | list):
         text = value if isinstance(value, str) else json.dumps(value, ensure_ascii=False)
         return {
             "sha256": hashlib.sha256(text.encode("utf-8")).hexdigest()[:16],
