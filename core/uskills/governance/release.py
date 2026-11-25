@@ -60,6 +60,7 @@ def check_publish_gate(
     if manifest_data is None and manifest_path and manifest_path.exists():
         try:
             import yaml
+
             manifest_data = yaml.safe_load(manifest_path.read_text(encoding="utf-8"))
         except Exception as exc:  # noqa: BLE001
             problems.append(f"manifest parse failed: {exc}")
@@ -69,9 +70,13 @@ def check_publish_gate(
                 problems.append(f"manifest missing required key: {key}")
         gov = manifest_data.get("governance") or {}
         status = str(gov.get("status", SkillLifecycle.DRAFT.value))
-        if status not in (SkillLifecycle.REVIEWED.value, SkillLifecycle.PUBLISHED.value):
-            if not allow_unreviewed:
-                problems.append(f"lifecycle status {status!r} must be reviewed/published before publish")
+        if (
+            status not in (SkillLifecycle.REVIEWED.value, SkillLifecycle.PUBLISHED.value)
+            and not allow_unreviewed
+        ):
+            problems.append(
+                f"lifecycle status {status!r} must be reviewed/published before publish"
+            )
         if not gov.get("reviewer") and not allow_unreviewed:
             problems.append("no human reviewer recorded")
 
@@ -88,7 +93,9 @@ def check_publish_gate(
             problems.append("path traversal pattern detected in skill files")
 
     # provenance / license
-    if not re.search(r"license:\s*\S+", skill_md.read_text(encoding="utf-8", errors="replace"), re.I):
+    if not re.search(
+        r"license:\s*\S+", skill_md.read_text(encoding="utf-8", errors="replace"), re.I
+    ):
         problems.append("no license declared in SKILL.md frontmatter")
 
     # evaluation evidence
