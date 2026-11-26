@@ -23,6 +23,20 @@ from core.uskills.runtime.state import RunStore
 from .security import LocalAPIGuard
 
 
+class StudioBuildRequest(BaseModel):
+    source_text: str
+    name: str = "source"
+
+
+class StudioValidateRequest(BaseModel):
+    skill_path: str
+
+
+class EvalCompareRequest(BaseModel):
+    current_report: str
+    baseline_report: str
+
+
 class InstallPreviewRequest(BaseModel):
     skill_path: str
     agent: str
@@ -58,7 +72,7 @@ def create_app(
             category=category or None,
             source_type=source_type or None,
             status=status or None,
-            limit=500,
+            limit=2000,
         )
         return {"skills": [r.to_dict() for r in records], "health": registry.health()}
 
@@ -132,6 +146,43 @@ def create_app(
             return store.load(run_id).to_dict()
         except FileNotFoundError:
             raise HTTPException(404, f"unknown run: {run_id}") from None
+
+    @app.post("/api/studio/build")
+    def studio_build(req: StudioBuildRequest) -> dict[str, Any]:
+        from .studio import build_studio_draft
+
+        if not req.source_text.strip():
+            raise HTTPException(400, "source_text is empty")
+        return build_studio_draft(req.source_text, req.name)
+
+    @app.post("/api/studio/validate")
+    def studio_validate(req: StudioValidateRequest) -> dict[str, Any]:
+        from .studio import validate_skill_path
+
+        return validate_skill_path(req.skill_path)
+
+    @app.get("/api/eval/suites")
+    def eval_suites() -> list[dict[str, Any]]:
+        from .studio import eval_catalog
+
+        suites, _ = eval_catalog()
+        return suites
+
+    @app.get("/api/eval/reports")
+    def eval_reports() -> list[dict[str, Any]]:
+        from .studio import eval_catalog
+
+        _, reports = eval_catalog()
+        return reports
+
+    @app.post("/api/eval/compare")
+    def eval_compare(req: EvalCompareRequest) -> dict[str, Any]:
+        from .studio import compare_eval_reports
+
+        try:
+            return compare_eval_reports(req.current_report, req.baseline_report)
+        except FileNotFoundError as exc:
+            raise HTTPException(404, str(exc)) from None
 
     # Serve built frontend at / (never intercept /api)
     if static_dir and Path(static_dir).is_dir():

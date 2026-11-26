@@ -1,0 +1,5707 @@
+{
+  "generated_at": "2026-11-26T04:59:53.289Z",
+  "source": "zhubao315/obsidian-vault@main:02-BUILD/22-uSkill",
+  "count": 570,
+  "skills": [
+    {
+      "name": "rpvi-f3c564",
+      "title": "RPVI 大规模代码开发",
+      "category": "s1-ai",
+      "version": "",
+      "original_id": "",
+      "path": "s1-ai/rpvi-f3c564",
+      "source_sha": "a3779f4f8a44b032efe5280811fbe301f6b072a6",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-diary-metadata-agent",
+      "title": "日记元数据Agent",
+      "category": "s1-ai",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s1-ai/uskill-agent-diary-metadata-agent",
+      "source_sha": "00b8bc43020f63cceccc69688f68c50ece70332e",
+      "redacted": false
+    },
+    {
+      "name": "uskill-ai-advanced-prompting",
+      "title": "Prompt工程进阶",
+      "category": "s1-ai",
+      "version": "3.0.0",
+      "original_id": "SKL-6860",
+      "path": "s1-ai/uskill-ai-advanced-prompting",
+      "source_sha": "6961972c72f0bbd5622f8bf5dd526a98e7776910",
+      "redacted": false
+    },
+    {
+      "name": "uskill-ai-agent-architecture",
+      "title": "Agent架构设计",
+      "category": "s1-ai",
+      "version": "3.0.0",
+      "original_id": "SKL-6868",
+      "path": "s1-ai/uskill-ai-agent-architecture",
+      "source_sha": "1dc3e296348b3f4b25b8bb9fc68d97d59aa224fb",
+      "redacted": false
+    },
+    {
+      "name": "uskill-ai-engineering-ai-0bfe85",
+      "title": "AI 人物库构建专家",
+      "category": "s1-ai",
+      "version": "3.0.0",
+      "original_id": "SKL-5223",
+      "path": "s1-ai/uskill-ai-engineering-ai-0bfe85",
+      "source_sha": "7053e6229d448470f16f490547779cd8ec6390a7",
+      "redacted": false
+    },
+    {
+      "name": "uskill-ai-engineering-ai-436828",
+      "title": "AI 职业规划顾问",
+      "category": "s1-ai",
+      "version": "3.0.0",
+      "original_id": "SKL-5222",
+      "path": "s1-ai/uskill-ai-engineering-ai-436828",
+      "source_sha": "18fd075a33084c77d51ab4c4cfd5fdefe27bea8f",
+      "redacted": false
+    },
+    {
+      "name": "uskill-ai-engineering-ai-f9fead",
+      "title": "AI时代工程团队管理-宣讲文案",
+      "category": "s1-ai",
+      "version": "3.0.0",
+      "original_id": "SKL-6961",
+      "path": "s1-ai/uskill-ai-engineering-ai-f9fead",
+      "source_sha": "9ce6d8b19127f05c315a341da7dd924929c93d8a",
+      "redacted": false
+    },
+    {
+      "name": "uskill-ai-engineering-ai-ffcf35",
+      "title": "AI时代工程团队管理-落地行动清单",
+      "category": "s1-ai",
+      "version": "3.0.0",
+      "original_id": "SKL-6962",
+      "path": "s1-ai/uskill-ai-engineering-ai-ffcf35",
+      "source_sha": "c9466e9c5d6f5cae2aa35d0edf926848c7a3e5a0",
+      "redacted": false
+    },
+    {
+      "name": "uskill-ai-engineering-architecture-design-system",
+      "title": "architecture design system",
+      "category": "s1-ai",
+      "version": "3.0.0",
+      "original_id": "SKL-6865",
+      "path": "s1-ai/uskill-ai-engineering-architecture-design-system",
+      "source_sha": "e5d34ff679bc82b3a348e6c72839a494b409d266",
+      "redacted": false
+    },
+    {
+      "name": "uskill-ai-engineering-fullstack-develop-feature",
+      "title": "fullstack develop feature",
+      "category": "s1-ai",
+      "version": "3.0.0",
+      "original_id": "SKL-6862",
+      "path": "s1-ai/uskill-ai-engineering-fullstack-develop-feature",
+      "source_sha": "617dcff2ed1a79b5875b31e56ecc0b769b6642ed",
+      "redacted": false
+    },
+    {
+      "name": "uskill-ai-engineering-patent-application-drafting",
+      "title": "AI 专利申请草拟",
+      "category": "s1-ai",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s1-ai/uskill-ai-engineering-patent-application-drafting",
+      "source_sha": "947fefb95b5160bdf145e9282798f0c50493c36a",
+      "redacted": false
+    },
+    {
+      "name": "uskill-ai-engineering-rpvi-prompt-engineering",
+      "title": "RPVI提示词工程",
+      "category": "s1-ai",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s1-ai/uskill-ai-engineering-rpvi-prompt-engineering",
+      "source_sha": "f232c8e68b34e3db8f676a62a6e86009ae8d3b3a",
+      "redacted": false
+    },
+    {
+      "name": "uskill-ai-engineering-technical-cache-architecture-design",
+      "title": "technical cache architecture design",
+      "category": "s1-ai",
+      "version": "3.0.0",
+      "original_id": "SKL-5127",
+      "path": "s1-ai/uskill-ai-engineering-technical-cache-architecture-design",
+      "source_sha": "18820d5d75836e3e8f4c972697a9b644ee65b6f4",
+      "redacted": false
+    },
+    {
+      "name": "uskill-ai-engineering-technical-cicd-pipeline-design",
+      "title": "technical cicd pipeline design",
+      "category": "s1-ai",
+      "version": "3.0.0",
+      "original_id": "SKL-5129",
+      "path": "s1-ai/uskill-ai-engineering-technical-cicd-pipeline-design",
+      "source_sha": "c36d70430f07fc3ac277167a2bc88b6c48433032",
+      "redacted": false
+    },
+    {
+      "name": "uskill-ai-engineering-technical-container-deployment",
+      "title": "technical container deployment",
+      "category": "s1-ai",
+      "version": "3.0.0",
+      "original_id": "SKL-6859",
+      "path": "s1-ai/uskill-ai-engineering-technical-container-deployment",
+      "source_sha": "3c3cfde38a64eeb365f16a0b1f735bfe1a3410b9",
+      "redacted": false
+    },
+    {
+      "name": "uskill-ai-engineering-technical-database-selection",
+      "title": "technical database selection",
+      "category": "s1-ai",
+      "version": "3.0.0",
+      "original_id": "SKL-5126",
+      "path": "s1-ai/uskill-ai-engineering-technical-database-selection",
+      "source_sha": "27c69761046d4697c29d4a262a22d5b98e40fa51",
+      "redacted": false
+    },
+    {
+      "name": "uskill-ai-engineering-technical-deploy-containerized-applica",
+      "title": "technical deploy containerized application",
+      "category": "s1-ai",
+      "version": "3.0.0",
+      "original_id": "SKL-6866",
+      "path": "s1-ai/uskill-ai-engineering-technical-deploy-containerized-applica",
+      "source_sha": "cda762436769c09dc58b9f0edd4f61a285f516d7",
+      "redacted": false
+    },
+    {
+      "name": "uskill-ai-engineering-technical-deploy-containerized-cloud-n",
+      "title": "technical deploy containerized cloud native",
+      "category": "s1-ai",
+      "version": "3.0.0",
+      "original_id": "SKL-6869",
+      "path": "s1-ai/uskill-ai-engineering-technical-deploy-containerized-cloud-n",
+      "source_sha": "ed7e72052fc9868f4b98b0942b5e2b09af788058",
+      "redacted": false
+    },
+    {
+      "name": "uskill-ai-engineering-technical-design-system-architecture",
+      "title": "technical design system architecture",
+      "category": "s1-ai",
+      "version": "3.0.0",
+      "original_id": "SKL-6867",
+      "path": "s1-ai/uskill-ai-engineering-technical-design-system-architecture",
+      "source_sha": "d1a47f62f2da16aca845b26c27fb678d25c761a0",
+      "redacted": false
+    },
+    {
+      "name": "uskill-ai-engineering-technical-develop-fullstack-feature",
+      "title": "technical develop fullstack feature",
+      "category": "s1-ai",
+      "version": "3.0.0",
+      "original_id": "SKL-6870",
+      "path": "s1-ai/uskill-ai-engineering-technical-develop-fullstack-feature",
+      "source_sha": "92948523af7b4e948ac20974606e47002da5dde0",
+      "redacted": false
+    },
+    {
+      "name": "uskill-ai-engineering-technical-draft-ai-patent-application",
+      "title": "technical draft ai patent application",
+      "category": "s1-ai",
+      "version": "3.0.0",
+      "original_id": "SKL-6864",
+      "path": "s1-ai/uskill-ai-engineering-technical-draft-ai-patent-application",
+      "source_sha": "a76d00179fe336ff4592b2979260847513d5f7fe",
+      "redacted": false
+    },
+    {
+      "name": "uskill-ai-engineering-technical-fullstack-tdd-development",
+      "title": "technical fullstack tdd development",
+      "category": "s1-ai",
+      "version": "3.0.0",
+      "original_id": "SKL-5150",
+      "path": "s1-ai/uskill-ai-engineering-technical-fullstack-tdd-development",
+      "source_sha": "04f8576266c4fda366896f22de1d3d29e41d9117",
+      "redacted": false
+    },
+    {
+      "name": "uskill-ai-engineering-technical-message-queue-selection",
+      "title": "technical message queue selection",
+      "category": "s1-ai",
+      "version": "3.0.0",
+      "original_id": "SKL-5128",
+      "path": "s1-ai/uskill-ai-engineering-technical-message-queue-selection",
+      "source_sha": "24deffdb4c95544a89258a7ee8b5e8c97c0ca17e",
+      "redacted": false
+    },
+    {
+      "name": "uskill-ai-engineering-technical-microservice-decomposition",
+      "title": "technical microservice decomposition",
+      "category": "s1-ai",
+      "version": "3.0.0",
+      "original_id": "SKL-6858",
+      "path": "s1-ai/uskill-ai-engineering-technical-microservice-decomposition",
+      "source_sha": "e3f164cc50e23c1fdc4a93a2f470d40865e29d9a",
+      "redacted": false
+    },
+    {
+      "name": "uskill-ai-engineering-technical-rpvi-large-scale-code-dev",
+      "title": "technical rpvi large scale code dev",
+      "category": "s1-ai",
+      "version": "3.0.0",
+      "original_id": "SKL-5004",
+      "path": "s1-ai/uskill-ai-engineering-technical-rpvi-large-scale-code-dev",
+      "source_sha": "872c5b9c1e3975b2d319fa9c7af370503b688a7a",
+      "redacted": false
+    },
+    {
+      "name": "uskill-ai-engineering-technical-rpvi-prompt-engineering",
+      "title": "technical rpvi prompt engineering",
+      "category": "s1-ai",
+      "version": "3.0.0",
+      "original_id": "SKL-6861",
+      "path": "s1-ai/uskill-ai-engineering-technical-rpvi-prompt-engineering",
+      "source_sha": "7365f0383061227f7ec2ae4634721f7fbf624b02",
+      "redacted": false
+    },
+    {
+      "name": "uskill-ai-engineering-88be14",
+      "title": "软件测试每日任务",
+      "category": "s1-ai",
+      "version": "3.0.0",
+      "original_id": "SKL-6964",
+      "path": "s1-ai/uskill-ai-engineering-88be14",
+      "source_sha": "a8cadfda8a253ef484b31524b7cb020a877b51ad",
+      "redacted": false
+    },
+    {
+      "name": "uskill-ai-ethics",
+      "title": "AI伦理",
+      "category": "s1-ai",
+      "version": "3.0.0",
+      "original_id": "SKL-6863",
+      "path": "s1-ai/uskill-ai-ethics",
+      "source_sha": "63b0efab8d3f9f553eca184ef9a45ef78faa1465",
+      "redacted": false
+    },
+    {
+      "name": "uskill-ai-rag-optimization",
+      "title": "RAG优化",
+      "category": "s1-ai",
+      "version": "3.0.0",
+      "original_id": "SKL-6857",
+      "path": "s1-ai/uskill-ai-rag-optimization",
+      "source_sha": "0c2b4eeed35d1a08e6532ca73c0b81b8420cbf7e",
+      "redacted": false
+    },
+    {
+      "name": "uskill-api-tester",
+      "title": "API测试与自动化",
+      "category": "s1-ai",
+      "version": "3.0.0",
+      "original_id": "SKL-6409",
+      "path": "s1-ai/uskill-api-tester",
+      "source_sha": "fe21a1343a4f086dbfaecf597d7aba551a4a7f8f",
+      "redacted": false
+    },
+    {
+      "name": "uskill-architecture-rpvi-large-scale-code-dev",
+      "title": "RPVI 大规模代码开发",
+      "category": "s1-ai",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s1-ai/uskill-architecture-rpvi-large-scale-code-dev",
+      "source_sha": "92b5411b644ba084210df5d6a4ab82d12ecac9a5",
+      "redacted": false
+    },
+    {
+      "name": "uskill-tool-gemini-web-api",
+      "title": "Gemini Web API 图像/文本生成",
+      "category": "s1-ai",
+      "version": "3.0.0",
+      "original_id": "SKL-7085",
+      "path": "s1-ai/uskill-tool-gemini-web-api",
+      "source_sha": "ad66a80f6022f589fcb0e9b625114bd457ab8cf7",
+      "redacted": false
+    },
+    {
+      "name": "uskill-architecture-advanced-fullstack-dev",
+      "title": "高级全栈开发",
+      "category": "s2",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s2/uskill-architecture-advanced-fullstack-dev",
+      "source_sha": "90b0e399cc515e60fbacf8ea1f51dc9fdb7e210d",
+      "redacted": false
+    },
+    {
+      "name": "uskill-architecture-cicd-pipeline-design",
+      "title": "CICD流水线设计",
+      "category": "s2",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s2/uskill-architecture-cicd-pipeline-design",
+      "source_sha": "3b57cf45f0b51ea11c80959110daa0f9e9bc872b",
+      "redacted": false
+    },
+    {
+      "name": "uskill-architecture-cloud-native-containerization",
+      "title": "云原生容器化部署",
+      "category": "s2",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s2/uskill-architecture-cloud-native-containerization",
+      "source_sha": "a40a732ad9437f66e40054bd652001e95eaf4c6e",
+      "redacted": false
+    },
+    {
+      "name": "uskill-architecture-containerized-app-deployment",
+      "title": "容器化应用部署",
+      "category": "s2",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s2/uskill-architecture-containerized-app-deployment",
+      "source_sha": "cb9ea7f8f41f99b2041728d7f779d859b8a30b22",
+      "redacted": false
+    },
+    {
+      "name": "uskill-architecture-design-system",
+      "title": "架构设计体系",
+      "category": "s2",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s2/uskill-architecture-design-system",
+      "source_sha": "85636d6aadfdb7109c671d74973061c3e2b48df4",
+      "redacted": false
+    },
+    {
+      "name": "uskill-architecture-fullstack-feature-implementation",
+      "title": "全栈特性开发实现",
+      "category": "s2",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s2/uskill-architecture-fullstack-feature-implementation",
+      "source_sha": "a7c1545caeab29f5f8385632741122d25da3acb8",
+      "redacted": false
+    },
+    {
+      "name": "uskill-backend-architect",
+      "title": "后端架构设计",
+      "category": "s2",
+      "version": "3.0.0",
+      "original_id": "SKL-6401",
+      "path": "s2/uskill-backend-architect",
+      "source_sha": "704e690f803469b7ae9783c6efde423c9d721a0c",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cms-developer",
+      "title": "CMS内容管理系统",
+      "category": "s2",
+      "version": "3.0.0",
+      "original_id": "SKL-6604",
+      "path": "s2/uskill-cms-developer",
+      "source_sha": "5975c3b122b18600312552897757be38e6406f1b",
+      "redacted": false
+    },
+    {
+      "name": "uskill-code-reviewer",
+      "title": "代码审查",
+      "category": "s2",
+      "version": "3.0.0",
+      "original_id": "SKL-6403",
+      "path": "s2/uskill-code-reviewer",
+      "source_sha": "a10d194198b639a5c09d975a9a20570bbf1ccd02",
+      "redacted": false
+    },
+    {
+      "name": "uskill-devops-automator",
+      "title": "DevOps自动化",
+      "category": "s2",
+      "version": "3.0.0",
+      "original_id": "SKL-6402",
+      "path": "s2/uskill-devops-automator",
+      "source_sha": "88bfcd75c7a81f7828439d9600c3d0a9f37e4d5d",
+      "redacted": false
+    },
+    {
+      "name": "uskill-embedded-firmware",
+      "title": "嵌入式固件开发",
+      "category": "s2",
+      "version": "3.0.0",
+      "original_id": "SKL-6601",
+      "path": "s2/uskill-embedded-firmware",
+      "source_sha": "ac7b25d3077659031304a1ac13d096952fde05e4",
+      "redacted": false
+    },
+    {
+      "name": "uskill-incident-response",
+      "title": "事件响应与故障处理",
+      "category": "s2",
+      "version": "3.0.0",
+      "original_id": "SKL-6404",
+      "path": "s2/uskill-incident-response",
+      "source_sha": "538af5716e9f162084d040c1fd22adaf79359a18",
+      "redacted": false
+    },
+    {
+      "name": "uskill-mobile-app-builder",
+      "title": "移动应用开发",
+      "category": "s2",
+      "version": "3.0.0",
+      "original_id": "SKL-6501",
+      "path": "s2/uskill-mobile-app-builder",
+      "source_sha": "1b07ce2a10096b6633e9bec1353ffca06ad00603",
+      "redacted": false
+    },
+    {
+      "name": "uskill-pentest-audit",
+      "title": "渗透测试与安全审计",
+      "category": "s2",
+      "version": "3.0.0",
+      "original_id": "SKL-6408",
+      "path": "s2/uskill-pentest-audit",
+      "source_sha": "542cfe7f2bffbfe4bc1b198b8d3cf02a0d203722",
+      "redacted": false
+    },
+    {
+      "name": "uskill-smart-contract",
+      "title": "智能合约开发",
+      "category": "s2",
+      "version": "3.0.0",
+      "original_id": "SKL-6503",
+      "path": "s2/uskill-smart-contract",
+      "source_sha": "617177a1fd58e1af7d0d2fcb599bdb962d114da0",
+      "redacted": false
+    },
+    {
+      "name": "uskill-tool-agent-skill-creator",
+      "title": "跨平台智能体技能创建器",
+      "category": "s2",
+      "version": "3.0.0",
+      "original_id": "SKL-7086",
+      "path": "s2/uskill-tool-agent-skill-creator",
+      "source_sha": "af0f9419b5c0422c4422842e02c757331003696a",
+      "redacted": false
+    },
+    {
+      "name": "uskill-tool-electron-extract",
+      "title": "Electron应用源码提取",
+      "category": "s2",
+      "version": "3.0.0",
+      "original_id": "SKL-7087",
+      "path": "s2/uskill-tool-electron-extract",
+      "source_sha": "73e4059e08711b1609f017735dea511b33befe7f",
+      "redacted": false
+    },
+    {
+      "name": "uskill-voice-ai-integration",
+      "title": "语音AI集成",
+      "category": "s2",
+      "version": "3.0.0",
+      "original_id": "SKL-6602",
+      "path": "s2/uskill-voice-ai-integration",
+      "source_sha": "50d995f4e6590d92a1c64dbcb65131a18555e8e0",
+      "redacted": false
+    },
+    {
+      "name": "uskill-wechat-miniprogram",
+      "title": "微信小程序开发",
+      "category": "s2",
+      "version": "3.0.0",
+      "original_id": "SKL-6502",
+      "path": "s2/uskill-wechat-miniprogram",
+      "source_sha": "ddf1054be26a276fca6903d83c6a87861d82e6b7",
+      "redacted": false
+    },
+    {
+      "name": "skill-8966071f",
+      "title": "云原生容器化部署",
+      "category": "s2",
+      "version": "",
+      "original_id": "",
+      "path": "s2/skill-8966071f",
+      "source_sha": "82d313c119e801de551c61927c0e2ac2a2d603f6",
+      "redacted": false
+    },
+    {
+      "name": "skill-7e2e3467",
+      "title": "全栈特性开发实现",
+      "category": "s2",
+      "version": "",
+      "original_id": "",
+      "path": "s2/skill-7e2e3467",
+      "source_sha": "4109aaab55a1dfd257175414e995238aa1f94262",
+      "redacted": false
+    },
+    {
+      "name": "skill-b0ddaa8a",
+      "title": "移动应用开发",
+      "category": "s2",
+      "version": "",
+      "original_id": "",
+      "path": "s2/skill-b0ddaa8a",
+      "source_sha": "e158fa9135fed2a8acad1370d0eef37adec1781c",
+      "redacted": false
+    },
+    {
+      "name": "uskill-accessible-design",
+      "title": "无障碍与包容性设计",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6605",
+      "path": "s3/uskill-accessible-design",
+      "source_sha": "8a4f0cb3ab32e912b3e1527ca584bd52a831215d",
+      "redacted": false
+    },
+    {
+      "name": "uskill-aeo-optimizer",
+      "title": "AI搜索优化",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6508",
+      "path": "s3/uskill-aeo-optimizer",
+      "source_sha": "2a2e5cb56b60663ed4f7ab47f4df49125a991fc9",
+      "redacted": false
+    },
+    {
+      "name": "uskill-architecture-reinforcing-loop-design",
+      "title": "增强回路设计",
+      "category": "s3",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s3/uskill-architecture-reinforcing-loop-design",
+      "source_sha": "965a232c50d759d6746c71420bc77ec185bca1de",
+      "redacted": false
+    },
+    {
+      "name": "uskill-aso-optimizer",
+      "title": "ASO应用商店优化",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6506",
+      "path": "s3/uskill-aso-optimizer",
+      "source_sha": "d9beee6192ad6c38f3d107c20eb169963f14297a",
+      "redacted": false
+    },
+    {
+      "name": "uskill-beijing-culture-explorer",
+      "title": "北京文化探索指南",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6806",
+      "path": "s3/uskill-beijing-culture-explorer",
+      "source_sha": "c15b64931046dfdb5c7ba03e4b60d8c96eca10f3",
+      "redacted": false
+    },
+    {
+      "name": "uskill-bilibili-strategy",
+      "title": "B站内容运营",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6878",
+      "path": "s3/uskill-bilibili-strategy",
+      "source_sha": "ff80cf706ce6ba7c8547ddb119e13d3441d4cbd6",
+      "redacted": false
+    },
+    {
+      "name": "uskill-brand-guardian",
+      "title": "品牌识别系统",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6305",
+      "path": "s3/uskill-brand-guardian",
+      "source_sha": "5c8dd48f226a0e2bc13a436d97ef372252673235",
+      "redacted": false
+    },
+    {
+      "name": "uskill-carousel-growth",
+      "title": "轮播内容增长",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6608",
+      "path": "s3/uskill-carousel-growth",
+      "source_sha": "8f33c55db10f242787f6b3ec9112f6ac5acbd1c3",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-beijing-cultural-ambassador",
+      "title": "creative beijing cultural ambassador",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-5038",
+      "path": "s3/uskill-creative-beijing-cultural-ambassador",
+      "source_sha": "e4537f209170aa4633e6bad058c61f972edd7a34",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-competitive-gaming-analysis",
+      "title": "creative competitive gaming analysis",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6875",
+      "path": "s3/uskill-creative-competitive-gaming-analysis",
+      "source_sha": "0c8dcff8991dc68c5436faef4f43c4809acb1864",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-content-adaptation",
+      "title": "内容改编",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-5611",
+      "path": "s3/uskill-creative-content-adaptation",
+      "source_sha": "28dc2acc1e16c641804a78b9cd094bca3b58fd69",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-copywriting",
+      "title": "文案写作",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-5608",
+      "path": "s3/uskill-creative-copywriting",
+      "source_sha": "c17cc0b37bcb2e9ff9226db0cf22fbf7dcf2c075",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-data-visualization",
+      "title": "数据可视化",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-5606",
+      "path": "s3/uskill-creative-data-visualization",
+      "source_sha": "67d05fc94db0a2554181c28a8d9581b0b47544ad",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-deep-interpret-ancient-texts",
+      "title": "creative deep interpret ancient texts",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6876",
+      "path": "s3/uskill-creative-deep-interpret-ancient-texts",
+      "source_sha": "c35a70353ac0249ad39ccf5bebc9f6579f2f33fa",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-drama-deep-analysis-v2",
+      "title": "creative drama deep analysis v2",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6873",
+      "path": "s3/uskill-creative-drama-deep-analysis-v2",
+      "source_sha": "986bab44c41849a1600cb004c1e0662e71da678c",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-gaming-strategy-analysis",
+      "title": "creative gaming strategy analysis",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-5037",
+      "path": "s3/uskill-creative-gaming-strategy-analysis",
+      "source_sha": "6aa48f32ec12167d97308b2829e60d6d08df52bf",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-hdr-9882df",
+      "title": "HDR高动态范围",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6966",
+      "path": "s3/uskill-creative-hdr-9882df",
+      "source_sha": "a8b39da20259d2e7aaf70eca4bbbb79355ce4125",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-ideation",
+      "title": "创意发散",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-5609",
+      "path": "s3/uskill-creative-ideation",
+      "source_sha": "8ca02199893b2e4644c3a02584945b6fad04fad9",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-iso-d0965c",
+      "title": "ISO感光度",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-7209",
+      "path": "s3/uskill-creative-iso-d0965c",
+      "source_sha": "9fe1c1d43548f2243d5052d4bc07115e59955c6b",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-persuasive-writing",
+      "title": "说服力写作",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-5610",
+      "path": "s3/uskill-creative-persuasive-writing",
+      "source_sha": "415332be2beab466d87b04f140c51915b0042208",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-photography-post-processing",
+      "title": "creative photography post processing",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-5015",
+      "path": "s3/uskill-creative-photography-post-processing",
+      "source_sha": "e150305e7354af6e1e08b7af0e96e14c39e82d91",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-presentation-rhythm",
+      "title": "演讲节奏控制",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-5607",
+      "path": "s3/uskill-creative-presentation-rhythm",
+      "source_sha": "d5fe305c135b7bc7ce215de71911aabb87743396",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-produce-tech-blog-content",
+      "title": "creative produce tech blog content",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6877",
+      "path": "s3/uskill-creative-produce-tech-blog-content",
+      "source_sha": "0225aa2f09a474df10f4afb94fd59bc72bc5f16b",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-screenplay-deep-analysis",
+      "title": "剧作深度分析 v2",
+      "category": "s3",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s3/uskill-creative-screenplay-deep-analysis",
+      "source_sha": "9238bd1844fef8e0d31d9209972758d4ce3a8753",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-storytelling",
+      "title": "故事化表达",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-5605",
+      "path": "s3/uskill-creative-storytelling",
+      "source_sha": "f57267815d09921277191a5791d349c7f5460d03",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-ef6219",
+      "title": "三分法构图",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6971",
+      "path": "s3/uskill-creative-ef6219",
+      "source_sha": "03d55e66f69edb40e905c7f8345eacfad5d18cc6",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-f0899d",
+      "title": "三脚架选择",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6972",
+      "path": "s3/uskill-creative-f0899d",
+      "source_sha": "65ebb0e4570cbd2473434e6aa9923f4de5cc2b2b",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-7b9444",
+      "title": "人像摄影",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6973",
+      "path": "s3/uskill-creative-7b9444",
+      "source_sha": "c40a9a7cf428c89728bb473b8ddcbbb53dc2215a",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-15a573",
+      "title": "人像镜头选择",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6974",
+      "path": "s3/uskill-creative-15a573",
+      "source_sha": "597e1c8424eb9a84baa86aee8693760b2a20568e",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-46c607",
+      "title": "光圈",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-7206",
+      "path": "s3/uskill-creative-46c607",
+      "source_sha": "5545f4749fee85eb4eb5d4230ba8a33679370606",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-cb8e88",
+      "title": "包围曝光",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6976",
+      "path": "s3/uskill-creative-cb8e88",
+      "source_sha": "19fb620e5d2acc1f57706595b6f23e6bad2ff81a",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-v3-7cbf40",
+      "title": "咖啡冲泡",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-V3-PRACTICE-001",
+      "path": "s3/uskill-creative-v3-7cbf40",
+      "source_sha": "f77df5c6885a42d0c6ec90e3916b6b6bc7347cdf",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-de2866",
+      "title": "uSkill-城市风光摄影",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6968",
+      "path": "s3/uskill-creative-de2866",
+      "source_sha": "62985d528477deccfeea6609f184c982948ed118",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-f73598",
+      "title": "夜景摄影",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6977",
+      "path": "s3/uskill-creative-f73598",
+      "source_sha": "f6d803959ab498d7cc062f4d4d06959ba178eb0e",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-332038",
+      "title": "uSkill-夜景长曝光摄影",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6969",
+      "path": "s3/uskill-creative-332038",
+      "source_sha": "945fa51bb688ad6b6eb80d3f4fcdf810e6bf3b51",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-b33a22",
+      "title": "uSkill-creative-对称构图",
+      "category": "s3",
+      "version": "",
+      "original_id": "",
+      "path": "s3/uskill-creative-b33a22",
+      "source_sha": "2289a7bf3991a5a607590a77bb5b2d5f2a04ea21",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-e560f2",
+      "title": "广角镜头",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6979",
+      "path": "s3/uskill-creative-e560f2",
+      "source_sha": "b7d7d24d638ba3e4984ee9018405fb698c3b08dd",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-c2daed",
+      "title": "微距摄影",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6981",
+      "path": "s3/uskill-creative-c2daed",
+      "source_sha": "9c4dfffc943b46422991205b9afe88b4532310be",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-2dae0e",
+      "title": "快门速度",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-7205",
+      "path": "s3/uskill-creative-2dae0e",
+      "source_sha": "ae77ad2b49b4ea4628d664ad1e1ee8a8e7a62be7",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-a9946e",
+      "title": "手动对焦",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6983",
+      "path": "s3/uskill-creative-a9946e",
+      "source_sha": "aed944f50a2941a3f28257f5b823918aba6325eb",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-post-processing-5e6904",
+      "title": "uSkill-creative-摄影post-processing",
+      "category": "s3",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s3/uskill-creative-post-processing-5e6904",
+      "source_sha": "1819fa58eab569f6e194adbd2303ce4b61355760",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-f2a243",
+      "title": "景深",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-7208",
+      "path": "s3/uskill-creative-f2a243",
+      "source_sha": "e3bce435aa86ff2e2a2b402586a3fca13031b09f",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-v3-4793bf",
+      "title": "曝光三角（v3 升级示范）",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-7207",
+      "path": "s3/uskill-creative-v3-4793bf",
+      "source_sha": "83da34cf4a3861320562ddfd8d3928822793bc67",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-f0b94b",
+      "title": "曝光三角",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-7207",
+      "path": "s3/uskill-creative-f0b94b",
+      "source_sha": "4ff83da3639bc715168a24bd70155136e182a774",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-cd7b6b",
+      "title": "曝光调整",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6986",
+      "path": "s3/uskill-creative-cd7b6b",
+      "source_sha": "00d0cca605722f41cb8898cf55f54815155979bf",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-f8fca7",
+      "title": "框架构图",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6987",
+      "path": "s3/uskill-creative-f8fca7",
+      "source_sha": "1e2390407f366b3d3e7124aa3fe44203d44463d0",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-f12591",
+      "title": "游戏策略：英雄精进",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6988",
+      "path": "s3/uskill-creative-f12591",
+      "source_sha": "f72e9c0ad9aefafa2ec301b8c89312f97fda4884",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-e2d86a",
+      "title": "滤镜系统",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6989",
+      "path": "s3/uskill-creative-e2d86a",
+      "source_sha": "b90e20b2ab7136781dc6ed5ba042e06ac11193b2",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-8ced9f",
+      "title": "留白构图",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6990",
+      "path": "s3/uskill-creative-8ced9f",
+      "source_sha": "85e3771217cd06fb88f894c33723171a462ae0a0",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-8a1b13",
+      "title": "白平衡",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6991",
+      "path": "s3/uskill-creative-8a1b13",
+      "source_sha": "a142e03b887203697f40ff3d1c78f8c6631a5e5b",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-f97f60",
+      "title": "色彩校正",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6992",
+      "path": "s3/uskill-creative-f97f60",
+      "source_sha": "d2cfad6805a8ba633019e4f50e1f4f83530b15ff",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-6d970d",
+      "title": "色温调整",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6993",
+      "path": "s3/uskill-creative-6d970d",
+      "source_sha": "32ec4b08f2d9dc008eb6a511d81db2ebb3f2ceed",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-410774",
+      "title": "葡萄酒产国选酒策略",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6994",
+      "path": "s3/uskill-creative-410774",
+      "source_sha": "51dae798ff30d3abd935d082aa4baa95dcc1b7e3",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-sop-c55d1c",
+      "title": "葡萄酒品鉴：SOP体系",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6995",
+      "path": "s3/uskill-creative-sop-c55d1c",
+      "source_sha": "606c0eabb419892e858b9710c08f34c95b13cd93",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-70afa6",
+      "title": "街头摄影",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6996",
+      "path": "s3/uskill-creative-70afa6",
+      "source_sha": "f81a1542ca67e64546eb7a6766adfe0ad75b1637",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-787ec8",
+      "title": "uSkill-街头纪实摄影",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6970",
+      "path": "s3/uskill-creative-787ec8",
+      "source_sha": "34c581704a8f9c95e1bfdfdf3b6fc4ca7b25a997",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-922112",
+      "title": "裁剪二次构图",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6997",
+      "path": "s3/uskill-creative-922112",
+      "source_sha": "028265e44e48b3cf7c27a24fa37ec534b489a2bc",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-fb8e3a",
+      "title": "锐化降噪",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6998",
+      "path": "s3/uskill-creative-fb8e3a",
+      "source_sha": "c746df3822114fe1c9aa0b07f4470737a72ecea4",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-6d8cb4",
+      "title": "长曝光",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6999",
+      "path": "s3/uskill-creative-6d8cb4",
+      "source_sha": "3021df35ef0a8765e9423259fedeb52407f88968",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-d57448",
+      "title": "长焦镜头",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-7000",
+      "path": "s3/uskill-creative-d57448",
+      "source_sha": "796318a7df4ca570cdb7e4b2e18c1b11f8548ce4",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-026706",
+      "title": "风光摄影",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-7001",
+      "path": "s3/uskill-creative-026706",
+      "source_sha": "1b651c25270761fe2436a2c54dbf78cdd30a6f1a",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cross-border-ecommerce",
+      "title": "跨境电商运营",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6507",
+      "path": "s3/uskill-cross-border-ecommerce",
+      "source_sha": "308ee73550ba1b1e6933bbc2f6ed90717ca8ad63",
+      "redacted": false
+    },
+    {
+      "name": "uskill-douyin-strategy",
+      "title": "抖音短视频策略",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6871",
+      "path": "s3/uskill-douyin-strategy",
+      "source_sha": "618a59a7ff22e1d36813ff33d276b4e9e40ac1a2",
+      "redacted": false
+    },
+    {
+      "name": "uskill-image-prompt-engineer",
+      "title": "AI图像提示词设计",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6504",
+      "path": "s3/uskill-image-prompt-engineer",
+      "source_sha": "257a8de378965540e41362615330486bfedd7b3e",
+      "redacted": false
+    },
+    {
+      "name": "uskill-instagram-strategy",
+      "title": "Instagram视觉运营",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-5709",
+      "path": "s3/uskill-instagram-strategy",
+      "source_sha": "ded5da33a8001ed38e11979252946912796bbea3",
+      "redacted": false
+    },
+    {
+      "name": "uskill-kuaishou-strategy",
+      "title": "快手运营策略",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-5705",
+      "path": "s3/uskill-kuaishou-strategy",
+      "source_sha": "5753faac9a1e09beec3472f573dd02084385f068",
+      "redacted": false
+    },
+    {
+      "name": "uskill-livestream-commerce",
+      "title": "直播电商运营",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-5707",
+      "path": "s3/uskill-livestream-commerce",
+      "source_sha": "4ae1ee10b4466faa6273382a35abfbdb84659f54",
+      "redacted": false
+    },
+    {
+      "name": "uskill-personal-content-system",
+      "title": "个人内容体系构建",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6809",
+      "path": "s3/uskill-personal-content-system",
+      "source_sha": "24e23eb53649f3a95431115ec15df0a9039b368a",
+      "redacted": false
+    },
+    {
+      "name": "uskill-podcast-strategy",
+      "title": "播客内容策略",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-5706",
+      "path": "s3/uskill-podcast-strategy",
+      "source_sha": "22211db9f28731ab4eae335929ad2f558e202130",
+      "redacted": false
+    },
+    {
+      "name": "uskill-reddit-community",
+      "title": "Reddit社区运营",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6607",
+      "path": "s3/uskill-reddit-community",
+      "source_sha": "b53e80662b0c0d43fbf723299c50fdec65a5a1dd",
+      "redacted": false
+    },
+    {
+      "name": "uskill-seo-strategy",
+      "title": "SEO优化策略",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-5708",
+      "path": "s3/uskill-seo-strategy",
+      "source_sha": "7f5b12ae22cc3c018e9fa1794ec309ed6fc242f0",
+      "redacted": false
+    },
+    {
+      "name": "uskill-thinking-breakthrough-innovation",
+      "title": "突破性创新思维",
+      "category": "s3",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s3/uskill-thinking-breakthrough-innovation",
+      "source_sha": "18325d33f435d63e2bd21f4569f2387f401883ae",
+      "redacted": false
+    },
+    {
+      "name": "uskill-thinking-syllogistic-reasoning",
+      "title": "三段论推理",
+      "category": "s3",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s3/uskill-thinking-syllogistic-reasoning",
+      "source_sha": "56da5f7c1b090ac08f1275bd6bfef7d56c5e56d0",
+      "redacted": false
+    },
+    {
+      "name": "uskill-tool-article-illustrator",
+      "title": "文章自动配图",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-7088",
+      "path": "s3/uskill-tool-article-illustrator",
+      "source_sha": "fe6f0e3d7c0956dbb26e6301ecfdfce4fff25ad2",
+      "redacted": false
+    },
+    {
+      "name": "uskill-tool-comic-creator",
+      "title": "知识漫画创作",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-7089",
+      "path": "s3/uskill-tool-comic-creator",
+      "source_sha": "2fb4c946784fd3aaa52bee197546c8ca272941a4",
+      "redacted": false
+    },
+    {
+      "name": "uskill-tool-cover-image",
+      "title": "文章封面图生成",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-7090",
+      "path": "s3/uskill-tool-cover-image",
+      "source_sha": "49bc2e322f768121f1c1594a83d482fbb6756ead",
+      "redacted": false
+    },
+    {
+      "name": "uskill-tool-diagram-generator",
+      "title": "专业SVG图表生成",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-7091",
+      "path": "s3/uskill-tool-diagram-generator",
+      "source_sha": "5914ae2364bb358e3b1388f1bc6db2b6ce4f62bd",
+      "redacted": false
+    },
+    {
+      "name": "uskill-tool-image-gen",
+      "title": "多平台AI图像生成",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-7092",
+      "path": "s3/uskill-tool-image-gen",
+      "source_sha": "f5c9733aef11110922ba8b3b4256a89a466a5d90",
+      "redacted": false
+    },
+    {
+      "name": "uskill-tool-infographic",
+      "title": "专业信息图生成",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-7093",
+      "path": "s3/uskill-tool-infographic",
+      "source_sha": "ef72a4f3acb6602a80199efc11202cd0ad74ed8c",
+      "redacted": false
+    },
+    {
+      "name": "uskill-tool-slide-deck",
+      "title": "专业幻灯片生成",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-7094",
+      "path": "s3/uskill-tool-slide-deck",
+      "source_sha": "6b18ab06d0afca462ff96b34043396133f9a57b8",
+      "redacted": false
+    },
+    {
+      "name": "uskill-tool-xhs-images",
+      "title": "小红书图片卡片系列",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-7095",
+      "path": "s3/uskill-tool-xhs-images",
+      "source_sha": "4380ed2ba01a68b54d7aee03515036152b40ed31",
+      "redacted": false
+    },
+    {
+      "name": "uskill-twitter-strategy",
+      "title": "Twitter运营策略",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-5710",
+      "path": "s3/uskill-twitter-strategy",
+      "source_sha": "dab55dd9ffef0c1bb858952cdd51fc4767545c91",
+      "redacted": false
+    },
+    {
+      "name": "uskill-ui-design-system",
+      "title": "UI设计系统",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6405",
+      "path": "s3/uskill-ui-design-system",
+      "source_sha": "b1658faf9f307bfcb2487feca93b1e6af50f4544",
+      "redacted": false
+    },
+    {
+      "name": "uskill-ux-research-design",
+      "title": "用户研究与体验设计",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6304",
+      "path": "s3/uskill-ux-research-design",
+      "source_sha": "2bae505a82b30a1203af7e9cc04f88679acbb2ed",
+      "redacted": false
+    },
+    {
+      "name": "uskill-visual-storytelling",
+      "title": "视觉叙事与数据可视化",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6406",
+      "path": "s3/uskill-visual-storytelling",
+      "source_sha": "09f1d181c1c6ce99941c23b1edf754a2178acee4",
+      "redacted": false
+    },
+    {
+      "name": "uskill-weibo-strategy",
+      "title": "微博运营策略",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-5704",
+      "path": "s3/uskill-weibo-strategy",
+      "source_sha": "1c4e4b6053dca45a26d23da29a9678e274aeb499",
+      "redacted": false
+    },
+    {
+      "name": "uskill-whimsy-injector",
+      "title": "微交互设计",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6606",
+      "path": "s3/uskill-whimsy-injector",
+      "source_sha": "06df91641ae04bd6cfe799f8c49c0b48f3a235a5",
+      "redacted": false
+    },
+    {
+      "name": "uskill-wine-blind-tasting-advanced",
+      "title": "葡萄酒盲品进阶",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6808",
+      "path": "s3/uskill-wine-blind-tasting-advanced",
+      "source_sha": "e72841d23924a56938b7c85e99a500d6d5a5e92b",
+      "redacted": false
+    },
+    {
+      "name": "uskill-writing-scqa-structured-expression",
+      "title": "SCQA 结构化表达",
+      "category": "s3",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s3/uskill-writing-scqa-structured-expression",
+      "source_sha": "20403b952246d5886021ee1046d8105e6ca9c892",
+      "redacted": false
+    },
+    {
+      "name": "uskill-writing-star-structured-narrative",
+      "title": "STAR 结构化叙事",
+      "category": "s3",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s3/uskill-writing-star-structured-narrative",
+      "source_sha": "a9364a121ad155f025bdf1f26ba1082b7948298f",
+      "redacted": false
+    },
+    {
+      "name": "uskill-xiaohongshu-strategy",
+      "title": "小红书运营策略",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6872",
+      "path": "s3/uskill-xiaohongshu-strategy",
+      "source_sha": "9c9321c61a70c0f938b485d08c5707b4901a9e84",
+      "redacted": false
+    },
+    {
+      "name": "uskill-zhihu-strategy",
+      "title": "知乎运营策略",
+      "category": "s3",
+      "version": "3.0.0",
+      "original_id": "SKL-6505",
+      "path": "s3/uskill-zhihu-strategy",
+      "source_sha": "32f530a6108249811581fb83c5f0e9e6409b1330",
+      "redacted": false
+    },
+    {
+      "name": "skill-f0de898d",
+      "title": "商业模式创新",
+      "category": "s4",
+      "version": "",
+      "original_id": "",
+      "path": "s4/skill-f0de898d",
+      "source_sha": "4423022407a84bedd2c7d4ccc3b26601d7f90260",
+      "redacted": false
+    },
+    {
+      "name": "skill-92147baa",
+      "title": "客户点单工作流优化",
+      "category": "s4",
+      "version": "",
+      "original_id": "",
+      "path": "s4/skill-92147baa",
+      "source_sha": "9a07a67a6f8b21a7e72882345cc304a213c1439e",
+      "redacted": false
+    },
+    {
+      "name": "skill-0aac8f0f",
+      "title": "广告创意策略",
+      "category": "s4",
+      "version": "",
+      "original_id": "",
+      "path": "s4/skill-0aac8f0f",
+      "source_sha": "32ca4a0658501acb6b5ccd93f6c3fbe5b7fd977f",
+      "redacted": false
+    },
+    {
+      "name": "skill-8298a0f0",
+      "title": "葡萄酒供应链管理最佳实践",
+      "category": "s4",
+      "version": "",
+      "original_id": "",
+      "path": "s4/skill-8298a0f0",
+      "source_sha": "c141468399e11350eda5b45341203c20fe98afbe",
+      "redacted": false
+    },
+    {
+      "name": "skill-66daf503",
+      "title": "跨境电商运营",
+      "category": "s4",
+      "version": "",
+      "original_id": "",
+      "path": "s4/skill-66daf503",
+      "source_sha": "6e2378eae53a8736eb05b1a60e55c2faaad70d95",
+      "redacted": false
+    },
+    {
+      "name": "skill-0222ff01",
+      "title": "销售方案与提案",
+      "category": "s4",
+      "version": "",
+      "original_id": "",
+      "path": "s4/skill-0222ff01",
+      "source_sha": "2c1f0e6b70ca68b8f5db106d19f37fc1287acb57",
+      "redacted": false
+    },
+    {
+      "name": "skill-6c9af5ec",
+      "title": "销售漏斗管理",
+      "category": "s4",
+      "version": "",
+      "original_id": "",
+      "path": "s4/skill-6c9af5ec",
+      "source_sha": "5531dea8a331a6d21c1ed067e45fada7b9b0af47",
+      "redacted": false
+    },
+    {
+      "name": "uskill-ad-creative-strategist",
+      "title": "广告创意策略",
+      "category": "s4",
+      "version": "3.0.0",
+      "original_id": "SKL-6002",
+      "path": "s4/uskill-ad-creative-strategist",
+      "source_sha": "ec969fdb48d37eaf75f1c793483c907c40a3e030",
+      "redacted": false
+    },
+    {
+      "name": "uskill-business-china-ecommerce-ops",
+      "title": "中国电商运营",
+      "category": "s4",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s4/uskill-business-china-ecommerce-ops",
+      "source_sha": "76f1963b900b62e25c31818a4444f4f1c17c1962",
+      "redacted": false
+    },
+    {
+      "name": "uskill-business-customer-order-workflow-opt",
+      "title": "客户点单工作流优化",
+      "category": "s4",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s4/uskill-business-customer-order-workflow-opt",
+      "source_sha": "c54468b40f9217c010fc3446743f36bcf115f0a9",
+      "redacted": false
+    },
+    {
+      "name": "uskill-business-okr-creation-execution",
+      "title": "OKR制定与执行",
+      "category": "s4",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s4/uskill-business-okr-creation-execution",
+      "source_sha": "eb36d5a358e1f874022d2496b901095bba66499d",
+      "redacted": false
+    },
+    {
+      "name": "uskill-business-okr-strategic-goal-mgmt",
+      "title": "OKR战略目标管理",
+      "category": "s4",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s4/uskill-business-okr-strategic-goal-mgmt",
+      "source_sha": "3cba7f6491f5e4da8d294fab66c6ceda5824f13f",
+      "redacted": false
+    },
+    {
+      "name": "uskill-business-f5c5ad",
+      "title": "决策框架切换",
+      "category": "s4",
+      "version": "3.0.0",
+      "original_id": "SKL-6932",
+      "path": "s4/uskill-business-f5c5ad",
+      "source_sha": "ddbf7cf1d5480355f7286452ebb7e392aed2e5d2",
+      "redacted": false
+    },
+    {
+      "name": "uskill-business-f602ce",
+      "title": "团队心理安全感建设",
+      "category": "s4",
+      "version": "3.0.0",
+      "original_id": "SKL-6933",
+      "path": "s4/uskill-business-f602ce",
+      "source_sha": "4b4a80e5315d33a350e945376404b3abdaf83a0d",
+      "redacted": false
+    },
+    {
+      "name": "uskill-business-c88ebe",
+      "title": "客户发现访谈",
+      "category": "s4",
+      "version": "3.0.0",
+      "original_id": "SKL-6934",
+      "path": "s4/uskill-business-c88ebe",
+      "source_sha": "2e8b4cddbc3f3628bb02750f59b1193c1ff8735c",
+      "redacted": false
+    },
+    {
+      "name": "uskill-business-mvp-89e7aa",
+      "title": "最小可行产品 MVP 定义",
+      "category": "s4",
+      "version": "3.0.0",
+      "original_id": "SKL-6935",
+      "path": "s4/uskill-business-mvp-89e7aa",
+      "source_sha": "54759e93e237700b6dfa37ed3bd26d42808af51f",
+      "redacted": false
+    },
+    {
+      "name": "uskill-business-666494",
+      "title": "跨职能协作桥梁",
+      "category": "s4",
+      "version": "3.0.0",
+      "original_id": "SKL-6936",
+      "path": "s4/uskill-business-666494",
+      "source_sha": "bce3540dc6b66a7b0c2c1f8ccac04a7942f07dbd",
+      "redacted": false
+    },
+    {
+      "name": "uskill-customer-success",
+      "title": "客户成功与扩展",
+      "category": "s4",
+      "version": "3.0.0",
+      "original_id": "SKL-6104",
+      "path": "s4/uskill-customer-success",
+      "source_sha": "36340549ff44915d078329336cbf74ad7dab1547",
+      "redacted": false
+    },
+    {
+      "name": "uskill-discovery-negotiation",
+      "title": "客户发现与谈判",
+      "category": "s4",
+      "version": "3.0.0",
+      "original_id": "SKL-6102",
+      "path": "s4/uskill-discovery-negotiation",
+      "source_sha": "30bbdda8b5cdd13157687520ac14b51124b366f3",
+      "redacted": false
+    },
+    {
+      "name": "uskill-efficiency-meeting-collaboration",
+      "title": "会议效率与协作",
+      "category": "s4",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s4/uskill-efficiency-meeting-collaboration",
+      "source_sha": "76b9cd28d557f0507c3c94a1c29a211d27e8ad1b",
+      "redacted": false
+    },
+    {
+      "name": "uskill-efficiency-meeting-flyreading",
+      "title": "会议飞读法",
+      "category": "s4",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s4/uskill-efficiency-meeting-flyreading",
+      "source_sha": "731bb42f469015277855f4ec487ce480c8cbdf37",
+      "redacted": false
+    },
+    {
+      "name": "uskill-entrepreneurship-business-model-canvas",
+      "title": "商业画布",
+      "category": "s4",
+      "version": "3.0.0",
+      "original_id": "SKL-6814",
+      "path": "s4/uskill-entrepreneurship-business-model-canvas",
+      "source_sha": "7c9997c03a25ed27738382ae4f53249d2e639353",
+      "redacted": false
+    },
+    {
+      "name": "uskill-entrepreneurship-business-model-innovation",
+      "title": "商业模式创新",
+      "category": "s4",
+      "version": "3.0.0",
+      "original_id": "SKL-6813",
+      "path": "s4/uskill-entrepreneurship-business-model-innovation",
+      "source_sha": "f35c07b53f32267c4e711b30fffcc55ecacb6d8f",
+      "redacted": false
+    },
+    {
+      "name": "uskill-entrepreneurship-product-validation",
+      "title": "产品验证",
+      "category": "s4",
+      "version": "3.0.0",
+      "original_id": "SKL-6811",
+      "path": "s4/uskill-entrepreneurship-product-validation",
+      "source_sha": "421382dcceec5a5d1877f76c9e188b18555b0e6b",
+      "redacted": false
+    },
+    {
+      "name": "uskill-lead-gen-offer",
+      "title": "获客提案与优惠设计",
+      "category": "s4",
+      "version": "3.0.0",
+      "original_id": "SKL-6612",
+      "path": "s4/uskill-lead-gen-offer",
+      "source_sha": "ddf9efdc32952c6bc83c1abeaa2a6fd8fb913558",
+      "redacted": false
+    },
+    {
+      "name": "uskill-leadership-coaching",
+      "title": "教练式辅导",
+      "category": "s4",
+      "version": "3.0.0",
+      "original_id": "SKL-5404",
+      "path": "s4/uskill-leadership-coaching",
+      "source_sha": "fcad8f87e47e1529c4bc089337139823b875651e",
+      "redacted": false
+    },
+    {
+      "name": "uskill-leadership-conflict-resolution",
+      "title": "冲突管理",
+      "category": "s4",
+      "version": "3.0.0",
+      "original_id": "SKL-5403",
+      "path": "s4/uskill-leadership-conflict-resolution",
+      "source_sha": "de0320f1b86bcadc9b721913ca3a08d5d2b4b54b",
+      "redacted": false
+    },
+    {
+      "name": "uskill-leadership-decision-making",
+      "title": "决策领导力",
+      "category": "s4",
+      "version": "3.0.0",
+      "original_id": "SKL-5401",
+      "path": "s4/uskill-leadership-decision-making",
+      "source_sha": "8fb5caa431f8a1aa74f429830c0d594c7fc3cfd6",
+      "redacted": false
+    },
+    {
+      "name": "uskill-leadership-team-motivation",
+      "title": "团队激励",
+      "category": "s4",
+      "version": "3.0.0",
+      "original_id": "SKL-5402",
+      "path": "s4/uskill-leadership-team-motivation",
+      "source_sha": "bb5ee79c9d6161db14f11dcc336e05a683124524",
+      "redacted": false
+    },
+    {
+      "name": "uskill-outbound-strategy",
+      "title": "外呼获客策略",
+      "category": "s4",
+      "version": "3.0.0",
+      "original_id": "SKL-6611",
+      "path": "s4/uskill-outbound-strategy",
+      "source_sha": "55d8ae3231215d489f53c7428fbded23407ee21c",
+      "redacted": false
+    },
+    {
+      "name": "uskill-paid-media-auditor",
+      "title": "广告账户审计",
+      "category": "s4",
+      "version": "3.0.0",
+      "original_id": "SKL-6005",
+      "path": "s4/uskill-paid-media-auditor",
+      "source_sha": "9a9810140fe58773b6c4075dce3946240d1b2f0c",
+      "redacted": false
+    },
+    {
+      "name": "uskill-paid-social-strategist",
+      "title": "社交媒体广告投放",
+      "category": "s4",
+      "version": "3.0.0",
+      "original_id": "SKL-6003",
+      "path": "s4/uskill-paid-social-strategist",
+      "source_sha": "893aaabfea86631cbf76ae5e2fa9ba3cd15a5d7e",
+      "redacted": false
+    },
+    {
+      "name": "uskill-ppc-strategist",
+      "title": "PPC广告投放策略",
+      "category": "s4",
+      "version": "3.0.0",
+      "original_id": "SKL-6812",
+      "path": "s4/uskill-ppc-strategist",
+      "source_sha": "8653c9effe69fec7cc2dcd964f063c50b64b5bd4",
+      "redacted": false
+    },
+    {
+      "name": "uskill-product-prd-writing",
+      "title": "PRD 撰写",
+      "category": "s4",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s4/uskill-product-prd-writing",
+      "source_sha": "f542dc6572158ce23fcb122c3122be73e66f5a8b",
+      "redacted": false
+    },
+    {
+      "name": "uskill-product-prd",
+      "title": "产品需求文档PRD",
+      "category": "s4",
+      "version": "3.0.0",
+      "original_id": "SKL-6410",
+      "path": "s4/uskill-product-prd",
+      "source_sha": "9657e920d13a6f26d746f7f2a5b99e003c0d6feb",
+      "redacted": false
+    },
+    {
+      "name": "uskill-product-user-research-ux-design",
+      "title": "uSkill-用户研究与体验设计",
+      "category": "s4",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s4/uskill-product-user-research-ux-design",
+      "source_sha": "619f83f3b309822d37261afd0f7133323c87813a",
+      "redacted": false
+    },
+    {
+      "name": "uskill-programmatic-buyer",
+      "title": "程序化广告投放",
+      "category": "s4",
+      "version": "3.0.0",
+      "original_id": "SKL-6006",
+      "path": "s4/uskill-programmatic-buyer",
+      "source_sha": "900ac4369c7b34b4aecaebae496e944117d4d977",
+      "redacted": false
+    },
+    {
+      "name": "uskill-sales-engineer",
+      "title": "销售工程师与技术售前",
+      "category": "s4",
+      "version": "3.0.0",
+      "original_id": "SKL-6412",
+      "path": "s4/uskill-sales-engineer",
+      "source_sha": "12a136b3feafd18d12dd3d2e9e2b3b7ba2c1737a",
+      "redacted": false
+    },
+    {
+      "name": "uskill-sales-pipeline-analyst",
+      "title": "销售漏斗管理",
+      "category": "s4",
+      "version": "3.0.0",
+      "original_id": "SKL-6101",
+      "path": "s4/uskill-sales-pipeline-analyst",
+      "source_sha": "0ebfb3bb7a357ea9d1ea432e6077ced4acd3284e",
+      "redacted": false
+    },
+    {
+      "name": "uskill-sales-proposal",
+      "title": "销售方案与提案",
+      "category": "s4",
+      "version": "3.0.0",
+      "original_id": "SKL-6103",
+      "path": "s4/uskill-sales-proposal",
+      "source_sha": "f5b6685b5961429f44409c59c3e5e9622f3284ac",
+      "redacted": false
+    },
+    {
+      "name": "uskill-search-query-analyst",
+      "title": "搜索词分析与关键词策略",
+      "category": "s4",
+      "version": "3.0.0",
+      "original_id": "SKL-6004",
+      "path": "s4/uskill-search-query-analyst",
+      "source_sha": "618c6e39c0d67437f2996f723a858cc76a3d4241",
+      "redacted": false
+    },
+    {
+      "name": "uskill-tool-post-to-wechat",
+      "title": "微信公众号发布",
+      "category": "s4",
+      "version": "3.0.0",
+      "original_id": "SKL-7096",
+      "path": "s4/uskill-tool-post-to-wechat",
+      "source_sha": "3e35a06e1f02d6240d0df737a63abf5cf02bd455",
+      "redacted": false
+    },
+    {
+      "name": "uskill-tool-post-to-weibo",
+      "title": "微博发布",
+      "category": "s4",
+      "version": "3.0.0",
+      "original_id": "SKL-7097",
+      "path": "s4/uskill-tool-post-to-weibo",
+      "source_sha": "0301f9f3e15a32cd2bcaf99b7e7301963d00bba0",
+      "redacted": false
+    },
+    {
+      "name": "uskill-tool-post-to-x",
+      "title": "X(Twitter)发布",
+      "category": "s4",
+      "version": "3.0.0",
+      "original_id": "SKL-7098",
+      "path": "s4/uskill-tool-post-to-x",
+      "source_sha": "c400fe630116e1a12690a7d9692cc2a313f45134",
+      "redacted": false
+    },
+    {
+      "name": "uskill-tool-wechat-summary",
+      "title": "微信群聊精华总结",
+      "category": "s4",
+      "version": "3.0.0",
+      "original_id": "SKL-7099",
+      "path": "s4/uskill-tool-wechat-summary",
+      "source_sha": "c4644a8ca37a3656de1fc22d1521a0417ee843c9",
+      "redacted": false
+    },
+    {
+      "name": "uskill-tracking-specialist",
+      "title": "转化追踪与归因",
+      "category": "s4",
+      "version": "3.0.0",
+      "original_id": "SKL-6007",
+      "path": "s4/uskill-tracking-specialist",
+      "source_sha": "f7466b0915c31f74aee1a20e3ba42a6cb6434ccd",
+      "redacted": false
+    },
+    {
+      "name": "uskill-writing-doc-quality-assessment",
+      "title": "文档质量评审",
+      "category": "s4",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s4/uskill-writing-doc-quality-assessment",
+      "source_sha": "105cc1faf6992a823c71410bdf8cc02aba9488c4",
+      "redacted": false
+    },
+    {
+      "name": "uskill-writing-doc-quality-review",
+      "title": "文档质量复盘",
+      "category": "s4",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s4/uskill-writing-doc-quality-review",
+      "source_sha": "96155bce0d1d63e67069bb50e1ed030e24039c4e",
+      "redacted": false
+    },
+    {
+      "name": "uskill-analytics-reporter",
+      "title": "数据驱动决策分析",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6301",
+      "path": "s5/uskill-analytics-reporter",
+      "source_sha": "73acef40b25bcf144a3092cb42123a059f5c2b42",
+      "redacted": false
+    },
+    {
+      "name": "uskill-behavioral-insight",
+      "title": "行为洞察分析",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6306",
+      "path": "s5/uskill-behavioral-insight",
+      "source_sha": "b14d9a2082bc87e0e1744ec05b087a438e41f993",
+      "redacted": false
+    },
+    {
+      "name": "uskill-chief-of-staff",
+      "title": "首席参谋与战略执行",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6707",
+      "path": "s5/uskill-chief-of-staff",
+      "source_sha": "be350454e7be5a6f4ee3ec7211521859b05876ad",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-abstract-thinking",
+      "title": "抽象思维是指从具体事物中抽取共同的、本质性的特征，而舍弃其非本质特征的思维过程。它能够帮助我们理解复杂的概念、解决问题以",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6945",
+      "path": "s5/uskill-cognition-abstract-thinking",
+      "source_sha": "3971d75004ba75faccbe12ee68c64609eafbcb38",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-cognitive-adversarial-investment-research",
+      "title": "cognitive adversarial investment research",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-5040",
+      "path": "s5/uskill-cognition-cognitive-adversarial-investment-research",
+      "source_sha": "0ebe9fd9a4a5525f90de7be5c2af8ac7d2a43115",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-cognitive-ai-goal-audit",
+      "title": "cognitive ai goal audit",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6856",
+      "path": "s5/uskill-cognition-cognitive-ai-goal-audit",
+      "source_sha": "03f51f0747c48dea49d6946780d68a5518cba8e9",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-cognitive-analyze-investment-opportunity",
+      "title": "cognitive analyze investment opportunity",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6829",
+      "path": "s5/uskill-cognition-cognitive-analyze-investment-opportunity",
+      "source_sha": "67e8b5363f118503c058d9321ed4c37995300c8d",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-cognitive-apply-3a-commoditization-analysis",
+      "title": "cognitive apply 3a commoditization analysis",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6842",
+      "path": "s5/uskill-cognition-cognitive-apply-3a-commoditization-analysis",
+      "source_sha": "a2c253daf8a21fa92ba9976368c8ab0c3ff869b5",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-cognitive-awakening-daily-reflection",
+      "title": "cognitive awakening daily reflection",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-NEW-001",
+      "path": "s5/uskill-cognition-cognitive-awakening-daily-reflection",
+      "source_sha": "62218ecd966e6fd3786e4c1e5cdbc39071e62d84",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-cognitive-behavior-insight-analysis",
+      "title": "cognitive behavior insight analysis",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6852",
+      "path": "s5/uskill-cognition-cognitive-behavior-insight-analysis",
+      "source_sha": "c3feb11fcb83be9c77f3331e3e675923d1f2a39c",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-cognitive-behavioral-insight-analysis-v2",
+      "title": "cognitive behavioral insight analysis v2",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6834",
+      "path": "s5/uskill-cognition-cognitive-behavioral-insight-analysis-v2",
+      "source_sha": "0583dc0b5f60dfbcb0f5582484a0e9816fbdb46f",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-cognitive-build-second-brain-knowledge-syst",
+      "title": "cognitive build second brain knowledge system",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6843",
+      "path": "s5/uskill-cognition-cognitive-build-second-brain-knowledge-syst",
+      "source_sha": "81fffca6012df8ba1d2c1dc7f82979b6085eb78e",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-cognitive-deep-reading-knowledge-management",
+      "title": "cognitive deep reading knowledge management",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-5020",
+      "path": "s5/uskill-cognition-cognitive-deep-reading-knowledge-management",
+      "source_sha": "9a7384c1b97f7adbde2ebdc7482024eea6e3b9c9",
+      "redacted": true
+    },
+    {
+      "name": "uskill-cognition-cognitive-dikw-knowledge-pyramid",
+      "title": "cognitive dikw knowledge pyramid",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-5137",
+      "path": "s5/uskill-cognition-cognitive-dikw-knowledge-pyramid",
+      "source_sha": "33817cfb19f9e40e3815a12a09fa0b47b5f78f1b",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-cognitive-flow-state-activation",
+      "title": "cognitive flow state activation",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6948",
+      "path": "s5/uskill-cognition-cognitive-flow-state-activation",
+      "source_sha": "db34912b774be85b4b58552aac3326835051c441",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-cognitive-gold-line-quality-standard",
+      "title": "cognitive gold line quality standard",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-5108",
+      "path": "s5/uskill-cognition-cognitive-gold-line-quality-standard",
+      "source_sha": "068d17b3cc40eaac71becc0fa38ce1fc3800babe",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-cognitive-golden-thread-assessment",
+      "title": "cognitive golden thread assessment",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6835",
+      "path": "s5/uskill-cognition-cognitive-golden-thread-assessment",
+      "source_sha": "47162e1c16e6c68c96f0f902d16758b91fa080c4",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-cognitive-human-insight-behavioral-analysis",
+      "title": "cognitive human insight behavioral analysis",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-5027",
+      "path": "s5/uskill-cognition-cognitive-human-insight-behavioral-analysis",
+      "source_sha": "35c9971aa3138e49e8729adc04909545c8ca50be",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-cognitive-inductive-reasoning",
+      "title": "cognitive inductive reasoning",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-5211",
+      "path": "s5/uskill-cognition-cognitive-inductive-reasoning",
+      "source_sha": "5c2f21bcd12007d00006b46dbe50fa918885653b",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-cognitive-intensive-reading-methodology",
+      "title": "cognitive intensive reading methodology",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6840",
+      "path": "s5/uskill-cognition-cognitive-intensive-reading-methodology",
+      "source_sha": "28662d33b127ef91533fa9a87a485a7d144caecc",
+      "redacted": true
+    },
+    {
+      "name": "uskill-cognition-cognitive-intensive-study-method",
+      "title": "cognitive intensive study method",
+      "category": "s5",
+      "version": "",
+      "original_id": "SKL-5071",
+      "path": "s5/uskill-cognition-cognitive-intensive-study-method",
+      "source_sha": "149b7e1e61042eddb49949b3c32aac4abc07d7ab",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-cognitive-learning-pyramid-output",
+      "title": "cognitive learning pyramid output",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-5142",
+      "path": "s5/uskill-cognition-cognitive-learning-pyramid-output",
+      "source_sha": "9c26552a2fc17042fccbc86483804813483a18c8",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-cognitive-longitudinal-comparison-protocol",
+      "title": "cognitive longitudinal comparison protocol",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-5999",
+      "path": "s5/uskill-cognition-cognitive-longitudinal-comparison-protocol",
+      "source_sha": "fdf9ecd5e4707416b4a0d37570de7b6155e82369",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-cognitive-manage-knowledge-system",
+      "title": "cognitive manage knowledge system",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6833",
+      "path": "s5/uskill-cognition-cognitive-manage-knowledge-system",
+      "source_sha": "2748ac0b38859022fa591328cc7f68da52264a38",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-cognitive-manage-second-brain-knowledge",
+      "title": "cognitive manage second brain knowledge",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6836",
+      "path": "s5/uskill-cognition-cognitive-manage-second-brain-knowledge",
+      "source_sha": "bd128d62f107dc52252f83673e05d7790c57c85d",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-cognitive-manage-second-brain-pkm",
+      "title": "cognitive manage second brain pkm",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6849",
+      "path": "s5/uskill-cognition-cognitive-manage-second-brain-pkm",
+      "source_sha": "f10c006ae9b223aef2321338c9fdba92cfb71641",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-cognitive-mbti-personality-analysis",
+      "title": "cognitive mbti personality analysis",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-5061",
+      "path": "s5/uskill-cognition-cognitive-mbti-personality-analysis",
+      "source_sha": "231fd99b4f8d44aeea009233a7940f1529d8eb77",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-cognitive-meta-awareness-reflection",
+      "title": "uSkill-cognition-cognitive-meta-awareness-reflection",
+      "category": "s5",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s5/uskill-cognition-cognitive-meta-awareness-reflection",
+      "source_sha": "6d4f05317919369f470f21e75adc727308109246",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-cognitive-monitor-intraday-stock-market",
+      "title": "cognitive monitor intraday stock market",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6839",
+      "path": "s5/uskill-cognition-cognitive-monitor-intraday-stock-market",
+      "source_sha": "e8ab2af34200a4c06217094156ff94789163867e",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-cognitive-optimize-prompt-engineering",
+      "title": "cognitive optimize prompt engineering",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-5010",
+      "path": "s5/uskill-cognition-cognitive-optimize-prompt-engineering",
+      "source_sha": "861088c98a738509dcb4e0996f7ec7acd9b91d0e",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-cognitive-poverty-trap-diagnosis",
+      "title": "cognitive poverty trap diagnosis",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6831",
+      "path": "s5/uskill-cognition-cognitive-poverty-trap-diagnosis",
+      "source_sha": "c904d7f809a958744dde3fab86c8cdb1e30b4245",
+      "redacted": true
+    },
+    {
+      "name": "uskill-cognition-cognitive-psychological-behavior-analysis",
+      "title": "cognitive psychological behavior analysis",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6827",
+      "path": "s5/uskill-cognition-cognitive-psychological-behavior-analysis",
+      "source_sha": "799839e46cac0b672390b48abc0ea8651b53d944",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-cognitive-reinforcement-loop",
+      "title": "cognitive reinforcement loop",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-5135",
+      "path": "s5/uskill-cognition-cognitive-reinforcement-loop",
+      "source_sha": "30b40ed5fcb94fd25c6c02a0abff7e404ccb534a",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-cognitive-scqa-structured-expression",
+      "title": "cognitive scqa structured expression",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-5089",
+      "path": "s5/uskill-cognition-cognitive-scqa-structured-expression",
+      "source_sha": "1f4a7a4d845da3e87c6dc535b686ccdb257e8978",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-cognitive-strategic-learning-knowledge-inte",
+      "title": "cognitive strategic learning knowledge internalization",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6845",
+      "path": "s5/uskill-cognition-cognitive-strategic-learning-knowledge-inte",
+      "source_sha": "91752a8f0937fe7576dfc431b9b0d2216a199041",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-cognitive-strategic-learning-plan",
+      "title": "cognitive strategic learning plan",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6828",
+      "path": "s5/uskill-cognition-cognitive-strategic-learning-plan",
+      "source_sha": "c080167e9fabbfdad593ef28c1b38f24075f0d85",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-cognitive-structured-expression-scqa",
+      "title": "cognitive structured expression scqa",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6855",
+      "path": "s5/uskill-cognition-cognitive-structured-expression-scqa",
+      "source_sha": "a095e1b887deb30442205352a02fcc61a51d3719",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-cognitive-structured-expression-star",
+      "title": "cognitive structured expression star",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-5046",
+      "path": "s5/uskill-cognition-cognitive-structured-expression-star",
+      "source_sha": "d1958a03b57cea9f509557330d02d73a7d363bdc",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-cognitive-structured-storytelling-star",
+      "title": "cognitive structured storytelling star",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6844",
+      "path": "s5/uskill-cognition-cognitive-structured-storytelling-star",
+      "source_sha": "f110e613d6af1a8b6cc9ffcbab8ed753a6d7e492",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-cognitive-syllogistic-reasoning",
+      "title": "cognitive syllogistic reasoning",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-5048",
+      "path": "s5/uskill-cognition-cognitive-syllogistic-reasoning",
+      "source_sha": "9cb144b647231496541b6e2040052c85bf00a1f0",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-cognitive-three-stage-reasoning",
+      "title": "cognitive three stage reasoning",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6838",
+      "path": "s5/uskill-cognition-cognitive-three-stage-reasoning",
+      "source_sha": "51476785eaa066a5ecc29eff26b3f4e6d03dc509",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-cognitive-value-half-life-assessment",
+      "title": "cognitive value half life assessment",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6851",
+      "path": "s5/uskill-cognition-cognitive-value-half-life-assessment",
+      "source_sha": "ad903fb5f8687b6bba52148d5d3dc59c5938c3b2",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-cognitive-wait-for-pitch-decision",
+      "title": "cognitive wait for pitch decision",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6847",
+      "path": "s5/uskill-cognition-cognitive-wait-for-pitch-decision",
+      "source_sha": "281190d725ac8613ee8035624ff13bc6a1396a7d",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-feynman-deep-learning",
+      "title": "费曼深度学习",
+      "category": "s5",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s5/uskill-cognition-feynman-deep-learning",
+      "source_sha": "3dd3e8cf72a2c8b6bcb70d8c622872baddf55599",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-knowledge-system-mgmt",
+      "title": "知识系统管理",
+      "category": "s5",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s5/uskill-cognition-knowledge-system-mgmt",
+      "source_sha": "3959451bdc927b71a3c8782f018c29a361c9e803",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-mbti-personality-analysis",
+      "title": "MBTI人格分析",
+      "category": "s5",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s5/uskill-cognition-mbti-personality-analysis",
+      "source_sha": "191a3ad8ae8e02fed2a794013a0fe5380d31d30c",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-og-06ab2b",
+      "title": "OG 目标-增长框架",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6830",
+      "path": "s5/uskill-cognition-og-06ab2b",
+      "source_sha": "68de312ec7ab85575cbb31ce250efc560c4058a5",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-skillopt-1f3b94",
+      "title": "SkillOpt 技能优化",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6944",
+      "path": "s5/uskill-cognition-skillopt-1f3b94",
+      "source_sha": "2f2997d5a11f48b7bdd141df677012704dbaaccf",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-value-drift-detection",
+      "title": "价值偏离检测",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-7101",
+      "path": "s5/uskill-cognition-value-drift-detection",
+      "source_sha": "7b10edf393ac4ec6c149857b6384a6fe2ec74f87",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-ca32dd",
+      "title": "意义审计协议",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6949",
+      "path": "s5/uskill-cognition-ca32dd",
+      "source_sha": "9a4fdbd4ea27eadb5fdc1c273a31509b595e958c",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-fbec34",
+      "title": "控制二分法",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-5220",
+      "path": "s5/uskill-cognition-fbec34",
+      "source_sha": "6f164e2bad44e161ac9cfd969e47f0c4eeb27325",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-3f338f",
+      "title": "知识缺口识别",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6951",
+      "path": "s5/uskill-cognition-3f338f",
+      "source_sha": "b91a62cfdeb89206a2d02e00db6c77c6d5a0f43d",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-172820",
+      "title": "精读与心智模型提取",
+      "category": "s5",
+      "version": "",
+      "original_id": "SKL-6832",
+      "path": "s5/uskill-cognition-172820",
+      "source_sha": "2ec01eb785de1640a2f74eac735426f81f0dbde0",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-6934e2",
+      "title": "行动前假设验证",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6837",
+      "path": "s5/uskill-cognition-6934e2",
+      "source_sha": "cae2cd6d701a72f73c16b22a64d476d2cf902683",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-8a14ca",
+      "title": "认知偏差检测",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6953",
+      "path": "s5/uskill-cognition-8a14ca",
+      "source_sha": "0ea6a533615acde294f6a1c8542c716194932f2b",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-060bcb",
+      "title": "设计者思维转化协议",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6954",
+      "path": "s5/uskill-cognition-060bcb",
+      "source_sha": "179156afa8dead96f04a86d76ec2fbbab61f0592",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-49cd99",
+      "title": "贝叶斯决策框架",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6955",
+      "path": "s5/uskill-cognition-49cd99",
+      "source_sha": "306f042650f016dab47ea1b21b48d60d976adabc",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-518ba5",
+      "title": "费曼输出法",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6956",
+      "path": "s5/uskill-cognition-518ba5",
+      "source_sha": "3d087cb2cde16a38d1e6e1300246476e6416fd7b",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-d6db4e",
+      "title": "跨模块联动",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-7102",
+      "path": "s5/uskill-cognition-d6db4e",
+      "source_sha": "3cc02483649436cae97e3dc37a0ceeb2e27af2ab",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-701f38",
+      "title": "跨领域类比",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6958",
+      "path": "s5/uskill-cognition-701f38",
+      "source_sha": "99690307be8ffca4bdcae8343b3f9a8f3bf561e9",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognition-1f498b",
+      "title": "间隔重复系统设计",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6959",
+      "path": "s5/uskill-cognition-1f498b",
+      "source_sha": "d16a04cbc9f5e7845807df4801b154a1c263eaac",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognitive-decision-reasoning",
+      "title": "决策推理-Schema",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6846",
+      "path": "s5/uskill-cognitive-decision-reasoning",
+      "source_sha": "49fa0e68a462fa376cd1526367d3aa83215dab69",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognitive-metacognition",
+      "title": "元认知-Schema",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6848",
+      "path": "s5/uskill-cognitive-metacognition",
+      "source_sha": "bf7bb33ad897e60fc155e097517c5c765f92ea21",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cultural-anthropology",
+      "title": "跨文化人类学洞察",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6303",
+      "path": "s5/uskill-cultural-anthropology",
+      "source_sha": "4f280950252a98e491c5167add551436fb2df00a",
+      "redacted": false
+    },
+    {
+      "name": "uskill-data-privacy",
+      "title": "数据隐私与合规",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6510",
+      "path": "s5/uskill-data-privacy",
+      "source_sha": "859ce079812b9955cae6bdef7285c0d0f35e113c",
+      "redacted": false
+    },
+    {
+      "name": "uskill-developer-advocate",
+      "title": "开发者关系与技术布道",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6704",
+      "path": "s5/uskill-developer-advocate",
+      "source_sha": "494b3a69ea2002653e1da73cd83b89384b4e3141",
+      "redacted": false
+    },
+    {
+      "name": "uskill-eastern-wisdom-practice",
+      "title": "东方智慧实践应用",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6804",
+      "path": "s5/uskill-eastern-wisdom-practice",
+      "source_sha": "8ae06b3493223e3d161f2273a71913b40463c553",
+      "redacted": false
+    },
+    {
+      "name": "uskill-education-instructional-design",
+      "title": "教学设计",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6826",
+      "path": "s5/uskill-education-instructional-design",
+      "source_sha": "c0287bbd7e0728f8bcc16393e280ddd8089ac30c",
+      "redacted": false
+    },
+    {
+      "name": "uskill-education-knowledge-distillation",
+      "title": "知识蒸馏",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6841",
+      "path": "s5/uskill-education-knowledge-distillation",
+      "source_sha": "766734cae5d9ab6da177a001a62b43af7c6454f3",
+      "redacted": false
+    },
+    {
+      "name": "uskill-education-learning-assessment",
+      "title": "学习评估",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6854",
+      "path": "s5/uskill-education-learning-assessment",
+      "source_sha": "6535aef14e39420fc22136dd5b3b23cf7dfe2e5c",
+      "redacted": false
+    },
+    {
+      "name": "uskill-esg-sustainability",
+      "title": "ESG与可持续发展",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6701",
+      "path": "s5/uskill-esg-sustainability",
+      "source_sha": "dddfff8d54c9a45257629808bc048478e5c7866f",
+      "redacted": false
+    },
+    {
+      "name": "uskill-finance-tracker",
+      "title": "财务健康追踪",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6302",
+      "path": "s5/uskill-finance-tracker",
+      "source_sha": "c4a40a0d7936f7007bea1138e96e5df5d7d48f91",
+      "redacted": false
+    },
+    {
+      "name": "uskill-identity-trust",
+      "title": "身份认证与信任架构",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6705",
+      "path": "s5/uskill-identity-trust",
+      "source_sha": "67d72e10c391e8f4bdc0f30751079ab744866e72",
+      "redacted": false
+    },
+    {
+      "name": "uskill-legal-document-review",
+      "title": "法律文档审查",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6513",
+      "path": "s5/uskill-legal-document-review",
+      "source_sha": "20fac859f7e3bdb84b19a3cb92d19c33ddd857ff",
+      "redacted": false
+    },
+    {
+      "name": "uskill-ma-integration",
+      "title": "并购整合与投后管理",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6702",
+      "path": "s5/uskill-ma-integration",
+      "source_sha": "7fd2125ed7d67e310116a949a94d7b28c13f8187",
+      "redacted": false
+    },
+    {
+      "name": "uskill-model-qa",
+      "title": "模型质量保证与评测",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6703",
+      "path": "s5/uskill-model-qa",
+      "source_sha": "ca6ec66809cc17c013ca481c90bb5dafac95a58e",
+      "redacted": false
+    },
+    {
+      "name": "uskill-multilingual-market",
+      "title": "多语言市场导航",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6710",
+      "path": "s5/uskill-multilingual-market",
+      "source_sha": "cdb82439635d60cce533970f48ce051549532b04",
+      "redacted": false
+    },
+    {
+      "name": "uskill-organization-change",
+      "title": "组织心理学与变革管理",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6610",
+      "path": "s5/uskill-organization-change",
+      "source_sha": "0fdb84f9e18102b311070f391d42e3a2e3dd44e6",
+      "redacted": false
+    },
+    {
+      "name": "uskill-personal-growth",
+      "title": "个人成长与教练辅导",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6613",
+      "path": "s5/uskill-personal-growth",
+      "source_sha": "bf3790c569090f33d12d3fbd6a952adc6f9c3c49",
+      "redacted": false
+    },
+    {
+      "name": "uskill-personal-knowledge-graph",
+      "title": "个人知识图谱构建",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6805",
+      "path": "s5/uskill-personal-knowledge-graph",
+      "source_sha": "0938d20f376048b8a890c0a22949cde8931fc749",
+      "redacted": false
+    },
+    {
+      "name": "uskill-sales-data-extraction",
+      "title": "销售数据分析与线索挖掘",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6706",
+      "path": "s5/uskill-sales-data-extraction",
+      "source_sha": "8a2b125d4f4315c1743c8d3ab46f21fe996e7312",
+      "redacted": false
+    },
+    {
+      "name": "uskill-strategy-duel",
+      "title": "策略对弈与竞争分析",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6709",
+      "path": "s5/uskill-strategy-duel",
+      "source_sha": "d4577715d55148a77524f1dddb82e0ebd3d6cbe1",
+      "redacted": false
+    },
+    {
+      "name": "uskill-supply-chain",
+      "title": "供应链管理",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6609",
+      "path": "s5/uskill-supply-chain",
+      "source_sha": "017442a649308f07ff95f942e18f8bcf0b637e1a",
+      "redacted": false
+    },
+    {
+      "name": "uskill-tax-strategist",
+      "title": "税务策略规划",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6509",
+      "path": "s5/uskill-tax-strategist",
+      "source_sha": "fe58e3cd08d008bda59d384f96fe7959ab032665",
+      "redacted": false
+    },
+    {
+      "name": "uskill-thinking-analogical",
+      "title": "类比推理",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-5115",
+      "path": "s5/uskill-thinking-analogical",
+      "source_sha": "ef2cf96f681ecaf0effae30c65b29d6f4b1193ba",
+      "redacted": false
+    },
+    {
+      "name": "uskill-thinking-critical-thinking",
+      "title": "批判性思维",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6850",
+      "path": "s5/uskill-thinking-critical-thinking",
+      "source_sha": "45d73b2b4d08535f94e8673be273ee542fdcdcb9",
+      "redacted": false
+    },
+    {
+      "name": "uskill-thinking-first-principles",
+      "title": "第一性原理",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-5112",
+      "path": "s5/uskill-thinking-first-principles",
+      "source_sha": "8099e7572bc9def0be5100fccdd505aa9b627a8a",
+      "redacted": false
+    },
+    {
+      "name": "uskill-thinking-innovation",
+      "title": "创新思维",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6853",
+      "path": "s5/uskill-thinking-innovation",
+      "source_sha": "9b3284460c2df3b5ce72a1b6f6fc324fab95176c",
+      "redacted": false
+    },
+    {
+      "name": "uskill-thinking-multi-scale",
+      "title": "多尺度思考",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-5116",
+      "path": "s5/uskill-thinking-multi-scale",
+      "source_sha": "916801a5e1b45d01cfbf2139a05f4b88905a6e53",
+      "redacted": false
+    },
+    {
+      "name": "uskill-thinking-opportunity-cost",
+      "title": "机会成本分析",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-5117",
+      "path": "s5/uskill-thinking-opportunity-cost",
+      "source_sha": "ccd5601d68e6c3d3ec4a15878a61b6811508c38a",
+      "redacted": false
+    },
+    {
+      "name": "uskill-thinking-probabilistic",
+      "title": "概率思维",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-5113",
+      "path": "s5/uskill-thinking-probabilistic",
+      "source_sha": "a74dd961dc379f6a384acd737174d2929eca6d69",
+      "redacted": false
+    },
+    {
+      "name": "uskill-thinking-reverse-engineering",
+      "title": "逆向工程思维",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-5118",
+      "path": "s5/uskill-thinking-reverse-engineering",
+      "source_sha": "5ad57339f3970e9a3987dbf9b1e96a66277a900d",
+      "redacted": false
+    },
+    {
+      "name": "uskill-thinking-second-order",
+      "title": "二阶思维",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-5114",
+      "path": "s5/uskill-thinking-second-order",
+      "source_sha": "8eea34028940b231e3f370b1a00f0a1937f61f2c",
+      "redacted": false
+    },
+    {
+      "name": "uskill-thinking-systems-thinking",
+      "title": "系统思维",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-5111",
+      "path": "s5/uskill-thinking-systems-thinking",
+      "source_sha": "d935cab9d1826fe9b9f7b4412d25f3c093fae9d5",
+      "redacted": false
+    },
+    {
+      "name": "uskill-tool-translate",
+      "title": "精细翻译引擎",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-7100",
+      "path": "s5/uskill-tool-translate",
+      "source_sha": "df92f079bc8f0071f473e2c0637cf4d79df7c204",
+      "redacted": false
+    },
+    {
+      "name": "uskill-tool-youtube-transcript",
+      "title": "YouTube字幕/封面提取",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-7101",
+      "path": "s5/uskill-tool-youtube-transcript",
+      "source_sha": "8ccf336e566d8abb63b3697e5647a2867510c4f3",
+      "redacted": false
+    },
+    {
+      "name": "uskill-translation-localization",
+      "title": "翻译与本地化",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6514",
+      "path": "s5/uskill-translation-localization",
+      "source_sha": "7ed0bf6623df8c61f5241f03aefa15bc58165dcc",
+      "redacted": false
+    },
+    {
+      "name": "uskill-vertical-domains",
+      "title": "垂直行业综合技能",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6617",
+      "path": "s5/uskill-vertical-domains",
+      "source_sha": "cc0e2b4062c66839df16342e8fe7b5564bc755a1",
+      "redacted": false
+    },
+    {
+      "name": "uskill-vertical-operations",
+      "title": "垂直行业运营综合",
+      "category": "s5",
+      "version": "3.0.0",
+      "original_id": "SKL-6708",
+      "path": "s5/uskill-vertical-operations",
+      "source_sha": "cb488729399a2c1e0b23852d692e1d4f0b113d7e",
+      "redacted": false
+    },
+    {
+      "name": "uskill-finance-financial-health",
+      "title": "财务健康",
+      "category": "s6",
+      "version": "3.0.0",
+      "original_id": "SKL-6882",
+      "path": "s6/uskill-finance-financial-health",
+      "source_sha": "c101ebb46eebe6180de41ab28f7956b6fda173fb",
+      "redacted": false
+    },
+    {
+      "name": "uskill-investment-bond-allocation-strategy",
+      "title": "investment bond allocation strategy",
+      "category": "s6",
+      "version": "3.0.0",
+      "original_id": "SKL-5123",
+      "path": "s6/uskill-investment-bond-allocation-strategy",
+      "source_sha": "6152467fa37d641a9a8691d66726a17e601225bc",
+      "redacted": false
+    },
+    {
+      "name": "uskill-investment-dca-strategy-opt",
+      "title": "定投策略优化",
+      "category": "s6",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s6/uskill-investment-dca-strategy-opt",
+      "source_sha": "730cfbd3fb414d3fc7a2c14ca0bb52e168d1cc07",
+      "redacted": false
+    },
+    {
+      "name": "uskill-investment-dca-strategy-optimization",
+      "title": "investment dca strategy optimization",
+      "category": "s6",
+      "version": "3.0.0",
+      "original_id": "SKL-6880",
+      "path": "s6/uskill-investment-dca-strategy-optimization",
+      "source_sha": "9ed27bf80c04a623288a108368b3c5de436de119",
+      "redacted": false
+    },
+    {
+      "name": "uskill-investment-equity-bond-allocation",
+      "title": "股债配置策略",
+      "category": "s6",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s6/uskill-investment-equity-bond-allocation",
+      "source_sha": "e8ab83e14613177ef27fc3171995599db158f8ea",
+      "redacted": false
+    },
+    {
+      "name": "uskill-investment-financial-analysis",
+      "title": "财报解读",
+      "category": "s6",
+      "version": "3.0.0",
+      "original_id": "SKL-5502",
+      "path": "s6/uskill-investment-financial-analysis",
+      "source_sha": "5d2425296430a0c5d9138b3eef2c81ab20afcc40",
+      "redacted": false
+    },
+    {
+      "name": "uskill-investment-graham-safety-margin",
+      "title": "investment graham safety margin",
+      "category": "s6",
+      "version": "3.0.0",
+      "original_id": "SKL-5120",
+      "path": "s6/uskill-investment-graham-safety-margin",
+      "source_sha": "58830d23f846a1059a1edec093f9f51c65582aa1",
+      "redacted": false
+    },
+    {
+      "name": "uskill-investment-im-report-writing",
+      "title": "investment im report writing",
+      "category": "s6",
+      "version": "3.0.0",
+      "original_id": "SKL-6879",
+      "path": "s6/uskill-investment-im-report-writing",
+      "source_sha": "00e5cac7d92cfa625123fb13feead1ae027c7f30",
+      "redacted": false
+    },
+    {
+      "name": "uskill-investment-industry-analysis",
+      "title": "行业分析",
+      "category": "s6",
+      "version": "3.0.0",
+      "original_id": "SKL-5503",
+      "path": "s6/uskill-investment-industry-analysis",
+      "source_sha": "fc2056021f04f7b9662c7ec2f2553368071dac50",
+      "redacted": false
+    },
+    {
+      "name": "uskill-investment-industry-rotation-analysis",
+      "title": "investment industry rotation analysis",
+      "category": "s6",
+      "version": "3.0.0",
+      "original_id": "SKL-5122",
+      "path": "s6/uskill-investment-industry-rotation-analysis",
+      "source_sha": "e874b24ac565b11d7b9c0b50579474af360f24bf",
+      "redacted": false
+    },
+    {
+      "name": "uskill-investment-intraday-market-monitor",
+      "title": "盘中行情监控",
+      "category": "s6",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s6/uskill-investment-intraday-market-monitor",
+      "source_sha": "199eaa5c605a787146c5ea48fa9105e2c4cc7e32",
+      "redacted": false
+    },
+    {
+      "name": "uskill-investment-ip-162473",
+      "title": "IP管理与知识资产运营",
+      "category": "s6",
+      "version": "3.0.0",
+      "original_id": "SKL-7003",
+      "path": "s6/uskill-investment-ip-162473",
+      "source_sha": "736ae96f599d847942956488decd552f6d9579b9",
+      "redacted": false
+    },
+    {
+      "name": "uskill-investment-options-basic-strategies",
+      "title": "investment options basic strategies",
+      "category": "s6",
+      "version": "3.0.0",
+      "original_id": "SKL-6881",
+      "path": "s6/uskill-investment-options-basic-strategies",
+      "source_sha": "258a7320a46a28daea2e513a5081fcee926cc691",
+      "redacted": false
+    },
+    {
+      "name": "uskill-investment-research-memo-writing",
+      "title": "投研备忘撰写",
+      "category": "s6",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s6/uskill-investment-research-memo-writing",
+      "source_sha": "18052ffeade68cdf1b09e2662b2bf68dca61b295",
+      "redacted": false
+    },
+    {
+      "name": "uskill-investment-risk-management",
+      "title": "风险管理",
+      "category": "s6",
+      "version": "3.0.0",
+      "original_id": "SKL-5504",
+      "path": "s6/uskill-investment-risk-management",
+      "source_sha": "bafa7805241ee86148c6906227bb9bfc7e3b837c",
+      "redacted": false
+    },
+    {
+      "name": "uskill-investment-valuation-analysis",
+      "title": "估值分析",
+      "category": "s6",
+      "version": "3.0.0",
+      "original_id": "SKL-5501",
+      "path": "s6/uskill-investment-valuation-analysis",
+      "source_sha": "8639e0103d5a9bfc2b47dc8b592274a00e09bb1c",
+      "redacted": false
+    },
+    {
+      "name": "uskill-investment-value-half-life-assessment",
+      "title": "价值半衰期评估",
+      "category": "s6",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s6/uskill-investment-value-half-life-assessment",
+      "source_sha": "5f7c8465cbbf1b3b34526a5dab532e6206c8ffa2",
+      "redacted": false
+    },
+    {
+      "name": "uskill-investment-wait-for-pitch-decision",
+      "title": "等击球点决策",
+      "category": "s6",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s6/uskill-investment-wait-for-pitch-decision",
+      "source_sha": "7ff5023bbafc47bd3ae6adf5bc7c70c71ac4befd",
+      "redacted": false
+    },
+    {
+      "name": "uskill-investment-42a34c",
+      "title": "牛市退出策略与黑天鹅预案",
+      "category": "s6",
+      "version": "3.0.0",
+      "original_id": "SKL-7004",
+      "path": "s6/uskill-investment-42a34c",
+      "source_sha": "f359a50352b27e748aaf3dd610a6b40b0ff47c88",
+      "redacted": false
+    },
+    {
+      "name": "uskill-personal-wealth-system",
+      "title": "个人财富管理体系",
+      "category": "s6",
+      "version": "3.0.0",
+      "original_id": "SKL-6810",
+      "path": "s6/uskill-personal-wealth-system",
+      "source_sha": "4ba9a46d0d79271ba8e3addbe5907e7d4f2310b2",
+      "redacted": false
+    },
+    {
+      "name": "skill-c122b7f6",
+      "title": "等击球点决策",
+      "category": "s6",
+      "version": "",
+      "original_id": "",
+      "path": "s6/skill-c122b7f6",
+      "source_sha": "014ed2da825924320d8ab5a9168f29e8f2d5e5ea",
+      "redacted": false
+    },
+    {
+      "name": "skill-bc4cec1b",
+      "title": "财报解读",
+      "category": "s6",
+      "version": "",
+      "original_id": "",
+      "path": "s6/skill-bc4cec1b",
+      "source_sha": "db3c7b8fb82c2e8c37c2d0d1a4084cbcdd39d98c",
+      "redacted": false
+    },
+    {
+      "name": "coros-62c2c4",
+      "title": "Coros 数据体系",
+      "category": "s7",
+      "version": "",
+      "original_id": "",
+      "path": "s7/coros-62c2c4",
+      "source_sha": "0f921d51c83a6fb2c7b8f18ed1302dfabe34325c",
+      "redacted": false
+    },
+    {
+      "name": "uskill-chinese-food-wine-pairing",
+      "title": "中式餐酒搭配",
+      "category": "s7",
+      "version": "3.0.0",
+      "original_id": "SKL-6802",
+      "path": "s7/uskill-chinese-food-wine-pairing",
+      "source_sha": "378d00bdcb4718c1630339cb99a6afcd0ffc1a82",
+      "redacted": false
+    },
+    {
+      "name": "uskill-coros-training-optimization",
+      "title": "Coros数据分析与训练优化",
+      "category": "s7",
+      "version": "3.0.0",
+      "original_id": "SKL-6801",
+      "path": "s7/uskill-coros-training-optimization",
+      "source_sha": "f1971bbc11ef0cc9c806d3ecc8602cde5b6eeb1a",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-beijing-culture-ambassador",
+      "title": "北京文化大使",
+      "category": "s7",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s7/uskill-creative-beijing-culture-ambassador",
+      "source_sha": "633870980a5983970b029f8418b5ba71fd7022cd",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-wine-supply-chain-best-practices",
+      "title": "葡萄酒供应链管理最佳实践",
+      "category": "s7",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s7/uskill-creative-wine-supply-chain-best-practices",
+      "source_sha": "b70434b9cf92a4813ab0d7a6b1deac301db05f95",
+      "redacted": false
+    },
+    {
+      "name": "uskill-health-aerobic-base-hrv",
+      "title": "有氧基础 HRV",
+      "category": "s7",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s7/uskill-health-aerobic-base-hrv",
+      "source_sha": "891718f744712cf9f9610cb6220ee5e874f9f62c",
+      "redacted": false
+    },
+    {
+      "name": "uskill-health-bio-loop-coros-linkage",
+      "title": "Bio-Loop-Coros 联动配置",
+      "category": "s7",
+      "version": "",
+      "original_id": "",
+      "path": "s7/uskill-health-bio-loop-coros-linkage",
+      "source_sha": "d29fa1f9fb85771112b2ab9372106bfad73835ad",
+      "redacted": false
+    },
+    {
+      "name": "uskill-health-circadian-rhythm-optimization",
+      "title": "生物节律优化",
+      "category": "s7",
+      "version": "3.0.0",
+      "original_id": "SKL-6820",
+      "path": "s7/uskill-health-circadian-rhythm-optimization",
+      "source_sha": "73bbc84838c4b9e3dbb3ec182386bf620f675063",
+      "redacted": false
+    },
+    {
+      "name": "uskill-health-coros-data-system",
+      "title": "Coros 数据体系",
+      "category": "s7",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s7/uskill-health-coros-data-system",
+      "source_sha": "009291e87101825742e28a09a6f59ad4d594bcbd",
+      "redacted": false
+    },
+    {
+      "name": "uskill-health-interpersonal-relationships",
+      "title": "人际关系",
+      "category": "s7",
+      "version": "3.0.0",
+      "original_id": "SKL-6825",
+      "path": "s7/uskill-health-interpersonal-relationships",
+      "source_sha": "a675a05ab8bbbe524c7228b5e157c58b9e73bd2c",
+      "redacted": false
+    },
+    {
+      "name": "uskill-health-life-os-evolution",
+      "title": "人生操作系统进化",
+      "category": "s7",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s7/uskill-health-life-os-evolution",
+      "source_sha": "2dfe6b486580c88aac57d5ebad5cf9c6c7279ff1",
+      "redacted": false
+    },
+    {
+      "name": "uskill-health-lifestyle-heart-rate-zone-training",
+      "title": "lifestyle heart rate zone training",
+      "category": "s7",
+      "version": "3.0.0",
+      "original_id": "SKL-6817",
+      "path": "s7/uskill-health-lifestyle-heart-rate-zone-training",
+      "source_sha": "50d970bfe39046d77107338a9910f9b598ecfcd2",
+      "redacted": false
+    },
+    {
+      "name": "uskill-health-lifestyle-life-aesthetics-design",
+      "title": "lifestyle life aesthetics design",
+      "category": "s7",
+      "version": "",
+      "original_id": "SKL-6818",
+      "path": "s7/uskill-health-lifestyle-life-aesthetics-design",
+      "source_sha": "81b07a91cfbfbc2e6c65808c703010ec495b1349",
+      "redacted": false
+    },
+    {
+      "name": "uskill-health-lifestyle-marathon-training-system",
+      "title": "lifestyle marathon training system",
+      "category": "s7",
+      "version": "3.0.0",
+      "original_id": "SKL-6821",
+      "path": "s7/uskill-health-lifestyle-marathon-training-system",
+      "source_sha": "fc684a03b5aefdab1cfa16e5e7b338a1ef47e56e",
+      "redacted": false
+    },
+    {
+      "name": "uskill-health-lifestyle-morning-routine-system",
+      "title": "lifestyle morning routine system",
+      "category": "s7",
+      "version": "3.0.0",
+      "original_id": "SKL-5133",
+      "path": "s7/uskill-health-lifestyle-morning-routine-system",
+      "source_sha": "9bfa45fd23bb01d58e1cf4311d62fde1a32329ac",
+      "redacted": false
+    },
+    {
+      "name": "uskill-health-lifestyle-plan-outdoor-expedition",
+      "title": "lifestyle plan outdoor expedition",
+      "category": "s7",
+      "version": "3.0.0",
+      "original_id": "SKL-L01",
+      "path": "s7/uskill-health-lifestyle-plan-outdoor-expedition",
+      "source_sha": "23eee822420e16efa119683b26a24fd7eebe4153",
+      "redacted": false
+    },
+    {
+      "name": "uskill-health-lifestyle-running-training-plan",
+      "title": "lifestyle running training plan",
+      "category": "s7",
+      "version": "3.0.0",
+      "original_id": "SKL-5106",
+      "path": "s7/uskill-health-lifestyle-running-training-plan",
+      "source_sha": "055f20bfd72e728e992c65f84c8dcc8b5b169b2f",
+      "redacted": false
+    },
+    {
+      "name": "uskill-health-lifestyle-travel-photography-guide",
+      "title": "lifestyle travel photography guide",
+      "category": "s7",
+      "version": "3.0.0",
+      "original_id": "SKL-5132",
+      "path": "s7/uskill-health-lifestyle-travel-photography-guide",
+      "source_sha": "ce1f756bd3fd884199de30e070f5ec603599be5c",
+      "redacted": false
+    },
+    {
+      "name": "uskill-health-lifestyle-wine-tasting-notes",
+      "title": "lifestyle wine tasting notes",
+      "category": "s7",
+      "version": "3.0.0",
+      "original_id": "SKL-5136",
+      "path": "s7/uskill-health-lifestyle-wine-tasting-notes",
+      "source_sha": "b50bc2c1292ed66e4519d15067f435b87e339408",
+      "redacted": false
+    },
+    {
+      "name": "uskill-health-lifestyle-wine-tasting-system",
+      "title": "lifestyle wine tasting system",
+      "category": "s7",
+      "version": "3.0.0",
+      "original_id": "SKL-5131",
+      "path": "s7/uskill-health-lifestyle-wine-tasting-system",
+      "source_sha": "767ed3783fbbc932dbcaf23098b6fbdd4232cfbe",
+      "redacted": false
+    },
+    {
+      "name": "uskill-health-lifestyle-zone2-endurance-training",
+      "title": "lifestyle zone2 endurance training",
+      "category": "s7",
+      "version": "3.0.0",
+      "original_id": "SKL-6816",
+      "path": "s7/uskill-health-lifestyle-zone2-endurance-training",
+      "source_sha": "614918cab95fee02b9e5059f9e102d17997a157b",
+      "redacted": false
+    },
+    {
+      "name": "uskill-health-meditation-advanced",
+      "title": "冥想进阶",
+      "category": "s7",
+      "version": "3.0.0",
+      "original_id": "SKL-6824",
+      "path": "s7/uskill-health-meditation-advanced",
+      "source_sha": "56719de6927d3919b5cf68e05b1ded97938070b3",
+      "redacted": false
+    },
+    {
+      "name": "uskill-health-morning-routine-system",
+      "title": "晨间例行系统",
+      "category": "s7",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s7/uskill-health-morning-routine-system",
+      "source_sha": "ca475d7e8e357838fde2d6dbb4c9c122b2264c04",
+      "redacted": false
+    },
+    {
+      "name": "uskill-health-nutrition-planning",
+      "title": "营养规划",
+      "category": "s7",
+      "version": "3.0.0",
+      "original_id": "SKL-6822",
+      "path": "s7/uskill-health-nutrition-planning",
+      "source_sha": "323a61d364b448f6233d509cfee2504a5d78d6fa",
+      "redacted": false
+    },
+    {
+      "name": "uskill-health-outdoor-sport-planning",
+      "title": "户外运动规划",
+      "category": "s7",
+      "version": "3.0.0",
+      "original_id": "SKL-6815",
+      "path": "s7/uskill-health-outdoor-sport-planning",
+      "source_sha": "ec1f4294de4a1c36b32ca5f8410ad7afed7e45f6",
+      "redacted": false
+    },
+    {
+      "name": "uskill-health-running-data-recording",
+      "title": "running data recording and analysis",
+      "category": "s7",
+      "version": "1.0.0",
+      "original_id": "SKL-7001",
+      "path": "s7/uskill-health-running-data-recording",
+      "source_sha": "9495b46cc7499dc86d02f1016d2d3a8301076bc7",
+      "redacted": false
+    },
+    {
+      "name": "uskill-health-sleep-optimization",
+      "title": "睡眠优化",
+      "category": "s7",
+      "version": "3.0.0",
+      "original_id": "SKL-6823",
+      "path": "s7/uskill-health-sleep-optimization",
+      "source_sha": "d6ef7615645c19c50b3171150f822da19d2ed999",
+      "redacted": false
+    },
+    {
+      "name": "uskill-health-stress-management",
+      "title": "压力管理",
+      "category": "s7",
+      "version": "3.0.0",
+      "original_id": "SKL-6819",
+      "path": "s7/uskill-health-stress-management",
+      "source_sha": "3600341b08818cebfdf6006b984484d20b9a07f3",
+      "redacted": false
+    },
+    {
+      "name": "uskill-health-ulife-os-operator",
+      "title": "uLife OS v5.0-Operator",
+      "category": "s7",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s7/uskill-health-ulife-os-operator",
+      "source_sha": "fe7b201345d1ce11a8bc088d773d7bf76f4fba88",
+      "redacted": false
+    },
+    {
+      "name": "uskill-health-biohacking-241a29",
+      "title": "数据驱动 Biohacking 闭环",
+      "category": "s7",
+      "version": "3.0.0",
+      "original_id": "SKL-6939",
+      "path": "s7/uskill-health-biohacking-241a29",
+      "source_sha": "97f80caca735c0e1b2491fcfb9d6fa69c7f611ca",
+      "redacted": false
+    },
+    {
+      "name": "uskill-health-15cf35",
+      "title": "精准筛查防御协议",
+      "category": "s7",
+      "version": "3.0.0",
+      "original_id": "SKL-6942",
+      "path": "s7/uskill-health-15cf35",
+      "source_sha": "c70fe04d3437d85aca306a5abbe3bf1080a35b36",
+      "redacted": false
+    },
+    {
+      "name": "uskill-health-0666f9",
+      "title": "跑步训练姿势矫正协议",
+      "category": "s7",
+      "version": "3.0.0",
+      "original_id": "SKL-6943",
+      "path": "s7/uskill-health-0666f9",
+      "source_sha": "fdf20f4f703e83f70c52cd44468b75e84d0353f4",
+      "redacted": false
+    },
+    {
+      "name": "uskill-running-biomechanics",
+      "title": "跑步生物力学分析",
+      "category": "s7",
+      "version": "3.0.0",
+      "original_id": "SKL-6807",
+      "path": "s7/uskill-running-biomechanics",
+      "source_sha": "d2b44c46dc096460d8ade0167f6e20655c2a2363",
+      "redacted": false
+    },
+    {
+      "name": "uskill-strength-training-system",
+      "title": "力量训练体系",
+      "category": "s7",
+      "version": "3.0.0",
+      "original_id": "SKL-6803",
+      "path": "s7/uskill-strength-training-system",
+      "source_sha": "ad9767cb4c359f51383e4e510fb370e44c991fa1",
+      "redacted": false
+    },
+    {
+      "name": "hrv-d5b49f",
+      "title": "有氧基础 HRV",
+      "category": "s7",
+      "version": "",
+      "original_id": "",
+      "path": "s7/hrv-d5b49f",
+      "source_sha": "2972a9bf951e6a919d437da5e63320aa4ea9be8a",
+      "redacted": false
+    },
+    {
+      "name": "uskill-efficiency-automation-workflow",
+      "title": "自动化工作流",
+      "category": "s8",
+      "version": "3.0.0",
+      "original_id": "SKL-5205",
+      "path": "s8/uskill-efficiency-automation-workflow",
+      "source_sha": "5798c154e5a5d1f96d8c7a4beb9625496d877184",
+      "redacted": false
+    },
+    {
+      "name": "uskill-efficiency-deep-work",
+      "title": "深度工作",
+      "category": "s8",
+      "version": "3.0.0",
+      "original_id": "SKL-6913",
+      "path": "s8/uskill-efficiency-deep-work",
+      "source_sha": "4dd556ec1f4ca2551082d6f9460ca59303c81812",
+      "redacted": false
+    },
+    {
+      "name": "uskill-efficiency-digital-detox",
+      "title": "数字断舍离",
+      "category": "s8",
+      "version": "3.0.0",
+      "original_id": "SKL-6920",
+      "path": "s8/uskill-efficiency-digital-detox",
+      "source_sha": "6cc2fd5ecc954bc5b6ea810ebb6be0fb67eac9ab",
+      "redacted": false
+    },
+    {
+      "name": "uskill-efficiency-email-processing",
+      "title": "邮件处理",
+      "category": "s8",
+      "version": "3.0.0",
+      "original_id": "SKL-5207",
+      "path": "s8/uskill-efficiency-email-processing",
+      "source_sha": "e045f5bc3ee812f8583163f8dd28c8107f30a67b",
+      "redacted": false
+    },
+    {
+      "name": "uskill-efficiency-gtd",
+      "title": "GTD执行",
+      "category": "s8",
+      "version": "3.0.0",
+      "original_id": "SKL-6915",
+      "path": "s8/uskill-efficiency-gtd",
+      "source_sha": "ddeed951fd55ac16720edb87e58b24c9fc6d2a5d",
+      "redacted": false
+    },
+    {
+      "name": "uskill-efficiency-knowledge-management",
+      "title": "知识管理系统",
+      "category": "s8",
+      "version": "3.0.0",
+      "original_id": "SKL-5208",
+      "path": "s8/uskill-efficiency-knowledge-management",
+      "source_sha": "a0b3fc75441c98b287b5032f427ed007f63b09a5",
+      "redacted": false
+    },
+    {
+      "name": "uskill-efficiency-meeting-efficiency",
+      "title": "会议效率",
+      "category": "s8",
+      "version": "3.0.0",
+      "original_id": "SKL-5206",
+      "path": "s8/uskill-efficiency-meeting-efficiency",
+      "source_sha": "ba232c92dc66cdee6838a2edf21e0e65693054c4",
+      "redacted": false
+    },
+    {
+      "name": "uskill-efficiency-schedule-optimization",
+      "title": "uSkill-日程优化-v1",
+      "category": "s8",
+      "version": "3.0.0",
+      "original_id": "SKL-7201",
+      "path": "s8/uskill-efficiency-schedule-optimization",
+      "source_sha": "c7c8da371ba4466cf02d509bcbfb87abc2c75fac",
+      "redacted": false
+    },
+    {
+      "name": "uskill-efficiency-time-blocking",
+      "title": "时间块规划",
+      "category": "s8",
+      "version": "3.0.0",
+      "original_id": "SKL-6914",
+      "path": "s8/uskill-efficiency-time-blocking",
+      "source_sha": "647882f99d77b16129175e66bcc2051f94173855",
+      "redacted": false
+    },
+    {
+      "name": "uskill-management-df3344",
+      "title": "管理者日计划与日复盘框架",
+      "category": "s8",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s8/uskill-management-df3344",
+      "source_sha": "566128bcd894c756cc32630be73cea67a0eaee42",
+      "redacted": false
+    },
+    {
+      "name": "uskill-productivity-analyze-efficiency",
+      "title": "productivity analyze efficiency",
+      "category": "s8",
+      "version": "3.0.0",
+      "original_id": "SKL-6909",
+      "path": "s8/uskill-productivity-analyze-efficiency",
+      "source_sha": "3ed25a9db16289eaba59ed321de165f337e67120",
+      "redacted": false
+    },
+    {
+      "name": "uskill-productivity-cash-flow-quadrant-analysis",
+      "title": "productivity cash flow quadrant analysis",
+      "category": "s8",
+      "version": "3.0.0",
+      "original_id": "SKL-6919",
+      "path": "s8/uskill-productivity-cash-flow-quadrant-analysis",
+      "source_sha": "f394e5fcb443a4b723958067b530c07e538f3402",
+      "redacted": false
+    },
+    {
+      "name": "uskill-productivity-create-personal-readme",
+      "title": "productivity create personal readme",
+      "category": "s8",
+      "version": "3.0.0",
+      "original_id": "SKL-5063",
+      "path": "s8/uskill-productivity-create-personal-readme",
+      "source_sha": "4dbb1c18fdaf5de22e14619dd1f089f7e197b762",
+      "redacted": false
+    },
+    {
+      "name": "uskill-productivity-document-quality-review",
+      "title": "productivity document quality review",
+      "category": "s8",
+      "version": "3.0.0",
+      "original_id": "SKL-5062",
+      "path": "s8/uskill-productivity-document-quality-review",
+      "source_sha": "ca580cca7d36c81731978d8b235faef85db20479",
+      "redacted": false
+    },
+    {
+      "name": "uskill-productivity-draft-patent-application",
+      "title": "productivity draft patent application",
+      "category": "s8",
+      "version": "3.0.0",
+      "original_id": "SKL-6908",
+      "path": "s8/uskill-productivity-draft-patent-application",
+      "source_sha": "9b8ba50b742078416607eb3069d17adfcb55be00",
+      "redacted": false
+    },
+    {
+      "name": "uskill-productivity-draft-product-prd",
+      "title": "productivity draft product prd",
+      "category": "s8",
+      "version": "3.0.0",
+      "original_id": "SKL-6910",
+      "path": "s8/uskill-productivity-draft-product-prd",
+      "source_sha": "9c63f11af6f8673e946306dcb06d856f06262683",
+      "redacted": false
+    },
+    {
+      "name": "uskill-productivity-go-e1878d",
+      "title": "Go 语言开发",
+      "category": "s8",
+      "version": "3.0.0",
+      "original_id": "SKL-7072",
+      "path": "s8/uskill-productivity-go-e1878d",
+      "source_sha": "708a99691ac1d50b1a92527e85a9aa9948990e2e",
+      "redacted": false
+    },
+    {
+      "name": "uskill-productivity-investment-memo-writing",
+      "title": "productivity investment memo writing",
+      "category": "s8",
+      "version": "3.0.0",
+      "original_id": "SKL-6917",
+      "path": "s8/uskill-productivity-investment-memo-writing",
+      "source_sha": "edcf58e105ce7e9a1711da3fa2a6236edc482415",
+      "redacted": false
+    },
+    {
+      "name": "uskill-productivity-lyubishchev-time-accounting",
+      "title": "productivity lyubishchev time accounting",
+      "category": "s8",
+      "version": "3.0.0",
+      "original_id": "SKL-6921",
+      "path": "s8/uskill-productivity-lyubishchev-time-accounting",
+      "source_sha": "cacb09ef7c780aa4ad452fa83a9f0d9d06513657",
+      "redacted": false
+    },
+    {
+      "name": "uskill-productivity-meeting-flyreading",
+      "title": "productivity meeting flyreading",
+      "category": "s8",
+      "version": "3.0.0",
+      "original_id": "SKL-6918",
+      "path": "s8/uskill-productivity-meeting-flyreading",
+      "source_sha": "5f754ca61d659b21f5318e8b84ce842cb471e149",
+      "redacted": true
+    },
+    {
+      "name": "uskill-productivity-okr-strategic-goal-management",
+      "title": "uSkill-productivity-okr-strategic-goal-management",
+      "category": "s8",
+      "version": "3.0.0",
+      "original_id": "SKL-5140",
+      "path": "s8/uskill-productivity-okr-strategic-goal-management",
+      "source_sha": "51f9e80a7bf28cae8546a85d1e290ab14dd434ba",
+      "redacted": false
+    },
+    {
+      "name": "uskill-productivity-optimize-accommodation-ordering",
+      "title": "productivity optimize accommodation ordering",
+      "category": "s8",
+      "version": "3.0.0",
+      "original_id": "SKL-5214",
+      "path": "s8/uskill-productivity-optimize-accommodation-ordering",
+      "source_sha": "18b3500192e2d579aae3cab61e2abfd10405569e",
+      "redacted": false
+    },
+    {
+      "name": "uskill-productivity-optimize-customer-ordering-workflow",
+      "title": "productivity optimize customer ordering workflow",
+      "category": "s8",
+      "version": "3.0.0",
+      "original_id": "SKL-5065",
+      "path": "s8/uskill-productivity-optimize-customer-ordering-workflow",
+      "source_sha": "e4aa993a8fc5f9f18f49c1c3b106fc167177f2ed",
+      "redacted": false
+    },
+    {
+      "name": "uskill-productivity-p4-agentic-finance",
+      "title": "productivity p4 agentic finance",
+      "category": "s8",
+      "version": "3.0.0",
+      "original_id": "SKL-5039",
+      "path": "s8/uskill-productivity-p4-agentic-finance",
+      "source_sha": "1bc15ac350e318d9ff015411dd5c2220d643437e",
+      "redacted": false
+    },
+    {
+      "name": "uskill-productivity-personal-efficiency-analysis-engine",
+      "title": "productivity personal efficiency analysis engine",
+      "category": "s8",
+      "version": "3.0.0",
+      "original_id": "SKL-6922",
+      "path": "s8/uskill-productivity-personal-efficiency-analysis-engine",
+      "source_sha": "0ed22eed7c39bcdb29f54a51b4e7b2a17928d4ac",
+      "redacted": false
+    },
+    {
+      "name": "uskill-productivity-personal-efficiency-improvement-engine",
+      "title": "productivity personal efficiency improvement engine",
+      "category": "s8",
+      "version": "3.0.0",
+      "original_id": "SKL-5079",
+      "path": "s8/uskill-productivity-personal-efficiency-improvement-engine",
+      "source_sha": "0aab95b7f380608ec13439c4fca9184b0d5d0bbd",
+      "redacted": false
+    },
+    {
+      "name": "uskill-productivity-review-document-checklist",
+      "title": "productivity review document checklist",
+      "category": "s8",
+      "version": "3.0.0",
+      "original_id": "SKL-5059",
+      "path": "s8/uskill-productivity-review-document-checklist",
+      "source_sha": "8f86156c5d3b7636130a3369ef73e32ec854160e",
+      "redacted": false
+    },
+    {
+      "name": "uskill-productivity-review-document-quality",
+      "title": "productivity review document quality",
+      "category": "s8",
+      "version": "3.0.0",
+      "original_id": "SKL-5070",
+      "path": "s8/uskill-productivity-review-document-quality",
+      "source_sha": "3c0f120b81f8247db956c1edbebdf3e171a2d068",
+      "redacted": false
+    },
+    {
+      "name": "uskill-productivity-silent-reading-meeting",
+      "title": "productivity silent reading meeting",
+      "category": "s8",
+      "version": "3.0.0",
+      "original_id": "SKL-6911",
+      "path": "s8/uskill-productivity-silent-reading-meeting",
+      "source_sha": "4a622a68ac89ff04102011def175e20e245c3e64",
+      "redacted": false
+    },
+    {
+      "name": "uskill-productivity-write-prd",
+      "title": "productivity write prd",
+      "category": "s8",
+      "version": "3.0.0",
+      "original_id": "SKL-6912",
+      "path": "s8/uskill-productivity-write-prd",
+      "source_sha": "45a2943735ba53bf65fc1e6dc40a6fff17bef529",
+      "redacted": false
+    },
+    {
+      "name": "uskill-productivity-d146c0",
+      "title": "中年男人领袖气质培养",
+      "category": "s8",
+      "version": "3.0.0",
+      "original_id": "SKL-7073",
+      "path": "s8/uskill-productivity-d146c0",
+      "source_sha": "3c2360fc8af0b9fdc72f66b6559877a42b834faa",
+      "redacted": false
+    },
+    {
+      "name": "uskill-productivity-3dafed",
+      "title": "优先级排序",
+      "category": "s8",
+      "version": "3.0.0",
+      "original_id": "SKL-7074",
+      "path": "s8/uskill-productivity-3dafed",
+      "source_sha": "8550e6259653e430b363ada5604ce72603e4280f",
+      "redacted": false
+    },
+    {
+      "name": "uskill-productivity-ca64c7",
+      "title": "全生命体征管理",
+      "category": "s8",
+      "version": "3.0.0",
+      "original_id": "SKL-7075",
+      "path": "s8/uskill-productivity-ca64c7",
+      "source_sha": "2a89f5612a8bb5874bdfbbb04f1aa368a5c1eb9e",
+      "redacted": false
+    },
+    {
+      "name": "uskill-productivity-fd44f6",
+      "title": "后室隔离协议",
+      "category": "s8",
+      "version": "3.0.0",
+      "original_id": "SKL-6916",
+      "path": "s8/uskill-productivity-fd44f6",
+      "source_sha": "e0f7a86e6e970d48ef5eb8917ff02ce1306755fd",
+      "redacted": false
+    },
+    {
+      "name": "uskill-productivity-6baf5f",
+      "title": "日程优化",
+      "category": "s8",
+      "version": "3.0.0",
+      "original_id": "SKL-7078",
+      "path": "s8/uskill-productivity-6baf5f",
+      "source_sha": "a80c232d52233b69fd276c06cbacc1dba8574775",
+      "redacted": false
+    },
+    {
+      "name": "uskill-productivity-935d81",
+      "title": "晚间复盘报告",
+      "category": "s8",
+      "version": "3.0.0",
+      "original_id": "SKL-7079",
+      "path": "s8/uskill-productivity-935d81",
+      "source_sha": "9e0cf11b2008a585ba4f9092a545c7c96d0c476d",
+      "redacted": false
+    },
+    {
+      "name": "uskill-productivity-b058e0",
+      "title": "晨间计划生成",
+      "category": "s8",
+      "version": "3.0.0",
+      "original_id": "SKL-7080",
+      "path": "s8/uskill-productivity-b058e0",
+      "source_sha": "397eaf3745884041652e222e6358f5a7e6a51893",
+      "redacted": false
+    },
+    {
+      "name": "uskill-productivity-5ee5b0",
+      "title": "知识词条录入",
+      "category": "s8",
+      "version": "3.0.0",
+      "original_id": "SKL-7082",
+      "path": "s8/uskill-productivity-5ee5b0",
+      "source_sha": "3ec218efb3f09e31701497e0f562411e67c8e34b",
+      "redacted": false
+    },
+    {
+      "name": "uskill-productivity-13f2d5",
+      "title": "费曼技巧学习法",
+      "category": "s8",
+      "version": "3.0.0",
+      "original_id": "SKL-7083",
+      "path": "s8/uskill-productivity-13f2d5",
+      "source_sha": "48abaa8aceb25660d6cb67fa65674dcda8b904f6",
+      "redacted": false
+    },
+    {
+      "name": "uskill-tool-compress-image",
+      "title": "图片压缩工具",
+      "category": "s8",
+      "version": "3.0.0",
+      "original_id": "SKL-7102",
+      "path": "s8/uskill-tool-compress-image",
+      "source_sha": "ccefccaf92fabf8284e6b12e92897d841608ed81",
+      "redacted": false
+    },
+    {
+      "name": "uskill-tool-format-markdown",
+      "title": "Markdown格式化",
+      "category": "s8",
+      "version": "3.0.0",
+      "original_id": "SKL-7103",
+      "path": "s8/uskill-tool-format-markdown",
+      "source_sha": "024b982893e5928047a7fc88b868a65a5bca3438",
+      "redacted": false
+    },
+    {
+      "name": "uskill-tool-frontend-design",
+      "title": "前端设计系统",
+      "category": "s8",
+      "version": "3.0.0",
+      "original_id": "SKL-7107",
+      "path": "s8/uskill-tool-frontend-design",
+      "source_sha": "3b916d9624f2dc5b8db48943ffdcf644e634f63a",
+      "redacted": false
+    },
+    {
+      "name": "uskill-tool-markdown-to-html",
+      "title": "Markdown转文档（HTML·Word）",
+      "category": "s8",
+      "version": "3.1.0",
+      "original_id": "SKL-7104",
+      "path": "s8/uskill-tool-markdown-to-html",
+      "source_sha": "023b91fc4e8e53e5f9597313d694a51160585259",
+      "redacted": false
+    },
+    {
+      "name": "uskill-tool-url-to-markdown",
+      "title": "网页转Markdown",
+      "category": "s8",
+      "version": "3.0.0",
+      "original_id": "SKL-7105",
+      "path": "s8/uskill-tool-url-to-markdown",
+      "source_sha": "e4805640c6e9d0505184cffb6a067b99b602a0e3",
+      "redacted": false
+    },
+    {
+      "name": "uskill-tool-x-to-markdown",
+      "title": "X(Twitter)推文转Markdown",
+      "category": "s8",
+      "version": "3.0.0",
+      "original_id": "SKL-7106",
+      "path": "s8/uskill-tool-x-to-markdown",
+      "source_sha": "9ccd1c96d138f4f9b6b2b6755f198aa7022cc53f",
+      "redacted": false
+    },
+    {
+      "name": "uskill-tool-zhengxi-views",
+      "title": "郑希投资观点库",
+      "category": "s8",
+      "version": "3.0.0",
+      "original_id": "SKL-7108",
+      "path": "s8/uskill-tool-zhengxi-views",
+      "source_sha": "b7383a388018253e2a279b348cd0c3321b64005c",
+      "redacted": false
+    },
+    {
+      "name": "skill-b83de736",
+      "title": "会议飞读法",
+      "category": "s8",
+      "version": "",
+      "original_id": "",
+      "path": "s8/skill-b83de736",
+      "source_sha": "843589843c2dc8062cbc91676c188ad9a4b80751",
+      "redacted": false
+    },
+    {
+      "name": "skill-c999a06f",
+      "title": "文档质量复盘",
+      "category": "s8",
+      "version": "",
+      "original_id": "",
+      "path": "s8/skill-c999a06f",
+      "source_sha": "6b9586796733acbf9f43cf5457efcfd73dfa7019",
+      "redacted": false
+    },
+    {
+      "name": "skill-e72146f3",
+      "title": "晨间例行系统",
+      "category": "s8",
+      "version": "",
+      "original_id": "",
+      "path": "s8/skill-e72146f3",
+      "source_sha": "643e545881f92bd0014b05736e6702177c65ab7a",
+      "redacted": false
+    },
+    {
+      "name": "bioloop-injection-20260710",
+      "title": "bioloop-injection-20260710",
+      "category": "s9",
+      "version": "",
+      "original_id": "",
+      "path": "s9/bioloop-injection-20260710",
+      "source_sha": "19525edc4720aecbb86004ad1ebf0a500d8b273b",
+      "redacted": false
+    },
+    {
+      "name": "treasury-injection-20260710",
+      "title": "treasury-injection-20260710",
+      "category": "s9",
+      "version": "",
+      "original_id": "",
+      "path": "s9/treasury-injection-20260710",
+      "source_sha": "d7f9bee55de29df55b76b7fdbc22984aeb6fee13",
+      "redacted": false
+    },
+    {
+      "name": "twin-injection-20260710",
+      "title": "twin-injection-20260710",
+      "category": "s9",
+      "version": "",
+      "original_id": "",
+      "path": "s9/twin-injection-20260710",
+      "source_sha": "68c7e31c93b1553351c13e09f64b3ce2324dadc6",
+      "redacted": false
+    },
+    {
+      "name": "uskill-skill-correction-1-beff5a",
+      "title": "Correction #1 — 跑步数据提取格式",
+      "category": "s9",
+      "version": "3.0",
+      "original_id": "SKL-7069",
+      "path": "s9/uskill-skill-correction-1-beff5a",
+      "source_sha": "0f3f5cd981e0e878f62446b0909e7ea889bf4075",
+      "redacted": false
+    },
+    {
+      "name": "uskill-skill-correction-2-10dc7b",
+      "title": "Correction #2 — 数据契约字段名不匹配",
+      "category": "s9",
+      "version": "3.0",
+      "original_id": "SKL-7070",
+      "path": "s9/uskill-skill-correction-2-10dc7b",
+      "source_sha": "5694aed8e4c4f82ec8bcba9dc5b37dc4d1657a82",
+      "redacted": false
+    },
+    {
+      "name": "uskill-skill-correction-3-trend-json-51e2da",
+      "title": "Correction #3 — 监控面板数据与trend.json脱节",
+      "category": "s9",
+      "version": "3.0",
+      "original_id": "SKL-7071",
+      "path": "s9/uskill-skill-correction-3-trend-json-51e2da",
+      "source_sha": "7e49f7febe6cf5c2c5582156615545d91508fa96",
+      "redacted": false
+    },
+    {
+      "name": "uskill-skill-golden-sample-1-9fff96",
+      "title": "Golden Sample #1 — 晨间计划生成",
+      "category": "s9",
+      "version": "2.0.0",
+      "original_id": "SKL-7070",
+      "path": "s9/uskill-skill-golden-sample-1-9fff96",
+      "source_sha": "da23e126d1e1b3e5d1f42b4731dab80047c37d98",
+      "redacted": false
+    },
+    {
+      "name": "claude-396ed7",
+      "title": "CLAUDE 三级配置规范",
+      "category": "s9",
+      "version": "",
+      "original_id": "",
+      "path": "s9/claude-396ed7",
+      "source_sha": "cd86828ead4e3e7bd133f286d64d6352635b8dde",
+      "redacted": false
+    },
+    {
+      "name": "d-a1-02-graph-orchestrator-v2-0-08e4cd",
+      "title": "D-A1-02: uSkill Graph Orchestrator v2.0 空转验证报告",
+      "category": "s9",
+      "version": "",
+      "original_id": "",
+      "path": "s9/d-a1-02-graph-orchestrator-v2-0-08e4cd",
+      "source_sha": "66894a6b91945aa09cfcba5c32e910dfbb2c1581",
+      "redacted": false
+    },
+    {
+      "name": "d-b1-02-skill-c71b48",
+      "title": "D-B1-02: 3 个核心 Skill 会话内迭代法改造报告",
+      "category": "s9",
+      "version": "",
+      "original_id": "",
+      "path": "s9/d-b1-02-skill-c71b48",
+      "source_sha": "faae861a069e49da82e88127c36830a2612c066a",
+      "redacted": false
+    },
+    {
+      "name": "d-b1-03-uskill-9b62e8",
+      "title": "D-B1-03: uSkill 迭代试点横向对比评估报告",
+      "category": "s9",
+      "version": "",
+      "original_id": "",
+      "path": "s9/d-b1-03-uskill-9b62e8",
+      "source_sha": "e95a0bf40f0f0e515b85c6df61c7a4ca8b104a27",
+      "redacted": false
+    },
+    {
+      "name": "dynatrace-agent-builder-1724d5",
+      "title": "Dynatrace Agent Builder + 自治SRE深度研究",
+      "category": "s9",
+      "version": "",
+      "original_id": "",
+      "path": "s9/dynatrace-agent-builder-1724d5",
+      "source_sha": "82998b4e35395196cc01aa0982cd5def0eb06678",
+      "redacted": false
+    },
+    {
+      "name": "p2-01-8-40728f",
+      "title": "P2-01: 8月织网阶段任务清单",
+      "category": "s9",
+      "version": "",
+      "original_id": "",
+      "path": "s9/p2-01-8-40728f",
+      "source_sha": "ffdaeda64a9252d2ffe41ab2d7fed7d759f9eee8",
+      "redacted": false
+    },
+    {
+      "name": "uskill-skill-lqs-report",
+      "title": "uSkill-skill-lqs-report",
+      "category": "s9",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s9/uskill-skill-lqs-report",
+      "source_sha": "87a090a2efe84ff39b4f58d097578607195f5e71",
+      "redacted": false
+    },
+    {
+      "name": "social-lqs-py",
+      "title": "social_lqs.py",
+      "category": "s9",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s9/social-lqs-py",
+      "source_sha": "ba63b7efc7c622802063bba8966b01341e7d9b6e",
+      "redacted": false
+    },
+    {
+      "name": "ulife-os-v5-0-operator",
+      "title": "uLife OS v5.0-Operator",
+      "category": "s9",
+      "version": "5.0",
+      "original_id": "",
+      "path": "s9/ulife-os-v5-0-operator",
+      "source_sha": "0d2e9d6eeeee27e30a2e9f5dd98abe20a77add7a",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-agent-agent-f3bdbf",
+      "title": "Agent任务调度 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7009",
+      "path": "s9/uskill-agent-agent-agent-f3bdbf",
+      "source_sha": "54b5743eaca6fac2df29620a8de9927ca625c2dd",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-ai-co-8de187",
+      "title": "uSkill AI-Co 效能审计报告",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7008",
+      "path": "s9/uskill-agent-ai-co-8de187",
+      "source_sha": "fc3fd5fed18d06be2184ca65370af0931d3aa785",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-community-ops",
+      "title": "社群运维 Gen3 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7106",
+      "path": "s9/uskill-agent-community-ops",
+      "source_sha": "f3363f6e288a77b88896f739ee456106634ddba3",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-doc-update-sync",
+      "title": "文档更新同步",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7105",
+      "path": "s9/uskill-agent-doc-update-sync",
+      "source_sha": "44116738cca36558ef67108d0b07da538d9320e0",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-exec-monitor",
+      "title": "Agent执行监控 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-5309",
+      "path": "s9/uskill-agent-exec-monitor",
+      "source_sha": "9f19e7a82f2c4775e5c58a6b30e07d662cb2c41e",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-exec-monitoring",
+      "title": "Agent执行监控",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7123",
+      "path": "s9/uskill-agent-exec-monitoring",
+      "source_sha": "c1385370e23f915b656583aca1904d5dee5a224f",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-meta-design-learning-plan",
+      "title": "meta design learning plan",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-5009",
+      "path": "s9/uskill-agent-meta-design-learning-plan",
+      "source_sha": "6ab7b67f0da2819c317727bb2ce3c2fc5f9fc16c",
+      "redacted": true
+    },
+    {
+      "name": "uskill-agent-meta-evolve-life-os",
+      "title": "meta evolve life os",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-6904",
+      "path": "s9/uskill-agent-meta-evolve-life-os",
+      "source_sha": "d6273113150d7f9793682402e1f595b1e5752c96",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-meta-feynman-deep-learning",
+      "title": "meta feynman deep learning",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-5047",
+      "path": "s9/uskill-agent-meta-feynman-deep-learning",
+      "source_sha": "e149e645ec31e1a4c68edeec146be58375413f8f",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-meta-learn-strategic-knowledge-internalization",
+      "title": "meta learn strategic knowledge internalization",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-6885",
+      "path": "s9/uskill-agent-meta-learn-strategic-knowledge-internalization",
+      "source_sha": "f4b14c129dad6db36238cfbb79d78521e45b44a5",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-meta-manage-prompt-lifecycle",
+      "title": "meta manage prompt lifecycle",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-6895",
+      "path": "s9/uskill-agent-meta-manage-prompt-lifecycle",
+      "source_sha": "45271322fe9f676e006a547b0ee94077dc23f996",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-meta-pain-reflection-growth-cycle",
+      "title": "meta pain reflection growth cycle",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-5078",
+      "path": "s9/uskill-agent-meta-pain-reflection-growth-cycle",
+      "source_sha": "bc5e6bf6fd036bafca5b8fa9cbb4ea056a6f4600",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-meta-personal-data-okr-review",
+      "title": "meta personal data okr review",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-5030",
+      "path": "s9/uskill-agent-meta-personal-data-okr-review",
+      "source_sha": "25e1c91ba8e72bd4c0c1d927a75eb844cb5e05fd",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-meta-personal-okr-goal-management",
+      "title": "meta personal okr goal management",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-5052",
+      "path": "s9/uskill-agent-meta-personal-okr-goal-management",
+      "source_sha": "2a07dab1c5cb55a45afaa29a1ac14c598f38acc2",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-meta-review-personal-okr-data",
+      "title": "meta review personal okr data",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-5003",
+      "path": "s9/uskill-agent-meta-review-personal-okr-data",
+      "source_sha": "a749faba7570c5898157cc6c2f1775c6c39167bd",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-meta-select-thinking-methodology",
+      "title": "meta select thinking methodology",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-5160",
+      "path": "s9/uskill-agent-meta-select-thinking-methodology",
+      "source_sha": "ae8fb2116316dc5f1f44dab3231676538d93e24b",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-meta-strategic-okr-management",
+      "title": "meta strategic okr management",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-5024",
+      "path": "s9/uskill-agent-meta-strategic-okr-management",
+      "source_sha": "d7b058433564f3652c67125cf3a56048f1bf5211",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-meta-template-pattern-reuse",
+      "title": "meta template pattern reuse",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-5064",
+      "path": "s9/uskill-agent-meta-template-pattern-reuse",
+      "source_sha": "a2774192f35146be1ed855f32f2da285bbde95c3",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-opensource-ops",
+      "title": "开源项目运维 Gen3 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7103",
+      "path": "s9/uskill-agent-opensource-ops",
+      "source_sha": "f90501c751973df53850dc2dbb3c67a2eff741f4",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-ovp-knowledge-twin-3b4492",
+      "title": "OVP 季度验证报告 — Knowledge Twin 维度",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7010",
+      "path": "s9/uskill-agent-ovp-knowledge-twin-3b4492",
+      "source_sha": "52fa184cc2cb0d118d8f2245c715bf7fdb574247",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-quarterly-system-review",
+      "title": "季度系统评估",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7122",
+      "path": "s9/uskill-agent-quarterly-system-review",
+      "source_sha": "098295698b7b3c159797ee87e253c65d6df69fc8",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-reference-bridge-scheme",
+      "title": "uSkill 引用桥接方案",
+      "category": "s9",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s9/uskill-agent-reference-bridge-scheme",
+      "source_sha": "9bfd14e7e0ff3f99973d3bb23b7fbfcb68e0adf2",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-rule-distribution-sync",
+      "title": "规则分发同步 Gen3 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7107",
+      "path": "s9/uskill-agent-rule-distribution-sync",
+      "source_sha": "9d5c808ca368520971a4b1d16599fc31284500ac",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-skill-taxonomy-report",
+      "title": "uSkill 扩展分析报告",
+      "category": "s9",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s9/uskill-agent-skill-taxonomy-report",
+      "source_sha": "c1a79e2fb7248805f6c01c9b1d858a5a19dc6205",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-skillopt-optimization",
+      "title": "SkillOpt 技能优化 Gen3 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7110",
+      "path": "s9/uskill-agent-skillopt-optimization",
+      "source_sha": "3e613b0836e2b260f4d27ba0b0f5a4c1137cfe94",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-system-entropy-detection",
+      "title": "uSkill-系统熵增检测-v1",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7203",
+      "path": "s9/uskill-agent-system-entropy-detection",
+      "source_sha": "caa08d068c88692b6d16700d90588b7261ad8aea",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-tescreal-1c6d95",
+      "title": "uSkill-TESCREAL校验",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7011",
+      "path": "s9/uskill-agent-tescreal-1c6d95",
+      "source_sha": "b6c021a278ac6fa296cb113de7cca89bdcdf7dbd",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-treasury-agent-mcp-02f237",
+      "title": "uSkill-Treasury Agent MCP 接入与回测系统",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7012",
+      "path": "s9/uskill-agent-treasury-agent-mcp-02f237",
+      "source_sha": "8e6407f8fc2c8eaf982b80b221e521e59be184ca",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-twin-mcp-122ee4",
+      "title": "Twin MCP 输入契约",
+      "category": "s9",
+      "version": "3.0",
+      "original_id": "SKL-7006",
+      "path": "s9/uskill-agent-twin-mcp-122ee4",
+      "source_sha": "ac370af09825a1b1c97cc7d2db1aede92d628b50",
+      "redacted": true
+    },
+    {
+      "name": "uskill-agent-ulife-os-2b2ea2",
+      "title": "uLife OS 主入口",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7007",
+      "path": "s9/uskill-agent-ulife-os-2b2ea2",
+      "source_sha": "7c495004dda1b60c2efabf8b13253eb48c195048",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-uskill-agent-a61a8a",
+      "title": "uSkill文档生成 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7013",
+      "path": "s9/uskill-agent-uskill-agent-a61a8a",
+      "source_sha": "fe8734c0683c3e375c16fefb72060f7e7caf3fcc",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-378187",
+      "title": "uLife 事件钩子微循环设计",
+      "category": "s9",
+      "version": "",
+      "original_id": "",
+      "path": "s9/uskill-agent-378187",
+      "source_sha": "e4864be34e04799f38cc18c0316f4af5f62c40f8",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-agent-495d97",
+      "title": "五维 Agent 知识源目录索引",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7014",
+      "path": "s9/uskill-agent-agent-495d97",
+      "source_sha": "e9f4c2f46fdb52e17a8b6c583540b2b53c3d0594",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-mvp-c15694",
+      "title": "产品管理：MVP定义与验证",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7058",
+      "path": "s9/uskill-agent-mvp-c15694",
+      "source_sha": "d8a7fc80118e3f691d8cbb5bca9cd8c586592cf1",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-543cc1",
+      "title": "产品管理：数据驱动决策",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7059",
+      "path": "s9/uskill-agent-543cc1",
+      "source_sha": "80e0084a66d2ee83d0a23324a8a4ceacae8a94d8",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-agent-dd0b47",
+      "title": "优先级排序 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7015",
+      "path": "s9/uskill-agent-agent-dd0b47",
+      "source_sha": "91b3cee2f9ba2621b556a32c8840775985ce04aa",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-agent-f9d353",
+      "title": "会议纪要生成 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7016",
+      "path": "s9/uskill-agent-agent-f9d353",
+      "source_sha": "a0af38685f1602f5694a10697832edda94085c6a",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-edae22",
+      "title": "信息茧房突破",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7060",
+      "path": "s9/uskill-agent-edae22",
+      "source_sha": "f590f7a78d2f85a6564c42f80d7ee48de471d145",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-a2360c",
+      "title": "uSkill-agent-元认知防火墙",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7212",
+      "path": "s9/uskill-agent-a2360c",
+      "source_sha": "ba5a292f61e516ff699d2ac8399f743ae05528b4",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-fef8c6",
+      "title": "uSkill-全局审计专项循环",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7204",
+      "path": "s9/uskill-agent-fef8c6",
+      "source_sha": "8dc2de24b6a2a165e435ec75628002e382447448",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-b328fe",
+      "title": "关系图谱索引",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7018",
+      "path": "s9/uskill-agent-b328fe",
+      "source_sha": "ecbae782e04979d211f15582da7835b70d706822",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-1ec70b",
+      "title": "uSkill-关系网络连接器衰减预警",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7019",
+      "path": "s9/uskill-agent-1ec70b",
+      "source_sha": "a9ee785a9de74af2e105d52c1bb3f76539061011",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-agent-7926dc",
+      "title": "午间资讯汇总 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7020",
+      "path": "s9/uskill-agent-agent-7926dc",
+      "source_sha": "ddb3371ce81203d2cdac8ae5ea95d8c4eabb72bc",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-agent-dd6e07",
+      "title": "反方律师思维 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7021",
+      "path": "s9/uskill-agent-agent-dd6e07",
+      "source_sha": "8a253600a1ca9a4c5fabc64ee8b266dd1463b0fd",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-8ef8d0",
+      "title": "后视镜陷阱识别术",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7061",
+      "path": "s9/uskill-agent-8ef8d0",
+      "source_sha": "68b5847fe0faa58558c541e69483d156ee2e80c9",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-agent-59da7d",
+      "title": "周报复盘 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7022",
+      "path": "s9/uskill-agent-agent-59da7d",
+      "source_sha": "19695e4a466a2531a605423659397f9c83a0a2f2",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-agent-8b6697",
+      "title": "外部集成对接 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7023",
+      "path": "s9/uskill-agent-agent-8b6697",
+      "source_sha": "d99c7083db7fd7f4ce3e8ec7de56c88f8740c72b",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-0f49fd",
+      "title": "uSkill-agent-定时自动化可靠性协议",
+      "category": "s9",
+      "version": "1.0.0",
+      "original_id": "SKL-7221",
+      "path": "s9/uskill-agent-0f49fd",
+      "source_sha": "afd04ba23f7c7bdb2780ea390ee34feef6ae0da5",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-agent-5b4471",
+      "title": "年度总结生成 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7024",
+      "path": "s9/uskill-agent-agent-5b4471",
+      "source_sha": "15e9ab6874c120c135477641afd58a59309eec5a",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-216e5b",
+      "title": "循环工程-审计-调度数据契约-v1.2",
+      "category": "s9",
+      "version": "v1.2",
+      "original_id": "SKL-7062",
+      "path": "s9/uskill-agent-216e5b",
+      "source_sha": "04797ccd27883e5ab5361cf53b1697f06a5875b7",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-0e94b0",
+      "title": "uSkill-循环工程-身份层",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7203",
+      "path": "s9/uskill-agent-0e94b0",
+      "source_sha": "84b00042ed870760d5740e3e057edb3207c1c925",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-b3dc18",
+      "title": "uSkill-循环工程统一调度入口",
+      "category": "s9",
+      "version": "3.3.0",
+      "original_id": "SKL-7202",
+      "path": "s9/uskill-agent-b3dc18",
+      "source_sha": "107977a6cd44ccbd045debf880997e9e7d883e55",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-b85e5b",
+      "title": "情绪传染免疫",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7063",
+      "path": "s9/uskill-agent-b85e5b",
+      "source_sha": "d87f780f67520335144c50bcf306733ae5e0e07e",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-agent-41a1fa",
+      "title": "技术博客写作 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7027",
+      "path": "s9/uskill-agent-agent-41a1fa",
+      "source_sha": "a47406dce49ca9f35f50d01e4f07e242aa6a04a9",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-0e4785",
+      "title": "uSkill-技术方案评估",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7028",
+      "path": "s9/uskill-agent-0e4785",
+      "source_sha": "ac7a518bd83222b4ebb914d735c4262c45c83641",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-30d18e",
+      "title": "uSkill-技能推理器孤岛审计",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7029",
+      "path": "s9/uskill-agent-30d18e",
+      "source_sha": "2086411480637b46644a0cdb4d9b1d606a985e04",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-db0056",
+      "title": "uSkill-投资标的筛选",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7030",
+      "path": "s9/uskill-agent-db0056",
+      "source_sha": "0dcbc42f6b48b6bc59e90b7142c195544b051fef",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-agent-v2-19b081",
+      "title": "投资组合监控 Agent v2 — 增强版实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7032",
+      "path": "s9/uskill-agent-agent-v2-19b081",
+      "source_sha": "84c83a47354e17f02b542267517b8a32093b889c",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-29634f",
+      "title": "uSkill-指标仪表盘更新",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7033",
+      "path": "s9/uskill-agent-29634f",
+      "source_sha": "66f69a174275c56aa7df8a9b6feebb2b286ba633",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-agent-bed589",
+      "title": "日程优化 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7034",
+      "path": "s9/uskill-agent-agent-bed589",
+      "source_sha": "e944aa300e5da41e643ccb2b69428f865e95a4f2",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-agent-84ab4d",
+      "title": "日记元数据 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7035",
+      "path": "s9/uskill-agent-agent-84ab4d",
+      "source_sha": "adf7a89663aef5fe8fcfe25f73527e3df165ca6c",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-agent-4408b5",
+      "title": "月度指标校准 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7036",
+      "path": "s9/uskill-agent-agent-4408b5",
+      "source_sha": "c154f139694879bd435e2543825bf9a5b664df60",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-681408",
+      "title": "uSkill-每日领域共生循环系统",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7213",
+      "path": "s9/uskill-agent-681408",
+      "source_sha": "d32be12d8eb09e01b25344a0caf775bb31464490",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-agent-e1ded0",
+      "title": "演讲稿生成 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7038",
+      "path": "s9/uskill-agent-agent-e1ded0",
+      "source_sha": "5176a77026d89cb652dc2a0a9cb8027afe726dd9",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-agent-83b856",
+      "title": "白皮书撰写 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7039",
+      "path": "s9/uskill-agent-agent-83b856",
+      "source_sha": "7aed7e80dd4d20417af23fdb7b24d371b286beaa",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-agent-62548c",
+      "title": "知识内参编写 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7040",
+      "path": "s9/uskill-agent-agent-62548c",
+      "source_sha": "04778df8f8bae6558c534a6cb0838bb73b5196e0",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-mvp-22c741",
+      "title": "uSkill-知识孪生体 MVP 实现路线图",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7041",
+      "path": "s9/uskill-agent-mvp-22c741",
+      "source_sha": "63e57b88938bb390a37cba82b79d8845548c39f9",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-bf84a6",
+      "title": "uSkill-知识孪生体深度蒸馏双链织入",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7219",
+      "path": "s9/uskill-agent-bf84a6",
+      "source_sha": "2471b81385c3f2a0e01dbfa4dfa549c11ac55761",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-agent-76bc44",
+      "title": "知识缺口识别 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7043",
+      "path": "s9/uskill-agent-agent-76bc44",
+      "source_sha": "a9ef61c5100341e08586176acfef8ea123c63b1f",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-f14f2e",
+      "title": "确认偏误对抗",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7067",
+      "path": "s9/uskill-agent-f14f2e",
+      "source_sha": "3c8259a9b67d842e6775960c15117222d9103164",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-agent-698ba8",
+      "title": "社交媒体改编 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7044",
+      "path": "s9/uskill-agent-agent-698ba8",
+      "source_sha": "dccd36efadca9d0ddfd639b214238990553df0d3",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-ip-10eac5",
+      "title": "uSkill-社交资本与 IP 内容爆发路线图",
+      "category": "s9",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s9/uskill-agent-ip-10eac5",
+      "source_sha": "b8ec1bbeeb5658f79b6dc621a165a1c398ce33cc",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-agent-f5b9a6",
+      "title": "系统熵增检测 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7046",
+      "path": "s9/uskill-agent-agent-f5b9a6",
+      "source_sha": "4d97985633d96f789a033f95201115e0299ebacc",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-b1f8c2",
+      "title": "uSkill-自进化飞轮与循环工程整合架构 v1",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7047",
+      "path": "s9/uskill-agent-b1f8c2",
+      "source_sha": "566acc54b5a9aa7d7c0acfbffcf75688e115f343",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-agent-ec090b",
+      "title": "视频脚本生成 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7048",
+      "path": "s9/uskill-agent-agent-ec090b",
+      "source_sha": "3cbee85f36f8060fe7a0426f797a8c9552ee88f3",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-ef9a2b",
+      "title": "认知偏差对抗协议",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7210",
+      "path": "s9/uskill-agent-ef9a2b",
+      "source_sha": "ce061a27b51a4260295d9448318029259f1cdcd1",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-agent-05b9f2",
+      "title": "读书笔记生产 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7049",
+      "path": "s9/uskill-agent-agent-05b9f2",
+      "source_sha": "af647edcea1267f86ed33f992901e6598aef3b20",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-agent-e82a96",
+      "title": "课程大纲设计 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7050",
+      "path": "s9/uskill-agent-agent-e82a96",
+      "source_sha": "a6e0fa33ff78623a8329542cc7c73e7921167ed9",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-cfadff",
+      "title": "uSkill-贝叶斯决策",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7051",
+      "path": "s9/uskill-agent-cfadff",
+      "source_sha": "0331b3c50b6f42c65658df2cceb7f3d5c0aae374",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-self-play-9d8490",
+      "title": "uSkill 质量分级与 Self-Play 框架",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7052",
+      "path": "s9/uskill-agent-self-play-9d8490",
+      "source_sha": "bbea23aa5b0b857cdbd81dab411810c2e410b624",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-agent-982d6f",
+      "title": "趋势研判 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7053",
+      "path": "s9/uskill-agent-agent-982d6f",
+      "source_sha": "19431f5dc1a6884b8cb62efb9ccc8fcc303e1070",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-1e0b1b",
+      "title": "uSkill-身心循环智能体自适应负荷重排",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7054",
+      "path": "s9/uskill-agent-1e0b1b",
+      "source_sha": "b635a3cd3d4b657aa719ecae514645a15d8a5cdf",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-90a594",
+      "title": "长寿逃逸速度人生规划",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7068",
+      "path": "s9/uskill-agent-90a594",
+      "source_sha": "34a20792c14ec3ff79f699baa2bcd46c43ef10de",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-agent-eec42b",
+      "title": "长期影响评估 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7055",
+      "path": "s9/uskill-agent-agent-eec42b",
+      "source_sha": "1b065480094c9d73eeb27530b482466ea00aea6b",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-agent-336030",
+      "title": "预测校准 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7056",
+      "path": "s9/uskill-agent-agent-336030",
+      "source_sha": "b93675e67efc1da6f147b5ac37cf0e2ed11fb0e8",
+      "redacted": false
+    },
+    {
+      "name": "uskill-agent-agent-58f49e",
+      "title": "风险评估 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7057",
+      "path": "s9/uskill-agent-agent-58f49e",
+      "source_sha": "24c4ff17ef1f9eb3d96c92cdd2e658869a3c69f7",
+      "redacted": false
+    },
+    {
+      "name": "uskill-architecture-a2a-cross-cycle-protocol",
+      "title": "A2A 跨循环通信协议 v1",
+      "category": "s9",
+      "version": "",
+      "original_id": "",
+      "path": "s9/uskill-architecture-a2a-cross-cycle-protocol",
+      "source_sha": "cf76a2fe3ca698ae488cd7f3660c37c1f324a6a9",
+      "redacted": false
+    },
+    {
+      "name": "uskill-architecture-cycle-engineering-schema",
+      "title": "循环工程-统一 Schema 接口化",
+      "category": "s9",
+      "version": "",
+      "original_id": "",
+      "path": "s9/uskill-architecture-cycle-engineering-schema",
+      "source_sha": "ac1f216e08fb3e327824955c58417adc790e4428",
+      "redacted": false
+    },
+    {
+      "name": "uskill-bim-specialist",
+      "title": "BIM与建筑信息模型",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-5807",
+      "path": "s9/uskill-bim-specialist",
+      "source_sha": "30ff6866bd2770157b931a25c684df7722e49fb0",
+      "redacted": false
+    },
+    {
+      "name": "uskill-bio-compute-alert",
+      "title": "生物算力预警 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-6901",
+      "path": "s9/uskill-bio-compute-alert",
+      "source_sha": "255c54a2233210a2bb02e505cb03e53f38c24283",
+      "redacted": false
+    },
+    {
+      "name": "uskill-book-ai-cfb243",
+      "title": "uSkill-书-AI交付纪律",
+      "category": "s9",
+      "version": "1.0.0",
+      "original_id": "SKL-8101",
+      "path": "s9/uskill-book-ai-cfb243",
+      "source_sha": "2e14ae199f6338e52b6f2e77ee94e7ba350dcfa5",
+      "redacted": false
+    },
+    {
+      "name": "uskill-book-1c4d8f",
+      "title": "uSkill-书-时间的纪律",
+      "category": "s9",
+      "version": "1.0.0",
+      "original_id": "SKL-8104",
+      "path": "s9/uskill-book-1c4d8f",
+      "source_sha": "61d255ac590711f33b571672b0fa3618e31d1471",
+      "redacted": false
+    },
+    {
+      "name": "uskill-book-52bc6b",
+      "title": "uSkill-书-知识库工程学",
+      "category": "s9",
+      "version": "1.0.0",
+      "original_id": "SKL-8102",
+      "path": "s9/uskill-book-52bc6b",
+      "source_sha": "b52eb843c70932dfd5c4268267b210b60c58b9c9",
+      "redacted": false
+    },
+    {
+      "name": "uskill-book-f9e579",
+      "title": "uSkill-书-身体的纪律",
+      "category": "s9",
+      "version": "1.0.0",
+      "original_id": "SKL-8103",
+      "path": "s9/uskill-book-f9e579",
+      "source_sha": "48709fd07e95a39510a08744c455f6f59181434c",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cartography-design",
+      "title": "地图制图设计",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-6889",
+      "path": "s9/uskill-cartography-design",
+      "source_sha": "a125631c6483b610570fa0a4dd430f2e72a90f73",
+      "redacted": false
+    },
+    {
+      "name": "uskill-code-review",
+      "title": "代码审查 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-5312",
+      "path": "s9/uskill-code-review",
+      "source_sha": "b7e9f58423300c6f928c012c353ec1bb98d3b005",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cognitive-bias-detect",
+      "title": "认知偏差检测 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-6900",
+      "path": "s9/uskill-cognitive-bias-detect",
+      "source_sha": "a08d45fc2196b52c49913e74fe375fb0fd7bd86e",
+      "redacted": false
+    },
+    {
+      "name": "uskill-community-ops",
+      "title": "社群运维 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-5316",
+      "path": "s9/uskill-community-ops",
+      "source_sha": "c158021ce742ef54c6f1961cb0e8e77a86ac8bf3",
+      "redacted": false
+    },
+    {
+      "name": "uskill-competitive-analysis",
+      "title": "竞品分析 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-6890",
+      "path": "s9/uskill-competitive-analysis",
+      "source_sha": "6f04e5fb20c2493cd2ade2dd8bab6a5d544f8049",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-3d-asset-creation",
+      "title": "3D资产创建",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-5906",
+      "path": "s9/uskill-creative-3d-asset-creation",
+      "source_sha": "41ef9c36ed1892f7c9e6c6ca23386b475eb82e44",
+      "redacted": false
+    },
+    {
+      "name": "uskill-creative-3d-scene-developer",
+      "title": "三维场景开发",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-5806",
+      "path": "s9/uskill-creative-3d-scene-developer",
+      "source_sha": "cd202d35e431b791a0c24fbf8bae933bd20473ac",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cross-domain-analogy",
+      "title": "跨领域类比 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-6905",
+      "path": "s9/uskill-cross-domain-analogy",
+      "source_sha": "60ef1b7bbbb63a2a5f73c98b50d5b7911d6143ab",
+      "redacted": false
+    },
+    {
+      "name": "uskill-cross-module-link",
+      "title": "跨模块联动 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-5317",
+      "path": "s9/uskill-cross-module-link",
+      "source_sha": "e45053921dd019d018594dab4596816066e79c55",
+      "redacted": false
+    },
+    {
+      "name": "uskill-defense-emotional-manipulation",
+      "title": "情绪操纵识别",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-6902",
+      "path": "s9/uskill-defense-emotional-manipulation",
+      "source_sha": "7e61b8b5e910a82ac449ba64a72634a316176b0c",
+      "redacted": false
+    },
+    {
+      "name": "uskill-defense-existential-risk-scan",
+      "title": "存在性风险扫描 Gen3 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7109",
+      "path": "s9/uskill-defense-existential-risk-scan",
+      "source_sha": "3e6479f66ba7a323193041746680921e528c6426",
+      "redacted": false
+    },
+    {
+      "name": "uskill-defense-group-polarization",
+      "title": "群体极化防御",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-6884",
+      "path": "s9/uskill-defense-group-polarization",
+      "source_sha": "879c4aac816369ae8a80f35a4930bc76530adc49",
+      "redacted": false
+    },
+    {
+      "name": "uskill-defense-information-pollution",
+      "title": "信息污染检测",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-6891",
+      "path": "s9/uskill-defense-information-pollution",
+      "source_sha": "aeaadb8ca963f6e9bb5ea5b894a1236bb1a7f723",
+      "redacted": false
+    },
+    {
+      "name": "uskill-defense-logical-fallacy",
+      "title": "逻辑谬误检测",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-5103",
+      "path": "s9/uskill-defense-logical-fallacy",
+      "source_sha": "0108cc78ecf5ffdce5b088cfad63869b01e91312",
+      "redacted": false
+    },
+    {
+      "name": "uskill-doc-sync",
+      "title": "文档更新同步 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-5314",
+      "path": "s9/uskill-doc-sync",
+      "source_sha": "2a4551408ac064733fabb3e781eb013494c06010",
+      "redacted": false
+    },
+    {
+      "name": "uskill-drone-mapping",
+      "title": "无人机测绘与实景建模",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-5808",
+      "path": "s9/uskill-drone-mapping",
+      "source_sha": "c337147d739115c971f7151d9f27fc40729392f7",
+      "redacted": false
+    },
+    {
+      "name": "uskill-email-process",
+      "title": "邮件处理 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-5311",
+      "path": "s9/uskill-email-process",
+      "source_sha": "679b27cb78ebcfdd1de182e2e56512d0a6c08d20",
+      "redacted": false
+    },
+    {
+      "name": "uskill-engine-specific-dev",
+      "title": "引擎专属开发",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-6615",
+      "path": "s9/uskill-engine-specific-dev",
+      "source_sha": "677f4559eab5a9782f16887e9eb71e45d31a2e64",
+      "redacted": false
+    },
+    {
+      "name": "uskill-evening-review",
+      "title": "晚间复盘报告 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-6887",
+      "path": "s9/uskill-evening-review",
+      "source_sha": "a59dcd8881cfd9f4e77062b77901d93f0d302674",
+      "redacted": false
+    },
+    {
+      "name": "uskill-existential-risk-scan",
+      "title": "存在性风险扫描 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-5319",
+      "path": "s9/uskill-existential-risk-scan",
+      "source_sha": "2af518c4e81ca6e0d767ab442eb47b3e835b3222",
+      "redacted": false
+    },
+    {
+      "name": "uskill-game-audio-engineer",
+      "title": "游戏音频设计",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-5905",
+      "path": "s9/uskill-game-audio-engineer",
+      "source_sha": "68fda3824d01a06e050bbdbd7e5871709ad8299b",
+      "redacted": false
+    },
+    {
+      "name": "uskill-game-designer",
+      "title": "游戏系统设计",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-6893",
+      "path": "s9/uskill-game-designer",
+      "source_sha": "ac89c9521b31cb3da884cf464f5b0819dd825d53",
+      "redacted": false
+    },
+    {
+      "name": "uskill-game-runtime-optimization",
+      "title": "游戏运行时优化",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-5909",
+      "path": "s9/uskill-game-runtime-optimization",
+      "source_sha": "90da2cf61bfb7bd19fdbddecf128815e532d97c6",
+      "redacted": false
+    },
+    {
+      "name": "uskill-geoai-engineer",
+      "title": "GeoAI遥感智能",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-5805",
+      "path": "s9/uskill-geoai-engineer",
+      "source_sha": "9b3228a28d1577d6015574bd947c3ffcb299bd71",
+      "redacted": false
+    },
+    {
+      "name": "uskill-gis-analyst",
+      "title": "GIS空间分析",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-6899",
+      "path": "s9/uskill-gis-analyst",
+      "source_sha": "ea89a39813fe5a00e9a2a48466d3ec76c756c96e",
+      "redacted": false
+    },
+    {
+      "name": "uskill-gis-qa-solution",
+      "title": "GIS质量保证与方案工程",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-6614",
+      "path": "s9/uskill-gis-qa-solution",
+      "source_sha": "4eac9bf3b299acdab65be319b3e63d4479fe3eea",
+      "redacted": false
+    },
+    {
+      "name": "uskill-growth-mindset",
+      "title": "成长心态",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-6896",
+      "path": "s9/uskill-growth-mindset",
+      "source_sha": "68d0263061b5943acb1d867ef08cac6d7bb4a11a",
+      "redacted": false
+    },
+    {
+      "name": "uskill-health-bio-compute-alert",
+      "title": "生物算力预警",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7099",
+      "path": "s9/uskill-health-bio-compute-alert",
+      "source_sha": "309747a53d15d2b597eb7c58947efb17c0634c9f",
+      "redacted": false
+    },
+    {
+      "name": "uskill-health-run-training-dispatch",
+      "title": "跑步训练调度",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-7121",
+      "path": "s9/uskill-health-run-training-dispatch",
+      "source_sha": "8f7a822b4e48cbfe8a86f94de4be9150dc6d91b2",
+      "redacted": false
+    },
+    {
+      "name": "uskill-immersive-narrative",
+      "title": "沉浸式叙事体验",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-6203",
+      "path": "s9/uskill-immersive-narrative",
+      "source_sha": "ab767d9996d8ed825ce40b749080e546796af668",
+      "redacted": false
+    },
+    {
+      "name": "uskill-investment-finance-agent-red-team",
+      "title": "循环工程-财务智能体红队对抗配置",
+      "category": "s9",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s9/uskill-investment-finance-agent-red-team",
+      "source_sha": "9790354df1bd56b5de5dc596315f0a33658acb6d",
+      "redacted": false
+    },
+    {
+      "name": "uskill-knowledge-entry",
+      "title": "知识词条录入 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-6898",
+      "path": "s9/uskill-knowledge-entry",
+      "source_sha": "11770eb0544f615d50a57d74950dc582398fc8c5",
+      "redacted": false
+    },
+    {
+      "name": "uskill-level-designer",
+      "title": "关卡设计",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-6906",
+      "path": "s9/uskill-level-designer",
+      "source_sha": "90b3c7c51e129d18fa22170d0dcabb75c4436a6f",
+      "redacted": false
+    },
+    {
+      "name": "uskill-meta-life-os-evolve",
+      "title": "人生操作系统进化-Schema-v2",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-6894",
+      "path": "s9/uskill-meta-life-os-evolve",
+      "source_sha": "cbbbf429ac383864edfb5d6406a64ac9d1b18ab2",
+      "redacted": false
+    },
+    {
+      "name": "uskill-morning-plan",
+      "title": "晨间计划生成 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-5310",
+      "path": "s9/uskill-morning-plan",
+      "source_sha": "3ba3bc8ced2691de204d2cdaab53e80eac6cc11d",
+      "redacted": false
+    },
+    {
+      "name": "uskill-multiplayer-systems",
+      "title": "多人联网系统设计",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-5907",
+      "path": "s9/uskill-multiplayer-systems",
+      "source_sha": "e02794e9cfc299f81e504e2dd20ea9607c656fa5",
+      "redacted": false
+    },
+    {
+      "name": "uskill-music-hub",
+      "title": "音乐中枢 — 歌单同步·歌曲赏析·音乐人分析",
+      "category": "s9",
+      "version": "1.0.0",
+      "original_id": "SKL-7301",
+      "path": "s9/uskill-music-hub",
+      "source_sha": "019a60a644c229ab4049369f71b65b1ecfb3ebdd",
+      "redacted": false
+    },
+    {
+      "name": "uskill-narrative-designer",
+      "title": "游戏叙事设计",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-6897",
+      "path": "s9/uskill-narrative-designer",
+      "source_sha": "49d0a177291e628083f410f9f008b3aaac0f81b1",
+      "redacted": false
+    },
+    {
+      "name": "uskill-open-world-builder",
+      "title": "开放世界构建",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-5908",
+      "path": "s9/uskill-open-world-builder",
+      "source_sha": "4c16b7f6a5863707389c8b7e41f5a42878c9a728",
+      "redacted": false
+    },
+    {
+      "name": "uskill-oss-ops",
+      "title": "开源项目运维 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-5318",
+      "path": "s9/uskill-oss-ops",
+      "source_sha": "09888efd26f45bb001ab8d7cdf064f9abe0a1139",
+      "redacted": false
+    },
+    {
+      "name": "uskill-quarterly-system-review",
+      "title": "季度系统评估 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-5308",
+      "path": "s9/uskill-quarterly-system-review",
+      "source_sha": "bea66a106936ccfc1ac3533db05b533139635e2a",
+      "redacted": false
+    },
+    {
+      "name": "uskill-rule-dispatch",
+      "title": "规则分发同步 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-5315",
+      "path": "s9/uskill-rule-dispatch",
+      "source_sha": "f2f00a9f2ea9977486a97733ccbc93a6b8b67bfd",
+      "redacted": false
+    },
+    {
+      "name": "uskill-run-training-dispatch",
+      "title": "跑步训练调度 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-6903",
+      "path": "s9/uskill-run-training-dispatch",
+      "source_sha": "82e28e12f2774d9e5e825371bdbad7f34dc39b4c",
+      "redacted": false
+    },
+    {
+      "name": "uskill-skill-optimize",
+      "title": "SkillOpt技能优化 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-5320",
+      "path": "s9/uskill-skill-optimize",
+      "source_sha": "cccea013252d1c1102934692a35d920f2f00c97a",
+      "redacted": false
+    },
+    {
+      "name": "uskill-spatial-data-engineer",
+      "title": "地理空间数据工程",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-5804",
+      "path": "s9/uskill-spatial-data-engineer",
+      "source_sha": "f9b573080c6b9076dec4b1dab19f1ae32d44efed",
+      "redacted": false
+    },
+    {
+      "name": "uskill-spatial-data-scientist",
+      "title": "空间数据分析",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-5809",
+      "path": "s9/uskill-spatial-data-scientist",
+      "source_sha": "652246807723acee5c36c66b68f20d1441fbcf1a",
+      "redacted": false
+    },
+    {
+      "name": "uskill-technical-artist",
+      "title": "技术美术",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-6888",
+      "path": "s9/uskill-technical-artist",
+      "source_sha": "2c354515f5cce5d9974969a3109206bb4c476679",
+      "redacted": false
+    },
+    {
+      "name": "uskill-terminal-integration",
+      "title": "终端集成与系统交互",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-6616",
+      "path": "s9/uskill-terminal-integration",
+      "source_sha": "143b4ec52fbe020e4dca13fd49ece505a47a385d",
+      "redacted": false
+    },
+    {
+      "name": "uskill-v3-5233c0",
+      "title": "uSkill v3 进化元技能",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-V3-001",
+      "path": "s9/uskill-v3-5233c0",
+      "source_sha": "a3a19e6513364107362f702c13ccd21dbd1e7351",
+      "redacted": false
+    },
+    {
+      "name": "uskill-value-drift-detect",
+      "title": "价值偏离检测 Agent — 实施手册",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-5313",
+      "path": "s9/uskill-value-drift-detect",
+      "source_sha": "73165989a6c269d0e59bdc012f0e3c76fcd4d849",
+      "redacted": false
+    },
+    {
+      "name": "uskill-visionos-development",
+      "title": "visionOS空间计算",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-6202",
+      "path": "s9/uskill-visionos-development",
+      "source_sha": "8c9c66ebbeb3c9ae68729077d723146c2ccdd3dd",
+      "redacted": false
+    },
+    {
+      "name": "uskill-webgis-developer",
+      "title": "WebGIS开发",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-6883",
+      "path": "s9/uskill-webgis-developer",
+      "source_sha": "5285776aab5f72ddc8d8af176f71365587985b82",
+      "redacted": false
+    },
+    {
+      "name": "uskill-xr-interaction-design",
+      "title": "XR交互设计",
+      "category": "s9",
+      "version": "3.0.0",
+      "original_id": "SKL-6201",
+      "path": "s9/uskill-xr-interaction-design",
+      "source_sha": "e30ca20942e52c5a4af372bee1cdcf8d8f32ac78",
+      "redacted": false
+    },
+    {
+      "name": "uskill-v1-bbeec7",
+      "title": "uSkill-价值偏离检测-v1",
+      "category": "s9",
+      "version": "1.0.0",
+      "original_id": "",
+      "path": "s9/uskill-v1-bbeec7",
+      "source_sha": "e4074a4c62b9e746143797acc1661fd63429f66a",
+      "redacted": false
+    },
+    {
+      "name": "uskill-dc02c3",
+      "title": "uSkill-引用桥接方案",
+      "category": "s9",
+      "version": "1.0.0",
+      "original_id": "",
+      "path": "s9/uskill-dc02c3",
+      "source_sha": "1aa32e99388fa19df3dd49b32e7ad0d6f39f55d8",
+      "redacted": false
+    },
+    {
+      "name": "skill-9b666349-9b6663",
+      "title": "循环工程全量审计-2026-07-06",
+      "category": "s9",
+      "version": "3.0",
+      "original_id": "",
+      "path": "s9/skill-9b666349-9b6663",
+      "source_sha": "8e03d74121cf9defc07768deecad859eac7c83b1",
+      "redacted": false
+    },
+    {
+      "name": "skill-b28a3022",
+      "title": "转录本挖矿 — 归因库",
+      "category": "s9",
+      "version": "",
+      "original_id": "",
+      "path": "s9/skill-b28a3022",
+      "source_sha": "36908621713546739b56bd56fb9442cb220825e5",
+      "redacted": false
+    },
+    {
+      "name": "b-c-2026-08-10-8f16ce",
+      "title": "骨架B-C批量收口补丁方案-2026-08-10",
+      "category": "s9",
+      "version": "",
+      "original_id": "",
+      "path": "s9/b-c-2026-08-10-8f16ce",
+      "source_sha": "2205a4a45ea3c49ca4514ceb5b86282c01917f50",
+      "redacted": false
+    },
+    {
+      "name": "skill-dff4283e-dff428",
+      "title": "骨架分级标准记录-2026-08-08",
+      "category": "s9",
+      "version": "",
+      "original_id": "",
+      "path": "s9/skill-dff4283e-dff428",
+      "source_sha": "d221b79348548de1189e190749a580f6509a56c8",
+      "redacted": false
+    },
+    {
+      "name": "v2-f61f58",
+      "title": "剧作深度分析 v2",
+      "category": "skill-82cb256a",
+      "version": "",
+      "original_id": "",
+      "path": "skill-82cb256a/v2-f61f58",
+      "source_sha": "d3c6c713cbf30a1ed09012ed508d8e7a338afbd3",
+      "redacted": false
+    },
+    {
+      "name": "skill-3e5c77b4",
+      "title": "地图制图设计",
+      "category": "skill-82cb256a",
+      "version": "",
+      "original_id": "",
+      "path": "skill-82cb256a/skill-3e5c77b4",
+      "source_sha": "f12e8921027995d964eaff6fecfd73336f2bfd38",
+      "redacted": false
+    }
+  ]
+}
