@@ -131,7 +131,7 @@ def create_app(
         try:
             return store.load(run_id).to_dict()
         except FileNotFoundError:
-            raise HTTPException(404, f"unknown run: {run_id}")
+            raise HTTPException(404, f"unknown run: {run_id}") from None
 
     # Serve built frontend at / (never intercept /api)
     if static_dir and Path(static_dir).is_dir():
