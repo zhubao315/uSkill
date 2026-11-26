@@ -132,3 +132,22 @@ jobs:
           python -m pip install --upgrade pip pip-audit
           pip install -e ".[llm]"
           pip-audit -r requirements.txt --skip-editable
+  Frontend:
+    name: Frontend (Workbench)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: workbench/web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: workbench/web/package-lock.json
+      - run: npm ci
+      - run: npx tsc --noEmit
+      - run: npm run build
+      - run: npm test -- --run
+

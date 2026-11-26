@@ -1,0 +1,64 @@
+/*
+ * uSkill Workbench tokens.
+ * Three product colors stay canonical across both themes:
+ * Engineering Blue #005FB8 · Intelligent Teal #00C2CB · Activation Orange #FF8C00.
+ * Theme-specific `--accent-*` variables only adjust contrast; they never
+ * replace the brand colors or introduce a fourth accent.
+ */
+:root {
+  color-scheme: light;
+
+  --brand-blue: #005fb8;
+  --brand-teal: #00c2cb;
+  --brand-orange: #ff8c00;
+
+  --accent-blue: var(--brand-blue);
+  --accent-teal: #007f86;
+  --accent-orange: #a35800;
+
+  --bg: #f3f6fa;
+  --surface: #ffffff;
+  --surface-2: #eef2f7;
+  --surface-3: #e5ebf2;
+  --ink: #101828;
+  --ink-2: #475467;
+  --muted: #667085;
+  --line: #d7dfe9;
+  --line-strong: #b9c6d5;
+  --success: #0f7a55;
+  --danger: #b42332;
+  --focus: var(--brand-blue);
+
+  --shell: 1440px;
+  --gutter: clamp(1rem, 3vw, 2rem);
+  --topbar-h: 64px;
+  --sidebar-w: 248px;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --font-sans: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK SC',
+    'PingFang SC', Helvetica, Arial, sans-serif;
+  --font-display: Manrope, Inter, var(--font-sans);
+  --font-mono: 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --ease: cubic-bezier(0.22, 0.72, 0.2, 1);
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --accent-blue: #5aa9ff;
+  --accent-teal: var(--brand-teal);
+  --accent-orange: var(--brand-orange);
+
+  --bg: #07111f;
+  --surface: #0d1d30;
+  --surface-2: #13263d;
+  --surface-3: #1a324e;
+  --ink: #f7faff;
+  --ink-2: #cbd5e1;
+  --muted: #94a3b8;
+  --line: rgba(247, 250, 255, 0.14);
+  --line-strong: rgba(247, 250, 255, 0.28);
+  --success: #34d399;
+  --danger: #f87171;
+  --focus: #7cc0ff;
+}

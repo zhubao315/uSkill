@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="description"
+      content="uSkill Workbench 3.0 — local-first console for skill registry, agent installs and run history."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23005FB8'/%3E%3Cpath d='M14 16h36v8H36v24h-8V24H14z' fill='%2300C2CB'/%3E%3Ccircle cx='48' cy='44' r='6' fill='%23FF8C00'/%3E%3C/svg%3E"
+    />
+    <title>uSkill Workbench 3.0</title>
+    <script>
+      // Apply the persisted theme before paint. The pairing token is injected
+      // separately by the local bootstrap script as window.__USKILL_TOKEN__.
+      (function () {
+        try {
+          var t = localStorage.getItem('uskills-workbench-theme');
+          if (t !== 'light' && t !== 'dark') {
+            t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          }
+          document.documentElement.dataset.theme = t;
+          document.documentElement.style.colorScheme = t;
+        } catch (e) {
+          document.documentElement.dataset.theme = 'light';
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

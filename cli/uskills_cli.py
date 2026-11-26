@@ -1056,6 +1056,18 @@ def cmd_verify_package(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_workbench(args: argparse.Namespace) -> int:
+    """Start the local Workbench UI + API on 127.0.0.1 (3.0)."""
+    from workbench.server.serve import run
+
+    return run(
+        skills=args.skills,
+        runs_dir=args.runs_dir,
+        static=args.static,
+        open_browser=not args.no_browser,
+    )
+
+
 def build_parser() -> argparse.ArgumentParser:
     """Build argument parser."""
     parser = argparse.ArgumentParser(
@@ -1388,6 +1400,13 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("archive")
     p.add_argument("--sha256", default="")
     p.set_defaults(func=cmd_verify_package)
+
+    p = sub.add_parser("workbench", help="Start the local personal Skill Workbench (3.0).")
+    p.add_argument("--skills", default="skills")
+    p.add_argument("--runs-dir", default=".uskills/runs")
+    p.add_argument("--static", help="Built frontend dist directory.")
+    p.add_argument("--no-browser", action="store_true")
+    p.set_defaults(func=cmd_workbench)
 
     return parser
 

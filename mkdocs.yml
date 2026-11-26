@@ -140,6 +140,7 @@ nav:
       - 数据模型: workbench/DATA_MODEL.md
       - 安全模型: workbench/SECURITY_MODEL.md
       - Agent 连接器: workbench/AGENT_CONNECTORS.md
+      - Workbench MVP: workbench/WORKBENCH_MVP.md
   - 历史档案（只读快照）:
       - Roadmap（2.0 前）: roadmap.md
       - ROADMAP 2.0（已完成任务书）: ROADMAP_2.0.md
