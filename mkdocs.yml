@@ -134,6 +134,8 @@ nav:
       - 验收标准: workbench/ACCEPTANCE_CRITERIA.md
   - 个人技能库（私库同步）:
       - 技能总览: generated/vault-skills.md
+  - 深度阅读成果:
+      - 四书五经·强力研读: reading/sishu-wujing-deep-reading.md
   - 产品工作台（Phase 0）:
       - PRD: workbench/PRD.md
       - 产品章程: workbench/PRODUCT_CHARTER.md
@@ -143,6 +145,7 @@ nav:
       - 安全模型: workbench/SECURITY_MODEL.md
       - Agent 连接器: workbench/AGENT_CONNECTORS.md
       - Workbench MVP: workbench/WORKBENCH_MVP.md
+      - 怎么用（速查）: workbench/HOW-TO-USE.md
   - 历史档案（只读快照）:
       - Roadmap（2.0 前）: roadmap.md
       - ROADMAP 2.0（已完成任务书）: ROADMAP_2.0.md
