@@ -48,8 +48,8 @@ hide:
 
 <div class="us-stats" markdown>
 
-<div class="us-stat"><strong>261</strong><span>回归测试，全部离线（MockProvider）</span></div>
-<div class="us-stat"><strong>90.6%</strong><span>总覆盖率（CI 门禁 80%，CLI 84%）</span></div>
+<div class="us-stat"><strong>301</strong><span>项测试，2026-11-26 本地实测全部通过（MockProvider）</span></div>
+<div class="us-stat"><strong>80%</strong><span>覆盖率门禁下限（见 ci.yml）；实际百分比以最新 CI 报告为准</span></div>
 <div class="us-stat"><strong>6</strong><span>Provider：OpenAI / Anthropic / 兼容网关 / Ollama…</span></div>
 <div class="us-stat"><strong>L0–L4</strong><span>风险分级由真实能力推导，不看声明</span></div>
 
@@ -444,13 +444,13 @@ uSkill 的所有承诺都有对应的自动化证据，且全部可在你的 CI 
 <div class="us-evidence" markdown>
 
 <div class="us-ev" markdown>
-<strong class="us-t">261 个回归测试</strong>
-全部离线（MockProvider），毫秒级跑完；评测集、Builder、运行时、治理、分发每个模块都有针对性用例。
+<strong class="us-t">301 个测试</strong>
+2026-11-26 本地执行 `pytest -q` 实测全部通过；全部离线（MockProvider），无需 API Key。评测集、Builder、运行时、治理、分发每个模块都有针对性用例。
 </div>
 
 <div class="us-ev" markdown>
-<strong class="us-t">90.6% 总覆盖率</strong>
-CI 门禁 `--cov-fail-under=80`，任何下降在合入前暴露；CLI 层单独 84%。
+<strong class="us-t">覆盖率门禁 80%</strong>
+CI 使用 `--cov-fail-under=80`（见 `ci.yml`），任何下降在合入前暴露；实际百分比以最新 CI 报告为准，本页不写死数字。
 </div>
 
 <div class="us-ev" markdown>
