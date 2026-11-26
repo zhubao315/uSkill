@@ -1,0 +1,198 @@
+---
+name: uskill-cognition-cognitive-structured-expression-star
+description: "让cognitive structured expression star变成可执行的行动，而非停留在想法。"
+license: MIT
+metadata:
+  source: "private:zhubao315/obsidian-vault/02-BUILD/22-uSkill/S5-认知与学习/uSkill-cognition-cognitive-structured-expression-star.md"
+  original_id: "SKL-5046"
+  version: "3.0.0"
+  trust: untrusted
+---
+
+# cognitive structured expression star
+
+# Apply STAR Framework for Structured Expression
+
+## 🎯 目标
+> 运用 STAR 框架（Situation→Task→Action→Result），将个人经历、项目经验或行为事件转化为结构化、有说服力的叙述，适用于面试应答、简历撰写、绩效汇报、案例分享等场景。
+
+## 📥 输入
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `experience` | string | ✅ | 需要结构化表达的经历、事件或项目描述 |
+| `scenario` | enum | ✅ | 使用场景：`interview`（面试应答）/ `resume`（简历撰写）/ `review`（绩效汇报）/ `sharing`（案例分享）/ `general`（通用） |
+| `target_audience` | string | ❌ | 目标受众描述，如"技术面试官""HR""非专业人士"，影响表达风格 |
+| `highlight_skills` | array | ❌ | 希望突出强调的能力或技能标签，如 ["leadership", "problem-solving"] |
+| `tone` | enum | ❌ | 叙述风格：`professional`（专业）/ `concise`（精炼）/ `storytelling`（故事化），默认 `professional` |
+
+## 📤 输出
+
+```json
+{
+  "star_breakdown": {
+    "situation": {
+      "content": "string — 情境描述（1-2句话，交代背景）",
+      "key_context": ["string — 关键背景要素"]
+    },
+    "task": {
+      "content": "string — 任务/目标描述（1-2句话）",
+      "challenge": "string — 核心挑战或难点"
+    },
+    "action": {
+      "content": "string — 采取的具体行动（2-4句话，突出个人贡献）",
+      "skills_demonstrated": ["string — 体现的能力标签"],
+      "decision_points": ["string — 关键决策点"]
+    },
+    "result": {
+      "content": "string — 量化或具体的结果（1-2句话）",
+      "metrics": ["string — 可量化指标"],
+      "learning": "string — 从中获得的经验/成长"
+    }
+  },
+  "polished_narrative": "string — 完整的STAR叙述文本，适合直接使用",
+  "one_liner": "string — 一句话精炼概括（适合简历bullet point）",
+  "audience_adaptation": {
+    "style_notes": "string — 针对目标受众的表达调整建议",
+    "emphasis": "string — 应重点强调的部分"
+  },
+  "improvement_suggestions": ["string — 可以进一步优化的方向"]
+}
+```
+
+## 📋 执行步骤
+
+1. **经历解构** — 拆解输入的原始经历描述，识别其中的情境、任务、行动、结果要素
+2. **要素补全** — 如果原始描述缺少某个STAR要素：
+   - **S 缺失**：根据上下文推测合理的情境背景，标注"需确认"
+   - **T 缺失**：从经历中推导出最可能的目标/任务
+   - **A 缺失**：要求用户补充具体行动细节
+   - **R 缺失**：要求补充结果，或引导用户回忆可量化指标
+3. **结构化重组** — 按 STAR 顺序重新组织内容：
+   - **Situation**：简明交代时间、地点、组织、项目背景（1-2句）
+   - **Task**：明确你的角色、职责、面临的具体挑战（1-2句）
+   - **Action**：详细描述你采取的具体步骤，突出个人主动性和决策（2-4句，使用强动词开头）
+   - **Result**：用数据、成果、影响来量化结果（1-2句）
+4. **受众适配** — 根据 `target_audience` 和 `scenario` 调整表达风格：
+   - 面试场景：强调行动中的思考过程和决策逻辑
+   - 简历场景：压缩为bullet point，突出量化结果
+   - 绩效汇报：强调团队协作和个人贡献的平衡
+   - 案例分享：增加故事性和可读性
+5. **能力标签映射** — 将行动中体现的能力映射为 `highlight_skills` 中要求的标签
+6. **叙述润色** — 生成完整的 polished_narrative，确保：
+   - 语言精炼，无冗余
+   - 使用强动词（主导、设计、优化、推动等）
+   - 逻辑连贯，因果清晰
+7. **优化建议** — 指出当前叙述的薄弱环节和改进方向
+
+## ⚠️ 异常处理
+
+| 异常 | 处理 |
+|------|------|
+| 输入经历过于简短或模糊 | 要求补充关键细节（时间、角色、具体做了什么、结果如何） |
+| 经历中无法提取量化结果 | 引导用户回忆可量化维度（效率提升、成本降低、用户增长等），提供定性替代方案 |
+| 行动描述过于笼统（如"负责管理团队"） | 追问具体行为，拆解为2-3个具体动作 |
+| 多段经历混杂在一起 | 分别提取，建议用户选择最具代表性的一段先结构化 |
+| 面试场景但叙述过长 | 压缩至60-90秒口述时长（约150-200字中文） |
+
+## ✅ 自检清单
+
+- [ ] 四个STAR要素均有明确内容，无遗漏
+- [ ] Situation 简洁不啰嗦，仅保留必要背景
+- [ ] Task 明确个人角色和核心挑战，非泛泛描述职责
+- [ ] Action 以强动词开头，突出个人主动性和具体行为，非"参与""协助"
+- [ ] Result 包含量化数据或具体成果，非"效果很好""得到了认可"
+- [ ] 整体叙述因果逻辑连贯：因为做了A，所以产生了R
+- [ ] 叙述时长适合目标场景（面试60-90秒，简历1-2行）
+- [ ] 已根据受众调整专业术语的使用程度
+- [ ] 技能标签与实际行动相匹配，非牵强附会
+
+
+#### ⚠️ 边界约束
+
+> 此区块定义此 Skill 的硬性限制和软性约束，确保执行不越界。
+
+**硬性约束（必须遵守）**：
+1. 不得违反相关法律法规和平台规则
+2. 不得泄露用户隐私数据
+3. 不得在未经验证的情况下做出不可逆决策
+
+**软性约束（建议遵守）**：
+1. 优先使用已验证的方法论，避免发明新轮子
+2. 复杂决策应记录理由供后续审计
+
+**人工兜底点**：
+- 当输入数据质量不足以支撑自动化决策时，**必须**转交人工判断
+- 当涉及法律/财务/医疗等高风险领域时，**必须**暂停执行等待确认
+
+#### ✅ 校验验收规则
+
+> 此区块定义执行后的验证标准，确保输出质量。
+
+**格式校验**：
+- [ ] 输出内容结构完整，无缺失区块
+- [ ] 所有必填参数已填充
+- [ ] 输出格式符合预定义规范
+
+**内容校验**：
+- [ ] 建议具有可操作性，非泛泛而谈
+- [ ] 数据引用准确，无虚构内容
+- [ ] 方案考虑了实际约束条件
+
+**合规校验**：
+- [ ] 未违反硬性约束
+- [ ] 人工兜底点已正确识别
+- [ ] 敏感信息已脱敏处理
+
+#### 🔄 迭代触发条件
+
+> 此区块定义 Skill 自我进化的触发机制。
+
+**Self-Play 触发**：
+- **频率**：monthly
+- **触发条件**：
+  - 用户反馈评分低于 7/10
+  - 实际执行中发现新的异常场景
+  - 相关领域出现重大变化
+
+**版本升级触发**：
+- 当新增 ≥3 种异常处理场景时，升级 minor 版本
+- 当核心方法论发生根本性变化时，升级 major 版本
+
+**废弃触发**：
+- 当所依赖的平台/工具停止维护时，标记为 deprecated
+- 当有更好的替代方案出现时，评估迁移
+
+---
+
+## 📝 变更日志
+
+| 日期 | 版本 | 变更内容 |
+|------|------|----------|
+| 2026-05-08 | 1.0.0 | 初始版本，从 Framework-STAR 转化 |
+
+---
+**相关笔记**：[[行为洞察分析旧版]] [[第二大脑 PKM 管理]] 
+
+
+---
+
+
+---
+
+
+---
+
+## 📖 Context Read `[v3新增]`
+
+> 来源：taste-skill 的 Brief Inference + Design Read
+
+在执行前，先输出一行判断：
+
+> "Reading this as: [认知任务] for [思考深度], with [问题复杂度], leaning toward [思维框架/分析工具]."
+
+### 信号读取
+1. **任务类型**：[用户要什么？]
+2. **风格
+
+> This skill was converted from a private personal vault. The complete original text is in `references/source.md`; original frontmatter is in `references/source-metadata.md`. Scripts, if any, are never executed during import.

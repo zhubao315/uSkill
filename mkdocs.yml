@@ -132,6 +132,8 @@ nav:
       - CLI 参考: cli.md
       - 路线图（3.0）: workbench/ROADMAP_3.0.md
       - 验收标准: workbench/ACCEPTANCE_CRITERIA.md
+  - 个人技能库（私库同步）:
+      - 技能总览: generated/vault-skills.md
   - 产品工作台（Phase 0）:
       - PRD: workbench/PRD.md
       - 产品章程: workbench/PRODUCT_CHARTER.md

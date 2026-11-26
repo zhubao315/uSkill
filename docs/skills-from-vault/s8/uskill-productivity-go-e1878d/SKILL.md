@@ -1,0 +1,233 @@
+---
+name: uskill-productivity-go-e1878d
+description: "让Go 语言开发变成可执行的行动，而非停留在想法。"
+license: MIT
+metadata:
+  source: "private:zhubao315/obsidian-vault/02-BUILD/22-uSkill/S8-效率与工具/uSkill-productivity-go-语言开发.md"
+  original_id: "SKL-7072"
+  version: "3.0.0"
+  trust: untrusted
+---
+
+# Go 语言开发
+
+---
+
+# Go 语言开发
+
+> Go 语言学习路径、核心概念与工程实践笔记。适用于后端开发、云原生工具链和 AI Agent 系统开发。
+
+## Go 核心优势
+- **并发模型**：goroutine + channel 是 Go 区别于其他语言的核心竞争力
+- **编译速度**：极快的编译和部署，适合云原生微服务
+- **部署简单**：单二进制文件，无需依赖运行时
+- **内置工具链**：go fmt / go mod / go test 开箱即用
+
+## 学习路径（推荐顺序）
+
+### 第一阶段：语法基础（1-2 周）
+- 变量、类型、控制流、函数、指针
+- struct 与 interface（Go 唯一面向对象机制）
+- 错误处理（error 类型 vs panic/recover）
+- 推荐：[Go 官方教程](https://go.dev/tour/) + [8小时转职Golang工程师·语雀](https://www.yuque.com/aceld/mo95lb/dsk886)
+
+### 第二阶段：并发编程（2-3 周）
+- goroutine 启动与管理
+- channel 模式（fan-in/fan-out/pipeline）
+- select 多路复用
+- sync 包（Mutex/WaitGroup/Once）
+- context 包与超时控制
+- 并发陷阱：死锁、竞态条件、goroutine 泄漏
+
+### 第三阶段：工程实践（持续）
+- **Web 框架**：Gin / Echo / Fiber
+- **数据库**：GORM / sqlx / pgx
+- **测试**：go test + testify + mock
+- **工具**：pprof 性能分析、go trace 调度分析
+- **项目结构**：[Standard Go Project Layout](https://github.com/golang-standards/project-layout)
+
+## 在 AI Agent 系统中的适用点
+- Agent 间通信中间件（消息队列消费者）
+- MCP 协议实现（服务端/客户端）
+- CLI 工具与数据管道
+- 高性能 API Gateway 开发
+
+## 相关笔记
+- [[云原生架构设计文档]]
+- `AGI 与 AI Agent 发展中的思考与见解`
+- `GPT 驱动产品开发的技术框架篇之一`
+
+---
+
+
+---
+
+## 📖 Context Read `[v3新增]`
+
+> 来源：taste-skill 的 Brief Inference + Design Read
+
+在执行前，先输出一行判断：
+
+> "Reading this as: [效率任务] for [工具熟悉度], with [时间约束], leaning toward [工具/方法]."
+
+### 信号读取
+1. **任务类型**：[用户要什么？]
+2. **风格关键词**：[用户用了哪些描述？]
+3. **约束条件**：[时间/工具/环境限制？]
+
+### 反默认纪律
+不要默认套用：[该领域 AI 常见的偷懒模式]。必须根据用户的具体情况定制。
+
+---
+
+## 🚫 Anti-Rationalization Table `[v3新增]`
+
+> 来源：addyosmani/agent-skills 的核心创新
+
+| Agent 常见借口 | 反驳 |
+|--------------|------|
+| ""以后再优化流程"" | "以后不会来，现在就做" |
+| ""手动操作更快"" | "手动=不可重复=不可审计" |
+| ""这个工具太复杂了"" | "复杂是暂时的，低效是永久的" |
+
+---
+
+## 🛡️ Three-Tier Boundaries `[v3新增]`
+
+> 来源：addyosmani/agent-skills 的边界系统
+
+### ✅ Always do（自动执行）
+- 执行核心功能（见原技能流程）
+- 输出结构化结果
+- 检查常见错误
+
+### ⚠️ Ask first（先问再做）
+- 用户意图不明确时
+- 操作不可逆时
+- 涉及外部系统时
+
+### 🚫 Never do（绝对禁止）
+- 不跳过验证步骤
+- 不在用户未确认时执行高风险操作
+- 不伪装成功（失败就上报）
+
+---
+
+## 🔒 Gated Workflow `[v3新增]`
+
+> 来源：addyosmani 的门禁 + claude-skills 的 Agent Harness
+
+```
+DISCUSS → PLAN → EXECUTE → VERIFY → CLOSE
+   ↓         ↓        ↓          ↓        ↓
+ Context   方案     执行      证据     Done/
+ Read     确认     任务      检查    Escalate
+```
+
+### Phase 1: DISCUSS
+- [ ] 输出 Context Read 一行判断
+- [ ] 确认用户意图
+- [ ] 确认约束条件
+
+### Phase 2: PLAN
+- [ ] 制定执行方案
+- [ ] 确认资源可用
+- [ ] 人工审批计划
+
+### Phase 3: EXECUTE
+- [ ] 逐个任务实现
+- [ ] 每步有输出记录
+
+### Phase 4: VERIFY
+- [ ] 检查核心输出
+- [ ] 验证完整性
+- [ ] 输出证据
+
+### Phase 5: CLOSE
+- [ ] 所有检查通过 → 标记完成
+- [ ] 有未通过项 → 升级给人类
+- [ ] 预算耗尽 → 强制升级，不伪装成功
+
+
+**相关概念**：[[LLM应用开发]]
+
+---
+
+
+## 📥 输入 Schema
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|:----:|------|
+| input_data | string | ✅ | 核心输入数据 |
+| context | string | ❌ | 上下文信息 |
+
+## 📤 输出 Schema
+
+| 字段 | 类型 | 说明 |
+|------|------|------|
+| result | string | 分析/执行结果 |
+| confidence | number | 置信度（0-1） |
+
+
+## 🔄 IF/THEN 决策分支
+
+- IF 输入数据质量不足以支撑自动化决策 → THEN 转交人工判断，输出不确定性说明
+- IF 执行过程中遇到未预期的异常 → THEN 记录异常 + 降级处理 + 升级给人类
+- IF 输出结果置信度 < 0.6 → THEN 标记低置信度 + 要求人工验证
+- ELSE（所有检查通过）→ THEN 输出结果 + 验证证据
+
+
+## 📝 Prompt 模板
+
+> 用于调用 AI 辅助执行本技能的标准提示词模板。
+
+**核心提示词**：
+```
+你是一位 Go 语言开发教练，精通 Go 语言特性、并发模式、性能优化和工程实践。请根据以下输入执行操作：
+输入：[粘贴 Go 代码片段或描述开发需求]
+要求：[给出代码实现、错误处理建议和性能优化方案]
+输出格式：[可运行的 Go 代码 + 关键设计决策说明]
+```
+
+**使用说明**：
+- 替换方括号内的占位符为实际内容
+- 根据具体场景调整要求部分
+- 输出格式可根据需要修改
+
+
+## 🎯 技能概述
+
+> 本技能提供 效率与管理 领域的标准化操作流程，帮助用户高效完成相关任务。
+
+**核心价值**：将复杂操作标准化为可重复执行的步骤，降低出错率，提升效率。
+
+**适用场景**：
+1. 日常操作执行
+2. 新手快速上手
+3. 质量一致性保证
+
+## 🧪 Self-Play 测试用例
+
+| # | 场景 | 输入 | 预期输出 | 验证点 |
+|---|------|------|----------|--------|
+| 1 | 正常执行 | 标准输入数据 | 符合预期的输出 | 格式正确 + 内容准确 |
+| 2 | 边界输入 | 极端/空/超长输入 | 降级处理或错误提示 | 不崩溃 + 有明确反馈 |
+| 3 | 数据缺失 | 缺少必填参数 | 参数补全提示 | 不编造数据 |
+| 4 | 异常场景 | 非预期的输入类型 | 友好的错误处理 | 不泄露内部信息 |
+| 5 | 并发场景 | 多个相同请求同时到达 | 结果一致或正确排队 | 无数据竞争 |
+
+## 📋 Verification Evidence `[v3新增]`
+
+> 来源：addyosmani 的证据要求 + claude-skills 的 verify
+
+### 完成标志
+- [ ] 核心输出已生成
+- [ ] 输出格式符合预期
+- [ ] 无明显错误
+
+### 失败处理
+- 输出不完整 → 继续补充，不标记完成
+- 连续 3 次失败 → 升级给人类，附上当前状态
+- 绝不伪装成功
+
+> This skill was converted from a private personal vault. The complete original text is in `references/source.md`; original frontmatter is in `references/source-metadata.md`. Scripts, if any, are never executed during import.

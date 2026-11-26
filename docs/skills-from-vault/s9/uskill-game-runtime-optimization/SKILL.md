@@ -1,0 +1,211 @@
+---
+name: uskill-game-runtime-optimization
+description: "帧率不是优化出来的——是先测出来再修出来的。"
+license: MIT
+metadata:
+  source: "private:zhubao315/obsidian-vault/02-BUILD/22-uSkill/S9-专业领域与智能体/uSkill-game-runtime-optimization.md"
+  original_id: "SKL-5909"
+  version: "3.0.0"
+  trust: untrusted
+---
+
+# 游戏运行时优化
+
+description: |
+  当用户需要分析游戏性能瓶颈、优化帧率、降低内存占用、处理卡顿时使用此 Skill。
+  触发词：'性能优化'、'帧率'、'卡顿'、'profiling'、'GPU优化'、'内存优化'、'游戏性能'。
+
+# 游戏运行时优化
+
+## 🎯 目标
+
+> 系统化定位和解决性能瓶颈，确保游戏在目标硬件上稳定运行。
+
+**核心价值**：优化不是「到处改改看」，而是「先测出瓶颈在哪，再针对性修复」。本 Skill 将 profiling → 诊断 → 修复 → 验证标准化为可重复的流程。
+
+## 📥 输入
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `target_fps` | int | ✅ | — | 目标帧率（30/60/120） |
+| `target_platform` | enum | ❌ | `"pc"` | 目标平台 |
+| `min_spec_hardware` | string | ❌ | — | 最低配置硬件描述 |
+| `current_performance` | object | ❌ | — | 当前性能数据（帧率/内存/GPU 占用） |
+| `symptom` | enum | ❌ | `"low_fps"` | 问题类型：`low_fps`（帧率低）/ `stutter`（卡顿）/ `memory`（内存溢出）/ `loading`（加载慢）/ `crash`（崩溃） |
+| `engine` | enum | ❌ | `"unity"` | 引擎 |
+
+## 📤 输出
+
+```json
+{
+  "profiling_report": {
+    "bottleneck_type": "string — CPU bound / GPU bound / IO bound / Memory bound",
+    "bottleneck_location": "string — 具体瓶颈位置",
+    "current_metrics": {"fps": "float", "frametime_ms": "float", "memory_mb": "int", "draw_calls": "int"}
+  },
+  "optimization_plan": {
+    "immediate_fixes": [{"action": "string", "expected_improvement": "string", "risk": "string"}],
+    "medium_term": ["string"],
+    "long_term": ["string"]
+  },
+  "verification_plan": {
+    "test_scenarios": ["string — 测试场景"],
+    "success_criteria": "string — 验收标准",
+    "regression_check": ["string — 回归测试项"]
+  }
+}
+```
+
+## 📋 执行步骤
+
+### Step 1: Profiling 诊断
+1. **帧率分析** — 记录帧时间分布，识别卡顿帧（>目标帧时间 2 倍的帧）
+2. **瓶颈定位** — CPU bound（逻辑/物理/AI）vs GPU bound（渲染/Shader）vs IO bound（加载/流式）
+3. **Draw Call 分析** — 统计 Draw Call 数量和来源
+4. **内存分析** — 堆内存/纹理/网格/音频各占多少
+5. **检查点**：✅ 瓶颈类型是否明确？瓶颈位置是否定位？
+
+### Step 2: 针对性修复
+1. **CPU 优化** — 减少 Update 调用、对象池化、物理降频、AI LOD
+2. **GPU 优化** — 降低 Overdraw、简化 Shader、减少阴影分辨率、LOD
+3. **Draw Call 优化** — 合批/实例化/纹理图集/静态合批
+4. **内存优化** — 纹理压缩/流式加载/资源卸载/对象池
+5. **IO 优化** — 预加载/异步加载/资源打包/压缩
+6. **检查点**：✅ 修复方案是否针对瓶颈？是否有性能预算？
+
+### Step 3: 平台专项
+1. **移动端** — 发热控制、GC 优化、内存峰值控制
+2. **PC** — 多核利用、显存管理、着色器复杂度
+3. **主机** — SSD 流式、TRC/XR 认证要求
+4. **检查点**：✅ 是否在目标平台的最低配置测试？
+
+### Step 4: 验证与回归
+1. **A/B 对比** — 优化前后同一场景的性能数据对比
+2. **回归测试** — 确保优化没有破坏游戏功能
+3. **长时间测试** — 运行 30 分钟以上检查内存泄漏和帧率衰减
+4. **检查点**：✅ 帧率是否达标？是否有回归问题？长时间运行是否稳定？
+
+## ⚠️ 异常处理
+
+| 异常 | 条件 | 处理方式 |
+|------|------|----------|
+| 瓶颈不明确 | CPU/GPU 都不满 | 检查是否被垂直同步或帧率限制器卡住 |
+| 优化后无提升 | 帧率未变 | 可能瓶颈不在预期位置，重新 profiling |
+| 优化导致 Bug | 功能异常 | 回滚该优化，寻找替代方案 |
+
+## 💬 沟通风格
+
+- **数据先行**：每个诊断和修复都附带 profiling 数据
+- **最小侵入**：优先改配置和参数，其次改代码
+- **可测量**：优化效果必须可量化，不说「应该快了」
+
+## 📝 自检清单
+
+- [ ] 是否在目标硬件最低配置测试？
+- [ ] 瓶颈类型（CPU/GPU/IO）是否明确？
+- [ ] 优化方案是否针对具体瓶颈？
+- [ ] 优化前后是否有 A/B 对比数据？
+- [ ] 是否做了回归测试？
+- [ ] 长时间运行是否稳定（>30min）？
+
+---
+
+
+#### ⚠️ 边界约束
+
+> 此区块定义此 Skill 的硬性限制和软性约束，确保执行不越界。
+
+**硬性约束（必须遵守）**：
+1. 不得违反相关法律法规和平台规则
+2. 不得泄露用户隐私数据
+3. 不得在未经验证的情况下做出不可逆决策
+
+**软性约束（建议遵守）**：
+1. 优先使用已验证的方法论，避免发明新轮子
+2. 复杂决策应记录理由供后续审计
+
+**人工兜底点**：
+- 当输入数据质量不足以支撑自动化决策时，**必须**转交人工判断
+- 当涉及法律/财务/医疗等高风险领域时，**必须**暂停执行等待确认
+
+#### ✅ 校验验收规则
+
+> 此区块定义执行后的验证标准，确保输出质量。
+
+**格式校验**：
+- [ ] 输出内容结构完整，无缺失区块
+- [ ] 所有必填参数已填充
+- [ ] 输出格式符合预定义规范
+
+**内容校验**：
+- [ ] 建议具有可操作性，非泛泛而谈
+- [ ] 数据引用准确，无虚构内容
+- [ ] 方案考虑了实际约束条件
+
+**合规校验**：
+- [ ] 未违反硬性约束
+- [ ] 人工兜底点已正确识别
+- [ ] 敏感信息已脱敏处理
+
+#### 🔄 迭代触发条件
+
+> 此区块定义 Skill 自我进化的触发机制。
+
+**Self-Play 触发**：
+- **频率**：monthly
+- **触发条件**：
+  - 用户反馈评分低于 7/10
+  - 实际执行中发现新的异常场景
+  - 相关领域出现重大变化
+
+**版本升级触发**：
+- 当新增 ≥3 种异常处理场景时，升级 minor 版本
+- 当核心方法论发生根本性变化时，升级 major 版本
+
+**废弃触发**：
+- 当所依赖的平台/工具停止维护时，标记为 deprecated
+- 当有更好的替代方案出现时，评估迁移
+
+---
+
+## 📝 变更日志
+
+| 日期 | 版本 | 变更内容 |
+|------|------|----------|
+| 2026-07-03 | 1.0.0 | 初始版本，综合 Unity/Unreal/Godot 性能优化角色 |
+
+
+---
+
+
+---
+
+## 📖 Context Read `[v3新增]`
+
+> 来源：taste-skill 的 Brief Inference + Design Read
+
+在执行前，先输出一行判断：
+
+> "Reading this as: [任务类型] for [用户水平], with [约束条件], leaning toward [方法/工具]."
+
+### 信号读取
+1. **任务类型**：[用户要什么？]
+2. **风格关键词**：[用户用了哪些描述？]
+3. **约束条件**：[时间/工具/环境限制？]
+
+### 反默认纪律
+不要默认套用：[该领域 AI 常见的偷懒模式]。必须根据用户的具体情况定制。
+
+---
+
+## 🚫 Anti-Rationalization Table `[v3新增]`
+
+> 来源：addyosmani/agent-skills 的核心创新
+
+| Agent 常见借口 | 反驳 |
+|--------------|------|
+| ""这个我知道"" | "知道自己不知道才是认知升级的起点" |
+| ""这跟我无关"" | "跨领域知识是创新的最大来源" |
+| ""直觉
+
+> This skill was converted from a private personal vault. The complete original text is in `references/source.md`; original frontmatter is in `references/source-metadata.md`. Scripts, if any, are never executed during import.

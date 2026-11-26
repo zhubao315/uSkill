@@ -1,0 +1,32 @@
+---
+name: skill-66daf503
+description: "跨境电商运营"
+license: MIT
+metadata:
+  source: "private:zhubao315/obsidian-vault/02-BUILD/22-uSkill/S4-商业运营/跨境电商运营.md"
+  original_id: ""
+  version: ""
+  trust: untrusted
+---
+
+# 跨境电商运营
+
+# 跨境电商运营
+
+> O-101 断链治理正本：中文入口，承接 uSkill 索引与 agency-agents 映射入链；详版见关联 uSkill。
+
+## 一句话
+
+跨境电商的本质是套利——信息差、汇率差、供应链差；运营是把三种差价做成可复制的选品-履约-投放闭环。
+
+## 要点
+- 链路：选品（差价×重量×合规）→ listing 本地化 → 物流（直发/海外仓）→ 广告与评价 → 回款与税务。
+- 风险面：平台政策、汇率、知识产权、退货逆向物流；任一断裂都会吞掉套利空间。
+- 多语言市场与导航见关联归档；详版 uSkill 含渠道矩阵。
+
+## 关联
+- - 详版：[[uSkill-cross-border-ecommerce]]
+- - 归档参考：[[多语言市场导航]]
+- - 邻接：[[∑ uSkill 索引]] · [[agency-agents-全量映射索引]]
+
+> This skill was converted from a private personal vault. The complete original text is in `references/source.md`; original frontmatter is in `references/source-metadata.md`. Scripts, if any, are never executed during import.

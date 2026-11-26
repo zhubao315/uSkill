@@ -1,0 +1,86 @@
+---
+name: uskill-book-f9e579
+description: "把《身体的纪律》从一组数据变成一个可调用的身体运营 skill。"
+license: MIT
+metadata:
+  source: "private:zhubao315/obsidian-vault/02-BUILD/22-uSkill/S9-专业领域与智能体/uSkill-book-身体的纪律.md"
+  original_id: "SKL-8103"
+  version: "1.0.0"
+  trust: untrusted
+---
+
+# uSkill-书-身体的纪律
+
+description: |
+  当用户说"今天练不练""最近很累""这里疼""数据异常""要不要减量"时使用。
+  触发词：身体运营、基线、黄线、红线、减载、恢复、负荷、就医、判了没停。
+  不适用于医疗诊断（出现红旗信号必须先就医）。
+
+---
+
+⚙️ AI-Co 运行配置块
+触发场景: "今天练不练" / "很累" / "这里疼" / "数据异常" / "要不要减量"
+复用率预估: 高
+一键调用: |
+  基线 → 三色阈值 → 负荷/恢复成对看 → 减载四联 → 就医五问 → 留痕复评
+输入Schema: |
+  baseline: object — 指标基线、窗口、版本（必填）
+  thresholds: object — 黄线/红线/连续天数
+  load: object — 训练负荷、周跑量、恢复指标
+  symptoms: object — 疼痛评分、睡眠、心悸等
+  red_flags: boolean — 胸痛/晕厥/持续心悸/夜间痛醒
+输出Schema: |
+  decision: enum(train/reduce/stop/see_doctor)
+  reason: string — 依据哪条阈值/趋势
+  actions: array — 减载四联/就医
+  review_date: date
+  log: string — 留痕
+AI可执行度: 70%（监测/判断可自动，执行与就医必须人）
+
+# uSkill-书-身体的纪律
+
+## 🎯 目标
+
+把《身体的纪律》的运营闭环压缩成一个 skill：**感觉会骗人，基线不会。**
+AI 负责监测、判断、提醒、复盘；人负责执行、感受、就医、不可逆决策。
+
+## ✅ 适用 / ❌ 不适用
+
+| 适用 | 不适用 |
+|---|---|
+| 日常训练决策 | 医疗诊断/治疗 |
+| 疲劳/负荷/恢复判断 | 胸痛/晕厥/持续心悸（先就医） |
+| 减载与复跑 | 带伤比赛的"坚持" |
+| 数据口径冲突排查 | 设备精度保证 |
+
+## 🔄 工作流
+
+1. **基线**：84 天窗口 + 中位数 + 排除异常周；基线冻结。
+2. **三色阈值**：绿/黄/红；连续天数 + 偏离幅度。
+3. **负荷/恢复**：42 天与 7 天负荷同窗口比较；负荷升、恢复降 = 前兆。
+4. **减载四联**：跑量 -50% / 强度降 Zone2 / 睡眠优先 / 就医红线。
+5. **就医五问**：胸痛/晕厥/持续心悸/疼痛 >3/10/夜间痛醒。
+6. **留痕复评**：今天什么色、执行了吗、谁确认、明天复评。
+
+## 🧑‍⚖️ 人类签字点
+
+- 带伤比赛、临时加码、连续降载后的复跑。
+- 出现胸痛、晕厥、持续心悸、夜间痛醒 → **先就医，不调计划**。
+- 基线调整、例外授权（必须留痕）。
+
+## 🚫 反模式
+
+| 反模式 | 真相 |
+|---|---|
+| 把 AI 当教练 | 它给判断，不给身体 |
+| 把 skill 当自动加量 | 加量必须过负荷纪律 |
+| 把"AI 说没事"当证据 | 机器能判，人得停 |
+| 把共生当依赖 | 共生的标志是你的体感判断变强 |
+
+## 🔗 相关
+
+- [[身体的纪律]] — 书稿本体
+- [[身体体检清单实操手册]] — 全书 API
+- [[身体的纪律-后记]] — 翻车与边界
+
+> This skill was converted from a private personal vault. The complete original text is in `references/source.md`; original frontmatter is in `references/source-metadata.md`. Scripts, if any, are never executed during import.

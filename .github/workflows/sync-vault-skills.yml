@@ -1,0 +1,67 @@
+name: Sync Private Skills (Weekly)
+
+on:
+  schedule:
+    # Every Monday 03:37 UTC — off the hour to avoid GitHub cron congestion.
+    - cron: '37 3 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: vault-skills-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    permissions:
+      contents: write
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.VAULT_SYNC_PAT || secrets.GITHUB_TOKEN }}
+          fetch-depth: 1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install MkDocs dependencies
+        run: pip install -e ".[docs]"
+
+      - name: Sync private skills into docs/skills-from-vault
+        env:
+          GITHUB_TOKEN: ${{ secrets.VAULT_SYNC_PAT || secrets.GITHUB_TOKEN }}
+          VAULT_REPO: zhubao315/obsidian-vault
+          VAULT_PATH: 02-BUILD/22-uSkill
+        run: node scripts/sync_private_skills.mjs
+
+      - name: Rebuild catalog page
+        run: node scripts/build-vault-pages.mjs
+
+      - name: Validate docs build
+        run: mkdocs build --strict
+
+      - name: Commit only when content actually changed
+        env:
+          GITHUB_TOKEN: ${{ secrets.VAULT_SYNC_PAT || secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -z "$(git status --porcelain -- docs/skills-from-vault docs/generated/vault-skills.md)" ]; then
+            echo "No skill changes; skipping commit and deploy."
+            exit 0
+          fi
+          git add docs/skills-from-vault docs/generated/vault-skills.md
+          git commit -m "chore(skills): weekly sync from private vault ($(date -u +%Y-%m-%d))"
+          git push origin HEAD:main

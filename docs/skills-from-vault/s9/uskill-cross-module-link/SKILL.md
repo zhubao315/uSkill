@@ -1,0 +1,280 @@
+---
+name: uskill-cross-module-link
+description: "让跨模块联动 Agent — 实施手册变成可执行的行动，而非停留在想法。"
+license: MIT
+metadata:
+  source: "private:zhubao315/obsidian-vault/02-BUILD/22-uSkill/S9-专业领域与智能体/uSkill-cross-module-link.md"
+  original_id: "SKL-5317"
+  version: "3.0.0"
+  trust: untrusted
+---
+
+# 跨模块联动 Agent — 实施手册
+
+description: |
+  当用户需要检查 uSkill-uWise-uRead 三方数据联动时使用此 Skill。
+  触发词包括：'跨模块联动'、'链接检查'、'知识图谱'。
+
+---
+
+# 🔗 uSkill-317: 跨模块联动
+
+## 🎯 目标
+
+> 检查 uSkill↔uWise↔uRead 三方数据联动，识别孤立词条，提升知识图谱连通性。
+
+---
+
+## 📥 输入
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|:----:|------|
+| `modules` | `array` | ❌ | 需检查的模块（默认全部） |
+
+---
+
+## 📤 输出
+
+```json
+{
+  "link_density": [{"pair": "string", "links": "number", "target": "number"}],
+  "orphan_entries": [{"entry": "string", "module": "string", "suggestion": "string"}],
+  "recommendations": ["string"]
+}
+```
+
+---
+
+## 🔄 执行流程
+
+```
+1. [链接扫描] → 扫描各模块间 wikilink
+   → IF 模块目录不存在 → 跳过该模块+标注
+   → 扫描范围：uSkill↔uWise、uSkill↔uRead、uWise↔uRead
+
+2. [密度计算] → 计算链接密度
+   → 密度 = 链接数 / 词条数
+   → 目标密度 ≥ 2
+   → IF 密度 < 1 → 标注"链接严重不足"
+
+3. [孤立识别] → 识别孤立词条
+   → 标准：外部链接数 = 0
+   → IF 孤立率 > 10% → 标注"知识孤岛风险"
+
+4. [联动建议] → 生成链接建议
+   → 孤立词条 → 建议链接到相关词条
+   → 密度低 → 建议增加交叉引用
+   → THEN 输出具体链接建议
+
+5. [质量自检] → 验证检查结果
+   - [ ] 所有模块已扫描
+   - [ ] 链接密度计算正确
+   - [ ] 孤立词条列表完整
+   - [ ] 建议具体可执行
+
+6. [输出报告] → 链接密度 + 孤立列表 + 联动建议
+```
+
+---
+
+## 📝 Prompt 模板
+
+### 标准联动 Prompt
+
+```
+你是跨模块联动Agent。请检查三方数据联动。
+
+【检查模块】{modules}
+
+【联动维度】
+1. 链接密度：各模块间链接数/词条数
+2. 孤立词条：无外部链接的词条
+3. 联动建议：增加链接的具体建议
+
+【输出格式】
+按标准 JSON 输出，包含 link_density、orphan_entries、recommendations。
+```
+
+---
+
+## ⚠️ 异常处理
+
+| 异常场景 | 处理方式 | 降级策略 |
+|----------|----------|----------|
+| 模块目录不存在 | 跳过该模块 | 仅检查存在的模块 |
+| 链接格式异常 | 尝试解析 | 跳过无法解析的链接 |
+| 无孤立词条 | 输出"链接健康" | — |
+
+---
+
+## 💡 使用示例
+
+### 示例 1：正常联动检查
+
+**输入**：检查 uSkill ↔ uWise 联动
+**输出**：
+```json
+{
+  "link_density": [{"pair": "uSkill→uWise", "links": 450, "target": 2.5}],
+  "orphan_entries": [{"entry": "护城河分析框架", "module": "uWise", "suggestion": "链接到 uSkill-投资标的筛选"}],
+  "recommendations": ["增加 uSkill ↔ uRead 交叉引用"]
+}
+```
+
+### 示例 2：密度过低
+
+**输入**：检查 uWise ↔ uRead 联动
+**输出**：
+```json
+{
+  "link_density": [{"pair": "uWise→uRead", "links": 120, "target": 0.8}],
+  "recommendations": ["链接密度0.8低于目标2.0，建议为高频词条增加读书笔记关联"]
+}
+```
+
+---
+
+## 🧪 Self-Play 测试
+
+| # | 场景 | 期望 |
+|---|------|------|
+| 1 | 正常联动 | 密度报告 |
+| 2 | 孤立词条 | 识别+建议 |
+| 3 | 断链 | 修复建议 |
+| 4 | 新模块 | 建立初始链接 |
+| 5 | 密度过低 | 优化建议 |
+
+
+#### ⚠️ 边界约束
+
+> 此区块定义此 Skill 的硬性限制和软性约束，确保执行不越界。
+
+**硬性约束（必须遵守）**：
+1. 不得违反相关法律法规和平台规则
+2. 不得泄露用户隐私数据
+3. 不得在未经验证的情况下做出不可逆决策
+
+**软性约束（建议遵守）**：
+1. 优先使用已验证的方法论，避免发明新轮子
+2. 复杂决策应记录理由供后续审计
+
+**人工兜底点**：
+- 当输入数据质量不足以支撑自动化决策时，**必须**转交人工判断
+- 当涉及法律/财务/医疗等高风险领域时，**必须**暂停执行等待确认
+
+#### ✅ 校验验收规则
+
+> 此区块定义执行后的验证标准，确保输出质量。
+
+**格式校验**：
+- [ ] 输出内容结构完整，无缺失区块
+- [ ] 所有必填参数已填充
+- [ ] 输出格式符合预定义规范
+
+**内容校验**：
+- [ ] 建议具有可操作性，非泛泛而谈
+- [ ] 数据引用准确，无虚构内容
+- [ ] 方案考虑了实际约束条件
+
+**合规校验**：
+- [ ] 未违反硬性约束
+- [ ] 人工兜底点已正确识别
+- [ ] 敏感信息已脱敏处理
+
+#### 🔄 迭代触发条件
+
+> 此区块定义 Skill 自我进化的触发机制。
+
+**Self-Play 触发**：
+- **频率**：monthly
+- **触发条件**：
+  - 用户反馈评分低于 7/10
+  - 实际执行中发现新的异常场景
+  - 相关领域出现重大变化
+
+**版本升级触发**：
+- 当新增 ≥3 种异常处理场景时，升级 minor 版本
+- 当核心方法论发生根本性变化时，升级 major 版本
+
+**废弃触发**：
+- 当所依赖的平台/工具停止维护时，标记为 deprecated
+- 当有更好的替代方案出现时，评估迁移
+
+---
+---
+
+*版本：v2.0 · 2026-06-29 升级*
+
+
+---
+
+
+---
+
+## 📖 Context Read `[v3新增]`
+
+> 来源：taste-skill 的 Brief Inference + Design Read
+
+在执行前，先输出一行判断：
+
+> "Reading this as: [任务类型] for [用户水平], with [约束条件], leaning toward [方法/工具]."
+
+### 信号读取
+1. **任务类型**：[用户要什么？]
+2. **风格关键词**：[用户用了哪些描述？]
+3. **约束条件**：[时间/工具/环境限制？]
+
+### 反默认纪律
+不要默认套用：[该领域 AI 常见的偷懒模式]。必须根据用户的具体情况定制。
+
+---
+
+## 🚫 Anti-Rationalization Table `[v3新增]`
+
+> 来源：addyosmani/agent-skills 的核心创新
+
+| Agent 常见借口 | 反驳 |
+|--------------|------|
+| ""这个我知道"" | "知道自己不知道才是认知升级的起点" |
+| ""这跟我无关"" | "跨领域知识是创新的最大来源" |
+| ""直觉告诉我这样做"" | "直觉是过去的偏见，数据才是现在的真相" |
+| ""大家都这样做"" | "从众是认知懒惰的最常见表现" |
+
+---
+
+## 🛡️ Three-Tier Boundaries `[v3新增]`
+
+> 来源：addyosmani/agent-skills 的边界系统
+
+### ✅ Always do（自动执行）
+- 执行核心功能（见原技能流程）
+- 输出结构化结果
+- 检查常见错误
+
+### ⚠️ Ask first（先问再做）
+- 用户意图不明确时
+- 操作不可逆时
+- 涉及外部系统时
+
+### 🚫 Never do（绝对禁止）
+- 不跳过验证步骤
+- 不在用户未确认时执行高风险操作
+- 不伪装成功（失败就上报）
+
+---
+
+## 🔒 Gated Workflow `[v3新增]`
+
+> 来源：addyosmani 的门禁 + claude-skills 的 Agent Harness
+
+```
+DISCUSS → PLAN → EXECUTE → VERIFY → CLOSE
+   ↓         ↓        ↓          ↓        ↓
+ Context   方案     执行      证据     Done/
+ Read     确认     任务      检查    Escalate
+```
+
+### Phase 1: DISCUSS
+- [ ] 输
+
+> This skill was converted from a private personal vault. The complete original text is in `references/source.md`; original frontmatter is in `references/source-metadata.md`. Scripts, if any, are never executed during import.

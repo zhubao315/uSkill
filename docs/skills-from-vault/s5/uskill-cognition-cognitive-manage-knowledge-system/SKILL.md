@@ -1,0 +1,191 @@
+---
+name: uskill-cognition-cognitive-manage-knowledge-system
+description: "让cognitive manage knowledge system变成可执行的行动，而非停留在想法。"
+license: MIT
+metadata:
+  source: "private:zhubao315/obsidian-vault/02-BUILD/22-uSkill/S5-认知与学习/uSkill-cognition-cognitive-manage-knowledge-system.md"
+  original_id: "SKL-6833"
+  version: "3.0.0"
+  trust: untrusted
+---
+
+# cognitive manage knowledge system
+
+---
+# SKL-104: 知识管理系统
+
+## 目标
+
+基于 01-BRAIN/12-模型 + Zettelkasten 方法论，通过 AI 赋能的 C.O.D.E. 流水线（捕捉→组织→蒸馏→关联→表达），构建可复利增长的个人第二大脑知识体系。
+
+## 输入
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| raw_info | string | 是 | 待处理的原始信息（文章、高亮、想法等） |
+| target_area | string | 否 | 预期归入的 01-BRAIN/12-模型 分类（Projects/Areas/Resources/Archives） |
+| output_type | string | 否 | 期望的最终产出类型（如"博客文章""方案"等） |
+| existing_notes | list[string] | 否 | 已有的关联笔记，用于构建链接 |
+
+## 输出
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "inbox_cleared": {"type": "boolean", "description": "收件箱是否已清空"},
+    "organized_notes": {"type": "array", "description": "已归类至 01-BRAIN/12-模型 的笔记列表"},
+    "atomic_notes": {"type": "array", "description": "蒸馏后的原子化永久笔记"},
+    "connections": {"type": "array", "description": "新建立的知识关联"},
+    "output_draft": {"type": "string", "description": "基于知识网络生成的创作初稿"}
+  }
+}
+```
+
+## 执行步骤
+
+1. **建立收件箱**：在 Obsidian 中创建 `00_Inbox` 文件夹作为唯一信息入口；配置 Readwise/Cubox/浏览器插件等自动化捕捉工具，将阅读高亮、网页剪藏、社媒收藏、即时想法统一汇入收件箱。
+2. **执行每日清理**：按固定时间处理 `00_Inbox` 中所有待办信息，对每条信息提问"这条信息是为了什么？"。
+3. **应用 01-BRAIN/12-模型 分类**：将信息按行动性归类——Projects（有截止日期的具体目标）、Areas（长期负责的领域）、Resources（感兴趣的主题）、Archives（已完成/不感兴趣），不确定时使用 AI 提示词-01 辅助分类。
+4. **识别蒸馏候选**：从 Projects 和 Areas 中筛选有价值、需深度内化的信息，进入蒸馏环节。
+5. **执行原子化重构**：遵循 Zettelkasten 原则，用第一人称重写原始信息为独立的永久笔记（一张笔记一个核心思想，<200字），可使用 AI 提示词-02 辅助拆解长文。
+6. **建立双向链接**：为每张新笔记用 `[[双括号]]` 链接至少 2 个相关笔记，可使用 AI 提示词-03 建议关联概念。
+7. **审视关系图谱**：每周查看 Obsidian 的 Graph View，观察知识簇群形成情况，发现跨领域意外连接。
+8. **执行知识表达**：以创作目标为导向，从知识网络中检索并组合多张原子笔记作为骨架。
+9. **生成创作初稿**：使用 AI 提示词-04 将整理好的知识点串联为逻辑完整的初稿（博客/报告/方案）。
+10. **发布并归档**：将最终成果发布分享，完成后将相关项目笔记移入 `40_Archives`。
+
+## AI 提示词模板
+
+- **智能分类**：`你是一位顶级的信息架构师，精通P.A.R.A.方法。请帮我判断信息"[内容]"最适合归入哪个分类（Projects/Areas/Resources/Archives），并建议子文件夹名称。`
+- **原子化重构**：`你是Zettelkasten专家。请将以下材料提炼为3-5条独立的永久笔记，每条包含：概括性标题、第一人称核心内容（<200字）、3-5个标签。材料：[...]`
+- **知识关联**：`你擅长发现隐藏联系。我正在写关于"[概念]"的笔记，请从AI/投资/心理学/国学等领域建议3个可产生有趣碰撞的概念。`
+- **内容生成**：`你是高效内容创作者。请将以下互相关联的原子笔记串联为一篇[内容类型]初稿。笔记：[粘贴2-5张笔记]`
+
+## 异常处理
+
+| 异常场景 | 处理方案 |
+|----------|----------|
+| 收件箱积压超过100条 | 批量处理：快速分为"立即蒸馏""稍后处理""删除"三堆 |
+| 无法判断 01-BRAIN/12-模型 分类 | 暂归入 Resources，设置1个月后复查提醒 |
+| 原子笔记无法独立理解 | 补充上下文段落，确保笔记自包含 |
+| 关联图谱过于稀疏 | 主动回顾旧笔记，补充缺失的双向链接 |
+| 知识库长期无输出 | 设定每月至少1次"以输出为目的"的知识检索任务 |
+
+## 自检清单
+
+- [ ] 收件箱（00_Inbox）是否已清空至零？
+- [ ] 每张新笔记是否用 `[[双括号]]` 与至少 2 个已有笔记建立了双向链接？
+- [ ] 每张原子笔记是否能脱离上下文独立存在并被理解？
+- [ ] 本月是否从知识网络中产出过至少 1 次创造性成果（文章/方案/项目构思）？
+- [ ] 关系图谱中是否出现跨领域的知识簇群？
+
+
+---
+
+
+---
+
+
+---
+
+## 📖 Context Read `[v3新增]`
+
+> 来源：taste-skill 的 Brief Inference + Design Read
+
+在执行前，先输出一行判断：
+
+> "Reading this as: [认知任务] for [思考深度], with [问题复杂度], leaning toward [思维框架/分析工具]."
+
+### 信号读取
+1. **任务类型**：[用户要什么？]
+2. **风格关键词**：[用户用了哪些描述？]
+3. **约束条件**：[时间/工具/环境限制？]
+
+### 反默认纪律
+不要默认套用：[该领域 AI 常见的偷懒模式]。必须根据用户的具体情况定制。
+
+---
+
+## 🚫 Anti-Rationalization Table `[v3新增]`
+
+> 来源：addyosmani/agent-skills 的核心创新
+
+| Agent 常见借口 | 反驳 |
+|--------------|------|
+| ""这个我知道"" | "知道自己不知道才是认知升级的起点" |
+| ""这跟我无关"" | "跨领域知识是创新的最大来源" |
+| ""直觉告诉我这样做"" | "直觉是过去的偏见，数据才是现在的真相" |
+| ""大家都这样做"" | "从众是认知懒惰的最常见表现" |
+
+---
+
+## 🛡️ Three-Tier Boundaries `[v3新增]`
+
+> 来源：addyosmani/agent-skills 的边界系统
+
+### ✅ Always do（自动执行）
+- 执行核心功能（见原技能流程）
+- 输出结构化结果
+- 检查常见错误
+
+### ⚠️ Ask first（先问再做）
+- 用户意图不明确时
+- 操作不可逆时
+- 涉及外部系统时
+
+### 🚫 Never do（绝对禁止）
+- 不跳过验证步骤
+- 不在用户未确认时执行高风险操作
+- 不伪装成功（失败就上报）
+
+---
+
+## 🔒 Gated Workflow `[v3新增]`
+
+> 来源：addyosmani 的门禁 + claude-skills 的 Agent Harness
+
+```
+DISCUSS → PLAN → EXECUTE → VERIFY → CLOSE
+   ↓         ↓        ↓          ↓        ↓
+ Context   方案     执行      证据     Done/
+ Read     确认     任务      检查    Escalate
+```
+
+### Phase 1: DISCUSS
+- [ ] 输出 Context Read 一行判断
+- [ ] 确认用户意图
+- [ ] 确认约束条件
+
+### Phase 2: PLAN
+- [ ] 制定执行方案
+- [ ] 确认资源可用
+- [ ] 人工审批计划
+
+### Phase 3: EXECUTE
+- [ ] 逐个任务实现
+- [ ] 每步有输出记录
+
+### Phase 4: VERIFY
+- [ ] 检查核心输出
+- [ ] 验证完整性
+- [ ] 输出证据
+
+### Phase 5: CLOSE
+- [ ] 所有检查通过 → 标记完成
+- [ ] 有未通过项 → 升级给人类
+- [ ] 预算耗尽 → 强制升级，不伪装成功
+
+
+**相关概念**：[[信息管理系统]]
+
+---
+
+
+## 🔄 IF/THEN 决策分支
+
+- IF 输入数据质量不足以支撑自动化决策 → THEN 转交人工判断，输出不确定性说明
+- IF 执行过程中遇到未预期的异常 → THEN 记录异常 + 降级处理 + 升级给人类
+- IF 输出结果置信度 <
+
+> This skill was converted from a private personal vault. The complete original text is in `references/source.md`; original frontmatter is in `references/source-metadata.md`. Scripts, if any, are never executed during import.

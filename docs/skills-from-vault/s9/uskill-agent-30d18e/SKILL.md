@@ -1,0 +1,260 @@
+---
+name: uskill-agent-30d18e
+description: "让uSkill-技能推理器孤岛审计变成可执行的行动，而非停留在想法。"
+license: MIT
+metadata:
+  source: "private:zhubao315/obsidian-vault/02-BUILD/22-uSkill/S9-专业领域与智能体/uSkill-agent-技能推理器孤岛审计.md"
+  original_id: "SKL-7029"
+  version: "3.0.0"
+  trust: untrusted
+---
+
+# uSkill-技能推理器孤岛审计
+
+# uSkill-技能推理器孤岛审计
+
+> 技能推理器（uSkill Reasoner）的孤岛技能审计，防止堆砌无用技能，确保核心Skill复用率。
+
+---
+
+## 工程定位
+
+### 核心目标
+
+- **OVP目标**：核心Skill复用率 ≥ 30%
+- **审计范围**：Skill Schema的输入输出定义
+- **优化目标**：将孤岛技能织入Agent Mesh调度网络
+
+### 运行环境
+
+- **部署位置**：本地推理引擎
+- **数据来源**：GitHub联动管理的uSkill仓库
+- **触发机制**：定期审计Skill复用率
+
+---
+
+## 审计机制
+
+### 审计内容
+
+- **Schema分析**：检查Input/Output Schema定义
+- **复用评估**：评估是否能被其他Agent调用
+- **孤岛识别**：找出低频、孤立的技能
+
+### 孤岛标准
+
+- **调用次数**：过去一个季度内调用次数 ≤ 2
+- **Mesh接入**：未接入Agent Mesh调度网络
+- **Schema封闭**：输入输出定义无法被其他Agent调用
+
+---
+
+## 提示词（uPrompt-uSkill-Audit）
+
+```markdown
+# Role
+你是本地推理引擎驱动的【技能推理器（uSkill Reasoner）】审计专家。
+
+# Context
+为了防止系统堆砌孤立、死板的技能，2026 核心 OVP 指标要求：核心 Skill 复用率 ≥ 30%。
+
+# Target Skill Map (From GitHub & uSkill Graph)
+{{Current_uSkill_Graph_Data}}
+
+# Execution Task
+1. 分析最新入库的 Skill Schema，检查其输入输出定义（Input/Output Schema）是否能被系统内其他 4 个智能体（如财务、身心、资产）直接调用。
+2. 识别"技能孤岛"：找出那些过去一个季度内，被调用次数（reused_count）≤ 2 的低频、孤立技能。
+3. 提出重构方案：如何通过修改 Schema 约束，将这个孤立技能无缝织入现有的 Agent Mesh 调度网络中？
+
+# Output Format
+## 📊 Skill 复用率审计报告
+* 当前总 Skill 数：
+* 孤岛技能清单：[列出未接入 Mesh 的孤岛技能]
+* 当前复用率：[计算百分比]% (对照阈值：≥ 30%)
+
+## 🛠️ Mesh 织入优化提案
+* 建议重构的 Skill：
+* 改造方案：[修改输入/输出定义，使其能被其他 Agent 自动调用的具体 SOP]
+```
+
+---
+
+## 执行配置
+
+### 触发词
+
+`「执行技能孤岛审计」`
+
+### Cron 规则
+
+- **每月 1 日**：随 L3 全局审计同步触发
+- **事件触发**：uSkill 仓库有新 Skill 入库时触发增量审计
+
+### 与 Daily Loop 联动
+
+- 晨间计划读取审计结果，将孤岛修复建议纳入当日任务
+- 晚间复盘确认修复进展
+
+### 异常重试 SOP
+
+- **uSkill 仓库数据不可用**：使用上次缓存的 Skill Graph 快照继续执行
+- **复用率计算异常**：标记 `⚠️ 审计降级`，输出局部报告
+
+### 转录本驱动优化（月度）
+
+每月分析技能审计会话的转录本，统计"这个技能不该合并""调用链路判断错了"等修正模式，持续更新孤岛判定规则和重构提案模板。
+
+---
+
+## 关联
+
+- [[uSkill-日程优化-v1]]
+- [[uSkill-日程优化-v1]]
+- [[uSkill-日程优化-v1]]
+- [[uSkill-系统熵增检测-v1]]
+- [[《How to Work and Compound with AI》-Eugene Yan]] — 转录本挖矿参考
+
+
+![[SKILL]]
+
+---
+
+*关联项目：[[uSkill]] · [[∑ 产出层]]*
+
+---
+
+
+---
+
+## 📖 Context Read `[v3新增]`
+
+> 来源：taste-skill 的 Brief Inference + Design Read
+
+在执行前，先输出一行判断：
+
+> "Reading this as: [任务类型] for [用户水平], with [约束条件], leaning toward [方法/工具]."
+
+### 信号读取
+1. **任务类型**：[用户要什么？]
+2. **风格关键词**：[用户用了哪些描述？]
+3. **约束条件**：[时间/工具/环境限制？]
+
+### 反默认纪律
+不要默认套用：[该领域 AI 常见的偷懒模式]。必须根据用户的具体情况定制。
+
+---
+
+## 🚫 Anti-Rationalization Table `[v3新增]`
+
+> 来源：addyosmani/agent-skills 的核心创新
+
+| Agent 常见借口 | 反驳 |
+|--------------|------|
+| ""这个我知道"" | "知道自己不知道才是认知升级的起点" |
+| ""这跟我无关"" | "跨领域知识是创新的最大来源" |
+| ""直觉告诉我这样做"" | "直觉是过去的偏见，数据才是现在的真相" |
+| ""大家都这样做"" | "从众是认知懒惰的最常见表现" |
+
+---
+
+## 🛡️ Three-Tier Boundaries `[v3新增]`
+
+> 来源：addyosmani/agent-skills 的边界系统
+
+### ✅ Always do（自动执行）
+- 执行核心功能（见原技能流程）
+- 输出结构化结果
+- 检查常见错误
+
+### ⚠️ Ask first（先问再做）
+- 用户意图不明确时
+- 操作不可逆时
+- 涉及外部系统时
+
+### 🚫 Never do（绝对禁止）
+- 不跳过验证步骤
+- 不在用户未确认时执行高风险操作
+- 不伪装成功（失败就上报）
+
+---
+
+## 🔒 Gated Workflow `[v3新增]`
+
+> 来源：addyosmani 的门禁 + claude-skills 的 Agent Harness
+
+```
+DISCUSS → PLAN → EXECUTE → VERIFY → CLOSE
+   ↓         ↓        ↓          ↓        ↓
+ Context   方案     执行      证据     Done/
+ Read     确认     任务      检查    Escalate
+```
+
+### Phase 1: DISCUSS
+- [ ] 输出 Context Read 一行判断
+- [ ] 确认用户意图
+- [ ] 确认约束条件
+
+### Phase 2: PLAN
+- [ ] 制定执行方案
+- [ ] 确认资源可用
+- [ ] 人工审批计划
+
+### Phase 3: EXECUTE
+- [ ] 逐个任务实现
+- [ ] 每步有输出记录
+
+### Phase 4: VERIFY
+- [ ] 检查核心输出
+- [ ] 验证完整性
+- [ ] 输出证据
+
+### Phase 5: CLOSE
+- [ ] 所有检查通过 → 标记完成
+- [ ] 有未通过项 → 升级给人类
+- [ ] 预算耗尽 → 强制升级，不伪装成功
+
+
+**相关概念**：[[循环工程]]
+
+---
+
+## 📋 Verification Evidence `[v3新增]`
+
+> 来源：addyosmani 的证据要求 + claude-skills 的 verify
+
+### 完成标志
+- [ ] 核心输出已生成
+- [ ] 输出格式符合预期
+- [ ] 无明显错误
+
+### 失败处理
+- 输出不完整 → 继续补充，不标记完成
+- 连续 3 次失败 → 升级给人类，附上当前状态
+- 绝不伪装成功
+
+---
+
+## 🔄 执行流程
+
+1. **扫描阶段**：遍历 02-BUILD/22-uSkill/ 全部 .md 文件，提取 wikilink 构建引用图谱
+2. **分析阶段**：计算每个 uSkill 的入链数/出链数，识别孤立节点和弱连接节点
+3. **报告阶段**：生成审计报告，按优先级排序待修复项
+4. **修复阶段**：对高优先级项自动补充桥接链接
+5. **验证阶段**：重新扫描确认修复效果
+
+## 🔄 IF/THEN 决策分支
+
+- IF uSkill 入链数 = 0 → THEN 标记为"完全孤立"，优先级 P0，自动创建 1-2 个桥接链接
+- IF uSkill 入链数 = 1-2 且被引内容不相关 → THEN 标记为"弱连接"，优先级 P1，建议补充业务场景引用
+- IF 全库孤岛率 > 10% → THEN 触发批量桥接模式，在 01-BRAIN 创建领域索引页统一连接
+- ELSE（孤岛率 ≤ 5%）→ THEN 输出维持报告，无需动作
+
+## 💡 使用示例
+
+- **场景 1**：月度审计 — 每月 1 日运行，输出孤岛率趋势 + Top 10 待修复 uSkill
+- **场景 2**：新 uSkill 入库检查 — 新增 uSkill 后自动检查是否被至少 1 篇笔记引用
+- **场景 3**：批量桥接 — 对 S2/S4/S3 等低连通分类一次性补充桥接链接
+
+## 🧪 Self-Play
+
+> This skill was converted from a private personal vault. The complete original text is in `references/source.md`; original frontmatter is in `references/source-metadata.md`. Scripts, if any, are never executed during import.

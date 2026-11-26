@@ -1,0 +1,199 @@
+---
+name: uskill-productivity-create-personal-readme
+description: "让productivity create personal readme变成可执行的行动，而非停留在想法。"
+license: MIT
+metadata:
+  source: "private:zhubao315/obsidian-vault/02-BUILD/22-uSkill/S8-效率与工具/uSkill-productivity-create-personal-readme.md"
+  original_id: "SKL-5063"
+  version: "3.0.0"
+  trust: untrusted
+---
+
+# productivity create personal readme
+
+# Draft Personal README Manual
+
+## 🎯 目标
+> 运用「个人说明书」模板框架，帮助用户生成一份结构化的自我介绍文档，涵盖身份背景、工作职责、协作方式和个人特质，使团队成员能快速了解你并高效与你协作——将新人融入和跨团队协作的磨合时间缩短 50%。
+
+## 📥 输入
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `name` | string | ✅ | 你的姓名或昵称 |
+| `role` | string | ✅ | 当前职位/岗位名称 |
+| `company` | string | ❌ | 当前所在公司或组织名称 |
+| `education` | string | ❌ | 教育背景（学校、专业、学位） |
+| `career_history` | array | ❌ | 关键职业经历列表（公司+岗位+时间段） |
+| `responsibilities` | array | ✅ | 当前核心工作职责，每项可含子任务列表 |
+| `collaboration_guide` | string | ❌ | 如何与你高效协作的说明（如沟通偏好、响应时间、审批流程等） |
+| `collaboration_contacts` | array | ❌ | 协作相关人员、话题群或文档链接 |
+| `hobbies` | array | ❌ | 个人兴趣爱好 |
+| `tone` | enum | ❌ | 语气风格：`formal`（正式）/ `casual`（轻松）/ `friendly`（友好），默认 `friendly` |
+| `platform` | enum | ❌ | 使用场景：`internal_profile`（内部签名栏）/ `team_wiki`（团队Wiki）/ `onboarding`（新人入职），默认 `internal_profile` |
+
+## 📤 输出
+
+```json
+{
+  "personal_readme": {
+    "who_am_i": "string — 个人简介段落，含教育和职业背景",
+    "my_responsibilities": [
+      {
+        "area": "string — 职责领域名称",
+        "details": ["string — 具体工作项"]
+      }
+    ],
+    "how_to_collaborate_with_me": {
+      "guide": "string — 协作指南正文",
+      "contacts": ["string — 相关人员/群组/文档链接"],
+      "response_expectations": "string — 响应时间和沟通偏好说明"
+    },
+    "about_me_beyond_work": "string — 个人爱好与生活侧面"
+  },
+  "meta": {
+    "word_count": "number — 文档总字数",
+    "sections_count": "number — 章节数",
+    "suggested_placement": "string — 建议放置位置（签名栏/Wiki/入职包等）",
+    "improvement_suggestions": ["string — 可进一步优化的方向"]
+  }
+}
+```
+
+## 📋 执行步骤
+
+1. **信息采集与补全** — 基于用户输入的参数，整理个人信息素材：
+   - 如 `education` 或 `career_history` 为空，提示用户补充以增强可信度
+   - 如 `responsibilities` 过于笼统，建议拆分为 2-3 个子领域、每个 3-5 项具体工作
+
+2. **「我是谁」段落撰写** — 将教育背景和职业经历融合为一段流畅的个人介绍：
+   - 采用时间线叙事：毕业院校 → 过往经历 → 当前岗位
+   - 突出与当前角色最相关的关键经历，非流水账
+   - 根据 `tone` 参数调整语言风格
+
+3. **「我的工作职责」结构化** — 将 `responsibilities` 按领域分组：
+   - 每个领域一个标题，下列 3-5 项具体工作
+   - 使用动词开头（负责、主导、支持、协调），让职责描述有行动感
+   - 如有团队管理职责，增加团队概况介绍
+
+4. **「如果你需要我配合」编写** — 构建协作指南：
+   - 明确列出常见的协作场景和对应流程
+   - 如有 `collaboration_contacts`，通过 @ 或链接引用相关人员和资源
+   - 补充沟通偏好（如"紧急事项请直接电话，非紧急请飞书留言"）
+
+5. **「个人爱好」段落撰写** — 展示工作之外的个人侧面：
+   - 2-5 个兴趣爱好，附简短说明
+   - 语气轻松，帮助他人建立更立体的认知
+   - 可提及有趣的个人经历或小故事
+
+6. **格式适配与优化** — 根据 `platform` 参数调整输出格式：
+   - `internal_profile`：精简至 200 字以内，适合签名栏
+   - `team_wiki`：完整版，含所有章节
+   - `onboarding`：增加 FAQ 和第一周建议
+
+## ⚠️ 异常处理
+
+| 异常 | 处理 |
+|------|------|
+| 用户未提供任何个人信息 | 给出一份填空模板，标注必填项，引导用户逐步补充 |
+| `responsibilities` 只有一条且过于宽泛 | 追问具体方向，建议拆分为 2-3 个职责领域 |
+| 用户提供的信息过于冗长 | 精简为要点式呈现，去除与当前岗位无关的历史 |
+| 用户要求高度保密（如高管） | 仅保留岗位和职责描述，隐去个人细节，建议使用化名 |
+| 输出场景为签名栏但内容过长 | 自动精简为 3-5 句核心信息，附"完整版见 Wiki 链接" |
+
+## ✅ 自检清单
+
+- [ ] 「我是谁」段落是否在 3-5 句内完成，含教育和关键职业经历
+- [ ] 工作职责是否按领域分组，每项以动词开头
+- [ ] 协作指南是否具体可操作（非"欢迎随时联系我"的空话）
+- [ ] 是否根据不同角色（决策者/协作者/信息同步对象）考虑了关注点差异
+- [ ] 个人爱好段落语气是否与整体 `tone` 一致
+- [ ] 输出格式是否匹配 `platform` 场景
+- [ ] 文档总字数适合目标放置位置（签名栏 ≤200字 / Wiki 500-800字 / 入职包 800-1200字）
+- [ ] 未泄露敏感个人信息（手机号、家庭住址等）
+
+
+#### ⚠️ 边界约束
+
+> 此区块定义此 Skill 的硬性限制和软性约束，确保执行不越界。
+
+**硬性约束（必须遵守）**：
+1. 不得违反相关法律法规和平台规则
+2. 不得泄露用户隐私数据
+3. 不得在未经验证的情况下做出不可逆决策
+
+**软性约束（建议遵守）**：
+1. 优先使用已验证的方法论，避免发明新轮子
+2. 复杂决策应记录理由供后续审计
+
+**人工兜底点**：
+- 当输入数据质量不足以支撑自动化决策时，**必须**转交人工判断
+- 当涉及法律/财务/医疗等高风险领域时，**必须**暂停执行等待确认
+
+#### ✅ 校验验收规则
+
+> 此区块定义执行后的验证标准，确保输出质量。
+
+**格式校验**：
+- [ ] 输出内容结构完整，无缺失区块
+- [ ] 所有必填参数已填充
+- [ ] 输出格式符合预定义规范
+
+**内容校验**：
+- [ ] 建议具有可操作性，非泛泛而谈
+- [ ] 数据引用准确，无虚构内容
+- [ ] 方案考虑了实际约束条件
+
+**合规校验**：
+- [ ] 未违反硬性约束
+- [ ] 人工兜底点已正确识别
+- [ ] 敏感信息已脱敏处理
+
+#### 🔄 迭代触发条件
+
+> 此区块定义 Skill 自我进化的触发机制。
+
+**Self-Play 触发**：
+- **频率**：monthly
+- **触发条件**：
+  - 用户反馈评分低于 7/10
+  - 实际执行中发现新的异常场景
+  - 相关领域出现重大变化
+
+**版本升级触发**：
+- 当新增 ≥3 种异常处理场景时，升级 minor 版本
+- 当核心方法论发生根本性变化时，升级 major 版本
+
+**废弃触发**：
+- 当所依赖的平台/工具停止维护时，标记为 deprecated
+- 当有更好的替代方案出现时，评估迁移
+
+---
+
+## 📝 变更日志
+
+| 日期 | 版本 | 变更内容 |
+|------|------|----------|
+| 2026-05-09 | 1.0.0 | 初始版本，从「个人说明书模板」方法论笔记转化 |
+
+---
+**相关笔记**：[[文档质量复盘]] [[住宿订单优化]] 
+
+
+---
+
+
+---
+
+## 📖 Context Read `[v3新增]`
+
+> 来源：taste-skill 的 Brief Inference + Design Read
+
+在执行前，先输出一行判断：
+
+> "Reading this as: [效率任务] for [工具熟悉度], with [时间约束], leaning toward [工具/方法]."
+
+### 信号读取
+1. **
+
+> This skill was converted from a private personal vault. The complete original text is in `references/source.md`; original frontmatter is in `references/source-metadata.md`. Scripts, if any, are never executed during import.

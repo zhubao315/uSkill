@@ -1,0 +1,169 @@
+---
+name: uskill-agent-meta-feynman-deep-learning
+description: "让meta feynman deep learning变成可执行的行动，而非停留在想法。"
+license: MIT
+metadata:
+  source: "private:zhubao315/obsidian-vault/02-BUILD/22-uSkill/S9-专业领域与智能体/uSkill-agent-meta-feynman-deep-learning.md"
+  original_id: "SKL-5047"
+  version: "3.0.0"
+  trust: untrusted
+---
+
+# meta feynman deep learning
+
+# Apply Feynman Technique for Deep Learning
+
+## 🎯 目标
+> 运用费曼学习法（目标→理解→输出→回顾→内化），通过"以教促学"的方式深度掌握任意知识主题。核心原则：如果你不能用简单的语言向一个六年级小学生解释清楚，说明你还没有真正理解。
+
+## 📥 输入
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `topic` | string | ✅ | 需要深入学习和掌握的知识主题 |
+| `current_knowledge` | string | ❌ | 用户对该主题的现有理解程度描述 |
+| `mode` | enum | ✅ | 学习模式：`solo`（独立学习）/ `teach`（向他人讲解）/ `bidirectional`（双向费曼互动） |
+| `audience_level` | enum | ❌ | 讲解对象水平：`child`（小学生）/ `beginner`（入门者）/ `peer`（同行）/ `expert`（专家），默认 `child` |
+| `learning_material` | string | ❌ | 已有的学习材料或笔记内容，用于辅助分析 |
+| `depth` | enum | ❌ | 深度目标：`surface`（概念理解）/ `working`（能应用）/ `deep`（能创新迁移），默认 `working` |
+
+## 📤 输出
+
+```json
+{
+  "feynman_process": {
+    "step1_target": {
+      "core_concepts": ["string — 核心概念列表"],
+      "knowledge_map": "string — 概念间关系的可视化描述",
+      "focus_priorities": ["string — 优先攻克的知识点"],
+      "estimated_complexity": "string — 整体难度评估（低/中/高）"
+    },
+    "step2_understand": {
+      "structured_breakdown": "string — 知识的分类、结构、对比分析",
+      "key_principles": ["string — 关键原理/规律"],
+      "prerequisites": ["string — 需要先掌握的前置知识"],
+      "common_confusions": ["string — 常见混淆点"]
+    },
+    "step3_output": {
+      "simple_explanation": "string — 用最简单语言的完整讲解（适配audience_level）",
+      "analogies": ["string — 生动的类比和比喻"],
+      "concrete_examples": ["string — 具体例子"],
+      "diagram_description": "string — 辅助理解的示意图描述"
+    },
+    "step4_review": {
+      "knowledge_gaps": ["string — 输出中暴露的理解盲区"],
+      "vague_points": ["string — 表述不够清晰的地方"],
+      "follow_up_questions": ["string — 需要进一步探究的问题"],
+      "resources_suggested": ["string — 推荐的补充学习资源"]
+    },
+    "step5_internalize": {
+      "personal_framework": "string — 提炼为个人知识框架/模型",
+      "one_sentence_summary": "string — 一句话本质概括",
+      "cross_domain_connections": ["string — 与其他领域的关联"],
+      "application_scenarios": ["string — 可直接应用的场景"]
+    }
+  },
+  "teaching_script": "string — 完整的教学脚本，可直接用于向他人讲解",
+  "self_test_questions": ["string — 自测问题，检验是否真正掌握"],
+  "learning_plan": {
+    "gaps_to_fill": ["string — 需要补充学习的内容"],
+    "practice_suggestions": ["string — 实践建议"],
+    "next_topic": "string — 建议的下一步深入主题"
+  }
+}
+```
+
+## 📋 执行步骤
+
+1. **目标确立（Target）** — 分析输入主题，识别核心概念和知识结构：
+   - 提取3-5个核心概念
+   - 绘制概念间的关系图谱（依赖、并列、递进）
+   - 评估整体复杂度，标注前置知识
+2. **深度理解（Understand）** — 对知识进行归类、结构化、对比分析：
+   - 运用加减乘除法：将复杂内容输入（加），通过经验简化拍平（减）
+   - 找出关键原理和规律
+   - 识别常见混淆点和认知陷阱
+3. **简化输出（Output）** — 生成适合目标受众的讲解版本：
+   - **child 级**：使用日常类比，避免术语，每个概念配一个生活例子
+   - **beginner 级**：保留必要术语但逐一解释，使用渐进式展开
+   - **peer 级**：可以使用领域术语，重点在逻辑链和创新点
+   - **expert 级**：聚焦深层原理、边界条件、开放问题
+   - 配合生动的类比（至少2个）和具体例子（至少2个）
+4. **回顾检验（Review）** — 自我审视输出质量：
+   - 标注讲解中表述模糊或回避的地方
+   - 识别知识盲区和需要进一步学习的点
+   - 生成自测问题（5-8个），覆盖从记忆到应用的各层次
+5. **内化吸收（Internalize）** — 提炼个人知识框架：
+   - 用抽象符号和图像简化（除法）
+   - 提炼一句话本质概括
+   - 识别跨领域迁移的可能性
+   - 明确可直接应用的实践场景
+6. **教学脚本生成** — 将上述步骤整合为可直接使用的讲解脚本
+
+## 🔄 双向费曼模式（mode=bidirectional）
+
+当选择双向费曼模式时，额外执行：
+
+1. **角色设定** — 设定你和对方各负责讲解的主题
+2. **首轮讲解** — 生成你的讲解脚本 + 预设对方可能提出的追问
+3. **角色互换** — 生成对方视角的讲解框架 + 你应提出的深度问题
+4. **总结深化** — 整合双向交流的收获，识别跨主题的联系
+
+## ⚠️ 异常处理
+
+| 异常 | 处理 |
+|------|------|
+| 主题过于宽泛（如"人工智能"） | 建议缩小范围，提供3-5个具体子主题供选择 |
+| 用户现有理解与主题复杂度差距过大 | 调整输出为渐进式学习路径，分阶段展开 |
+| 选择 child 级但主题本质高度抽象（如量子力学） | 使用强类比策略，承认类比的局限性，标注"简化但不准确"的部分 |
+| 输出中发现知识空白过多 | 将空白点转化为学习计划，建议先补齐前置知识 |
+| 用户未提供学习材料 | 基于通用知识生成，标注"建议结合具体教材验证" |
+
+## ✅ 自检清单
+
+- [ ] 五个步骤（目标→理解→输出→回顾→内化）均有实质内容
+- [ ] 输出的简单解释确实简单——去掉所有不必要的术语
+- [ ] 至少包含2个生动的类比，且类比本身易于理解
+- [ ] 至少包含2个具体、贴近生活的例子
+- [ ] 知识盲区已诚实标注，未试图掩盖
+- [ ] 自测问题覆盖不同认知层次（记忆/理解/应用/分析）
+- [ ] 内化部分有一句话本质概括，高度抽象但准确
+- [ ] 跨领域连接是真实的、有启发性的，非牵强附会
+- [ ] 双向费曼模式下，追问设计具有深度，能暴露理解盲区
+
+
+#### ⚠️ 边界约束
+
+> 此区块定义此 Skill 的硬性限制和软性约束，确保执行不越界。
+
+**硬性约束（必须遵守）**：
+1. 不得违反相关法律法规和平台规则
+2. 不得泄露用户隐私数据
+3. 不得在未经验证的情况下做出不可逆决策
+
+**软性约束（建议遵守）**：
+1. 优先使用已验证的方法论，避免发明新轮子
+2. 复杂决策应记录理由供后续审计
+
+**人工兜底点**：
+- 当输入数据质量不足以支撑自动化决策时，**必须**转交人工判断
+- 当涉及法律/财务/医疗等高风险领域时，**必须**暂停执行等待确认
+
+#### ✅ 校验验收规则
+
+> 此区块定义执行后的验证标准，确保输出质量。
+
+**格式校验**：
+- [ ] 输出内容结构完整，无缺失区块
+- [ ] 所有必填参数已填充
+- [ ] 输出格式符合预定义规范
+
+**内容校验**：
+- [ ] 建议具有可操作性，非泛泛而谈
+- [ ] 数据引用准确，无虚构内容
+- [ ] 方案考虑了实际约束条件
+
+**合规校验**：
+
+
+> This skill was converted from a private personal vault. The complete original text is in `references/source.md`; original frontmatter is in `references/source-metadata.md`. Scripts, if any, are never executed during import.

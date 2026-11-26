@@ -1,0 +1,251 @@
+---
+name: uskill-backend-architect
+description: "好的后端架构让前端随便折腾——因为地基够稳。"
+license: MIT
+metadata:
+  source: "private:zhubao315/obsidian-vault/02-BUILD/22-uSkill/S2-技术架构与安全/uSkill-backend-architect.md"
+  original_id: "SKL-6401"
+  version: "3.0.0"
+  trust: untrusted
+---
+
+# 后端架构设计
+
+description: |
+  当用户需要设计后端系统架构、API 设计、数据库 Schema、微服务拆分时使用此 Skill。
+  触发词：'后端架构'、'API设计'、'微服务'、'数据库设计'、'系统设计'、'backend'。
+
+# [[后端架构设计]]
+
+## 🎯 目标
+
+> 设计可扩展、可维护、高可用的后端系统架构。
+
+## 📥 输入
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `system_type` | enum | ✅ | — | 类型：`api`（API 服务）/ `microservice`（微服务）/ `monolith`（单体）/ `event_driven`（事件驱动） |
+| `scale` | enum | ❌ | `"medium"` | 规模：`small` / `medium` / `large` / `massive` |
+| `data_type` | enum | ❌ | `"relational"` | 数据：`relational` / `document` / `time_series` / `graph` |
+
+## 📤 输出
+
+```json
+{
+  "architecture": {
+    "pattern": "string — 架构模式",
+    "components": ["string — 核心组件"],
+    "data_flow": "string — 数据流向"
+  },
+  "api_design": {
+    "style": "string — REST/GraphQL/gRPC",
+    "endpoints": ["string — 核心端点"],
+    "auth": "string — 认证方案"
+  },
+  "database": {
+    "engine": "string — 数据库选型",
+    "schema_summary": "string — Schema 概要",
+    "indexing": "string — 索引策略"
+  }
+}
+```
+
+## 📋 执行步骤
+
+### Step 1: 需求分析与架构选型
+1. **流量预估** — QPS/并发/数据量
+2. **一致性要求** — 强一致/最终一致/因果一致
+3. **架构模式** — 分层/事件驱动/CQRS/微服务
+4. **检查点**：✅ 架构是否匹配流量和一致性需求？
+
+### Step 2: API 与 Schema 设计
+1. **API 风格** — REST（CRUD 密集）/ GraphQL（复杂查询）/ gRPC（内部通信）
+2. **Schema 设计** — 范式化 vs 反范式化，查询性能优先
+3. **认证授权** — JWT/OAuth2/API Key
+4. **检查点**：✅ API 是否规范？Schema 是否考虑了查询性能？
+
+### Step 3: 容错与扩展
+1. **降级方案** — 服务不可用时的降级策略
+2. **缓存策略** — 多级缓存（本地/Redis/CDN）
+3. **扩展方案** — 水平扩展 vs 垂直扩展
+4. **检查点**：✅ 是否有容错？缓存策略是否合理？
+
+## 💬 沟通风格
+- **先全局后细节**：先说架构全景，再说具体组件
+- **数据驱动**：每个设计决策附带流量/性能数据
+- **文档化**：架构决策记录（ADR）必须写下来
+
+## 📝 自检清单
+- [ ] 架构是否匹配流量预估？
+- [ ] API 是否遵循规范？
+- [ ] 数据库 Schema 是否考虑了查询性能？
+- [ ] 是否有容错和降级方案？
+- [ ] 缓存策略是否合理？
+
+---
+
+
+#### ⚠️ 边界约束
+
+> 此区块定义此 Skill 的硬性限制和软性约束，确保执行不越界。
+
+**硬性约束（必须遵守）**：
+1. 不得违反相关法律法规和平台规则
+2. 不得泄露用户隐私数据
+3. 不得在未经验证的情况下做出不可逆决策
+
+**软性约束（建议遵守）**：
+1. 优先使用已验证的方法论，避免发明新轮子
+2. 复杂决策应记录理由供后续审计
+
+**人工兜底点**：
+- 当输入数据质量不足以支撑自动化决策时，**必须**转交人工判断
+- 当涉及法律/财务/医疗等高风险领域时，**必须**暂停执行等待确认
+
+#### ✅ 校验验收规则
+
+> 此区块定义执行后的验证标准，确保输出质量。
+
+**格式校验**：
+- [ ] 输出内容结构完整，无缺失区块
+- [ ] 所有必填参数已填充
+- [ ] 输出格式符合预定义规范
+
+**内容校验**：
+- [ ] 建议具有可操作性，非泛泛而谈
+- [ ] 数据引用准确，无虚构内容
+- [ ] 方案考虑了实际约束条件
+
+**合规校验**：
+- [ ] 未违反硬性约束
+- [ ] 人工兜底点已正确识别
+- [ ] 敏感信息已脱敏处理
+
+#### 🔄 迭代触发条件
+
+> 此区块定义 Skill 自我进化的触发机制。
+
+**Self-Play 触发**：
+- **频率**：monthly
+- **触发条件**：
+  - 用户反馈评分低于 7/10
+  - 实际执行中发现新的异常场景
+  - 相关领域出现重大变化
+
+**版本升级触发**：
+- 当新增 ≥3 种异常处理场景时，升级 minor 版本
+- 当核心方法论发生根本性变化时，升级 major 版本
+
+**废弃触发**：
+- 当所依赖的平台/工具停止维护时，标记为 deprecated
+- 当有更好的替代方案出现时，评估迁移
+
+---
+
+## 📝 变更日志
+| 日期 | 版本 | 变更内容 |
+|------|------|----------|
+| 2026-07-03 | 1.0.0 | 初始版本，对标 agency-agents Backend Architect |
+
+
+---
+
+
+---
+
+## 📖 Context Read `[v3新增]`
+
+> 来源：taste-skill 的 Brief Inference + Design Read
+
+在执行前，先输出一行判断：
+
+> "Reading this as: [任务类型] for [用户水平], with [约束条件], leaning toward [方法/工具]."
+
+### 信号读取
+1. **任务类型**：[用户要什么？]
+2. **风格关键词**：[用户用了哪些描述？]
+3. **约束条件**：[时间/工具/环境限制？]
+
+### 反默认纪律
+不要默认套用：[该领域 AI 常见的偷懒模式]。必须根据用户的具体情况定制。
+
+---
+
+## 🚫 Anti-Rationalization Table `[v3新增]`
+
+> 来源：addyosmani/agent-skills 的核心创新
+
+| Agent 常见借口 | 反驳 |
+|--------------|------|
+| ""这个我知道"" | "知道自己不知道才是认知升级的起点" |
+| ""这跟我无关"" | "跨领域知识是创新的最大来源" |
+| ""直觉告诉我这样做"" | "直觉是过去的偏见，数据才是现在的真相" |
+| ""大家都这样做"" | "从众是认知懒惰的最常见表现" |
+
+---
+
+## 🛡️ Three-Tier Boundaries `[v3新增]`
+
+> 来源：addyosmani/agent-skills 的边界系统
+
+### ✅ Always do（自动执行）
+- 执行核心功能（见原技能流程）
+- 输出结构化结果
+- 检查常见错误
+
+### ⚠️ Ask first（先问再做）
+- 用户意图不明确时
+- 操作不可逆时
+- 涉及外部系统时
+
+### 🚫 Never do（绝对禁止）
+- 不跳过验证步骤
+- 不在用户未确认时执行高风险操作
+- 不伪装成功（失败就上报）
+
+---
+
+## 🔒 Gated Workflow `[v3新增]`
+
+> 来源：addyosmani 的门禁 + claude-skills 的 Agent Harness
+
+```
+DISCUSS → PLAN → EXECUTE → VERIFY → CLOSE
+   ↓         ↓        ↓          ↓        ↓
+ Context   方案     执行      证据     Done/
+ Read     确认     任务      检查    Escalate
+```
+
+### Phase 1: DISCUSS
+- [ ] 输出 Context Read 一行判断
+- [ ] 确认用户意图
+- [ ] 确认约束条件
+
+### Phase 2: PLAN
+- [ ] 制定执行方案
+- [ ] 确认资源可用
+- [ ] 人工审批计划
+
+### Phase 3: EXECUTE
+- [ ] 逐个任务实现
+- [ ] 每步有输出记录
+
+### Phase 4: VERIFY
+- [ ] 检查核心输出
+- [ ] 验证完整性
+- [ ] 输出证据
+
+### Phase 5: CLOSE
+- [ ] 所有检查通过 → 标记完成
+- [ ] 有未通过项 → 升级给人类
+- [ ] 预算耗尽 → 强制升级，不伪装成功
+
+---
+
+
+## 🔄 IF/THEN 决策分支
+
+- 
+
+> This skill was converted from a private personal vault. The complete original text is in `references/source.md`; original frontmatter is in `references/source-metadata.md`. Scripts, if any, are never executed during import.
