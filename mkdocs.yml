@@ -67,6 +67,9 @@ extra_css:
   - assets/stylesheets/extra.css
   - assets/stylesheets/landing.css
 
+extra_javascript:
+  - js/zhubao-analytics.js
+
 markdown_extensions:
   # Standard extensions
   - admonition

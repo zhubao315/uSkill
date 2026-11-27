@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+  {{ super() }}
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <script>
+    window.ZHUBAO_ANALYTICS_CONFIG = {
+      site_id: 'uSkill',
+      site_group: 'BUILD',
+      repo: 'zhubao315/uSkill',
+      spa: true
+    };
+  </script>
+{% endblock %}
